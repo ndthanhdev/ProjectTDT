@@ -9,6 +9,7 @@ using Windows.Web.Http;
 using Windows.Web.Http.Headers;
 using Windows.Web.Http.Filters;
 using Windows.Security.Credentials;
+using ProjectTDTUniversal.Common;
 
 namespace ProjectTDTUniversal.Services.DataServices
 {
@@ -55,10 +56,10 @@ namespace ProjectTDTUniversal.Services.DataServices
         {
             PasswordCredential account = CredentialsService.GetCredential();
             await Transport(TemplatesForm.Login, account.UserName, account.Password);
-            bool result = HttpRepository.Content.IndexOf("class=\"logout-button\"") > -1 ? true : false;
+            string userFullName = StringHelper.RegexString(HttpRepository.Content, TemplatesRegexPatterns.GetUserFullName);
+            SettingsServices.SettingsService.Instance.UserName = userFullName;
 
-
-            return result;
+            return !string.IsNullOrEmpty(SettingsServices.SettingsService.Instance.UserName);
         }
         
     }
