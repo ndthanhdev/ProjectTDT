@@ -100,6 +100,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Models\FormFormat.cs" />
     <Compile Include="Models\HttpFormContent.cs" />
     <Compile Include="Mvvm\ViewModelBase.cs" />
@@ -190,7 +191,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\" />
     <Folder Include="Strings\" />
   </ItemGroup>
   <ItemGroup>
