@@ -20,6 +20,8 @@ namespace ProjectTDTUniversal.Services.DataServices
         public static HttpClient Porter
         { get { return Instance.porter; } }
 
+
+
         private HttpClient porter;
 
         static Transporter()
@@ -52,6 +54,10 @@ namespace ProjectTDTUniversal.Services.DataServices
             return HttpRepository.Content;
         }
 
+        /// <summary>
+        /// Login and set user's Name
+        /// </summary>
+        /// <returns></returns>
         public async Task<bool> Login()
         {
             PasswordCredential account = CredentialsService.GetCredential();

@@ -76,6 +76,8 @@ namespace ProjectTDTUniversal.ViewModels
                 if (!CredentialsService.SetCredential(MSSV, MK))
                     return;
                 SettingsService.Instance.LoginStatus = await Transporter.Instance.Login();
+                if (SettingsService.Instance.LoginStatus)
+                    NavigationService.Navigate(typeof(MainPage));
             }
             catch(Exception ex)
             {
