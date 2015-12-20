@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="ProjectTDTWindows.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjectTDTWindows.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ProgressRing x:Name="PgRing" VerticalAlignment="Bottom" IsActive="False" 
+                      Grid.Row="0" Height="45" Width="45"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" Header="MSSV" Height="54"
+                 x:Name="tbxID" Grid.Row="1" Margin="45,0,45,0" />
+        <PasswordBox Style="{StaticResource PasswordBoxStyle}" Header="Mật Khẩu" 
+                     Height="54" x:Name="tbxPassword" Grid.Row="2" Margin="45,0,45,0"/>
+        <Button Style="{StaticResource AppButton}" Width="180" HorizontalAlignment="Center" x:Name="btnLogin" Grid.Row="3" Content="Đăng Nhập" Click="btnLogin_Click" />
+    </Grid>
+</Page>

@@ -1,0 +1,27 @@
+﻿{
+  "79": {
+    "BeginWeek": 0,
+    "BeginCourse": "2015-08-10",
+    "Name": "HK I 2015-2016"
+  },
+  "80": {
+    "BeginWeek": 0,
+    "BeginCourse": "2015-08-10",
+    "Name": "HKDT I 2015-2016"
+  },
+  "81": {
+    "BeginWeek": 20,
+    "BeginCourse": "2015-08-10",
+    "Name": "HK II 2015-2016"
+  },
+  "82": {
+    "BeginWeek": 20,
+    "BeginCourse": "2015-08-10",
+    "Name": "HKDT II 2015-2016"
+  },
+  "83": {
+    "BeginWeek": 40,
+    "BeginCourse": "2015-08-10",
+    "Name": "HK III 2015-2016"
+  },
+}

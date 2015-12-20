@@ -1,0 +1,33 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjectTDTWindows.Views.Templates">
+
+
+    <DataTemplate x:Key="OverviewTemplates">
+        <GridView Margin="0,18,0,9" ItemContainerStyle="{StaticResource OverViewItemStyle}">
+            <Button x:Name="News" Style="{StaticResource OverViewButtonStyle}" Content=""/>
+            <Button x:Name="Email" Style="{StaticResource OverViewButtonStyle}" Content=""/>
+            <Button x:Name="TKB" Style="{StaticResource OverViewButtonStyle}" Content=""/>
+            <Button x:Name="Setting" Style="{StaticResource OverViewButtonStyle}" Content=""/>
+            <Button x:Name="Exit" Style="{StaticResource OverViewButtonStyle}" Content="" Command="{Binding LogoutCommand}"/>
+        </GridView>
+    </DataTemplate>
+    
+    <Style x:Key="OverViewItemStyle" TargetType="GridViewItem">
+        <Setter Property="Height" Value="79"/>
+        <Setter Property="Width" Value="89"/>
+        <Setter Property="Background" Value="{StaticResource BoxBackGroundBrush}"/>
+        <Setter Property="Margin" Value="2,2,2,2"/>
+    </Style>
+    <Style x:Key="OverViewButtonStyle" TargetType="Button">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{StaticResource DescriptionForegroundBrush}"/>
+        <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="{StaticResource OverViewIconTile}"/>
+    </Style>
+</ResourceDictionary>
+
+

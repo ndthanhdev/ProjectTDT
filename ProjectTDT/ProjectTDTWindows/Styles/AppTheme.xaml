@@ -1,0 +1,39 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjectTDTWindows.Styles"
+    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+
+    <!--<APP COLORS>-->
+    <!--Pages Colors-->
+    <Color x:Key="AppBackgroundColor">White</Color>
+    <SolidColorBrush x:Key="AppBackgroundBrush" Color="{StaticResource AppBackgroundColor}"/>
+    <!--Text Colors-->
+    <Color x:Key="AppTitleForegroundColor">Black</Color>
+    <Color x:Key="PageTitleForegroundColor">Black</Color>
+    <Color x:Key="TitleForegroundColor">Black</Color>
+    <Color x:Key="SubtitleForegroundColor">Black</Color>
+    <Color x:Key="DescriptionForegroundColor">Black</Color>
+    <!--Tile Colors-->
+    <Color x:Key="BoxBackgroundColor">#BDBDBD</Color>
+    <Color x:Key="BoxForegroundColor">Black</Color>
+    <!--AppBar Colors-->
+   
+    <!-- Images -->
+    <BitmapImage x:Key="AppLogoImage" UriSource="/Assets/LockScreenLogo.scale-200.png"/>
+
+    <ImageBrush x:Key="AppLogo" ImageSource="{StaticResource AppLogoImage}" Stretch="None" AlignmentX="Left" AlignmentY="Top"/>
+
+    <!--Text Brushes-->
+    <SolidColorBrush x:Key="AppTitleForeground" Color="{StaticResource AppTitleForegroundColor}"/>
+    <SolidColorBrush x:Key="PageTitleForeground" Color="{StaticResource PageTitleForegroundColor}"/>
+    <SolidColorBrush x:Key="TitleForeground" Color="{StaticResource TitleForegroundColor}"/>
+    <SolidColorBrush x:Key="SubtitleForeground" Color="{StaticResource SubtitleForegroundColor}"/>
+    <SolidColorBrush x:Key="DescriptionForegroundBrush" Color="{StaticResource DescriptionForegroundColor}"/>
+    <!--Tile Brushes-->
+    <SolidColorBrush x:Key="BoxForeground" Color="{StaticResource BoxForegroundColor}"/>
+    <SolidColorBrush x:Key="BoxBackGroundBrush" Color="{StaticResource BoxBackgroundColor}"/>
+    <!--Style-->
+
+    
+</ResourceDictionary>
