@@ -39,12 +39,12 @@ namespace ProjectTDTUniversal.ViewModels
 
         public override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
+            SettingsService.Instance.LoginStatus = false;
             if (state.ContainsKey(nameof(MSSV)))
                 MSSV = state[nameof(MSSV)]?.ToString();
 
             if (state.ContainsKey(nameof(MK)))
-                MK = state[nameof(MK)]?.ToString();            
-
+                MK = state[nameof(MK)]?.ToString();  
             state.Clear();
         }
 
@@ -68,7 +68,7 @@ namespace ProjectTDTUniversal.ViewModels
         }
 
 
-        public async void Login()
+        public async void LogIn()
         {
             try
             {

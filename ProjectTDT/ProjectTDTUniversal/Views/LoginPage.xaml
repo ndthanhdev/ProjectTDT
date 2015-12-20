@@ -77,7 +77,7 @@
                     
             </PasswordBox>
             <Button Margin="0,8,0,0"
-                    Content="Đăng Nhập" Click="{x:Bind ViewModel.Login}"
+                    Content="Đăng Nhập" Click="{x:Bind ViewModel.LogIn}"
                     HorizontalAlignment="Center" MinWidth="200"/>
         </StackPanel>
         

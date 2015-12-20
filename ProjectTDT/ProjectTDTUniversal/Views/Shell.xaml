@@ -1,4 +1,4 @@
-<Page x:Class="ProjectTDTUniversal.Views.Shell"
+﻿<Page x:Class="ProjectTDTUniversal.Views.Shell"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:Controls="using:Template10.Controls"
@@ -26,9 +26,15 @@
                     <Controls:HamburgerButtonInfo PageType="views:SettingsPage">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Width="48" Height="48" Symbol="Setting" />
-                            <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="Settings" />
+                            <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="Cài đặt" />
                         </StackPanel>
                     </Controls:HamburgerButtonInfo>
+                    <Controls:HamburgerButtonInfo x:Name="HBILogOut" PageType="views:LoginPage" >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Width="48" Height="48" Symbol="ContactPresence" />
+                            <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="Đăng xuất" />
+                        </StackPanel>
+                    </Controls:HamburgerButtonInfo>                                    
                 </Controls:HamburgerMenu.SecondaryButtons>
 
             </Controls:HamburgerMenu>

@@ -37,6 +37,9 @@ namespace ProjectTDTUniversal.Services.SettingsServices
         {
             foreach (HamburgerButtonInfo hbi in Shell.HamburgerMenu.PrimaryButtons)
                 hbi.IsEnabled = value;
+            foreach (HamburgerButtonInfo hbi in Shell.HamburgerMenu.SecondaryButtons)
+                hbi.IsEnabled = value;
+            
         }
     }
 }
