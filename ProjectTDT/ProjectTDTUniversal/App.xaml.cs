@@ -47,7 +47,7 @@ namespace ProjectTDTUniversal
             await Task.Delay(0);
             SettingsService.Instance.LoginStatus = false;
             if (!_settings.LoginStatus)
-                NavigationService.Navigate(typeof(Views.LoginPage));
+                NavigationService.Navigate(typeof(Views.LogInPage));
             else
                 // navigate to first page
                 NavigationService.Navigate(typeof(Views.MainPage));

@@ -9,13 +9,11 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Navigation;
-//using Windows.Web.Http;
 using Windows.Foundation;
 using Windows.Storage.Streams;
-//using Windows.Web.Http.Headers;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Data.Json;
-//using Windows.Web.Http.Filters;
+
 
 using System.Threading;
 using Windows.Web.Http.Filters;
@@ -24,9 +22,9 @@ using Windows.Web.Http.Headers;
 
 namespace ProjectTDTUniversal.ViewModels
 {
-    public class LoginPageViewModel:Mvvm.ViewModelBase
+    public class LogInPageViewModel:Mvvm.ViewModelBase
     {
-        public LoginPageViewModel()
+        public LogInPageViewModel()
         {
 
         }
@@ -77,7 +75,7 @@ namespace ProjectTDTUniversal.ViewModels
                     return;
                 SettingsService.Instance.LoginStatus = await Transporter.Instance.Login();
                 if (SettingsService.Instance.LoginStatus)
-                    NavigationService.Navigate(typeof(MainPage));
+                    NavigationService.Navigate(typeof(NotifyPage));
             }
             catch(Exception ex)
             {

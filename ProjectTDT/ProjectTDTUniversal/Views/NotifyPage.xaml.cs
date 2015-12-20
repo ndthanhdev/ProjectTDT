@@ -1,5 +1,4 @@
-﻿using ProjectTDTUniversal.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,14 +20,11 @@ namespace ProjectTDTUniversal.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LogInPage : Page
+    public sealed partial class NotifyPage : Page
     {
-        public LogInPage()
+        public NotifyPage()
         {
             this.InitializeComponent();
-            
         }
-        public LogInPageViewModel ViewModel => this.DataContext as LogInPageViewModel;
-        
     }
 }
