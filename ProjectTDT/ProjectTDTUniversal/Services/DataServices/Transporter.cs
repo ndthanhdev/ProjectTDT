@@ -56,9 +56,13 @@ namespace ProjectTDTUniversal.Services.DataServices
         {
             PasswordCredential account = CredentialsService.GetCredential();
             await Transport(TemplatesForm.Login, account.UserName, account.Password);
-            string userFullName = StringHelper.RegexString(HttpRepository.Content, TemplatesRegexPatterns.GetUserFullName);
-            SettingsServices.SettingsService.Instance.UserName = userFullName;
 
+            string userFullName = StringHelper.RegexString(HttpRepository.Content, TemplatesRegexPatterns.GetUserFullName);
+            
+            var ss= StringHelper.RegexStrings(userFullName, TemplatesRegexPatterns.GetWord);
+            userFullName = string.Join(" ", ss);
+
+            SettingsServices.SettingsService.Instance.UserName = userFullName;
             return !string.IsNullOrEmpty(SettingsServices.SettingsService.Instance.UserName);
         }
         
