@@ -1,0 +1,23 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjectTDTUniversal.Views.Items"
+    xmlns:Converters="using:ProjectTDTUniversal.Converters">
+
+    <Converters:BooltoFontWeight x:Key="BooltoFontWeight"/>
+    <Converters:BooltoVisibility x:Key="BooltoVisibility"/>
+
+    <DataTemplate x:Key="NotifyItem">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="21"/>
+                <ColumnDefinition Width="*"/>                
+            </Grid.ColumnDefinitions>
+            <SymbolIcon Symbol="OutlineStar" Visibility="{Binding IsNew,Converter={StaticResource BooltoVisibility}}" />
+            <TextBlock TextWrapping="Wrap" MaxLines="10" Margin="0,8,0,0"  Grid.Column="1">
+                <Run Text="{Binding Title}" FontWeight="{Binding IsNew, Converter={StaticResource BooltoFontWeight}}"/>
+                <Run Text="{Binding Date}"/>
+            </TextBlock>            
+        </Grid>       
+    </DataTemplate>
+</ResourceDictionary>

@@ -8,7 +8,7 @@
     xmlns:controls="using:Template10.Controls"
     xmlns:local="using:ProjectTDTUniversal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
     xmlns:vm="using:ProjectTDTUniversal.ViewModels" mc:Ignorable="d">
 
     <Page.DataContext>
@@ -68,8 +68,18 @@
         </controls:PageHeader>
 
         <!--  page content  -->
-        <StackPanel Grid.Row="1" VerticalAlignment="Top"
-                    Orientation="Horizontal" Padding="12,8,0,0">            
-        </StackPanel>
+        <!--<TextBlock TextWrapping="Wrap" MaxLines="10"  Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>-->
+        <!--<StackPanel Grid.Row="1" VerticalAlignment="Top"
+                    Orientation="Horizontal" Padding="12,8,0,0">
+            <Grid>
+                <ItemsControl ItemsSource="{x:Bind ViewModel.Notifys,Mode=OneWay}" ItemTemplate="{StaticResource NotifyItem}" AllowDrop="True">                    
+                </ItemsControl>
+            </Grid>
+            
+        </StackPanel>-->
+
+
+        <ListView Grid.Row="1" VerticalAlignment="Top" Padding="12,8,0,0" ItemsSource="{x:Bind ViewModel.Notifys}" ItemTemplate="{StaticResource NotifyItem}"/>
+
     </Grid>
 </Page>
