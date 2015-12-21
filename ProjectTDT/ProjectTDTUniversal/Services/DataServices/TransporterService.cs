@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Windows.Security.Credentials;
 
 namespace ProjectTDTUniversal.Services.DataServices
@@ -32,8 +33,21 @@ namespace ProjectTDTUniversal.Services.DataServices
 
         public async Task<IEnumerable<Notify>> GetNotify()
         {
-            await Transport(TemplatesForm.GetNotify);
-            List<string> ss = new List<string>(StringHelper.RegexStrings(HttpRepository.Content, TemplatesRegexPatterns.GetNotify));
+            List<NotifyRaw> result = new List<NotifyRaw>();
+            try
+            {
+                await Transport(TemplatesForm.GetNotify);
+                List<string> strings = new List<string>(StringHelper.RegexStrings(HttpRepository.Content, TemplatesRegexPatterns.GetNotify));
+                XmlSerializer serializer = new XmlSerializer(typeof(NotifyRaw));
+                foreach (string s in strings)
+                {
+                    result.Add((NotifyRaw)serializer.Deserialize(System.Xml.XmlReader.Create(new System.IO.StringReader(s))));
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
             return null;
         }
 

@@ -14,6 +14,6 @@ namespace ProjectTDTUniversal.Models
 
         public bool IsNew { get; set; }
 
-        public DateTime Data { get; set; }
+        public DateTime Date { get; set; }
     }
 }
