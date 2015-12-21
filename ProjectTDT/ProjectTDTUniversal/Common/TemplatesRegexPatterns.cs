@@ -11,5 +11,6 @@ namespace ProjectTDTUniversal.Common
         // get user's full name from student page
         public const string GetUserFullName= "(?<=class=\"student-info\">)(.|\\n)*?(?=<)";
         public const string GetWord = "(?:\\S)+";
+        public const string GetNotify= "<a href=\"\\/thongbao\\/(.|\n)+?<\\/a>";
     }
 }

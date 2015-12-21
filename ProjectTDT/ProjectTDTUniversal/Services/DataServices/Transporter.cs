@@ -13,7 +13,7 @@ using ProjectTDTUniversal.Common;
 
 namespace ProjectTDTUniversal.Services.DataServices
 {
-    public class Transporter
+    public partial class Transporter
     {
         public static Transporter Instance { get; }
 
@@ -53,25 +53,6 @@ namespace ProjectTDTUniversal.Services.DataServices
 
             return HttpRepository.Content;
         }
-
-        /// <summary>
-        /// Login and set user's Name
-        /// </summary>
-        /// <returns></returns>
-        public async Task<bool> Login()
-        {
-            PasswordCredential account = CredentialsService.GetCredential();
-            await Transport(TemplatesForm.Login, account.UserName, account.Password);
-
-            string userFullName = StringHelper.RegexString(HttpRepository.Content, TemplatesRegexPatterns.GetUserFullName);
-            
-            var ss= StringHelper.RegexStrings(userFullName, TemplatesRegexPatterns.GetWord);
-            userFullName = string.Join(" ", ss);
-
-            SettingsServices.SettingsService.Instance.UserName = userFullName;
-            return !string.IsNullOrEmpty(SettingsServices.SettingsService.Instance.UserName);
-        }
-        
     }
 
 

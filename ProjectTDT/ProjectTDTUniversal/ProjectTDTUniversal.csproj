@@ -104,6 +104,8 @@
     <Compile Include="Common\TemplatesRegexPatterns.cs" />
     <Compile Include="Models\FormFormat.cs" />
     <Compile Include="Models\HttpFormContent.cs" />
+    <Compile Include="Models\Notify.cs" />
+    <Compile Include="Models\NotifysRaw.cs" />
     <Compile Include="Mvvm\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DataServices\CredentialsService.cs" />
@@ -112,12 +114,14 @@
     <Compile Include="Services\DataServices\Transporter.cs" />
     <Compile Include="Services\DataServices\HttpRepository.cs" />
     <Compile Include="Services\DataServices\TemplatesForm.cs" />
+    <Compile Include="Services\DataServices\TransporterService.cs" />
     <Compile Include="Services\SettingsServices\ISettingsService.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.Apply.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
     <Compile Include="ViewModels\LogInPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
+    <Compile Include="ViewModels\NotifyPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="Views\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>

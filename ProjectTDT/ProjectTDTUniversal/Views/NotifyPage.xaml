@@ -9,8 +9,12 @@
     xmlns:local="using:ProjectTDTUniversal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:vm="using:ProjectTDTUniversal.ViewModels" mc:Ignorable="d">
 
+    <Page.DataContext>
+        <vm:NotifyPageViewModel />
+    </Page.DataContext>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <!--  #region default visual states  -->
@@ -65,8 +69,7 @@
 
         <!--  page content  -->
         <StackPanel Grid.Row="1" VerticalAlignment="Top"
-                    Orientation="Horizontal" Padding="12,8,0,0">
-            <SymbolIcon Symbol="AllApps"/>
+                    Orientation="Horizontal" Padding="12,8,0,0">            
         </StackPanel>
     </Grid>
 </Page>

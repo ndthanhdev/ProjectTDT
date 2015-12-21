@@ -10,6 +10,7 @@ namespace ProjectTDTUniversal.Services.DataServices
     {
         public readonly static HttpForm Login = new HttpForm("https://student.tdt.edu.vn/taikhoan/dangnhap", "TextMSSV", "PassMK");
 
+        public readonly static HttpForm GetNotify = new HttpForm("https://student.tdt.edu.vn/tb");
     }
 
 }
