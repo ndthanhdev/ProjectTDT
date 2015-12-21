@@ -66,6 +66,7 @@
         <!--  page content  -->
         <StackPanel Grid.Row="1" VerticalAlignment="Top"
                     Orientation="Horizontal" Padding="12,8,0,0">
+            <SymbolIcon Symbol="AllApps"/>
         </StackPanel>
     </Grid>
 </Page>

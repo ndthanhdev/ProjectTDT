@@ -50,7 +50,7 @@ namespace ProjectTDTUniversal
                 NavigationService.Navigate(typeof(Views.LogInPage));
             else
                 // navigate to first page
-                NavigationService.Navigate(typeof(Views.MainPage));
+                NavigationService.Navigate(typeof(Views.NotifyPage));
         }
     }
 }

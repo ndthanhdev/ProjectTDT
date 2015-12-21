@@ -12,17 +12,14 @@
     <Controls:ModalDialog IsModal="{x:Bind IsBusy, Mode=OneWay}">
         <Controls:ModalDialog.Content>
             <Controls:HamburgerMenu x:Name="MyHamburgerMenu" IsFullScreen="False">
-
-                <Controls:HamburgerMenu.PrimaryButtons>
-                    <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:MainPage">
+                <Controls:HamburgerMenu.PrimaryButtons>               
+                    <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:NotifyPage">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Width="48" Height="48" Symbol="Home" />
-                            <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="Home" />
+                            <SymbolIcon Width="48" Height="48" Symbol="PostUpdate" />
+                            <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="Thông báo" />
                         </StackPanel>
-                    </Controls:HamburgerButtonInfo>
-                    
+                    </Controls:HamburgerButtonInfo>                    
                 </Controls:HamburgerMenu.PrimaryButtons>
-
                 <Controls:HamburgerMenu.SecondaryButtons>
                     <Controls:HamburgerButtonInfo PageType="views:SettingsPage">
                         <StackPanel Orientation="Horizontal">
