@@ -35,5 +35,10 @@ namespace ProjectTDTUniversal.Common
             }
             return result;
         }
+
+        public static string MergeLine(string content)
+        {
+            return string.Join(" ",RegexStrings(content,TemplatesRegexPatterns.GetWord));
+        }
     }
 }

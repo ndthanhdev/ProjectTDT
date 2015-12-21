@@ -21,15 +21,13 @@ namespace ProjectTDTUniversal.Common
             var raws = from item in strings select
                      (NotifyRaw)serializer.Deserialize(XmlReader.Create(new System.IO.StringReader(item)));
 
-            var notifys = from item in raws select new Notify()
+            result.AddRange( from item in raws select new Notify()
             {
-                Title = item.span[0].Value,
-                Link=new Uri("https://student.tdt.edu.vn"+item.href),
-                // Date= DateTime.Parse(item.span[1].)
-                
-            };
-            
-
+                Title = StringHelper.MergeLine(item.span[0].Value),
+                Link = new Uri("https://student.tdt.edu.vn" + item.href),
+                Date = item.span[1].Value,
+                IsNew = item.span[0].style.IndexOf("bold") > -1                
+            });
 
             return result;
         }
