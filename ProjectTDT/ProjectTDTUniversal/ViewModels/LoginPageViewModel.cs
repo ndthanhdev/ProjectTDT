@@ -43,7 +43,7 @@ namespace ProjectTDTUniversal.ViewModels
 
             if (state.ContainsKey(nameof(MK)))
                 MK = state[nameof(MK)]?.ToString();  
-            state.Clear();
+            //state.Clear();
         }
 
         public override async Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Windows.UI.Xaml.Navigation;
 
 namespace ProjectTDTUniversal.ViewModels
@@ -23,15 +24,23 @@ namespace ProjectTDTUniversal.ViewModels
         public async override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             Notifys.Clear();
-            foreach(var n in await Transporter.Instance.GetNotify())
+            if (state.ContainsKey(nameof(Notifys)))
             {
-                Notifys.Add(n);
+                Notifys = (ObservableCollection<Notify>)state[nameof(Notifys)] ?? new ObservableCollection<Notify>();
             }
+            else
+                foreach (var n in await Transporter.Instance.GetNotify())
+                {
+                    Notifys.Add(n);
+                }
         }
 
-        //public override async Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
-        //{
-        //}
+        public override async Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
+        {
+            if (suspending)
+                state[nameof(Notifys)] = Notifys;
+            await Task.Yield();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -40,6 +49,28 @@ namespace ProjectTDTUniversal.ViewModels
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public void GotoPrivacy()
+        {
+            NavigationService.Navigate(typeof(Views.SettingsPage), 1);
+        }
+
+        public void GotoAbout()
+        {
+            NavigationService.Navigate(typeof(Views.SettingsPage), 2);
+        }
+
+        public ICommand ItemSelected
+        {
+            get
+            {
+                return new Common.RelayCommandEx<Notify>((i) =>
+                {
+                    //Notifys.Add(i);
+                    Task.Run(()=> Windows.System.Launcher.LaunchUriAsync(i.Link));
+                });
             }
         }
 

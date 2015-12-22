@@ -29,5 +29,7 @@ namespace ProjectTDTUniversal.Views
         }
 
         public NotifyPageViewModel ViewModel => this.DataContext as NotifyPageViewModel;
+
+       
     }
 }

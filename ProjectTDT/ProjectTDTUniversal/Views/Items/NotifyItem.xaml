@@ -8,7 +8,7 @@
     <Converters:BooltoVisibility x:Key="BooltoVisibility"/>
 
     <DataTemplate x:Key="NotifyItem">
-        <Grid>
+        <Grid>           
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="21"/>
                 <ColumnDefinition Width="*"/>                

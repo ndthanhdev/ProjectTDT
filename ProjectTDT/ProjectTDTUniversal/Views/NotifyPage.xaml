@@ -62,24 +62,21 @@
                 <Behaviors:EllipsisBehavior Visibility="Auto" />
             </Interactivity:Interaction.Behaviors>
             <controls:PageHeader.SecondaryCommands>
-                <!--<AppBarButton Click="{x:Bind ViewModel.GotoPrivacy}" Label="Privacy" />
-                <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />-->
+                <AppBarButton Click="{x:Bind ViewModel.GotoPrivacy}" Label="Privacy" />
+                <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />
             </controls:PageHeader.SecondaryCommands>
         </controls:PageHeader>
 
         <!--  page content  -->
-        <!--<TextBlock TextWrapping="Wrap" MaxLines="10"  Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>-->
-        <!--<StackPanel Grid.Row="1" VerticalAlignment="Top"
-                    Orientation="Horizontal" Padding="12,8,0,0">
-            <Grid>
-                <ItemsControl ItemsSource="{x:Bind ViewModel.Notifys,Mode=OneWay}" ItemTemplate="{StaticResource NotifyItem}" AllowDrop="True">                    
-                </ItemsControl>
-            </Grid>
-            
-        </StackPanel>-->
 
+        <ListView x:Name="listView" Grid.Row="1" VerticalAlignment="Top" Padding="12,8,0,0" ItemsSource="{x:Bind ViewModel.Notifys}" ItemTemplate="{StaticResource NotifyItem}">
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="Tapped">
+                    <Core:InvokeCommandAction Command="{x:Bind ViewModel.ItemSelected}" CommandParameter="{Binding ElementName=listView,Path=SelectedItem}"/>
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
 
-        <ListView Grid.Row="1" VerticalAlignment="Top" Padding="12,8,0,0" ItemsSource="{x:Bind ViewModel.Notifys}" ItemTemplate="{StaticResource NotifyItem}"/>
+        </ListView>
 
     </Grid>
 </Page>
