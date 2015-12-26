@@ -23,6 +23,7 @@ namespace ProjectTDTUniversal.ViewModels
 
         public async override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
+            await Transporter.Instance.GetNotifyContent(null);
             Notifys.Clear();
             if (state.ContainsKey(nameof(Notifys)))
             {
@@ -66,10 +67,10 @@ namespace ProjectTDTUniversal.ViewModels
         {
             get
             {
-                return new Common.RelayCommandEx<Notify>((i) =>
-                {
-                    //Notifys.Add(i);
+                return new Common.RelayCommandEx<Notify>((i) =>                {
+                   
                     Task.Run(()=> Windows.System.Launcher.LaunchUriAsync(i.Link));
+                    
                 });
             }
         }

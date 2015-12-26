@@ -9,7 +9,7 @@ namespace ProjectTDTUniversal.Services.DataServices
 {
     public class HttpForm
     {
-        private string _link;
+        private Uri _link;
 
         private string[] attributes;
 
@@ -23,18 +23,18 @@ namespace ProjectTDTUniversal.Services.DataServices
             get { return attributes; }
         }
 
-        public string Path
-        {
-            get { return _link; }
-        }
         public Uri Link
         {
-            get { return new Uri(_link); }
+            get { return _link; }
+            private set
+            {
+                _link = value;
+            }
         }
 
-        public HttpForm(string Link , params string[] Attributes)
+        public HttpForm(Uri Link , params string[] Attributes)
         {
-            this._link = Link;
+            this.Link = Link;
             this.attributes = Attributes;
         }
 

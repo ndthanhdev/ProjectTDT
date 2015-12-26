@@ -8,9 +8,9 @@ namespace ProjectTDTUniversal.Services.DataServices
 {
     public static class TemplatesForm
     {
-        public readonly static HttpForm Login = new HttpForm("https://student.tdt.edu.vn/taikhoan/dangnhap", "TextMSSV", "PassMK");
+        public readonly static HttpForm Login = new HttpForm(new Uri("https://student.tdt.edu.vn/taikhoan/dangnhap"), "TextMSSV", "PassMK");
 
-        public readonly static HttpForm GetNotify = new HttpForm("https://student.tdt.edu.vn/tb");
+        public readonly static HttpForm GetNotify = new HttpForm(new Uri("https://student.tdt.edu.vn/tb"));
     }
 
 }

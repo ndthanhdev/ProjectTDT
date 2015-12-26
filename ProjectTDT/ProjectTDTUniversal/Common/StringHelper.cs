@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ProjectTDTUniversal.Common
 {
     //all utility with string
-    public class StringHelper
+    public static class StringHelper
     {
         public static string RegexString(string content,params string[] patterns)
         {
@@ -39,6 +39,12 @@ namespace ProjectTDTUniversal.Common
         public static string MergeLine(string content)
         {
             return string.Join(" ",RegexStrings(content,TemplatesRegexPatterns.GetWord));
+        }
+
+        public static string StripHTML(this string HTMLText)
+        {
+            var reg = new Regex(TemplatesRegexPatterns.HtmlStrip, RegexOptions.IgnoreCase);
+            return reg.Replace(HTMLText, "");
         }
     }
 }

@@ -12,5 +12,7 @@ namespace ProjectTDTUniversal.Common
         public const string GetUserFullName= "(?<=class=\"student-info\">)(.|\\n)*?(?=<)";
         public const string GetWord = "(?:\\S)+";
         public const string GetNotify= "<a href=\"\\/thongbao\\/(.|\n)+?<\\/a>";
+        public const string GetPtag = "<p(.|\\s)+?</p>";
+        public const string HtmlStrip = "<[^>]+>";
     }
 }

@@ -10,6 +10,7 @@ using Windows.Web.Http.Headers;
 using Windows.Web.Http.Filters;
 using Windows.Security.Credentials;
 using ProjectTDTUniversal.Common;
+using System.Xml.Linq;
 
 namespace ProjectTDTUniversal.Services.DataServices
 {
@@ -30,14 +31,10 @@ namespace ProjectTDTUniversal.Services.DataServices
         }
 
         private Transporter()
-        {
-            
-            porter = new HttpClient(new PlugInFilter());          
-
+        {            
+            porter = new HttpClient(new PlugInFilter());           
             //fix it
             porter.DefaultRequestHeaders.UserAgent.TryParseAdd("ProjectTDT 2.0");
-           
-
         } 
 
         public async Task<string> Transport(HttpForm form,params string[] args)
@@ -49,10 +46,14 @@ namespace ProjectTDTUniversal.Services.DataServices
             HttpResponseMessage response = await porter.SendRequestAsync(request);
 
             var buffer = await response.Content.ReadAsBufferAsync();
-            HttpRepository.Content = Encoding.UTF8.GetString(buffer.ToArray());
+            HttpRepository.Content = System.Net.WebUtility.HtmlDecode(Encoding.UTF8.GetString(buffer.ToArray()));
+
 
             return HttpRepository.Content;
         }
+
+
+
     }
 
 

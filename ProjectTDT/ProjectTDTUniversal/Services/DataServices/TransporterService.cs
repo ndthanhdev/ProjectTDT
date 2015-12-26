@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using Windows.Security.Credentials;
 
@@ -53,6 +54,31 @@ namespace ProjectTDTUniversal.Services.DataServices
                                 IsNew = item.span[0].style.IndexOf("bold") > -1
                             });
             return result;
+        }
+
+        public async Task GetNotifyContent(Uri link)
+        {
+            try
+            {
+
+                await Transport(new HttpForm(new Uri("https://student.tdt.edu.vn/thongbao/741")));                
+                //string textContent =string.Join("\n",
+                //    from item in StringHelper.RegexStrings(HttpRepository.Content, TemplatesRegexPatterns.GetPtag) select StringHelper.StripHTML(item));
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(HttpRepository.Content);
+                var v= doc.DocumentNode.Descendants("div").Where(node=> node.Attributes.Contains("class") && node.Attributes["class"].Value.Contains("rnews-article-content"));
+
+                string s1 = StringHelper.StripHTML(v.ElementAt(1).InnerHtml);
+                
+
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+
         }
              
             
