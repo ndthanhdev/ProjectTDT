@@ -110,6 +110,7 @@
     <Compile Include="Models\FormFormat.cs" />
     <Compile Include="Models\HttpFormContent.cs" />
     <Compile Include="Models\Notify.cs" />
+    <Compile Include="Models\NotifyDetail.cs" />
     <Compile Include="Models\NotifyRaw.cs" />
     <Compile Include="Mvvm\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,11 +186,6 @@
     <Page Include="Views\DetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Items\NotifyItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\LogInPage.xaml">
       <SubType>Designer</SubType>

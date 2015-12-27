@@ -9,12 +9,33 @@
     xmlns:local="using:ProjectTDTUniversal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
-    xmlns:vm="using:ProjectTDTUniversal.ViewModels" mc:Ignorable="d">
+    xmlns:vm="using:ProjectTDTUniversal.ViewModels" mc:Ignorable="d"
+    xmlns:Converters="using:ProjectTDTUniversal.Converters">    
 
     <Page.DataContext>
         <vm:NotifyPageViewModel />
     </Page.DataContext>
-    
+    <Page.Resources>
+        
+        <!-- Converters -->
+        <Converters:BooltoFontWeight x:Key="BooltoFontWeight"/>
+        <Converters:BooltoVisibility x:Key="BooltoVisibility"/>
+
+        <DataTemplate x:Key="NotifyItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="21"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <SymbolIcon Symbol="OutlineStar" Visibility="{Binding IsNew,Converter={StaticResource BooltoVisibility}}" />
+                <TextBlock TextWrapping="Wrap" MaxLines="10" Margin="0,8,0,0"  Grid.Column="1">
+                <Run Text="{Binding Title}" FontWeight="{Binding IsNew, Converter={StaticResource BooltoFontWeight}}"/>
+                <Run Text="{Binding Date}"/>
+                </TextBlock>
+            </Grid>
+        </DataTemplate>
+
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <!--  #region default visual states  -->

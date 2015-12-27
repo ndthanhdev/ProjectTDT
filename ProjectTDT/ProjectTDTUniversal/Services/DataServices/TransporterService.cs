@@ -56,29 +56,39 @@ namespace ProjectTDTUniversal.Services.DataServices
             return result;
         }
 
-        public async Task GetNotifyContent(Uri link)
-        {
-            try
+        public async Task<NotifyDetail> GetNotifyContent(Uri link)
+        {            
+            await Transport(new HttpForm(new Uri("https://student.tdt.edu.vn/thongbao/762")));     
+                           
+            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(HttpRepository.Content);
+
+            var nodediv = doc.DocumentNode.Descendants("div");
+
+            string title = nodediv.First(i => i.Attributes.Contains("class") 
+                                    && i.Attributes["class"].Value == "rnews-header").InnerText;
+
+            // class = rnews-article-content
+            var divs = nodediv.Where(node=> node.Attributes.Contains("class") 
+                            && node.Attributes["class"].Value.Contains("rnews-article-content"));
+
+            Dictionary<string, Uri> attach = new Dictionary<string, Uri>();
+            string content = "";
+            if(divs.Count()>2)
             {
-
-                await Transport(new HttpForm(new Uri("https://student.tdt.edu.vn/thongbao/741")));                
-                //string textContent =string.Join("\n",
-                //    from item in StringHelper.RegexStrings(HttpRepository.Content, TemplatesRegexPatterns.GetPtag) select StringHelper.StripHTML(item));
-                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-                doc.LoadHtml(HttpRepository.Content);
-                var v= doc.DocumentNode.Descendants("div").Where(node=> node.Attributes.Contains("class") && node.Attributes["class"].Value.Contains("rnews-article-content"));
-
-                string s1 = StringHelper.StripHTML(v.ElementAt(1).InnerHtml);
-                
-
-
+                content = divs.ElementAt(1).InnerText;
+                foreach(HtmlAgilityPack.HtmlNode node in divs.ElementAt(0).Descendants("a"))
+                {
+                    if(node.Attributes.Contains("href"))
+                    {
+                        attach.Add(node.InnerText, new Uri(node.Attributes["href"].Value));
+                    }
+                }
             }
-            catch(Exception ex)
-            {
+            else
+                content= content = divs.ElementAt(0).InnerText;
 
-            }
-
-
+            return new NotifyDetail(title,content, attach);
         }
              
             
