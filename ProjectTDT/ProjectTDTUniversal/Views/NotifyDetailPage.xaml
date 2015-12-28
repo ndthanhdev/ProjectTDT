@@ -16,13 +16,14 @@
     </Page.DataContext>
     <Page.Resources>
         <DataTemplate x:Key="AttachTemplate">
-            <TextBlock>
-                <Run Text="\t"/>
-                <Run Text="{Binding Key}"/>
-            </TextBlock>
+            <TextBlock TextWrapping="Wrap" MaxLines="9">
+                <Hyperlink NavigateUri="{Binding Value}">
+                    <Run Text="{Binding Key}"/>                    
+                </Hyperlink>
+            </TextBlock>            
         </DataTemplate>
     </Page.Resources>
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <!--  #region default visual states  -->
@@ -60,14 +61,12 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
         <!--  page header  -->
 
-        <controls:PageHeader BackButtonVisibility="Collapsed" Content="Main Page" Frame="{x:Bind Frame}">
+        <controls:PageHeader BackButtonVisibility="Collapsed" Content="Nội dung" Frame="{x:Bind Frame}">
             <Interactivity:Interaction.Behaviors>
                 <Behaviors:EllipsisBehavior Visibility="Auto" />
             </Interactivity:Interaction.Behaviors>
@@ -78,20 +77,24 @@
         </controls:PageHeader>
 
         <!--  page content  -->
-        
-        <TextBlock Grid.Row="1" MaxLines="6" TextWrapping="Wrap" FontSize="18"
-            Text="{x:Bind ViewModel.Notify.Title}" />
-        <ListView Header="Đính kèm:" Grid.Row="2" Margin="0,12,0,0" >
-            
-        </ListView>
-        <ListView Grid.Row="3">
-
-        </ListView>
-        <ScrollViewer Grid.Row="3" Height="auto" VerticalScrollBarVisibility="Auto"  >
-            <TextBlock MaxLines="999" TextWrapping="Wrap" Margin="0,8,12,8"
-            Text="{x:Bind ViewModel.Detail.Content,Mode=OneWay}" />
-
+        <ScrollViewer Grid.Row="1" Margin="8,0,0,0" Height="auto" VerticalScrollBarVisibility="Auto"  >
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" MaxLines="6" TextWrapping="Wrap" FontSize="18" 
+                       HorizontalAlignment="Center"
+                    FontWeight="Bold" Margin="12,12,12,0" Text="{x:Bind ViewModel.Notify.Title}" />
+                <ListView Header="Đính kèm:" Grid.Row="1" Margin="0,21,12,0"
+                      ItemsSource="{x:Bind ViewModel.Detail.Attach,Mode=OneWay}" 
+                      ItemTemplate="{StaticResource AttachTemplate}"/>
+                    <TextBlock Grid.Row="2" MaxLines="999" TextWrapping="Wrap" Margin="0,12,12,12"
+                Text="{x:Bind ViewModel.Detail.Content,Mode=OneWay}" />
+            </Grid>
         </ScrollViewer>
-       
+
+
     </Grid>
 </Page>

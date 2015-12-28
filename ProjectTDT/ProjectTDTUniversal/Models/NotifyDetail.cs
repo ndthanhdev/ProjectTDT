@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectTDTUniversal.Models
 {
-    public class NotifyDetail
+    public class NotifyDetail:Template10.Mvvm.BindableBase
     {
-        private Dictionary<string, Uri> _attach;
-    
 
-        public Dictionary<string, Uri> Attach
+        public ObservableCollection<KeyValuePair<string, Uri>> _attach;
+
+        public ObservableCollection<KeyValuePair<string, Uri>> Attach
         {
-            get { return _attach ?? new Dictionary<string, Uri>();          }
-            private set
+            get
             {
-                _attach = value ?? new Dictionary<string, Uri>();
+                return _attach ?? new ObservableCollection<KeyValuePair<string, Uri>>();
             }
-        }
+            set
+            {
+                //_attach = new List<KeyValuePair<string, Uri>>(value);
+                Set(ref _attach, value?? new ObservableCollection<KeyValuePair<string, Uri>>());
+                RaisePropertyChanged("Attach");
+            }
+        }       
 
         public string Content
         {
@@ -27,10 +33,11 @@ namespace ProjectTDTUniversal.Models
         }
 
 
-        public NotifyDetail(string content, Dictionary<string, Uri> attach)
+        public NotifyDetail(string content, ObservableCollection<KeyValuePair<string, Uri>> attach)
         {
             Attach = attach;
             Content = content;            
+            
         }
     }
 }

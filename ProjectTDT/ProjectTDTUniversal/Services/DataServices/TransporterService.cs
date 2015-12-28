@@ -2,6 +2,7 @@
 using ProjectTDTUniversal.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,7 +70,7 @@ namespace ProjectTDTUniversal.Services.DataServices
             var divs = nodediv.Where(node=> node.Attributes.Contains("class") 
                             && node.Attributes["class"].Value.Contains("rnews-article-content"));
 
-            Dictionary<string, Uri> attach = new Dictionary<string, Uri>();
+            ObservableCollection<KeyValuePair<string, Uri>> attach = new ObservableCollection<KeyValuePair<string, Uri>>();
             string content = "";
             if(divs.Count()>2)
             {
@@ -78,7 +79,7 @@ namespace ProjectTDTUniversal.Services.DataServices
                 {
                     if(node.Attributes.Contains("href"))
                     {
-                        attach.Add(node.InnerText, new Uri(node.Attributes["href"].Value));
+                        attach.Add( new KeyValuePair<string, Uri>(node.InnerText, new Uri(node.Attributes["href"].Value)));
                     }
                 }
             }
