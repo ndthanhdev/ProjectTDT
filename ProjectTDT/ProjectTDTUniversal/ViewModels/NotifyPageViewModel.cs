@@ -1,5 +1,6 @@
 ﻿using ProjectTDTUniversal.Models;
 using ProjectTDTUniversal.Services.DataServices;
+using ProjectTDTUniversal.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +15,6 @@ namespace ProjectTDTUniversal.ViewModels
 {
     public class NotifyPageViewModel : Mvvm.ViewModelBase,INotifyPropertyChanged
     {
-        private ObservableCollection<Notify> _notifys;
         public ObservableCollection<Notify> Notifys { get; set; } = new ObservableCollection<Notify>();
         public NotifyPageViewModel()
         {
@@ -23,7 +23,6 @@ namespace ProjectTDTUniversal.ViewModels
 
         public async override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            await Transporter.Instance.GetNotifyContent(null);
             Notifys.Clear();
             if (state.ContainsKey(nameof(Notifys)))
             {
@@ -43,16 +42,6 @@ namespace ProjectTDTUniversal.ViewModels
             await Task.Yield();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
         public void GotoPrivacy()
         {
             NavigationService.Navigate(typeof(Views.SettingsPage), 1);
@@ -67,10 +56,9 @@ namespace ProjectTDTUniversal.ViewModels
         {
             get
             {
-                return new Common.RelayCommandEx<Notify>((i) =>                {
-                   
-                    Task.Run(()=> Windows.System.Launcher.LaunchUriAsync(i.Link));
-                    
+                return new Common.RelayCommandEx<Notify>((i) =>{                   
+                    //Task.Run(()=> Windows.System.Launcher.LaunchUriAsync(i.Link));
+                    NavigationService.Navigate(typeof(NotifyDetailPage), i);                    
                 });
             }
         }

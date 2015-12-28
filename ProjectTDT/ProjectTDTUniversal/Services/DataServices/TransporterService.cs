@@ -58,15 +58,12 @@ namespace ProjectTDTUniversal.Services.DataServices
 
         public async Task<NotifyDetail> GetNotifyContent(Uri link)
         {            
-            await Transport(new HttpForm(new Uri("https://student.tdt.edu.vn/thongbao/762")));     
+            await Transport(new HttpForm(link));     
                            
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(HttpRepository.Content);
 
             var nodediv = doc.DocumentNode.Descendants("div");
-
-            string title = nodediv.First(i => i.Attributes.Contains("class") 
-                                    && i.Attributes["class"].Value == "rnews-header").InnerText;
 
             // class = rnews-article-content
             var divs = nodediv.Where(node=> node.Attributes.Contains("class") 
@@ -88,7 +85,7 @@ namespace ProjectTDTUniversal.Services.DataServices
             else
                 content= content = divs.ElementAt(0).InnerText;
 
-            return new NotifyDetail(title,content, attach);
+            return new NotifyDetail(content, attach);
         }
              
             

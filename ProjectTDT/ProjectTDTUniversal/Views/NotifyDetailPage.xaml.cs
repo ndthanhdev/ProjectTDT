@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectTDTUniversal.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,5 +27,6 @@ namespace ProjectTDTUniversal.Views
         {
             this.InitializeComponent();
         }
+        public NotifyDetailPageViewModel ViewModel => this.DataContext as NotifyDetailPageViewModel;
     }
 }

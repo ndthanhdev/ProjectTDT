@@ -26,13 +26,11 @@ namespace ProjectTDTUniversal.Models
             private set;            
         }
 
-        public string Title { get; private set; }
 
-        public NotifyDetail(string title ,string content, Dictionary<string, Uri> attach)
+        public NotifyDetail(string content, Dictionary<string, Uri> attach)
         {
             Attach = attach;
-            Content = content;
-            Title = title;
+            Content = content;            
         }
     }
 }
