@@ -18,17 +18,20 @@ namespace ProjectTDTUniversal.ViewModels
            
         }
 
-        public Notify Notify { get; private set; } = new Notify();
+        private Notify _notify;
+
+        public Notify Notify
+        {
+            get { return _notify ?? new Notify(); }
+            private set {  Set(ref _notify, value);  }
+        } 
 
         public NotifyDetail _detail;
 
         public NotifyDetail Detail
         {
             get { return _detail ?? new NotifyDetail("", new ObservableCollection<KeyValuePair<string, Uri>>()); }
-            set
-            {
-                Set(ref _detail, value);                
-            }
+            set { Set(ref _detail, value); }
         }
 
 
@@ -37,13 +40,7 @@ namespace ProjectTDTUniversal.ViewModels
             try
             {
                 Notify = (Notify)parameter;
-                
-                
-
-                //Detail = new NotifyDetail("...", new ObservableCollection<KeyValuePair<string, Uri>>() { new KeyValuePair<string, Uri>("...", null ) });
-                Detail = await Transporter.Instance.GetNotifyContent(Notify.Link);
-                //RaisePropertyChanged("Detail");
-                
+                Detail = await Transporter.Instance.GetNotifyContent(Notify.Link);                
             }
             catch
             {

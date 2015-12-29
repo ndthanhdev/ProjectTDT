@@ -83,8 +83,7 @@ namespace ProjectTDTUniversal.ViewModels
                 throw ex;
             }
             finally
-            {
-                
+            {                
                     Shell.SetBusy(false);
             }           
         }

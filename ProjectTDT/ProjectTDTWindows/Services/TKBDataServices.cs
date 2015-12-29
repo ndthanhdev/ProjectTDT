@@ -24,7 +24,7 @@ namespace ProjectTDTWindows.Services
         public static async Task<IEnumerable<Semester>> Get()
         {
             try
-            {
+            {                
                 List<Semester> result = new List<Semester>();
                 if (FileName == null)
                     return result;

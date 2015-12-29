@@ -15,10 +15,14 @@ namespace ProjectTDTUniversal.ViewModels
 {
     public class NotifyPageViewModel : Mvvm.ViewModelBase,INotifyPropertyChanged
     {
-        public ObservableCollection<Notify> Notifys { get; set; } = new ObservableCollection<Notify>();
+        private ObservableCollection<Notify> _notifys;
+        public ObservableCollection<Notify> Notifys
+        {
+            get { return _notifys= _notifys ?? new ObservableCollection<Notify>(); }
+            set { Set(ref _notifys, value); }
+        } 
         public NotifyPageViewModel()
         {
-            Notifys.Add(new Notify());
         }
 
         public async override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
@@ -29,10 +33,14 @@ namespace ProjectTDTUniversal.ViewModels
                 Notifys = (ObservableCollection<Notify>)state[nameof(Notifys)] ?? new ObservableCollection<Notify>();
             }
             else
-                foreach (var n in await Transporter.Instance.GetNotify())
+            {
+                var ie = await Transporter.Instance.GetNotify();
+                foreach (var n in ie)
                 {
                     Notifys.Add(n);
                 }
+            }
+               
         }
 
         public override async Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
@@ -56,10 +64,10 @@ namespace ProjectTDTUniversal.ViewModels
         {
             get
             {
-                return new Common.RelayCommandEx<Notify>((i) =>{                   
-                    //Task.Run(()=> Windows.System.Launcher.LaunchUriAsync(i.Link));
-                    NavigationService.Navigate(typeof(NotifyDetailPage), i);                    
-                });
+                return new Template10.Mvvm.DelegateCommand<Notify>((i) =>
+                 {
+                     NavigationService.Navigate(typeof(NotifyDetailPage), i);
+                 });
             }
         }
 
