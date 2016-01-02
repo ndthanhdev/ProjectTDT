@@ -1,4 +1,5 @@
-﻿using ProjectTDTUniversal.Models;
+﻿using Newtonsoft.Json;
+using ProjectTDTUniversal.Models;
 using ProjectTDTUniversal.Services.DataServices;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace ProjectTDTUniversal.ViewModels
 {
-    public class NotifyDetailPageViewModel:Mvvm.ViewModelBase,INotifyPropertyChanged
+    public class NotifyDetailPageViewModel:Mvvm.ViewModelBase
     {
         public NotifyDetailPageViewModel()
         {
@@ -23,36 +24,40 @@ namespace ProjectTDTUniversal.ViewModels
         public Notify Notify
         {
             get { return _notify ?? new Notify(); }
-            private set {  Set(ref _notify, value);  }
+             set {  Set(ref _notify, value?? new Notify());  }
         } 
 
-        public NotifyDetail _detail;
+        private NotifyDetail _detail;
 
         public NotifyDetail Detail
         {
             get { return _detail ?? new NotifyDetail("", new ObservableCollection<KeyValuePair<string, Uri>>()); }
-            set { Set(ref _detail, value); }
+            set { Set(ref _detail, value ?? new NotifyDetail("", new ObservableCollection<KeyValuePair<string, Uri>>())); }
         }
 
+        
 
         public override async void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
+
             try
             {
                 Notify = (Notify)parameter;
-                Detail = await Transporter.Instance.GetNotifyContent(Notify.Link);                
+                Detail = await Transporter.Instance.GetNotifyContent(Notify.Link);
             }
-            catch
+            catch(Exception ex)
             {
 
             }
         }
 
+        
         public void GotoPrivacy()
         {
             NavigationService.Navigate(typeof(Views.SettingsPage), 1);
         }
 
+        
         public void GotoAbout()
         {
             NavigationService.Navigate(typeof(Views.SettingsPage), 2);

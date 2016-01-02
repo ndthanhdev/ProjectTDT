@@ -10,12 +10,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Xaml.Navigation;
+using System.Reflection;
+using Newtonsoft.Json;
 
 namespace ProjectTDTUniversal.ViewModels
 {
-    public class NotifyPageViewModel : Mvvm.ViewModelBase,INotifyPropertyChanged
+    
+    public class NotifyPageViewModel : Mvvm.ViewModelBase,ILiveContent
     {
         private ObservableCollection<Notify> _notifys;
+
+        
         public ObservableCollection<Notify> Notifys
         {
             get { return _notifys= _notifys ?? new ObservableCollection<Notify>(); }
@@ -40,6 +45,7 @@ namespace ProjectTDTUniversal.ViewModels
                     Notifys.Add(n);
                 }
             }
+            ContentService.Refresh(this);
                
         }
 
@@ -60,6 +66,11 @@ namespace ProjectTDTUniversal.ViewModels
             NavigationService.Navigate(typeof(Views.SettingsPage), 2);
         }
 
+        public Task UpdateContents()
+        {
+            throw new NotImplementedException();
+        }
+
         public ICommand ItemSelected
         {
             get
@@ -67,9 +78,21 @@ namespace ProjectTDTUniversal.ViewModels
                 return new Template10.Mvvm.DelegateCommand<Notify>((i) =>
                  {
                      NavigationService.Navigate(typeof(NotifyDetailPage), i);
+                     
                  });
             }
+            
         }
 
+        public KeyValuePair<string, Type>[] Properties => new KeyValuePair<string, Type>[]
+        {
+            new KeyValuePair<string, Type>(nameof(Notifys),typeof(Notify))
+        };
+        //{
+        //    get
+        //    {
+        //        throw new NotImplementedException();
+        //    }
+        //}
     }
 }

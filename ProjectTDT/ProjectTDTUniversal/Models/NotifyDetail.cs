@@ -10,7 +10,7 @@ namespace ProjectTDTUniversal.Models
     public class NotifyDetail:Template10.Mvvm.BindableBase
     {
 
-        public ObservableCollection<KeyValuePair<string, Uri>> _attach;
+        private ObservableCollection<KeyValuePair<string, Uri>> _attach;
 
         public ObservableCollection<KeyValuePair<string, Uri>> Attach
         {

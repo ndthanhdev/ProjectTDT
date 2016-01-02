@@ -112,8 +112,10 @@
     <Compile Include="Models\NotifyRaw.cs" />
     <Compile Include="Mvvm\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DataServices\ContentService.cs" />
     <Compile Include="Services\DataServices\CredentialsService.cs" />
     <Compile Include="Services\DataServices\HttpForm.cs" />
+    <Compile Include="Services\DataServices\ILiveContent.cs" />
     <Compile Include="Services\DataServices\PlugInFilter.cs" />
     <Compile Include="Services\DataServices\Transporter.cs" />
     <Compile Include="Services\DataServices\HttpRepository.cs" />
