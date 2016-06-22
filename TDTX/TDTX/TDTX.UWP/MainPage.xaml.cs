@@ -21,7 +21,7 @@ namespace TDTX.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new TDTX.App());
+            LoadApplication(new TDTX.App());           
         }
     }
 }
