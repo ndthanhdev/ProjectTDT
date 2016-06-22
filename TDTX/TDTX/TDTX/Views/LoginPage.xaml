@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDTX.Views.LoginPage">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1.5*"/>
+      <ColumnDefinition Width="7*"/>
+      <ColumnDefinition Width="1.5*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="8*"/>
+    </Grid.RowDefinitions>
+    
+    <!--<StackLayout Orientation="Horizontal">      
+      <Label BackgroundColor="Blue" Text="Đăng nhập"/>
+
+    </StackLayout>-->
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Grid.Column="1" Grid.Row="1">
+      <Label Text="MSSV" TextColor="#E65E29" />
+      <Entry/>
+      <Label Text="Mật khẩu" TextColor="#E65E29" />
+      <Entry IsPassword="True"/>
+      <Button Text="Đăng nhập" BackgroundColor="#0061AD" TextColor="White" BorderRadius="3"/>
+    </StackLayout>
+
+  </Grid>
+</ContentPage>

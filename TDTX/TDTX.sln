@@ -15,9 +15,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDTX.Windows", "TDTX\TDTX.W
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TDTX", "TDTX\TDTX\TDTX.shproj", "{B7C7148B-0A46-4A48-B100-B57C84528A03}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TDTX.Module", "TDTX.Module\TDTX.Module.shproj", "{6F655B6C-624C-4C22-83AC-222C35A7BAFD}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		TDTX.Module\TDTX.Module.projitems*{06e01bcf-9760-4120-884e-47093a3d3608}*SharedItemsImports = 4
+		TDTX\TDTX\TDTX.projitems*{06e01bcf-9760-4120-884e-47093a3d3608}*SharedItemsImports = 4
+		TDTX.Module\TDTX.Module.projitems*{8250e26d-5f55-489d-8b2d-000f3230d6c9}*SharedItemsImports = 4
+		TDTX\TDTX\TDTX.projitems*{8250e26d-5f55-489d-8b2d-000f3230d6c9}*SharedItemsImports = 4
 		TDTX\TDTX\TDTX.projitems*{b7c7148b-0a46-4a48-b100-b57c84528a03}*SharedItemsImports = 13
+		TDTX.Module\TDTX.Module.projitems*{6f655b6c-624c-4c22-83ac-222c35a7bafd}*SharedItemsImports = 13
+		TDTX.Module\TDTX.Module.projitems*{ab428dfd-76d2-4165-83d2-ef262814ed50}*SharedItemsImports = 4
+		TDTX\TDTX\TDTX.projitems*{ab428dfd-76d2-4165-83d2-ef262814ed50}*SharedItemsImports = 4
+		TDTX.Module\TDTX.Module.projitems*{e9fe7818-cd6b-4c62-bedb-6cd383135476}*SharedItemsImports = 4
+		TDTX\TDTX\TDTX.projitems*{e9fe7818-cd6b-4c62-bedb-6cd383135476}*SharedItemsImports = 4
+		TDTX.Module\TDTX.Module.projitems*{de3eddcc-5db9-47ca-9e76-d044340dc48a}*SharedItemsImports = 4
 		TDTX\TDTX\TDTX.projitems*{de3eddcc-5db9-47ca-9e76-d044340dc48a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,7 +97,6 @@ Global
 		{06E01BCF-9760-4120-884E-47093A3D3608}.AppStore|x86.Deploy.0 = Release|Any CPU
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06E01BCF-9760-4120-884E-47093A3D3608}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Debug|ARM.Build.0 = Debug|Any CPU
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Debug|ARM.Deploy.0 = Debug|Any CPU
@@ -100,7 +111,6 @@ Global
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Debug|x64.Deploy.0 = Debug|Any CPU
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Debug|x86.Build.0 = Debug|Any CPU
-		{06E01BCF-9760-4120-884E-47093A3D3608}.Debug|x86.Deploy.0 = Debug|Any CPU
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06E01BCF-9760-4120-884E-47093A3D3608}.Release|Any CPU.Deploy.0 = Release|Any CPU
@@ -188,8 +198,6 @@ Global
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.AppStore|x86.Build.0 = Release|x86
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.AppStore|x86.Deploy.0 = Release|x86
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|ARM.ActiveCfg = Debug|ARM
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|ARM.Build.0 = Debug|ARM
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -203,8 +211,6 @@ Global
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|x64.Build.0 = Debug|Any CPU
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|x64.Deploy.0 = Debug|Any CPU
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|x86.ActiveCfg = Debug|x86
-		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|x86.Build.0 = Debug|x86
-		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Debug|x86.Deploy.0 = Debug|x86
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9FE7818-CD6B-4C62-BEDB-6CD383135476}.Release|Any CPU.Deploy.0 = Release|Any CPU
@@ -260,6 +266,7 @@ Global
 		{DE3EDDCC-5DB9-47CA-9E76-D044340DC48A}.AppStore|x86.Build.0 = Release|x86
 		{DE3EDDCC-5DB9-47CA-9E76-D044340DC48A}.AppStore|x86.Deploy.0 = Release|x86
 		{DE3EDDCC-5DB9-47CA-9E76-D044340DC48A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DE3EDDCC-5DB9-47CA-9E76-D044340DC48A}.Debug|Any CPU.Build.0 = Debug|x86
 		{DE3EDDCC-5DB9-47CA-9E76-D044340DC48A}.Debug|ARM.ActiveCfg = Debug|ARM
 		{DE3EDDCC-5DB9-47CA-9E76-D044340DC48A}.Debug|ARM.Build.0 = Debug|ARM
 		{DE3EDDCC-5DB9-47CA-9E76-D044340DC48A}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -320,8 +327,6 @@ Global
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.AppStore|x86.Build.0 = Release|x86
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.AppStore|x86.Deploy.0 = Release|x86
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|ARM.ActiveCfg = Debug|ARM
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|ARM.Build.0 = Debug|ARM
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -335,8 +340,6 @@ Global
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|x64.Build.0 = Debug|x64
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|x64.Deploy.0 = Debug|x64
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|x86.ActiveCfg = Debug|x86
-		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|x86.Build.0 = Debug|x86
-		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Debug|x86.Deploy.0 = Debug|x86
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB428DFD-76D2-4165-83D2-EF262814ED50}.Release|Any CPU.Deploy.0 = Release|Any CPU

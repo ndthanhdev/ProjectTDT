@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace TDTX
@@ -11,24 +11,32 @@ namespace TDTX
 	{
 		public App ()
 		{
-			// The root page of your application
-			MainPage = new ContentPage {
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							HorizontalTextAlignment = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-				}
-			};
+   //         // The root page of your application
+   //         MainPage = new ContentPage {
+   //             Content = new StackLayout {
+   //                 VerticalOptions = LayoutOptions.Center,
+   //                 Children = {
+   //                     new WebView {
+   //                         Source = new UrlWebViewSource
+   //                         {
+   //                             Url = "http://blog.xamarin.com/"
+   //                         },
+   //                         VerticalOptions = LayoutOptions.FillAndExpand
+   //                     },
+   //                     new Label()
+   //                     {
+   //                         Text="showed"
+   //                     }
+			//		}
+			//	}
+			//};
+            MainPage = new Views.LoginPage();
 		}
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            // Handle when your app starts         
+        }
 
 		protected override void OnSleep ()
 		{
