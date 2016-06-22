@@ -1,0 +1,14 @@
+﻿<Application xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="TDTX.App">
+  <Application.Resources>
+    <ResourceDictionary>
+      <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="#0061AD" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BorderRadius" Value="3" />
+      </Style>    
+    </ResourceDictionary>
+    
+  </Application.Resources>
+</Application>
