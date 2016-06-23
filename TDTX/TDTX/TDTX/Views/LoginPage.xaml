@@ -2,16 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDTX.Views.LoginPage">
-  <!--<ContentPage.Resources>
-    <ResourceDictionary>
-      <Style TargetType="Button">
-        <Setter Property="BackgroundColor" Value="#0061AD" />
-        <Setter Property="TextColor" Value="White" />
-        <Setter Property="BorderRadius" Value="3" />
-      </Style>
-    </ResourceDictionary>
-  </ContentPage.Resources>-->
-  <Grid>
+  <Grid BackgroundColor="{DynamicResource Bcolor}">
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="1.5*"/>
       <ColumnDefinition Width="7*"/>
@@ -26,13 +17,14 @@
       <Label BackgroundColor="Blue" Text="Đăng nhập"/>
 
     </StackLayout>-->
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Grid.Column="1" Grid.Row="1">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Grid.Column="1" Grid.Row="1"  >
       <Label Text="MSSV" TextColor="#E65E29" />
       <Entry/>
       <Label Text="Mật khẩu" TextColor="#E65E29" />
       <Entry IsPassword="True"/>
-      <Button Text="Đăng nhập" StyleClass="BigButton"  />
-      <Button Text="Quên mật khẩu" StyleClass="SmallButton"/>
+      <Button Text="Đăng nhập"  />
+      <Button Text="Quên mật khẩu"  Clicked="Button_OnClicked" />
+    
     </StackLayout>
 
   </Grid>

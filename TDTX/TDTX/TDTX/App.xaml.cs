@@ -13,8 +13,11 @@ namespace TDTX
 		public App ()
 		{
             InitializeComponent();
-            MainPage = new Views.LoginPage();
-            
+            MainPage = new Views.LoginPage();  
+            var x = typeof(Xamarin.Forms.Themes.LightThemeResources);
+            this.Resources = new ResourceDictionary();
+            this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);
+
         }
         //protected override void OnStart()
         //{

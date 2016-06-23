@@ -1,10 +1,11 @@
-﻿<Application xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:light="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Light"
              x:Class="TDTX.App">
-  <Application.Resources>     
-    
+  <Application.Resources>        
     <ResourceDictionary >
-      <Style TargetType="Button" Class="BigButton" >
+      <Style TargetType="Button">
         <Setter Property="BackgroundColor" Value="#0061AD" />
         <Setter Property="TextColor" Value="White" />
         <Setter Property="BorderRadius" Value="3" />
@@ -13,8 +14,9 @@
         <Setter Property="BackgroundColor" Value="Red" />
         <Setter Property="TextColor" Value="White" />
         <Setter Property="BorderRadius" Value="3" />
-      </Style>    
-    
+      </Style>
+      <Color x:Key="Bcolor">White</Color>
     </ResourceDictionary>
+    <!--<ResourceDictionary MergedWith="light:LightThemeResources" />-->
   </Application.Resources>
 </Application>
