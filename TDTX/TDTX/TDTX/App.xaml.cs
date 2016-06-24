@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
 namespace TDTX
@@ -13,10 +12,10 @@ namespace TDTX
 		public App ()
 		{
             InitializeComponent();
-            MainPage = new Views.LoginPage();  
-            var x = typeof(Xamarin.Forms.Themes.LightThemeResources);
-            this.Resources = new ResourceDictionary();
-            this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);
+            //this.Resources = new ResourceDictionary();
+            //this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);
+            MainPage = new Views.MainPage();
+
 
         }
         //protected override void OnStart()

@@ -14,9 +14,9 @@ namespace TDTX.Views
 		{
 			InitializeComponent ();          
 		}
-	    private void Button_OnClicked(object sender, EventArgs e)
-	    {
-	        Application.Current.Resources["Bcolor"] = Color.Aqua;
-	    }
+	    //private void Button_OnClicked(object sender, EventArgs e)
+	    //{
+	    //    Application.Current.Resources["Bcolor"] = Color.Aqua;
+	    //}
 	}
 }
