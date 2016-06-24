@@ -6,14 +6,14 @@
              Title="Tiêu đề"
              BindingContext="{x:Static viewModels:MasterPageViewModel.Instance}">
   <StackLayout VerticalOptions="FillAndExpand" >
-    <ListView x:Name="PrimaryListView" VerticalOptions="StartAndExpand" SeparatorVisibility="None" BackgroundColor="Red" 
+    <!--<ListView x:Name="PrimaryListView" VerticalOptions="StartAndExpand" SeparatorVisibility="None" BackgroundColor="Red" 
               ItemsSource="{Binding items}">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ImageCell Text="{Binding Title}"/>
         </DataTemplate>
       </ListView.ItemTemplate>
-    </ListView>
+    </ListView>-->
     <ListView x:Name="SubListView" VerticalOptions="EndAndExpand" SeparatorVisibility="None" BackgroundColor="Blue" 
               ItemsSource="{Binding items}">
       <ListView.ItemTemplate>
