@@ -14,7 +14,7 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>-->
-    <ListView x:Name="SubListView" VerticalOptions="EndAndExpand" SeparatorVisibility="None" BackgroundColor="Blue" 
+    <ListView x:Name="SubListView" VerticalOptions="EndAndExpand" SeparatorVisibility="None" BackgroundColor="Silver" 
               ItemsSource="{Binding items}">
       <ListView.ItemTemplate>
         <DataTemplate>
