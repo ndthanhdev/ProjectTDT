@@ -10,7 +10,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>TDTX.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>TDTXiOS</AssemblyName>
+    <AssemblyName>TDTX</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -134,7 +134,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Pages, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.Pages.2.3.0.46-pre3\lib\Xamarin.iOS10\Xamarin.Forms.Pages.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.Pages.2.3.0.48-pre3\lib\Xamarin.iOS10\Xamarin.Forms.Pages.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -162,6 +162,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TDTX.Portable\TDTX.Portable.csproj">
+      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
+      <Name>TDTX.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\TDTX\TDTX.projitems" Label="Shared" Condition="Exists('..\TDTX\TDTX.projitems')" />
   <Import Project="..\..\TDTX.Module\TDTX.Module.projitems" Label="Shared" />

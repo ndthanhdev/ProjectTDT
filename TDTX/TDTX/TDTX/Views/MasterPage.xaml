@@ -5,22 +5,25 @@
              xmlns:viewModels="clr-namespace:TDTX.ViewModels;assembly=TDTX"
              Title="Tiêu đề"
              BindingContext="{x:Static viewModels:MasterPageViewModel.Instance}">
-  <StackLayout VerticalOptions="FillAndExpand" >
-    <!--<ListView x:Name="PrimaryListView" VerticalOptions="StartAndExpand" SeparatorVisibility="None" BackgroundColor="Red" 
-              ItemsSource="{Binding items}">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ImageCell Text="{Binding Title}"/>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>-->
-    <ListView x:Name="SubListView" VerticalOptions="EndAndExpand" SeparatorVisibility="None" BackgroundColor="Silver" 
-              ItemsSource="{Binding items}">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ImageCell Text="{Binding Title}"/>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
-  </StackLayout>
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="FillAndExpand">
+      <Label Text="{Binding Title}"/>
+      <ListView x:Name="PrimaryListViewElement" VerticalOptions="StartAndExpand" SeparatorVisibility="None"
+                ItemsSource="{Binding Items}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ImageCell Text="{Binding Title}"/>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <ListView x:Name="SubListViewElement" VerticalOptions="EndAndExpand" Bounds="" SeparatorVisibility="None" BackgroundColor="Silver" 
+                ItemsSource="{Binding Items}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ImageCell Text="{Binding Title}"/>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </ContentPage.Content>
 </ContentPage>

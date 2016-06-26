@@ -12,7 +12,7 @@ namespace TDTX.Views
 	{
 		public LoginPage ()
 		{
-			InitializeComponent ();          
+			InitializeComponent ();
 		}
 	    //private void Button_OnClicked(object sender, EventArgs e)
 	    //{

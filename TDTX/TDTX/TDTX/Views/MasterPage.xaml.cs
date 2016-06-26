@@ -10,12 +10,10 @@ namespace TDTX.Views
 {
     public partial class MasterPage : ContentPage
     {
-        //public ListView ListView { get { return PrimaryListView; } }
+        public ListView PrimaryListView => PrimaryListViewElement;
         public MasterPage()
         {
             InitializeComponent();
-            //this.BindingContext = MasterPageViewModel.Instance;
-            //this.PrimaryListView.ItemsSource = MasterPageViewModel.Instance.items;
         }
 
     }

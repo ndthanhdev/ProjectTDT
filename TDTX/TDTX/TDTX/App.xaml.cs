@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Themes;
 
 namespace TDTX
 {
-	public partial class App : Application
+    public partial class App : Application
     {
-		public App ()
-		{
+        public App()
+        {
             InitializeComponent();
+            InitializeSetting();
             //this.Resources = new ResourceDictionary();
             //this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);
             MainPage = new Views.MainPage();
-
-
         }
         //protected override void OnStart()
         //{
@@ -32,5 +32,12 @@ namespace TDTX
         //{
         //    // Handle when your app resumes
         //}
+        public void InitializeSetting()
+        {
+            if (Current.Properties.ContainsKey("Dictionary"))
+            {
+
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@
                   xmlns:local="clr-namespace:TDTX.Views;assembly=TDTX"
                   MasterBehavior="Popover">
   <MasterDetailPage.Master>
-    <local:MasterPage></local:MasterPage>
+    <local:MasterPage/>
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
     <NavigationPage>

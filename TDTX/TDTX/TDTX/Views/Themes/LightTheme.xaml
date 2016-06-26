@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDTX.Views.Themes.LightTheme">
+  <!--Static Value-->
+  <x:Int32 x:Key="ButtonBorderRadius">6</x:Int32>
+
+  <!--Color-->
+  <Color x:Key="EmptyBackgroundColor">White</Color>
+  <Color x:Key="PrimaryContentBackgroundColor">#0061AD</Color>
+  <Color x:Key="WarningContentBackgroundColor">Yellow</Color>
+
+  <!--Button-->
+  <Style Class="PrimaryButton" TargetType="Button" >
+    <Setter Property="BackgroundColor" Value="{StaticResource PrimaryContentBackgroundColor}" />
+    <Setter Property="TextColor" Value="{DynamicResource EmptyBackgroundColor}"/>
+    <Setter Property="BorderRadius" Value="{StaticResource ButtonBorderRadius}" />
+  </Style>
+  <Style Class="WarningButton" TargetType="Button" >
+    <Setter Property="BackgroundColor" Value="{StaticResource WarningContentBackgroundColor}"/>
+    <Setter Property="TextColor" Value="{DynamicResource EmptyBackgroundColor}" />
+    <Setter Property="BorderRadius" Value="{StaticResource ButtonBorderRadius}" />
+  </Style>
+</ResourceDictionary>
