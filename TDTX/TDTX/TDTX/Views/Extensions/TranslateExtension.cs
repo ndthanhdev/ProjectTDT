@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
-using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace TDTX.Services
+namespace TDTX.Views.Extensions
 {
     // You exclude the 'Extension' suffix when using in Xaml markup
     [ContentProperty("Text")]

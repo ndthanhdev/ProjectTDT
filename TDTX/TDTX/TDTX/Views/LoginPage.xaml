@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:services="clr-namespace:TDTX.Services;assembly=TDTX"
+             xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
              x:Class="TDTX.Views.LoginPage"
-             Title="{services:Translate Login}">
+             Title="{extensions:Translate Login}">
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="1.5*"/>
@@ -19,13 +19,13 @@
       <Label BackgroundColor="Blue" Text="Đăng nhập"/>
     </StackLayout>-->
     <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Grid.Column="1" Grid.Row="1"  >
+      <Image Source="{extensions:ImageResource lol.circle.png}"/>
       <Label Text="MSSV" TextColor="#E65E29"/>
       <Entry />
       <Label Text="Mật khẩu" TextColor="#E65E29"/>
       <Entry IsPassword="True"/>
-      <Button Text="{services:Translate Login}" StyleClass="PrimaryButton"/>
+      <Button Text="{extensions:Translate Login}" StyleClass="PrimaryButton"/>
       <Button Text="Quên mật khẩu" StyleClass="WarningButton"/>
     </StackLayout>
-
   </Grid>
 </ContentPage>

@@ -6,17 +6,9 @@
              Title="Tiêu đề"
              BindingContext="{x:Static viewModels:MasterPageViewModel.Instance}">
   <ContentPage.Content>
-    <StackLayout VerticalOptions="FillAndExpand">
+    <StackLayout VerticalOptions="FillAndExpand" >
       <Label Text="{Binding Title}"/>
       <ListView x:Name="PrimaryListViewElement" VerticalOptions="StartAndExpand" SeparatorVisibility="None"
-                ItemsSource="{Binding Items}">
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ImageCell Text="{Binding Title}"/>
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>
-      <ListView x:Name="SubListViewElement" VerticalOptions="EndAndExpand" Bounds="" SeparatorVisibility="None" BackgroundColor="Silver" 
                 ItemsSource="{Binding Items}">
         <ListView.ItemTemplate>
           <DataTemplate>

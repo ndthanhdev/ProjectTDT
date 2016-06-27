@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,13 +9,26 @@ using Xamarin.Forms;
 
 namespace TDTX.Views
 {
-	public partial class MainPage : MasterDetailPage
+    public delegate void dv();
+
+    public partial class MainPage : MasterDetailPage
 	{
 		public MainPage ()
 		{
 			InitializeComponent ();
             ((MasterPage) Master).PrimaryListView.ItemSelected += PrimaryListView_ItemSelected;
+            this.IsPresentedChanged += MainPage_IsPresentedChanged;
 		}
+
+        /// <summary>
+        /// Make DetailPage dim while MasterPage is appearring
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainPage_IsPresentedChanged(object sender, EventArgs e)
+        {
+            this.Detail.Opacity = IsPresented ? 0.3 : 1;
+        }
 
         private void PrimaryListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
