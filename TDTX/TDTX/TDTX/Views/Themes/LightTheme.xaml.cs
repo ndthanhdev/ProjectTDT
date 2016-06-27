@@ -8,11 +8,11 @@ using Xamarin.Forms;
 
 namespace TDTX.Views.Themes
 {
-	//public partial class LightTheme 
-	//{
-	//	public LightTheme ()
-	//	{
-	//		InitializeComponent ();
-	//	}
-	//}
+    public partial class LightTheme
+    {
+        public LightTheme()
+        {
+            InitializeComponent();
+        }
+    }
 }

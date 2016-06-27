@@ -20,12 +20,10 @@
     </StackLayout>-->
     <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Grid.Column="1" Grid.Row="1"  >
       <Image Source="{extensions:ImageResource lol.circle.png}"/>
-      <Label Text="MSSV" TextColor="#E65E29"/>
-      <Entry />
-      <Label Text="Mật khẩu" TextColor="#E65E29"/>
-      <Entry IsPassword="True"/>
+      <Entry Placeholder="{extensions:Translate Student ID}"/>
+      <Entry Placeholder="{extensions:Translate Password}" IsPassword="True"/>
       <Button Text="{extensions:Translate Login}" StyleClass="PrimaryButton"/>
-      <Button Text="Quên mật khẩu" StyleClass="WarningButton"/>
+      <Button Text="{extensions:Translate Forgot password?}" StyleClass="WarningButton"/>
     </StackLayout>
   </Grid>
 </ContentPage>

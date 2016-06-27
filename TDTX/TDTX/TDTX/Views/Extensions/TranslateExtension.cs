@@ -16,7 +16,7 @@ namespace TDTX.Views.Extensions
 
         public TranslateExtension()
         {
-            ci = new System.Globalization.CultureInfo("en");
+            ci = new System.Globalization.CultureInfo("vi");
         }
 
         public string Text { get; set; }

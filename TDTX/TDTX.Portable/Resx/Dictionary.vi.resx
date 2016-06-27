@@ -120,4 +120,13 @@
   <data name="Login" xml:space="preserve">
     <value>Đăng nhập</value>
   </data>
+  <data name="Student ID" xml:space="preserve">
+    <value>Mã số sinh viên</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="Forgot password?" xml:space="preserve">
+    <value>Quên mật khẩu?</value>
+  </data>
 </root>

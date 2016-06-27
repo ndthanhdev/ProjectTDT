@@ -1,0 +1,2 @@
+MainPackage=D:\WorkSpace\CSharp\ProjectTDT\TDTX\TDTX\TDTX.UWP\bin\x86\Debug\TDTX.UWP_1.0.1.0_x86_Debug.appx
+SymbolPackage=D:\WorkSpace\CSharp\ProjectTDT\TDTX\TDTX\TDTX.UWP\AppPackages\TDTX.UWP_1.0.1.0_Debug_Test\TDTX.UWP_1.0.1.0_x86_Debug.appxsym

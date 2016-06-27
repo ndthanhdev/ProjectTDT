@@ -8,7 +8,7 @@
   <!--Color-->
   <Color x:Key="EmptyBackgroundColor">White</Color>
   <Color x:Key="PrimaryContentBackgroundColor">#0061AD</Color>
-  <Color x:Key="WarningContentBackgroundColor">Yellow</Color>
+  <Color x:Key="WarningContentBackgroundColor">#FFCC00</Color>
 
   <!--Button-->
   <Style Class="PrimaryButton" TargetType="Button" >
