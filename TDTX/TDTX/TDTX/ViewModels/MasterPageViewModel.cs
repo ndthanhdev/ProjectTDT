@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using GalaSoft.MvvmLight;
-using TDTX.ViewModels.Base;
 using TDTX.Views;
 using Xamarin.Forms;
 
@@ -18,7 +17,7 @@ namespace TDTX.ViewModels
 
         public ObservableCollection<MasterPageItem> Items
         {
-            get { return _items??new ObservableCollection<MasterPageItem>(); }
+            get { return _items=_items??new ObservableCollection<MasterPageItem>(); }
             set { Set(ref _items, value); }
         }
         public string Title { get; }

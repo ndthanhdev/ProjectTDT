@@ -11,7 +11,7 @@
   <MasterDetailPage.Detail>
     <NavigationPage>
       <x:Arguments>
-        <local:LoginPage/>
+        <local:TestPage/>
       </x:Arguments>
     </NavigationPage>
   </MasterDetailPage.Detail>
