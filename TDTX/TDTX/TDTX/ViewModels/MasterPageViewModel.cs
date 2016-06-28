@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using GalaSoft.MvvmLight;
 using TDTX.ViewModels.Base;
 using TDTX.Views;
 using Xamarin.Forms;
 
 namespace TDTX.ViewModels
 {
-    public class MasterPageViewModel:BindableObject
+    public class MasterPageViewModel : ViewModelBase
     {
         private static MasterPageViewModel _instance;
         public static MasterPageViewModel Instance => _instance ?? new MasterPageViewModel();
-        public ObservableCollection<MasterPageItem> Items { get; set; }
+
+        private ObservableCollection<MasterPageItem> _items;
+
+        public ObservableCollection<MasterPageItem> Items
+        {
+            get { return _items??new ObservableCollection<MasterPageItem>(); }
+            set { Set(ref _items, value); }
+        }
         public string Title { get; }
         private MasterPageViewModel()
         {
@@ -27,8 +35,8 @@ namespace TDTX.ViewModels
 
         public void AddItem()
         {
-            Items.Add(new MasterPageItem() {Title = "new",TargetType = typeof(TestPage)});
-            OnPropertyChanged(nameof(Title));
+            Items.Add(new MasterPageItem() { Title = "new", TargetType = typeof(TestPage) });
+            RaisePropertyChanged(nameof(Title));
         }
     }
 }
