@@ -15,6 +15,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\String2String.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\Base\Ext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\ImageResourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\TranslateBind.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml.cs">
