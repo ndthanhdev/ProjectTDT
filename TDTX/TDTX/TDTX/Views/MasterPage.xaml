@@ -17,7 +17,7 @@
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
-      <Label Text="{extensions:Translate }"/>
+      <Label Text="{extensions:TranslateBind Text={Binding Title}}"/>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

@@ -8,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace TDTX.Views.Extensions
 {
     // You exclude the 'Extension' suffix when using in Xaml markup
-    [ContentProperty("TextProperty")]
+    [ContentProperty("Text")]
     public class TranslateExtension : IMarkupExtension
     {
         readonly CultureInfo ci;

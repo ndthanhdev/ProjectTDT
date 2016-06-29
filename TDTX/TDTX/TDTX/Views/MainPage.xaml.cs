@@ -34,7 +34,7 @@ namespace TDTX.Views
             }
             else
             {
-                this.Detail.Opacity = 01;
+                this.Detail.Opacity = 1;
                 this.Detail.BackgroundColor = Color.White;
             }
         }
