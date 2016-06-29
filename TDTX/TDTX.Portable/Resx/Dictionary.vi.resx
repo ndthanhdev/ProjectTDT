@@ -129,4 +129,10 @@
   <data name="Forgot password?" xml:space="preserve">
     <value>Quên mật khẩu?</value>
   </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Trang</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
 </root>

@@ -27,7 +27,16 @@ namespace TDTX.Views
         /// <param name="e"></param>
         private void MainPage_IsPresentedChanged(object sender, EventArgs e)
         {
-            this.Detail.Opacity = IsPresented ? 0.3 : 1;
+            if (IsPresented)
+            {
+                this.Detail.Opacity = 0.3;
+                this.Detail.BackgroundColor=Color.Black;
+            }
+            else
+            {
+                this.Detail.Opacity = 01;
+                this.Detail.BackgroundColor = Color.White;
+            }
         }
 
         private void PrimaryListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -37,6 +46,7 @@ namespace TDTX.Views
             {
                 Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
                 ((MasterPage)Master).PrimaryListView.SelectedItem = null;
+                
                 IsPresented = false;
             }
         }

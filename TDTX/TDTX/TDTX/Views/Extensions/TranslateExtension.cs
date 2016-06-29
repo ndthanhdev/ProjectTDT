@@ -8,18 +8,30 @@ using Xamarin.Forms.Xaml;
 namespace TDTX.Views.Extensions
 {
     // You exclude the 'Extension' suffix when using in Xaml markup
-    [ContentProperty("Text")]
+    [ContentProperty("TextProperty")]
     public class TranslateExtension : IMarkupExtension
     {
         readonly CultureInfo ci;
         const string ResourceId = "TDTX.Portable.Resx.Dictionary";
 
+        //public static BindableProperty TextProperty = BindableProperty.CreateAttached(
+        //    propertyName: "Text",
+        //    returnType: typeof(string),
+        //    declaringType: typeof(TranslateExtension),
+        //    defaultValue: null,
+        //    defaultBindingMode: BindingMode.TwoWay);
+
         public TranslateExtension()
         {
             ci = new System.Globalization.CultureInfo("vi");
+            //this.Text = key;
         }
 
-        public string Text { get; set; }
+        public string Text
+        {
+            get;//{ return (string)GetValue(TextProperty); }
+            set;// { SetValue(TextProperty, value);}
+        }
 
         public object ProvideValue(IServiceProvider serviceProvider)
         {

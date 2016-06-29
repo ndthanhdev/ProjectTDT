@@ -20,6 +20,5 @@
     <Setter Property="BackgroundColor" Value="{StaticResource WarningContentBackgroundColor}"/>
     <Setter Property="TextColor" Value="{DynamicResource EmptyBackgroundColor}" />
     <Setter Property="BorderRadius" Value="{StaticResource ButtonBorderRadius}" />
-    <Setter Property=""></Setter>
   </Style>
 </ResourceDictionary>

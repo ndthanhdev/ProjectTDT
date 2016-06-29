@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDTX.Views.MasterPage"
              xmlns:viewModels="clr-namespace:TDTX.ViewModels;assembly=TDTX"
+             xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
+             xmlns:converters="clr-namespace:TDTX.Views.Converters;assembly=TDTX"
              Title="Tiêu đề"
              BindingContext="{x:Static viewModels:MasterPageViewModel.Instance}">
   <ContentPage.Content>
     <StackLayout VerticalOptions="FillAndExpand" >
-      <Label Text="{Binding Title}"/>
       <ListView x:Name="PrimaryListViewElement" VerticalOptions="StartAndExpand" SeparatorVisibility="None"
                 ItemsSource="{Binding Items}">
         <ListView.ItemTemplate>
@@ -16,6 +17,7 @@
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
+      <Label Text="{extensions:Translate }"/>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

@@ -41,6 +41,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Dictionary.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resx\Dictionary.vi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Dictionary.vi.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resx\Dictionary.resx">
