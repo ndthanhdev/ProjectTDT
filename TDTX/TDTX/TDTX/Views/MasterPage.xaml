@@ -4,8 +4,14 @@
              x:Class="TDTX.Views.MasterPage"
              xmlns:viewModels="clr-namespace:TDTX.ViewModels;assembly=TDTX"
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
+             xmlns:converters="clr-namespace:TDTX.Views.Converters;assembly=TDTX"
              Title="Tiêu đề"
              BindingContext="{x:Static viewModels:MasterPageViewModel.Instance}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:TranslateConverter x:Key="TranslateConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
   <ContentPage.Content>
     <StackLayout VerticalOptions="FillAndExpand" >
       <ListView x:Name="PrimaryListViewElement" VerticalOptions="StartAndExpand" SeparatorVisibility="None"
@@ -16,7 +22,7 @@
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
-      <Label Text="{extensions:TranslateBind Text={Binding Title}}" />
+      <Label Text="{Binding Title,Converter={StaticResource TranslateConverter}}" />
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

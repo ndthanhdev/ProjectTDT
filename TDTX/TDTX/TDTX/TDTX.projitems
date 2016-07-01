@@ -15,7 +15,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\MasterPageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Base\Translate.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\String2String.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\TranslateConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\Base\Ext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\ImageResourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\TranslateBind.cs" />
@@ -46,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Base\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\circle_earn.png">
