@@ -4,7 +4,6 @@
              x:Class="TDTX.Views.MasterPage"
              xmlns:viewModels="clr-namespace:TDTX.ViewModels;assembly=TDTX"
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
-             xmlns:converters="clr-namespace:TDTX.Views.Converters;assembly=TDTX"
              Title="Tiêu đề"
              BindingContext="{x:Static viewModels:MasterPageViewModel.Instance}">
   <ContentPage.Content>
@@ -17,7 +16,7 @@
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
-      <Entry Text="{extensions:TranslateBind Text={Binding Title}}"/>
+      <Label Text="{extensions:TranslateBind Text={Binding Title}}" />
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

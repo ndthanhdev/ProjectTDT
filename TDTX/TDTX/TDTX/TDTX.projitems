@@ -13,6 +13,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MasterPageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\String2String.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\Base\Ext.cs" />
@@ -30,7 +31,6 @@
       <DependentUpon>MasterPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterPageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\TranslateExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
@@ -45,8 +45,8 @@
     <None Include="$(MSBuildThisFileDirectory)GettingStarted.Xamarin" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Base\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\circle_earn.png">
@@ -92,5 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)lol\circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Image\menu.png" />
   </ItemGroup>
 </Project>
