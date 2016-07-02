@@ -4,8 +4,14 @@
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
              x:Class="TDTX.Views.OptionPage"
              Title="{extensions:Translate Option}">
-  <StackLayout>
-    <Label Text="Languages"/>
-  <Image Source="{extensions:ImageResource }"></Image>
-  </StackLayout>
+  <ScrollView >
+    <StackLayout>
+      <Label Text="Languages"/>
+      <Image HeightRequest="54" Aspect="AspectFit" Source="{extensions:ImageResource Resources.Image.United_Kingdom_flag_icon.png}"/>
+      <Image HeightRequest="54" Aspect="AspectFit" Source="{extensions:ImageResource Resources.Image.Laos_flag_icon.png}" />
+      <Image HeightRequest="54" Aspect="AspectFit" Source="{extensions:ImageResource Resources.Image.Vietnam_flag_icon.png}" />
+
+    </StackLayout>
+
+  </ScrollView>
 </ContentPage>

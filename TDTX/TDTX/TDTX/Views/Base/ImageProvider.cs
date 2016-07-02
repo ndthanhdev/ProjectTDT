@@ -14,7 +14,7 @@ namespace TDTX.Views.Base
                 return null;
             }
             // Do your translation lookup here, using whatever method you require
-            var imageSource = ImageSource.FromResource(App.NameSpace + source);
+            var imageSource = ImageSource.FromResource(App.NameSpace + "." + source);
 
             return imageSource;
         }

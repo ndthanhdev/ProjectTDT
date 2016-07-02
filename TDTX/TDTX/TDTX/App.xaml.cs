@@ -24,7 +24,7 @@ namespace TDTX
             InitializeSetting();
             //this.Resources = new ResourceDictionary();
             //this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);
-            MainPage = new MainPage();
+            MainPage = new OptionPage();
         }
         //protected override void OnStart()
         //{
