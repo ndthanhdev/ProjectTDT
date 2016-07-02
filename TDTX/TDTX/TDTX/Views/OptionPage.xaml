@@ -6,5 +6,6 @@
              Title="{extensions:Translate Option}">
   <StackLayout>
     <Label Text="Languages"/>
+  <Image Source="{extensions:ImageResource }"></Image>
   </StackLayout>
 </ContentPage>
