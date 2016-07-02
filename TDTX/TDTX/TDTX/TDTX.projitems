@@ -16,7 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\MasterPageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Base\ImageProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Base\Translate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Base\TextProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\ImageResourceConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\String2String.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\TranslateConverter.cs" />

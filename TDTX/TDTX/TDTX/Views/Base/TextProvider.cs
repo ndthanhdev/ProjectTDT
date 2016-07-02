@@ -8,7 +8,7 @@ using TDTX.Views.Extensions;
 
 namespace TDTX.Views.Base
 {
-    public class TranslateBase
+    public class TextProvider
     {
         private static readonly CultureInfo Ci =  new System.Globalization.CultureInfo("vi");
         static readonly string ResourceId = "TDTX.Portable.Resx.Dictionary";

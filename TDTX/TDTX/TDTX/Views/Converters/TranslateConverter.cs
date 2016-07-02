@@ -10,7 +10,7 @@ namespace TDTX.Views.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Views.Base.TranslateBase.Translate(value as string);
+            return Base.TextProvider.Translate(value as string);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

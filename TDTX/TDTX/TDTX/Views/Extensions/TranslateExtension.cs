@@ -23,7 +23,7 @@ namespace TDTX.Views.Extensions
 
         public object ProvideValue(IServiceProvider serviceProvider)
         {
-            return Views.Base.TranslateBase.Translate(Text);
+            return Views.Base.TextProvider.Translate(Text);
         }
     }
 }
