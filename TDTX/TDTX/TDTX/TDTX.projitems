@@ -36,6 +36,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\TranslateExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\OptionPage.xaml.cs">
+      <DependentUpon>OptionPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -97,6 +101,15 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)lol\circle.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Image\Laos_Flag_icon.png" />
     <Content Include="$(MSBuildThisFileDirectory)Resources\Image\menu.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Image\United_Kingdom_flag_icon.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Image\Vietnam_Flag_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\OptionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
