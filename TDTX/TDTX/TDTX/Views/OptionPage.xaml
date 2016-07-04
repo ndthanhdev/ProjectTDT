@@ -5,13 +5,20 @@
              x:Class="TDTX.Views.OptionPage"
              Title="{extensions:Translate Option}">
   <ScrollView >
-    <StackLayout>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
       <Label Text="Languages"/>
-      <Image HeightRequest="54" Aspect="AspectFit" Source="{extensions:ImageResource Resources.Image.United_Kingdom_flag_icon.png}"/>
-      <Image HeightRequest="54" Aspect="AspectFit" Source="{extensions:ImageResource Resources.Image.Laos_flag_icon.png}" />
-      <Image HeightRequest="54" Aspect="AspectFit" Source="{extensions:ImageResource Resources.Image.Vietnam_flag_icon.png}" />
+      <StackLayout Orientation="Horizontal" Grid.Column="1">
+        <Image HeightRequest="54" Aspect="AspectFit" Source="{extensions:ImageResource Resources.Image.United_Kingdom_flag_icon.png}"/>
+        <Image HeightRequest="54" Aspect="AspectFit" Source="{extensions:ImageResource Resources.Image.Laos_flag_icon.png}" />
+        <Image HeightRequest="54" Aspect="AspectFit" Source="{extensions:ImageResource Resources.Image.Vietnam_flag_icon.png}" />
 
-    </StackLayout>
+      </StackLayout>
+
+    </Grid>
 
   </ScrollView>
 </ContentPage>
