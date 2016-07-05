@@ -24,7 +24,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\String2String.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\TranslateConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\Base\Ext.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\FileImageSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\ImageResourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\TranslateBind.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml.cs">
@@ -106,12 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)lol\circle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Image\Laos_flag_icon.png" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Image\menu.png" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Image\United_Kingdom_flag_icon.png" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Image\Vietnam_flag_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\OptionPage.xaml">

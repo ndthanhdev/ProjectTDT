@@ -19,7 +19,7 @@
       <Label BackgroundColor="Blue" Text="Đăng nhập"/>
     </StackLayout>-->
     <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Grid.Column="1" Grid.Row="1"  >
-      <Image Source="{extensions:ImageResource lol.circle.png}"/>
+      <Image Source="Images/circle.png"/>
       <Entry Placeholder="{extensions:Translate Student ID}"/>
       <Entry Placeholder="{extensions:Translate Password}" IsPassword="True"/>
       <Button Text="{extensions:Translate Login}" StyleClass="PrimaryButton"/>
