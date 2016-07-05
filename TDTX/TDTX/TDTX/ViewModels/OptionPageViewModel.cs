@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using GalaSoft.MvvmLight;
 using TDTX.Models;
+using Xamarin.Forms;
 
 namespace TDTX.ViewModels
 {
@@ -26,7 +27,6 @@ namespace TDTX.ViewModels
                 new LanguageItem() {CultureName = "lo",IconPath = ""},
                 new LanguageItem() {CultureName = "vi",IconPath = ""}
             };
-
         }
     }
 }

@@ -5,17 +5,17 @@ using Xamarin.Forms;
 
 namespace TDTX.Views.Base
 {
-    public class ImageProvider
+    public class FileImageProvider
     {
-        public static ImageSource GetImageResource(string source)
+        public static FileImageSource GetFileImageSource(string source)
         {
             if (source == null)
             {
                 return null;
             }
-            var imageSource = ImageSource.FromResource(App.NameSpace + "." + source);
+            var imageSource = FileImageSource.FromFile(App.NameSpace + "." + source);
 
-            return imageSource;
+            return (FileImageSource)imageSource;
         }
     }
 }

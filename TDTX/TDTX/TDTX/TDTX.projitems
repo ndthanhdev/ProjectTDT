@@ -17,12 +17,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\MasterPageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OptionPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Base\FileImageProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Base\ImageProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Base\TextProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\ImageResourceConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\String2String.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\TranslateConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\Base\Ext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\FileImageSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\ImageResourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\TranslateBind.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml.cs">
@@ -61,6 +63,9 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\circle_earn.png">
       <CustomToolNamespace>TDTX.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <Content Include="$(MSBuildThisFileDirectory)Views\circle_earn.png">
+      <CustomToolNamespace>TDTX.Resources</CustomToolNamespace>
+    </Content>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
