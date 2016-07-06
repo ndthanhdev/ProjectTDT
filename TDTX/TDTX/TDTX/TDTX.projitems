@@ -9,6 +9,8 @@
     <Import_RootNamespace>TDTX</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.Properties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App.Services.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

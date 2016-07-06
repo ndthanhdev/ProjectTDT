@@ -13,18 +13,15 @@ namespace TDTX
 {
     public partial class App : Application
     {
-        public static readonly string NameSpace = Device.OnPlatform<string>(
-            iOS: "TDTX.iOS",
-            Android: "TDTX.Android",
-            WinPhone: "TDTX.UWP");
-
         public App()
         {
             InitializeComponent();
             InitializeSetting();
+            Debug.WriteLine(nameof(AppProperties.Dictionary));
             //this.Resources = new ResourceDictionary();
             //this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);
             MainPage = new OptionPage();
+            
         }
         //protected override void OnStart()
         //{
@@ -40,12 +37,5 @@ namespace TDTX
         //{
         //    // Handle when your app resumes
         //}
-        public void InitializeSetting()
-        {
-            if (Current.Properties.ContainsKey("Dictionary"))
-            {
-
-            }
-        }
     }
 }
