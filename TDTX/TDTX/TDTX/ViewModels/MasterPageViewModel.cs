@@ -28,6 +28,7 @@ namespace TDTX.ViewModels
             Items = new ObservableCollection<MasterPageItem>()
             {
                 new MasterPageItem() {Title = "Login", TargetType = typeof(LoginPage)},
+                new MasterPageItem() {Title = "Option", TargetType = typeof(OptionPage)},
                 new MasterPageItem() {Title = "Test", TargetType = typeof(TestPage)}
             };
             _instance = this;

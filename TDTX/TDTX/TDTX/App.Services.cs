@@ -14,9 +14,9 @@ namespace TDTX
 
         public void InitializeSetting()
         {
-            if (Current.Properties.ContainsKey(nameof(AppProperties.Dictionary)))
+            if (!Current.Properties.ContainsKey(nameof(AppProperties.Dictionary)))
             {
-                
+                Current.Properties[nameof(AppProperties.Dictionary)] = new System.Globalization.CultureInfo("en");
             }
         }
     }

@@ -5,6 +5,6 @@
   <StackLayout>
     <Entry x:Name="EntryText" VerticalOptions="Center" HorizontalOptions="Center" TextChanged="Entry_OnTextChanged" />
     <Button Clicked="Button_OnClicked"></Button>
-    
+    <Button IsEnabled="False" Text="WTH Xamarin"></Button>
   </StackLayout>
 </ContentPage>

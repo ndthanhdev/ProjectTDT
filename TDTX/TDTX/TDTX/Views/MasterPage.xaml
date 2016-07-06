@@ -23,6 +23,11 @@
         </ListView.ItemTemplate>
       </ListView>
       <Label Text="{Binding Title,Converter={StaticResource TranslateConverter}}" />
+      <ContentView>
+        <BoxView>
+          <ImageCell Text="{extensions:Translate Option}"/>
+        </BoxView>  
+      </ContentView>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

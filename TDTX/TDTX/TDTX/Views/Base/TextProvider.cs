@@ -10,7 +10,6 @@ namespace TDTX.Views.Base
 {
     public class TextProvider
     {
-        private static readonly CultureInfo Ci =  new System.Globalization.CultureInfo("vi");
         static readonly string ResourceId = "TDTX.Portable.Resx.Dictionary";
 
         public static string Translate(string key)
@@ -20,14 +19,17 @@ namespace TDTX.Views.Base
 
             ResourceManager resmgr = new ResourceManager(ResourceId
                                 , typeof(TranslateExtension).GetTypeInfo().Assembly);
+            CultureInfo ci =
+                (CultureInfo) Xamarin.Forms.Application.Current.Properties[nameof(App.AppProperties.Dictionary)];
 
-            var translation = resmgr.GetString(key, Ci);
+            var translation = resmgr.GetString(key,
+                ci);
 
             if (translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", key, ResourceId, Ci.Name));
+                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", key, ResourceId, ci.Name));
 #else
                 translation = key; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif

@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TDTX.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Themes;
 
 namespace TDTX
 {
@@ -20,7 +19,7 @@ namespace TDTX
             Debug.WriteLine(nameof(AppProperties.Dictionary));
             //this.Resources = new ResourceDictionary();
             //this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);
-            MainPage = new OptionPage();
+            MainPage = new MainPage();
             
         }
         //protected override void OnStart()

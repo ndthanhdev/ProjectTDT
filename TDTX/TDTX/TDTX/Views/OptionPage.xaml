@@ -2,12 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
+             xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
              x:Class="TDTX.Views.OptionPage"
-             Title="{extensions:Translate Option}">
+             Title="{extensions:Translate Option}"
+             BindingContext="{x:Static vm:OptionPageViewModel.Instance}">
   <ScrollView >
     <Grid >
       <Grid.ColumnDefinitions>
-        <ColumnDefinition/>
+        <ColumnDefinition Width="Auto"/>
         <ColumnDefinition/>
       </Grid.ColumnDefinitions>
       <Grid.RowDefinitions>
@@ -15,12 +17,13 @@
       </Grid.RowDefinitions>
       <!--1-->
       <Label VerticalOptions="Center" Text="Languages: "/>
-      <StackLayout Orientation="Horizontal" Grid.Column="1" VerticalOptions="StartAndExpand">
-        <Button Image="Images/Laos_flag_icon.png" />
-        <Button Image="Images/United_Kingdom_flag_icon.png" />
-        <Button Image="Images/Vietnam_flag_icon.png" />
+      <StackLayout Grid.Column="1" Orientation="Horizontal">
+        <Button Image="Images/United_Kingdom_flag_icon.png" Text="English" 
+                Command="{Binding SelectLanguageCommand}" CommandParameter="en" />
+        <Button Image="Images/Laos_flag_icon.png" Text="Laos" IsEnabled="False"/>
+        <Button Image="Images/Vietnam_flag_icon.png" Text="Tiếng Việt"
+                 Command="{Binding SelectLanguageCommand}" CommandParameter="vi"/>
       </StackLayout>
-
     </Grid>
 
   </ScrollView>
