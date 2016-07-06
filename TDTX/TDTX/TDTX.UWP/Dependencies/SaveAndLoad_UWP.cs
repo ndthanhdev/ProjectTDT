@@ -32,7 +32,9 @@ namespace TDTX.UWP.Dependencies
 
         public bool FileExists(string filename)
         {
-            throw new NotImplementedException();
+            //TODO fix
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            return storageFolder.TryGetItemAsync(filename) != null;
         }
 
         #endregion

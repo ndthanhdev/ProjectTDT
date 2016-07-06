@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Xamarin.Forms;
+using TDTX.Dependencies;
 
 namespace TDTX
 {
     public partial class App : Application
     {
-        public static readonly string NameSpace = Device.OnPlatform<string>(
-            iOS: "TDTX.iOS",
-            Android: "TDTX.Android",
-            WinPhone: "TDTX.UWP");
-
-        public void InitializeSetting()
+        public async Task InitializeSetting()
         {
-            if (!Current.Properties.ContainsKey(nameof(AppProperties.Dictionary)))
-            {
-                Current.Properties[nameof(AppProperties.Dictionary)] = new System.Globalization.CultureInfo("en");
-            }
+            //TODO: load setting before app run
+            if( DependencyService.Get<ISaveAndLoad>().FileExists("temp.txt"))
+                await DependencyService.Get<ISaveAndLoad>().LoadTextAsync("temp.txt");
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(Settings.Current, Formatting.Indented);
         }
     }
 

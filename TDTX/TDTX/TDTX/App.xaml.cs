@@ -15,17 +15,16 @@ namespace TDTX
         public App()
         {
             InitializeComponent();
-            InitializeSetting();
-            Debug.WriteLine(nameof(AppProperties.Dictionary));
             //this.Resources = new ResourceDictionary();
             //this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);
             MainPage = new MainPage();
             
         }
-        //protected override void OnStart()
-        //{
-        //    // Handle when your app starts         
-        //}
+        protected override async void OnStart()
+        {
+            // Handle when your app starts  
+            await InitializeSetting();
+        }
 
         //protected override void OnSleep()
         //{

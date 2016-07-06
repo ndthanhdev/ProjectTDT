@@ -19,8 +19,7 @@ namespace TDTX.Views.Base
 
             ResourceManager resmgr = new ResourceManager(ResourceId
                                 , typeof(TranslateExtension).GetTypeInfo().Assembly);
-            CultureInfo ci =
-                (CultureInfo) Xamarin.Forms.Application.Current.Properties[nameof(App.AppProperties.Dictionary)];
+            CultureInfo ci = new CultureInfo(Settings.Current.Language);
 
             var translation = resmgr.GetString(key,
                 ci);
