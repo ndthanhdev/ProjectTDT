@@ -37,7 +37,7 @@ namespace TDTX.ViewModels
         public RelayCommand<string> SelectLanguageCommand => new RelayCommand<string>(
             async ci =>
             {
-                Settings.Current.Language = ci;
+                Settings.Instance.Language = ci;
                 ((MasterDetailPage)Application.Current.MainPage).Detail =
                     new NavigationPage((Page)Activator.CreateInstance(typeof(OptionPage)));
                 await Task.Yield();

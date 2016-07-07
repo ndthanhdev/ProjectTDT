@@ -23,11 +23,8 @@
         </ListView.ItemTemplate>
       </ListView>
       <Label Text="{Binding Title,Converter={StaticResource TranslateConverter}}" />
-      <ContentView>
-        <BoxView>
-          <ImageCell Text="{extensions:Translate Option}"/>
-        </BoxView>  
-      </ContentView>
+      <Button Text="aaaa" HeightRequest="30"/>
+      <Image HeightRequest="50" Source="Images/menu.png" BackgroundColor="Aqua"></Image>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

@@ -25,13 +25,13 @@ namespace TDTX
         {
             // Handle when your app starts  
             await InitializeSetting();
-            await Settings.Current.Load<Settings>();
+            await Settings.Instance.Load<Settings>();
         }
 
         protected override async void OnSleep()
         {
             // Handle when your app sleeps
-            await Settings.Current.Save();
+            await Settings.Instance.Save();
         }
 
         //protected override void OnResume()

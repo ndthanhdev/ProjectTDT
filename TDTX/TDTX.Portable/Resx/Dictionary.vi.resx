@@ -138,4 +138,7 @@
   <data name="Option" xml:space="preserve">
     <value>Tùy chỉnh</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
 </root>

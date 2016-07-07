@@ -19,7 +19,7 @@ namespace TDTX.Views.Base
 
             ResourceManager resmgr = new ResourceManager(ResourceId
                                 , typeof(TranslateExtension).GetTypeInfo().Assembly);
-            CultureInfo ci = new CultureInfo(Settings.Current.Language);
+            CultureInfo ci = new CultureInfo(Settings.Instance.Language);
 
             var translation = resmgr.GetString(key,
                 ci);

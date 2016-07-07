@@ -18,7 +18,7 @@ namespace TDTX.ViewModels
 
         public ObservableCollection<MasterPageItem> Items
         {
-            get { return _items=_items??new ObservableCollection<MasterPageItem>(); }
+            get { return _items = _items ?? new ObservableCollection<MasterPageItem>(); }
             set { Set(ref _items, value); }
         }
         public string Title { get; }
@@ -29,6 +29,7 @@ namespace TDTX.ViewModels
             {
                 new MasterPageItem() {Title = "Login", TargetType = typeof(LoginPage)},
                 new MasterPageItem() {Title = "Option", TargetType = typeof(OptionPage)},
+                new MasterPageItem() {Title = "Settings", TargetType = typeof(SettingsPage)},
                 new MasterPageItem() {Title = "Test", TargetType = typeof(TestPage)}
             };
             _instance = this;
