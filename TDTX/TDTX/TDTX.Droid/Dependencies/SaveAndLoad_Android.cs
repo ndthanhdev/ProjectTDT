@@ -25,9 +25,9 @@ namespace TDTX.Droid.Dependencies
                 return await sr.ReadToEndAsync();
         }
 
-        public bool FileExists(string filename)
+        public Task<bool> FileExists(string filename)
         {
-            return File.Exists(CreatePathToFile(filename));
+            return Task.Run(()=>File.Exists(CreatePathToFile(filename)));
         }
 
         #endregion

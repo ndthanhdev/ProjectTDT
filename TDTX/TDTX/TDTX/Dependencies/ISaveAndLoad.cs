@@ -16,6 +16,6 @@ namespace TDTX.Dependencies
     {
         Task SaveTextAsync(string filename, string text);
         Task<string> LoadTextAsync(string filename);
-        bool FileExists(string filename);
+        Task<bool> FileExists(string filename);
     }
 }

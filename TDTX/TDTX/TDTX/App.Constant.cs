@@ -10,13 +10,12 @@ namespace TDTX
     /// </summary>
     public partial class App : Application
     {
-#if Android
-        public static readonly string NameSpace = "TDTX.Android";
-#elif IOS
-        public static readonly string NameSpace = "TDTX.iOS";
-#elif UWP
-        public static readonly string NameSpace = "TDTX.UWP";
-#endif
+        public static readonly string NameSpace = Device.OnPlatform(
+            Android: "TDTX.Android",
+            iOS: "TDTX.iOS",
+            WinPhone: "TDTX.UWP");
+
+        public static readonly string SettingsFile = "Setting.json";
 
     }
 }

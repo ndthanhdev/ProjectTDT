@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using TDTX.Base;
 using TDTX.Views;
 using Xamarin.Forms;
 
@@ -24,12 +25,14 @@ namespace TDTX
         {
             // Handle when your app starts  
             await InitializeSetting();
+            await Settings.Current.Load<Settings>();
         }
 
-        //protected override void OnSleep()
-        //{
-        //    // Handle when your app sleeps
-        //}
+        protected override async void OnSleep()
+        {
+            // Handle when your app sleeps
+            await Settings.Current.Save();
+        }
 
         //protected override void OnResume()
         //{

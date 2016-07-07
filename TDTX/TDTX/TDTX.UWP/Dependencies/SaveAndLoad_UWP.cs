@@ -30,11 +30,11 @@ namespace TDTX.UWP.Dependencies
             return text;
         }
 
-        public bool FileExists(string filename)
+        public async Task<bool> FileExists(string filename)
         {
             //TODO fix
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            return storageFolder.TryGetItemAsync(filename) != null;
+            return await storageFolder.TryGetItemAsync(filename) != null;
         }
 
         #endregion

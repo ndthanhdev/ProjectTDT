@@ -10,11 +10,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.Services.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)App.Specifics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App.Constant.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Base\LocalObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\LocalObjectExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dependencies\ISaveAndLoad.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LanguageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MasterPageItem.cs" />
