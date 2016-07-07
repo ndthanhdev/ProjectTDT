@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDTX.Droid", "TDTX\TDTX.Droid\TDTX.Droid.csproj", "{06E01BCF-9760-4120-884E-47093A3D3608}"
 EndProject
@@ -17,12 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDTX.Portable", "TDTX.Porta
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		TDTX\TDTX\TDTX.projitems*{06e01bcf-9760-4120-884e-47093a3d3608}*SharedItemsImports = 4
 		TDTX.Module\TDTX.Module.projitems*{06e01bcf-9760-4120-884e-47093a3d3608}*SharedItemsImports = 4
-		TDTX\TDTX\TDTX.projitems*{8250e26d-5f55-489d-8b2d-000f3230d6c9}*SharedItemsImports = 4
-		TDTX.Module\TDTX.Module.projitems*{8250e26d-5f55-489d-8b2d-000f3230d6c9}*SharedItemsImports = 4
-		TDTX\TDTX\TDTX.projitems*{b7c7148b-0a46-4a48-b100-b57c84528a03}*SharedItemsImports = 13
+		TDTX\TDTX\TDTX.projitems*{06e01bcf-9760-4120-884e-47093a3d3608}*SharedItemsImports = 4
 		TDTX.Module\TDTX.Module.projitems*{6f655b6c-624c-4c22-83ac-222c35a7bafd}*SharedItemsImports = 13
+		TDTX.Module\TDTX.Module.projitems*{8250e26d-5f55-489d-8b2d-000f3230d6c9}*SharedItemsImports = 4
+		TDTX\TDTX\TDTX.projitems*{8250e26d-5f55-489d-8b2d-000f3230d6c9}*SharedItemsImports = 4
+		TDTX\TDTX\TDTX.projitems*{b7c7148b-0a46-4a48-b100-b57c84528a03}*SharedItemsImports = 13
 		TDTX\TDTX\TDTX.projitems*{de3eddcc-5db9-47ca-9e76-d044340dc48a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -145,6 +145,7 @@ Global
 		{8250E26D-5F55-489D-8B2D-000F3230D6C9}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{8250E26D-5F55-489D-8B2D-000F3230D6C9}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{8250E26D-5F55-489D-8B2D-000F3230D6C9}.Debug|x64.ActiveCfg = Debug|iPhone
+		{8250E26D-5F55-489D-8B2D-000F3230D6C9}.Debug|x64.Build.0 = Debug|iPhone
 		{8250E26D-5F55-489D-8B2D-000F3230D6C9}.Debug|x86.ActiveCfg = Debug|iPhone
 		{8250E26D-5F55-489D-8B2D-000F3230D6C9}.Release|Any CPU.ActiveCfg = Release|iPhone
 		{8250E26D-5F55-489D-8B2D-000F3230D6C9}.Release|ARM.ActiveCfg = Release|iPhone

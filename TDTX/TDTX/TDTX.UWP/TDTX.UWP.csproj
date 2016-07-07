@@ -113,8 +113,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="circle_earn.png" />
+    <Content Include="Images\logo.png" />
     <Content Include="Images\Laos_flag_icon.png" />
     <Content Include="Images\menu.png" />
+    <Content Include="Images\settings.png" />
     <Content Include="Images\United_Kingdom_flag_icon.png" />
     <Content Include="Images\Vietnam_flag_icon.png" />
     <Content Include="Properties\Default.rd.xml" />
