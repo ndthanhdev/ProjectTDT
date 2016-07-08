@@ -6,7 +6,6 @@
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
              xmlns:converters="clr-namespace:TDTX.Views.Converters;assembly=TDTX"
              Title="Tiêu đề"
-             Icon="Images/menu.png"
              BindingContext="{x:Static viewModels:MasterPageViewModel.Instance}">
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -14,21 +13,33 @@
     </ResourceDictionary>
   </ContentPage.Resources>
   <ContentPage.Content>
-    <StackLayout VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0">
-      <Button Image="Images/menu.png" HorizontalOptions="StartAndExpand"/>
-      <ListView x:Name="PrimaryListViewElement"  SeparatorVisibility="Default" RowHeight="32"
-                ItemsSource="{Binding Items}">
+    <StackLayout VerticalOptions="FillAndExpand">
+      <ListView x:Name="PrimaryListViewElement" SeparatorVisibility="None" VerticalOptions="StartAndExpand" Margin="8,24,0,0"
+        ItemsSource="{Binding Items}">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <ImageCell Text="{Binding Title,Converter={StaticResource TranslateConverter}}" ImageSource="Images/settings.png" />
+            <ViewCell>
+              <StackLayout Orientation="Horizontal" Margin="0,18,0,0">
+                <StackLayout>
+                  <Image  Source="Images/settings.png"/>
+                </StackLayout>
+                <StackLayout>
+                  <Label  Text="{Binding Title,Converter={StaticResource TranslateConverter}}" VerticalTextAlignment="Center"/>
+                </StackLayout>
+              </StackLayout>
+            </ViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
-      <BoxView HeightRequest="3" BackgroundColor="Black"/>
-    <StackLayout Orientation="Horizontal">
-      <Image Source="Images/settings.png"/>
-      <Label Text="{extensions:Translate Settings}"></Label>
-    </StackLayout>
+      <BoxView HeightRequest="3" BackgroundColor="Black" VerticalOptions="End"></BoxView>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
+
+
+
+<!--<BoxView HeightRequest="3" BackgroundColor="Black" VerticalOptions="End"/>
+      <StackLayout Orientation="Horizontal" >
+        <Image Source="Images/settings.png"/>
+        <Label Text="{extensions:Translate Settings}"/>
+      </StackLayout>-->

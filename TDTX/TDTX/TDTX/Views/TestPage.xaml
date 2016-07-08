@@ -2,9 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDTX.Views.TestPage">
-  <StackLayout>
+  <AbsoluteLayout x:Name="Content">
     <Entry x:Name="EntryText" VerticalOptions="Center" HorizontalOptions="Center" TextChanged="Entry_OnTextChanged" />
     <Button Clicked="Button_OnClicked"></Button>
     <Button IsEnabled="False" Text="WTH Xamarin"></Button>
-  </StackLayout>
+    <Image Source="Images/logo.png" HeightRequest="32" WidthRequest="32">
+      <Image.GestureRecognizers>
+        <PanGestureRecognizer PanUpdated="PanGestureRecognizer_OnPanUpdated"></PanGestureRecognizer>
+      </Image.GestureRecognizers>
+    </Image>
+  </AbsoluteLayout>
 </ContentPage>

@@ -1,2 +1,3 @@
-MainPackage=D:\WorkSpace\CSharp\ProjectTDT\TDTX\TDTX\TDTX.UWP\bin\ARM\Debug\TDTX.UWP_1.0.6.0_ARM_Debug.appx
-SymbolPackage=D:\WorkSpace\CSharp\ProjectTDT\TDTX\TDTX\TDTX.UWP\AppPackages\TDTX.UWP_1.0.6.0_Debug_Test\TDTX.UWP_1.0.6.0_ARM_Debug.appxsym
+MainPackage=D:\WorkSpace\CSharp\ProjectTDT\TDTX\TDTX\TDTX.UWP\bin\ARM\Debug\TDTX.UWP_1.0.7.0_ARM_Debug.appx
+SymbolPackage=D:\WorkSpace\CSharp\ProjectTDT\TDTX\TDTX\TDTX.UWP\AppPackages\TDTX.UWP_1.0.7.0_Debug_Test\TDTX.UWP_1.0.7.0_ARM_Debug.appxsym
+ResourcePack=D:\WorkSpace\CSharp\ProjectTDT\TDTX\TDTX\TDTX.UWP\bin\ARM\Debug\TDTX.UWP_1.0.7.0_language-vi.appx

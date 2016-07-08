@@ -3,8 +3,7 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   x:Class="TDTX.Views.MainPage"
                   xmlns:local="clr-namespace:TDTX.Views;assembly=TDTX"
-                  MasterBehavior="Popover"
-                  IsGestureEnabled="True">
+                  MasterBehavior="Popover">
   <MasterDetailPage.Master>
     <local:MasterPage/>
   </MasterDetailPage.Master>
