@@ -19,7 +19,13 @@ namespace TDTX
             //this.Resources = new ResourceDictionary();
             //this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);
             MainPage = new MainPage();
-            
+            Task.Run(async () =>
+            {
+                await Task.Yield();
+                await Task.Delay(3000);
+                MainPage = new NavigationPage(new MainPage());
+            });
+
         }
         protected override async void OnStart()
         {
