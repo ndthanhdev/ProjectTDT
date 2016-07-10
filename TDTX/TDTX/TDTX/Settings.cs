@@ -17,6 +17,8 @@ namespace TDTX
             _instance = this;
         }
         public string Language { get; set; }
+        public string UserId { get; set; }
+        public string UserPassword { get; set; }
         public override string FileName => "a.json";
     }
 }
