@@ -69,9 +69,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Base\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\circle_earn.png">
-      <CustomToolNamespace>TDTX.Resources</CustomToolNamespace>
-    </EmbeddedResource>
     <Content Include="$(MSBuildThisFileDirectory)Views\circle_earn.png">
       <CustomToolNamespace>TDTX.Resources</CustomToolNamespace>
     </Content>
@@ -103,9 +100,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <PRIResource Include="$(MSBuildThisFileDirectory)Resources\Resources1.resw" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Themes\LightTheme.xaml">
