@@ -5,9 +5,9 @@ using Newtonsoft.Json;
 
 namespace TDTX.Models.Base
 {
-    interface IAPIModel
+    interface IRequestObject
     {
-        [JsonIgnore]
-        RESTObject RestObject { get; }
+        
+        Type RespondType { get; }
     }
 }
