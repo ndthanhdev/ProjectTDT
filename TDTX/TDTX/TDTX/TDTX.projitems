@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\LocalObjectExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dependencies\ISaveAndLoad.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Avatar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Base\IAPIModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Base\RESTObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LanguageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MasterPageItem.cs" />
