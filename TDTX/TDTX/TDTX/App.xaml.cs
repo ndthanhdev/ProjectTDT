@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using TDTX.Base;
+using TDTX.Models;
+using TDTX.Models.Base;
+using TDTX.Services;
 using TDTX.Views;
 using Xamarin.Forms;
 
@@ -15,6 +19,7 @@ namespace TDTX
     {
         public App()
         {
+            var v = typeof(Avatar).GetProperties();
             InitializeComponent();
             //this.Resources = new ResourceDictionary();
             //this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);

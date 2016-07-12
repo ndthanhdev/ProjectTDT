@@ -24,6 +24,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Base\RESTObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LanguageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MasterPageItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\API\Base\IRespondObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\API\Base\RequestObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Transporter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
