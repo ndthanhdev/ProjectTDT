@@ -18,7 +18,6 @@ namespace TDTX.Views
             {
                 this.EntryText.Text = App.Current.Properties["text"].ToString();
             }
-
         }
 
         private void Button_OnClicked(object sender, EventArgs e)

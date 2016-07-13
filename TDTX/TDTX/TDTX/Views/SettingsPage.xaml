@@ -5,26 +5,22 @@
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
              x:Class="TDTX.Views.SettingsPage"
              Title="{extensions:Translate Settings}"
-             BindingContext="{x:Static vm:OptionPageViewModel.Instance}">
+             BindingContext="{x:Static vm:SettingsPageViewModel.Instance}">
   <ScrollView >
-    <Grid >
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition/>
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-      </Grid.RowDefinitions>
+    <StackLayout>
       <!--1-->
-      <Label VerticalOptions="Center" Text="Languages: "/>
-      <StackLayout Grid.Column="1" Orientation="Horizontal">
+      <StackLayout Orientation="Horizontal">
+        <Image Source="Images/internet.png"/>
+        <Label VerticalOptions="Center" Text="Languages"/>
+      </StackLayout>
+      <StackLayout HorizontalOptions="Start">
         <Button Image="Images/United_Kingdom_flag_icon.png" Text="English"
                 Command="{Binding SelectLanguageCommand}" CommandParameter="en" />
         <Button Image="Images/Laos_flag_icon.png" Text="Laos" IsEnabled="False"/>
         <Button Image="Images/Vietnam_flag_icon.png" Text="Tiếng Việt"
                  Command="{Binding SelectLanguageCommand}" CommandParameter="vi"/>
       </StackLayout>
-    </Grid>
+    </StackLayout>
 
   </ScrollView>
 </ContentPage>

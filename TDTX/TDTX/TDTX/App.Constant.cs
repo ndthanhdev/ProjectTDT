@@ -17,5 +17,7 @@ namespace TDTX
 
         public static readonly string SettingsFile = "Setting.json";
 
+        public static readonly string Host = "http://trautre.azurewebsites.net/api.php?";
+
     }
 }

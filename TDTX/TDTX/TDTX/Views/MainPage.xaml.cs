@@ -18,6 +18,7 @@ namespace TDTX.Views
 			InitializeComponent ();
             ((MasterPage) Master).PrimaryListView.ItemSelected += PrimaryListView_ItemSelected;
             this.IsPresentedChanged += MainPage_IsPresentedChanged;
+            
 		}
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace TDTX.Views
             {
                 Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
                 ((MasterPage)Master).PrimaryListView.SelectedItem = null;
-                
+               
                 IsPresented = false;
             }
         }

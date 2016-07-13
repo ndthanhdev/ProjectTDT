@@ -27,7 +27,6 @@ namespace TDTX
         }
         protected override async void OnStart()
         {
-
             // Handle when your app starts  
             await Settings.Instance.Load<Settings>();
         }

@@ -12,10 +12,10 @@ using Xamarin.Forms;
 
 namespace TDTX.ViewModels
 {
-    class OptionPageViewModel : ViewModelBase
+    public class SettingsPageViewModel : ViewModelBase
     {
-        private static OptionPageViewModel _instance;
-        public static OptionPageViewModel Instance => _instance ?? new OptionPageViewModel();
+        private static SettingsPageViewModel _instance;
+        public static SettingsPageViewModel Instance => _instance ?? new SettingsPageViewModel();
         private ObservableCollection<LanguageItem> _languageItemsitems;
         public ObservableCollection<LanguageItem> LanguageItems
         {
@@ -23,7 +23,7 @@ namespace TDTX.ViewModels
             set { Set(ref _languageItemsitems, value); }
         }
 
-        private OptionPageViewModel()
+        private SettingsPageViewModel()
         {
             _languageItemsitems = new ObservableCollection<LanguageItem>()
             {
@@ -39,7 +39,7 @@ namespace TDTX.ViewModels
             {
                 Settings.Instance.Language = ci;
                 ((MasterDetailPage)Application.Current.MainPage).Detail =
-                    new NavigationPage((Page)Activator.CreateInstance(typeof(OptionPage)));
+                    new NavigationPage((Page)Activator.CreateInstance(typeof(SettingsPage)));
                 await Task.Yield();
             });
     }

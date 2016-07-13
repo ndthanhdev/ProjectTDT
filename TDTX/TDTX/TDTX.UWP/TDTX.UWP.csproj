@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="circle_earn.png" />
+    <Content Include="Images\internet.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\Laos_flag_icon.png" />
     <Content Include="Images\menu.png" />

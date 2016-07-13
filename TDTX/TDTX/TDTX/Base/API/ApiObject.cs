@@ -18,7 +18,7 @@ namespace TDTX.Base.API
                                 where pro.Name != "Query"
                                 && pro.IsDefined(typeof(RequestPropertyAttribute))
                                 select string.Concat(pro.Name, "=", pro.GetValue(this)?.ToString() ?? "");
-                return "?" + string.Join("&", keyValues);
+                return string.Join("&", keyValues);
             }
         }
     }

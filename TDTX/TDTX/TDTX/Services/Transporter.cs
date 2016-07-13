@@ -5,27 +5,28 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using TDTX.Base.API;
 using TDTX.Models;
 
 namespace TDTX.Services
 {
-    public class Transporter
+    public static class Transporter
     {
-        public static readonly string Host = "trautre.azurewebsites.net/api.php";
-
-        public async Task Transport()
+        public static async Task Transport<T>(ApiObject requester) where T:ApiObject
         {
-            HttpClient client = new HttpClient();
             await Task.Yield();
-            client.Dispose();
-
         }
 
-        public static async Task<string> GetString(string link)
+        /// <summary>
+        /// get 
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public static async Task<string> GetString(string query)
         {
             await Task.Yield();
             HttpClient client = new HttpClient();
-            return await client.GetStringAsync(Host + link);
+            return await client.GetStringAsync(App.Host + query);
         }
     }
 }

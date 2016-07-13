@@ -23,7 +23,7 @@
       <Entry Placeholder="{extensions:Translate Student ID}"/>
       <Entry Placeholder="{extensions:Translate Password}" IsPassword="True"/>
       <Button Text="{extensions:Translate Login}" StyleClass="PrimaryButton"/>
-      <Button Text="{extensions:Translate Forgot password?}" StyleClass="WarningButton"/>
+      <Button Text="{extensions:Translate Forgot password?}" StyleClass="WarningButton" IsEnabled="False" />
     </StackLayout>
   </Grid>
 </ContentPage>
