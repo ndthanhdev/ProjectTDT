@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TDTX.Base;
 using TDTX.Models;
-using TDTX.Models.Base;
 using TDTX.Services;
 using TDTX.Services.API;
 using TDTX.Views;
@@ -21,14 +20,15 @@ namespace TDTX
     {
         public App()
         {
+            Avatar a = new Avatar();
+            string s = a.Query;
             InitializeComponent();
-            //this.Resources = new ResourceDictionary();
-            //this.Resources.MergedWith = typeof(Xamarin.Forms.Themes.LightThemeResources);
             MainPage = new MainPage();
 
         }
         protected override async void OnStart()
         {
+
             // Handle when your app starts  
             await Settings.Instance.Load<Settings>();
         }

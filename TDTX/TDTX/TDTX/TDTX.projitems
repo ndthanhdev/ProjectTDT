@@ -15,15 +15,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)AppExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\API\ApiObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\API\Base\IRespondObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\API\Base\RequestObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\API\BasicRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\API\RequestPorpertyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\LocalObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\LocalObjectExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dependencies\ISaveAndLoad.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Avatar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LanguageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MasterPageItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\API\BasicRequest.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\API\Base\IRespondObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\API\Base\RequestObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Transporter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)test\Class1.cs" />
