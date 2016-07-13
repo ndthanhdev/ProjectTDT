@@ -4,6 +4,9 @@ using System.Text;
 
 namespace TDTX.Base
 {
+    /// <summary>
+    /// this Attribute use to determine which property is server's require
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property,Inherited = true,AllowMultiple = true)]
     public class RequestPropertyAttribute:Attribute
     {
