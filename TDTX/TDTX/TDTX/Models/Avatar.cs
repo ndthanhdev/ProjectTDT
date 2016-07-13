@@ -7,20 +7,14 @@ using System.Text;
 using TDTX.Base;
 using TDTX.Base.API;
 using TDTX.Services.API;
-using TDTX.Services.API.Base;
 
 namespace TDTX.Models
 {
-    public class Avatar : ApiObject
+    public class Avatar : BasicApiObject
     {
         public string name { get; set; }
         public string src { get; set; }
-
-        public RequestObject Request { get; set; }
-
-        [RequestProperty]
-        public string user { get; set; }
-
+        public override string act => "avatar";
     }
 }
 

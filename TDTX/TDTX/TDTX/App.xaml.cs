@@ -21,7 +21,6 @@ namespace TDTX
         public App()
         {
             Avatar a = new Avatar();
-            string s = a.Query;
             InitializeComponent();
             MainPage = new MainPage();
 
