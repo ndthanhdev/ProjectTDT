@@ -7,7 +7,7 @@ namespace TDTX.Services.API.Base
 {
     public interface IRespondObject
     {
-        [JsonIgnore]
-        RequestObject Request { get; set; }
+        RequestObject Request { get; }
+
     }
 }

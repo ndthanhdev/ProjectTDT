@@ -13,5 +13,7 @@ namespace TDTX.Models
         public string src { get; set; }
         
         public RequestObject Request { get; set; }
-    }
+
+
+public Avatar}
 }

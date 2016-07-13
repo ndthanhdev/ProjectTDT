@@ -11,16 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDTX.UWP", "TDTX\TDTX.UWP\T
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TDTX", "TDTX\TDTX\TDTX.shproj", "{B7C7148B-0A46-4A48-B100-B57C84528A03}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TDTX.Module", "TDTX.Module\TDTX.Module.shproj", "{6F655B6C-624C-4C22-83AC-222C35A7BAFD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDTX.Portable", "TDTX.Portable\TDTX.Portable.csproj", "{67F9D3A8-F71E-4428-913F-C37AE82CDB24}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		TDTX.Module\TDTX.Module.projitems*{06e01bcf-9760-4120-884e-47093a3d3608}*SharedItemsImports = 4
 		TDTX\TDTX\TDTX.projitems*{06e01bcf-9760-4120-884e-47093a3d3608}*SharedItemsImports = 4
-		TDTX.Module\TDTX.Module.projitems*{6f655b6c-624c-4c22-83ac-222c35a7bafd}*SharedItemsImports = 13
-		TDTX.Module\TDTX.Module.projitems*{8250e26d-5f55-489d-8b2d-000f3230d6c9}*SharedItemsImports = 4
 		TDTX\TDTX\TDTX.projitems*{8250e26d-5f55-489d-8b2d-000f3230d6c9}*SharedItemsImports = 4
 		TDTX\TDTX\TDTX.projitems*{b7c7148b-0a46-4a48-b100-b57c84528a03}*SharedItemsImports = 13
 		TDTX\TDTX\TDTX.projitems*{de3eddcc-5db9-47ca-9e76-d044340dc48a}*SharedItemsImports = 4
