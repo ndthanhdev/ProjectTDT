@@ -20,7 +20,10 @@ namespace TDTX
     {
         public App()
         {
-            Avatar a = new Avatar();
+            Task.Run(async () =>
+            {
+                string rp= await Transporter.GetString("user=51403318&pass=51403318TDT&act=avatar");
+            });
             InitializeComponent();
             MainPage = new MainPage();
 

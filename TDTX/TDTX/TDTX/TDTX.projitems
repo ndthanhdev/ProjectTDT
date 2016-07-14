@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AppExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\API\ApiObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\API\BasicApiObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\API\Parcel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\API\RequestPorpertyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\LocalObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\LocalObjectExtensions.cs" />

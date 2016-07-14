@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
@@ -12,11 +13,29 @@ namespace TDTX.Services
 {
     public static class Transporter
     {
-        public static async Task Transport<T>(ApiObject requester) where T:ApiObject
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requester"></param>
+        /// <returns>true if completed</returns>
+        public static async Task<bool> Transport(ApiObject requester)
         {
             await Task.Yield();
-        }
+            try
+            {
+                return true;
 
+            }
+            catch (HttpRequestException)
+            {
+                return false;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         /// <summary>
         /// get 
         /// </summary>
@@ -28,5 +47,6 @@ namespace TDTX.Services
             HttpClient client = new HttpClient();
             return await client.GetStringAsync(App.Host + query);
         }
+
     }
 }
