@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 using TDTX.Base.API;
 using TDTX.Models;
 
@@ -18,23 +20,29 @@ namespace TDTX.Services
         /// </summary>
         /// <param name="requester"></param>
         /// <returns>true if completed</returns>
-        public static async Task<bool> Transport(ApiObject requester)
+        public static async Task<TransportRespond> Transport(ApiObject request)
         {
             await Task.Yield();
+            TransportRespond respond = new TransportRespond();
             try
             {
-                return true;
+                string content = await GetString(request.Query);
+                if (Newtonsoft.Json.Linq.JObject.Parse(content)["error"] == null)
+                {
+                    //TODO login fail
+                }
 
             }
             catch (HttpRequestException)
             {
-                return false;
-
+                respond.Content = request;
+                respond.Status = TransportStatusCode.Offline;
             }
             catch (Exception)
             {
-                throw;
+                respond.Status = TransportStatusCode.UnknownError;
             }
+            return respond;
         }
         /// <summary>
         /// get 

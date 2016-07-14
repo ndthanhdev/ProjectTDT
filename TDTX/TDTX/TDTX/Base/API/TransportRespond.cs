@@ -6,7 +6,7 @@ namespace TDTX.Base.API
 {
     public class TransportRespond
     {
-        public ApiObject Goods { get; set; }
+        public ApiObject Content { get; set; }
         public TransportStatusCode Status { get; set; }
     }
 
@@ -14,7 +14,7 @@ namespace TDTX.Base.API
     {
         Awaiting,
         NotAuthorized,
-        NotFound,
+        Offline,
         OK,
         UnknownError
     }

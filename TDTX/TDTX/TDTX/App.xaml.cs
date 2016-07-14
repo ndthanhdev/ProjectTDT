@@ -22,7 +22,7 @@ namespace TDTX
         {
             Task.Run(async () =>
             {
-                string rp= await Transporter.GetString("user=51403318&pass=51403318TDT&act=avatar");
+                string rp= await Transporter.GetString("user=51403318&pass=51403318DT&act=avatar");
             });
             InitializeComponent();
             MainPage = new MainPage();
