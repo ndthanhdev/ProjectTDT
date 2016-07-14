@@ -4,9 +4,9 @@ using System.Text;
 
 namespace TDTX.Base.API
 {
-    public class TransportRespond
+    public class TransportRespond<T> where T:ApiObject
     {
-        public ApiObject Content { get; set; }
+        public T Content { get; set; }
         public TransportStatusCode Status { get; set; }
     }
 
