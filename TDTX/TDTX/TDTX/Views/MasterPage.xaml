@@ -13,8 +13,8 @@
     </ResourceDictionary>
   </ContentPage.Resources>
   <ContentPage.Content>
-    <StackLayout VerticalOptions="FillAndExpand">
-      <ListView x:Name="PrimaryListViewElement" SeparatorVisibility="None" VerticalOptions="StartAndExpand" Margin="8,24,0,0"
+    <StackLayout VerticalOptions="FillAndExpand" Margin="8,24,8,24">
+      <ListView x:Name="PrimaryListViewElement" SeparatorVisibility="None" VerticalOptions="StartAndExpand"
         ItemsSource="{Binding Items}">
         <ListView.ItemTemplate>
           <DataTemplate>
@@ -32,6 +32,14 @@
         </ListView.ItemTemplate>
       </ListView>
       <BoxView HeightRequest="3" BackgroundColor="Black" VerticalOptions="End"></BoxView>
+      <StackLayout x:Name="SubStackLayout" Orientation="Horizontal" Margin="0,18,0,0">
+        <StackLayout>
+          <Image  Source="Images/settings.png"/>
+        </StackLayout>
+        <StackLayout>
+          <Label Text="{extensions:Translate Settings}" VerticalTextAlignment="Center"/>
+        </StackLayout>
+      </StackLayout>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

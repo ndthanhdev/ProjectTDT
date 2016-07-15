@@ -19,14 +19,16 @@ namespace TDTX
     {
         public App()
         {
-            Task.Run(async () =>
-            {
-                Avatar a = new Avatar() { user = "51403318", pass = "51403318TDT" };
-                var r= await Transporter.Transport(a);
-            });
+            //Task.Run(async () =>
+            //{
+            //    Avatar a = new Avatar() { user = "51403318", pass = "51403318TDT" };
+            //    var r= await Transporter.Transport(a);
+            //});
             InitializeComponent();
-            MainPage = new MainPage();
-
+            if(true)//Settings.Instance.CanTryLogin())
+                MainPage = new MainPage();
+            else
+                MainPage = new LoginPage();
         }
         protected override async void OnStart()
         {
