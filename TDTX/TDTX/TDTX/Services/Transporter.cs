@@ -20,43 +20,41 @@ namespace TDTX.Services
         /// </summary>
         /// <param name="requester"></param>
         /// <returns>true if completed</returns>
-        public static async Task<TransportRespond<T>> Transport<T>(T request) where T:ApiObject
+        public static async Task<TransportRespond<T>> Transport<T>(T request) where T : ApiObject
         {
             await Task.Yield();
             TransportRespond<T> respond = new TransportRespond<T>();
+            respond.Content = request;
             try
             {
                 string content = await GetString(request.Query);
                 JProperty jp = JObject.Parse(content).Property("error");
-                
+
                 if (jp != null)
                 {
                     //Login Failed
                     if (jp.Value.ToString() == "Login Failed")
                     {
-                        respond.Content = request;
                         respond.Status = TransportStatusCode.NotAuthorized;
                     }
                     else //UnknownError
                     {
-                        respond.Content = request;
                         respond.Status = TransportStatusCode.UnknownError;
                     }
                 }
                 else//well transport
                 {
-                    
+                    respond.Status = TransportStatusCode.OK;
+                    respond.Content = JsonConvert.DeserializeObject<T>(content);
                 }
 
             }
             catch (HttpRequestException) //Offline
             {
-                respond.Content = request;
                 respond.Status = TransportStatusCode.Offline;
             }
             catch (Exception)
             {
-                respond.Content = request;
                 respond.Status = TransportStatusCode.UnknownError;
             }
             return respond;

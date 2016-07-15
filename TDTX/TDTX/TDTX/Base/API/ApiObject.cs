@@ -21,5 +21,17 @@ namespace TDTX.Base.API
                 return string.Join("&", keyValues);
             }
         }
+        /// <summary>
+        /// set not null property of other to Instance
+        /// </summary>
+        /// <param name="other">the Api object use to overwrite this</param>
+        public void Overwrite(ApiObject other)
+        {
+            foreach (var pro in other.GetType().GetProperties())
+            {
+                if(this.GetType().GetProperty(pro.Name)!=null&&pro.GetValue(this)!=null)
+                    pro.SetValue(this,pro.GetValue(other));
+            }
+        }
     }
 }

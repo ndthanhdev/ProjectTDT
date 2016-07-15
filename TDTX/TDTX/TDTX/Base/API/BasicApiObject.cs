@@ -4,7 +4,7 @@ using System.Text;
 using TDTX.Base;
 using TDTX.Base.API;
 
-namespace TDTX.Services.API
+namespace TDTX.Base.API
 {
     public abstract class BasicApiObject:ApiObject
     {

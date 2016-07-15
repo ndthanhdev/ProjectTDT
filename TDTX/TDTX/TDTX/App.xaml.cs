@@ -10,7 +10,6 @@ using Newtonsoft.Json;
 using TDTX.Base;
 using TDTX.Models;
 using TDTX.Services;
-using TDTX.Services.API;
 using TDTX.Views;
 using Xamarin.Forms;
 
