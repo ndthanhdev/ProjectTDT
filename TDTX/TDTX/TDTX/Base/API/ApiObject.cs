@@ -29,7 +29,9 @@ namespace TDTX.Base.API
         {
             foreach (var pro in other.GetType().GetProperties())
             {
-                if(this.GetType().GetProperty(pro.Name)!=null&&pro.GetValue(this)!=null)
+                if(pro.CanWrite
+                    &&this.GetType().GetProperty(pro.Name)!=null
+                    &&pro.GetValue(other)!=null)
                     pro.SetValue(this,pro.GetValue(other));
             }
         }
