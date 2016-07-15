@@ -45,7 +45,8 @@ namespace TDTX.Services
                 else//well transport
                 {
                     respond.Status = TransportStatusCode.OK;
-                    respond.Content = JsonConvert.DeserializeObject<T>(content);
+                    T respondContent = JsonConvert.DeserializeObject<T>(content);
+                    respond.Content.Overwrite(respondContent);
                 }
 
             }
