@@ -13,10 +13,16 @@ namespace TDTX.Views
 		public LoginPage ()
 		{
 			InitializeComponent ();
+            
 		}
-	    //private void Button_OnClicked(object sender, EventArgs e)
-	    //{
-	    //    Application.Current.Resources["Bcolor"] = Color.Aqua;
-	    //}
+
+        
+
+	    private async void Button_OnClicked(object sender, EventArgs e)
+	    {
+	       await Navigation.PushModalAsync(new MainPage());
+	    }
+
+        //private override 
 	}
 }
