@@ -141,4 +141,25 @@
   <data name="Settings" xml:space="preserve">
     <value>Cài đặt</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>Không xác thực</value>
+  </data>
+  <data name="NotAuthorizedDetail" xml:space="preserve">
+    <value>Tên đăng nhập mật khẩu không đúng</value>
+  </data>
+  <data name="Offline" xml:space="preserve">
+    <value>Ngoại tuyến</value>
+  </data>
+  <data name="OfflineDetail" xml:space="preserve">
+    <value>Không có kết nối internet</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Không rõ</value>
+  </data>
+  <data name="UnknownDetail" xml:space="preserve">
+    <value>Lỗi không rõ</value>
+  </data>
 </root>

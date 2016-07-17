@@ -25,15 +25,17 @@ namespace TDTX
             //    var r= await Transporter.Transport(a);
             //});
             InitializeComponent();
-            if(true)//Settings.Instance.CanTryLogin())
-                MainPage = new MainPage();
-            else
-                MainPage = new LoginPage();
+            MainPage= new SplashPage();
         }
         protected override async void OnStart()
         {
             // Handle when your app starts  
             await Settings.Instance.Load<Settings>();
+            if (Settings.Instance.CanTryLogin())
+                MainPage = new MainPage();
+            else
+                MainPage = new LoginPage();
+
         }
 
         protected override async void OnSleep()

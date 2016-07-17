@@ -121,4 +121,25 @@
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>Not Authorized</value>
+  </data>
+  <data name="NotAuthorizedDetail" xml:space="preserve">
+    <value>Username or password is incorrect</value>
+  </data>
+  <data name="Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="OfflineDetail" xml:space="preserve">
+    <value>No internet connection</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="UnknownDetail" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
 </root>

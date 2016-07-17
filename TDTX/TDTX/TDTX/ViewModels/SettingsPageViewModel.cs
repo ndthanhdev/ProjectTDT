@@ -42,5 +42,12 @@ namespace TDTX.ViewModels
                     new NavigationPage((Page)Activator.CreateInstance(typeof(SettingsPage)));
                 await Task.Yield();
             });
+        public RelayCommand LogoutCommand => new RelayCommand(async () =>
+        {
+            Application.Current.MainPage = new LoginPage();
+            Settings.Instance.UserId = string.Empty;
+            Settings.Instance.UserPassword = string.Empty;
+            await Task.Yield();
+        });
     }
 }

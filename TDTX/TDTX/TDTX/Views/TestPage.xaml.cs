@@ -20,10 +20,10 @@ namespace TDTX.Views
             }
         }
 
-        private void Button_OnClicked(object sender, EventArgs e)
-	    {
-	        ViewModels.MasterPageViewModel.Instance.AddItem();
-	    }
+     //   private void Button_OnClicked(object sender, EventArgs e)
+	    //{
+	    //    ViewModels.MasterPageViewModel.Instance.AddItem();
+	    //}
 
 	    private void Entry_OnTextChanged(object sender, TextChangedEventArgs e)
 	    {
@@ -45,5 +45,15 @@ namespace TDTX.Views
                     break;
             }
         }
+
+	    private void Button_OnClicked(object sender, EventArgs e)
+	    {
+	        Navigation.PopAsync();
+	    }
+
+	    protected override void OnAppearing()
+	    {
+	        base.OnAppearing();
+	    }
 	}
 }

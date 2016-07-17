@@ -10,6 +10,12 @@
     <StackLayout>
       <!--1-->
       <StackLayout Orientation="Horizontal">
+        <Image Source="Images/user.png"></Image>
+        <Button Text="{extensions:Translate Logout}" StyleClass="PrimaryButton" Command="{Binding LogoutCommand}"/>
+      </StackLayout>
+      <BoxView HeightRequest="16"></BoxView>
+      <!--2-->
+      <StackLayout Orientation="Horizontal">
         <Image Source="Images/internet.png"/>
         <Label VerticalOptions="Center" Text="Languages"/>
       </StackLayout>
@@ -20,7 +26,7 @@
         <Button Image="Images/Vietnam_flag_icon.png" Text="Tiếng Việt"
                  Command="{Binding SelectLanguageCommand}" CommandParameter="vi"/>
       </StackLayout>
-      <!--2-->
+
     </StackLayout>
   </ScrollView>
 </ContentPage>

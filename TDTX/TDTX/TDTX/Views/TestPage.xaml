@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDTX.Views.TestPage">
-  <AbsoluteLayout x:Name="Content">
+  <StackLayout x:Name="Content">
     <Entry x:Name="EntryText" VerticalOptions="Center" HorizontalOptions="Center" TextChanged="Entry_OnTextChanged" />
     <Button Clicked="Button_OnClicked"></Button>
     <Button IsEnabled="False" Text="WTH Xamarin"></Button>
@@ -11,5 +11,6 @@
         <PanGestureRecognizer PanUpdated="PanGestureRecognizer_OnPanUpdated"></PanGestureRecognizer>
       </Image.GestureRecognizers>
     </Image>
-  </AbsoluteLayout>
+  <Button Text="go back" Clicked="Button_OnClicked"></Button>
+  </StackLayout>
 </ContentPage>

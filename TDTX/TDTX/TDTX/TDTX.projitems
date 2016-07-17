@@ -29,7 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)test\Class1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OptionPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Base\FileImageProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Base\ImageProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Base\TextProvider.cs" />
