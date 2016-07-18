@@ -36,8 +36,9 @@ namespace TDTX.Services
                 }
                 else //well transport
                 {
-                    if (token.Type == JTokenType.Object)
+                    if (token.Type == JTokenType.Object && token["error"]!=null)
                     {
+                        
                         JProperty jp = JObject.Parse(content).Property("error");
                         //Login Failed
                         if (jp.Value.ToString() == "Login Failed")
