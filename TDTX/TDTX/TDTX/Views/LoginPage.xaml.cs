@@ -27,7 +27,8 @@ namespace TDTX.Views
                 (sender as Button).IsEnabled = false;
                 euser.IsEnabled = false;
                 epass.IsEnabled = false;
-                var respond = await Transporter.Transport<Avatar>(new Avatar() { user = euser.Text, pass = epass.Text });
+                var respond = await Transporter.Transport<AvatarRequest,Avatar>(
+                    new AvatarRequest() { user = euser.Text, pass = epass.Text });
                 if (respond.Status == TransportStatusCode.OK)
                 {
                     Settings.Instance.UserId = euser.Text;

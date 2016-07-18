@@ -21,41 +21,49 @@ namespace TDTX.Services
         /// </summary>
         /// <param name="requester"></param>
         /// <returns>true if completed</returns>
-        public static async Task<TransportRespond<T>> Transport<T>(T request) where T : ApiObject
+        public static async Task<TransportRespond<T,U>> Transport<T,U>(T request) where T:RequestObject
         {
             await Task.Yield();
-            TransportRespond<T> respond = new TransportRespond<T>();
-            respond.Content = request;
+            TransportRespond<T,U> respond = new TransportRespond<T,U>();
+            respond.Request = request;
             try
             {
                 string content = await GetString(request.Query);
-                JProperty jp = JObject.Parse(content).Property("error");
-
-                if (jp != null)
+                JToken token = JToken.Parse(content);
+                if (token == null)
                 {
-                    //Login Failed
-                    if (jp.Value.ToString() == "Login Failed")
-                    {
-                        respond.Status = TransportStatusCode.NotAuthorized;
-                    }
-                    else //UnknownError
-                    {
-                        respond.Status = TransportStatusCode.UnknownError;
-                    }
+                    respond.Status = TransportStatusCode.UnknownError;
                 }
-                else//well transport
+                else //well transport
                 {
+                    if (token.Type == JTokenType.Object)
+                    {
+                        JProperty jp = JObject.Parse(content).Property("error");
+                        //Login Failed
+                        if (jp.Value.ToString() == "Login Failed")
+                        {
+                            respond.Status = TransportStatusCode.NotAuthorized;
+                            goto EndPoint;
+                        }
+                        else //UnknownError
+                        {
+                            respond.Status = TransportStatusCode.UnknownError;
+                            goto EndPoint;
+                        }
+                    }
                     respond.Status = TransportStatusCode.OK;
-                    T respondContent = JsonConvert.DeserializeObject<T>(content);
-                    respond.Content.Overwrite(respondContent);
+                    //can replace with populate
+                    U respondContent = JsonConvert.DeserializeObject<U>(content);
+                    respond.Respond = respondContent;
                 }
-
+                EndPoint:
+                await Task.Yield();
             }
             catch (HttpRequestException) //Offline
             {
                 respond.Status = TransportStatusCode.Offline;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 respond.Status = TransportStatusCode.UnknownError;
             }

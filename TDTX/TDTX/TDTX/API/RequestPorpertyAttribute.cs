@@ -10,5 +10,6 @@ namespace TDTX.API
     [AttributeUsage(AttributeTargets.Property,Inherited = true,AllowMultiple = true)]
     public class RequestPropertyAttribute:Attribute
     {
+        //TODO improve name in derived class
     }
 }

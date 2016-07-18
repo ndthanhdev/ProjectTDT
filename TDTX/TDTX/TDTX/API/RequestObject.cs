@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace TDTX.API
 {
-    public abstract class ApiObject
+    public abstract class RequestObject
     {
         public string Query
         {
@@ -24,7 +24,7 @@ namespace TDTX.API
         /// set not null property of other to Instance
         /// </summary>
         /// <param name="other">the Api object use to overwrite this</param>
-        public void Overwrite(ApiObject other)
+        public void Overwrite(RequestObject other)
         {
             foreach (var pro in other.GetType().GetProperties())
             {

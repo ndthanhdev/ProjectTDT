@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using TDTX.API;
 using TDTX.Base;
 using TDTX.Models;
 using TDTX.Services;
@@ -19,11 +20,12 @@ namespace TDTX
     {
         public App()
         {
-            //Task.Run(async () =>
-            //{
-            //    Avatar a = new Avatar() { user = "51403318", pass = "51403318TDT" };
-            //    var r= await Transporter.Transport(a);
-            //});
+            Task.Run(async () =>
+            {
+                var r = await Transporter.Transport<ListSemester,List<Semester>>
+                (new ListSemester() {user = "51403318",pass = "51403318TDT"});
+            });
+
             InitializeComponent();
             MainPage= new SplashPage();
         }

@@ -9,10 +9,12 @@
     <Import_RootNamespace>TDTX</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)API\ApiObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)API\BasicApiObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API\AvatarRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API\RequestObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API\BasicRequestObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\ListSemester.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\RequestPorpertyAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API\RespondObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\TransportRespond.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.Constant.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">

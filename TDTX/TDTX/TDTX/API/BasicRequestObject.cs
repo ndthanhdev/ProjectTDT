@@ -8,7 +8,7 @@ using TDTX.API;
 
 namespace TDTX.API
 {
-    public abstract class BasicApiObject:ApiObject
+    public abstract class BasicRequestObject:RequestObject
     {
         [RequestProperty]
         public string user { get; set; }
