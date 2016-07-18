@@ -11,6 +11,7 @@ namespace TDTX.Views
     public partial class MasterPage : ContentPage
     {
         public ListView PrimaryListView => PrimaryListViewElement;
+        public TapGestureRecognizer SettingTapGesture => this.SettingTapGestureRecognizer;
         public MasterPage()
         {
             InitializeComponent();

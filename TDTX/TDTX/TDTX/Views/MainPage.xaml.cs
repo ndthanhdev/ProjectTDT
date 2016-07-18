@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Command;
 using TDTX.Models;
 using Xamarin.Forms;
 
@@ -12,14 +13,16 @@ namespace TDTX.Views
     public delegate void dv();
 
     public partial class MainPage : MasterDetailPage
-	{
-		public MainPage ()
-		{
-			InitializeComponent ();
-            ((MasterPage) Master).PrimaryListView.ItemSelected += PrimaryListView_ItemSelected;
+    {
+        public MainPage()
+        {
+            InitializeComponent();
+            ((MasterPage)Master).PrimaryListView.ItemSelected += PrimaryListView_ItemSelected;
+            ((MasterPage) Master).SettingTapGesture.Command = PageSelect;
+            //((MasterPage) Master).SettingTapGesture.CommandParameter = typeof(SettingsPage);
             this.IsPresentedChanged += MainPage_IsPresentedChanged;
-            
-		}
+
+        }
 
         /// <summary>
         /// Make DetailPage dim while MasterPage is appearring
@@ -31,7 +34,7 @@ namespace TDTX.Views
             if (IsPresented)
             {
                 this.Detail.Opacity = 0.3;
-                this.Detail.BackgroundColor=Color.Black;
+                this.Detail.BackgroundColor = Color.Black;
             }
             else
             {
@@ -47,9 +50,16 @@ namespace TDTX.Views
             {
                 Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
                 ((MasterPage)Master).PrimaryListView.SelectedItem = null;
-               
+
                 IsPresented = false;
             }
         }
+        public RelayCommand<Type> PageSelect => new RelayCommand<Type>(t =>
+         {
+             Detail = new NavigationPage((Page)Activator.CreateInstance(t));
+             ((MasterPage)Master).PrimaryListView.SelectedItem = null;
+
+             IsPresented = false;
+         });
     }
 }

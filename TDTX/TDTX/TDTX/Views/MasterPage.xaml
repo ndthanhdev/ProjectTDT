@@ -5,6 +5,7 @@
              xmlns:viewModels="clr-namespace:TDTX.ViewModels;assembly=TDTX"
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
              xmlns:converters="clr-namespace:TDTX.Views.Converters;assembly=TDTX"
+             xmlns:local="clr-namespace:TDTX.Views;assembly=TDTX"
              Title="Tiêu đề"
              BindingContext="{x:Static viewModels:MasterPageViewModel.Instance}">
   <ContentPage.Resources>
@@ -32,7 +33,10 @@
         </ListView.ItemTemplate>
       </ListView>
       <BoxView HeightRequest="3" BackgroundColor="Black" VerticalOptions="End"></BoxView>
-      <StackLayout x:Name="SubStackLayout" Orientation="Horizontal" Margin="0,18,0,0">
+      <StackLayout x:Name="SubStackLayout" Orientation="Horizontal" Margin="0,18,0,0" VerticalOptions="FillAndExpand">
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer x:Name="SettingTapGestureRecognizer" CommandParameter="{x:Type local:SettingsPage}" />
+        </StackLayout.GestureRecognizers>
         <StackLayout>
           <Image  Source="Images/settings.png"/>
         </StackLayout>
@@ -43,11 +47,3 @@
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
-
-
-
-<!--<BoxView HeightRequest="3" BackgroundColor="Black" VerticalOptions="End"/>
-      <StackLayout Orientation="Horizontal" >
-        <Image Source="Images/settings.png"/>
-        <Label Text="{extensions:Translate Settings}"/>
-      </StackLayout>-->
