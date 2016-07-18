@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TDTX.Base
+namespace TDTX.API
 {
     /// <summary>
     /// this Attribute use to determine which property is server's require

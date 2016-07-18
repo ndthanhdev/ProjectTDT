@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TDTX.Base.API;
+using TDTX.API;
 using TDTX.Models;
 using TDTX.Services;
 using Xamarin.Forms;

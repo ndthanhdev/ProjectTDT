@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-using TDTX.Base.API;
+using TDTX.API;
 using TDTX.Models;
+
 
 namespace TDTX.Services
 {

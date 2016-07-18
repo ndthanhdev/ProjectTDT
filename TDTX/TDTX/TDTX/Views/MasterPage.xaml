@@ -6,8 +6,8 @@
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
              xmlns:converters="clr-namespace:TDTX.Views.Converters;assembly=TDTX"
              xmlns:local="clr-namespace:TDTX.Views;assembly=TDTX"
-             Title="Tiêu đề"
-             BindingContext="{x:Static viewModels:MasterPageViewModel.Instance}">
+             BindingContext="{x:Static viewModels:MasterPageViewModel.Instance}"
+             Title="MasterTitle">
   <ContentPage.Resources>
     <ResourceDictionary>
       <converters:TranslateConverter x:Key="TranslateConverter"/>
@@ -32,7 +32,9 @@
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
+      <!--separator-->
       <BoxView HeightRequest="3" BackgroundColor="Black" VerticalOptions="End"></BoxView>
+      <!--Settings-->
       <StackLayout x:Name="SubStackLayout" Orientation="Horizontal" Margin="0,18,0,0" VerticalOptions="FillAndExpand">
         <StackLayout.GestureRecognizers>
           <TapGestureRecognizer x:Name="SettingTapGestureRecognizer" CommandParameter="{x:Type local:SettingsPage}" />
@@ -44,6 +46,7 @@
           <Label Text="{extensions:Translate Settings}" VerticalTextAlignment="Center"/>
         </StackLayout>
       </StackLayout>
+    
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

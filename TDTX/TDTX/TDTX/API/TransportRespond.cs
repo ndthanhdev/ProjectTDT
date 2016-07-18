@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TDTX.API;
 
-namespace TDTX.Base.API
+
+namespace TDTX.API
 {
     public class TransportRespond<T> where T:ApiObject
     {

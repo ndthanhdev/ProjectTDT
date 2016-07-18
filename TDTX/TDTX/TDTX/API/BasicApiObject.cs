@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TDTX.Base;
-using TDTX.Base.API;
+using TDTX.API;
 
-namespace TDTX.Base.API
+
+
+
+namespace TDTX.API
 {
     public abstract class BasicApiObject:ApiObject
     {
