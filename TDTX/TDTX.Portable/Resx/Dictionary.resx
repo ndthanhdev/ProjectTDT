@@ -142,4 +142,10 @@
   <data name="UnknownDetail" xml:space="preserve">
     <value>Unknown</value>
   </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+  <data name="Time table" xml:space="preserve">
+    <value>Time table</value>
+  </data>
 </root>

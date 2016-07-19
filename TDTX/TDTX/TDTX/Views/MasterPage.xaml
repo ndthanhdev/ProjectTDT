@@ -22,7 +22,7 @@
             <ViewCell>
               <StackLayout Orientation="Horizontal" Margin="0,18,0,0">
                 <StackLayout>
-                  <Image  Source="Images/settings.png"/>
+                  <Image Source="{Binding IconSource}"/>
                 </StackLayout>
                 <StackLayout>
                   <Label  Text="{Binding Title,Converter={StaticResource TranslateConverter}}" VerticalTextAlignment="Center"/>
@@ -35,7 +35,8 @@
       <!--separator-->
       <BoxView HeightRequest="3" BackgroundColor="Black" VerticalOptions="End"></BoxView>
       <!--Settings-->
-      <StackLayout x:Name="SubStackLayout" Orientation="Horizontal" Margin="0,18,0,0" HorizontalOptions="FillAndExpand">
+      <StackLayout x:Name="SubStackLayout" Orientation="Horizontal" Margin="0,18,0,0" HorizontalOptions="FillAndExpand"
+                   BackgroundColor="Transparent">
         <StackLayout.GestureRecognizers>
           <TapGestureRecognizer x:Name="SettingTapGestureRecognizer" CommandParameter="{x:Type local:SettingsPage}" />
         </StackLayout.GestureRecognizers>

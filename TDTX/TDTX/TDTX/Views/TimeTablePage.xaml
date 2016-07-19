@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
+             x:Class="TDTX.Views.TimeTablePage"
+             Title="{extensions:Translate Time table}">
+  <Label Text="Time table here" VerticalOptions="Center" HorizontalOptions="Center" />
+</ContentPage>

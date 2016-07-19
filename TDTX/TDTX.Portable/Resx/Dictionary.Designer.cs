@@ -116,6 +116,15 @@ namespace TDTX.Portable.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notification.
+        /// </summary>
+        public static string Notification {
+            get {
+                return ResourceManager.GetString("Notification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offline.
         /// </summary>
         public static string Offline {
@@ -166,6 +175,15 @@ namespace TDTX.Portable.Resx {
         public static string Student_ID {
             get {
                 return ResourceManager.GetString("Student ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time table.
+        /// </summary>
+        public static string Time_table {
+            get {
+                return ResourceManager.GetString("Time table", resourceCulture);
             }
         }
         

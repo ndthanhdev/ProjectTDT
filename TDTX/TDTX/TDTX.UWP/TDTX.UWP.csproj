@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="circle_earn.png" />
+    <Content Include="Images\calendar.png" />
     <Content Include="Images\internet.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\Laos_flag_icon.png" />
@@ -121,6 +122,7 @@
     <Content Include="Images\United_Kingdom_flag_icon.png" />
     <Content Include="Images\user.png" />
     <Content Include="Images\Vietnam_flag_icon.png" />
+    <Content Include="Images\worldwide.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

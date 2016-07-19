@@ -162,4 +162,10 @@
   <data name="UnknownDetail" xml:space="preserve">
     <value>Lỗi không rõ</value>
   </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
+  <data name="Time table" xml:space="preserve">
+    <value>Thời khóa biểu</value>
+  </data>
 </root>

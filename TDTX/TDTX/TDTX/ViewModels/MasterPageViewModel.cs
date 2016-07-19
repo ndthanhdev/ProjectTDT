@@ -5,6 +5,7 @@ using System.Text;
 using GalaSoft.MvvmLight;
 using TDTX.Models;
 using TDTX.Views;
+using TDTX.Views.Base;
 using Xamarin.Forms;
 
 namespace TDTX.ViewModels
@@ -26,10 +27,12 @@ namespace TDTX.ViewModels
             _items = new ObservableCollection<MasterPageItem>()
             {
                 //new MasterPageItem() {Title = "Option", TargetType = typeof(OptionPage)},
-                new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage)},
-                new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage)},
-                new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage)},
-                new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage)},
+                new MasterPageItem() {Title = "Time table",TargetType = typeof(TimeTablePage),IconSource = "Images/calendar.png"},
+                new MasterPageItem() {Title = "Notification",TargetType = typeof(NotificationPage),IconSource = "Images/worldwide.png"},
+                new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage), IconSource = "Images/settings.png"},
+                //new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage), IconSource = "Images/settings.png"},
+                //new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage), IconSource = "Images/settings.png"},
+                //new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage), IconSource = "Images/settings.png"},
 
                 //new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage)},
             };
