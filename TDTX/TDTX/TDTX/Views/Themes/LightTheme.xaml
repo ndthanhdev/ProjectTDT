@@ -6,13 +6,13 @@
   <x:Int32 x:Key="ButtonBorderRadius">6</x:Int32>
 
   <!--Color-->
-  <Color x:Key="EmptyBackgroundColor">White</Color>
+  <Color x:Key="EmptyBackgroundColor">Black</Color>
   <Color x:Key="PrimaryContentBackgroundColor">#0061AD</Color>
   <Color x:Key="WarningContentBackgroundColor">#FFCC00</Color>
 
   <!--Button-->
   <Style Class="PrimaryButton" TargetType="Button" >
-    <Setter Property="BackgroundColor" Value="{StaticResource PrimaryContentBackgroundColor}" />
+    <Setter Property="BackgroundColor" Value="{StaticResource PrimaryForceGroundColor}" />
     <Setter Property="TextColor" Value="{DynamicResource EmptyBackgroundColor}"/>
     <Setter Property="BorderRadius" Value="{StaticResource ButtonBorderRadius}" />
   </Style>

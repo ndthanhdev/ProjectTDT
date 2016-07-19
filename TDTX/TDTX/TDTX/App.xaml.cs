@@ -22,8 +22,8 @@ namespace TDTX
         {
             Task.Run(async () =>
             {
-                var r = await Transporter.Transport<ListSemester,List<Semester>>
-                (new ListSemester() {user = "51403318",pass = "51403318TDT"});
+                var r = await Transporter.Transport<SemesterRequest,Semester>
+                (new SemesterRequest() {user = "51403318",pass = "51403318TDT",});
             });
 
             InitializeComponent();

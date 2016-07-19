@@ -19,10 +19,9 @@
       <Label BackgroundColor="Blue" Text="Đăng nhập"/>
     </StackLayout>-->
     <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Grid.Column="1" Grid.Row="1"  >
-      <Image Source="Images/circle.png"/>
-      <Entry x:Name="euser" Placeholder="{extensions:Translate Student ID}"/>
-      <Entry x:Name="epass" Placeholder="{extensions:Translate Password}" IsPassword="True"/>
-      <Button Text="{extensions:Translate Login}" StyleClass="PrimaryButton" Clicked="Button_OnClicked"/>
+      <Entry x:Name="euser" Placeholder="{extensions:Translate Student ID}" />
+      <Entry x:Name="epass" Placeholder="{extensions:Translate Password}" IsPassword="True" />
+      <Button Text="{extensions:Translate Login}" StyleClass="PrimaryButton" Clicked="Button_OnClicked" />
       <Button Text="{extensions:Translate Forgot password?}" StyleClass="WarningButton" IsEnabled="False" />
     </StackLayout>
   </Grid>

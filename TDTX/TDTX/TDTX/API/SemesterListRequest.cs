@@ -6,11 +6,11 @@ using TDTX.Models;
 
 namespace TDTX.API
 {
-    public class ListSemester : BasicRequestObject
+    public class SemesterListRequest : BasicRequestObject
     {
         public override string act => "tkb";
 
-        [RequestProperty]
+        [ApiIgnore]
         public string option => "lhk";
     }
 }

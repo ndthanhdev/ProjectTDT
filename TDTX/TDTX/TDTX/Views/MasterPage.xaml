@@ -35,7 +35,7 @@
       <!--separator-->
       <BoxView HeightRequest="3" BackgroundColor="Black" VerticalOptions="End"></BoxView>
       <!--Settings-->
-      <StackLayout x:Name="SubStackLayout" Orientation="Horizontal" Margin="0,18,0,0" VerticalOptions="FillAndExpand">
+      <StackLayout x:Name="SubStackLayout" Orientation="Horizontal" Margin="0,18,0,0" HorizontalOptions="FillAndExpand">
         <StackLayout.GestureRecognizers>
           <TapGestureRecognizer x:Name="SettingTapGestureRecognizer" CommandParameter="{x:Type local:SettingsPage}" />
         </StackLayout.GestureRecognizers>

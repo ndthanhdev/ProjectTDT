@@ -7,7 +7,7 @@ using TDTX.Base;
 namespace TDTX
 {
     [JsonObject]
-    public class Settings:LocalObject
+    public class Settings:ILocalObject
     {
         private static Settings _instance;
         public static Settings Instance => _instance ?? new Settings();
@@ -19,6 +19,6 @@ namespace TDTX
         public string Language { get; set; }
         public string UserId { get; set; }
         public string UserPassword { get; set; }
-        public override string FileName => "a.json";
+        public string FileName => "a.json";
     }
 }

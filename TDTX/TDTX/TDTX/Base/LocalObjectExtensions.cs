@@ -10,7 +10,7 @@ namespace TDTX.Base
 {
     public static class LocalObjectExtensions
     {
-        public static async Task Load<T>(this LocalObject current) where T:LocalObject
+        public static async Task Load<T>(this ILocalObject current) where T:ILocalObject
         {
             if (await DependencyService.Get<ISaveAndLoad>().FileExists(current.FileName))
             {
@@ -18,5 +18,12 @@ namespace TDTX.Base
                 current = JsonConvert.DeserializeObject<T>(text);
             }
         }
+
+        public static async Task Save(this ILocalObject current)
+        {
+            string text = JsonConvert.SerializeObject(current);
+            await DependencyService.Get<ISaveAndLoad>().SaveTextAsync(current.FileName, text);
+        }
+
     }
 }

@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using TDTX.API;
@@ -54,7 +55,8 @@ namespace TDTX.Services
                     }
                     respond.Status = TransportStatusCode.OK;
                     //can replace with populate
-                    U respondContent = JsonConvert.DeserializeObject<U>(content);
+                    U respondContent = JsonConvert.DeserializeObject<U>(content,
+                        new IsoDateTimeConverter() {DateTimeFormat = "dd/MM/yyyy"});
                     respond.Respond = respondContent;
                 }
                 EndPoint:

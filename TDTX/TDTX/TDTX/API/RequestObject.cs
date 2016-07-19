@@ -7,6 +7,7 @@ namespace TDTX.API
 {
     public abstract class RequestObject
     {
+        [ApiIgnore]
         public string Query
         {
             get
@@ -14,8 +15,7 @@ namespace TDTX.API
                 Type t = this.GetType();
                 
                 var keyValues = from pro in t.GetProperties()
-                                where pro.Name != "Query"
-                                && pro.IsDefined(typeof(RequestPropertyAttribute))
+                                where !pro.IsDefined(typeof(ApiIgnoreAttribute))
                                 select string.Concat(pro.Name, "=", pro.GetValue(this)?.ToString() ?? "");
                 return string.Join("&", keyValues);
             }

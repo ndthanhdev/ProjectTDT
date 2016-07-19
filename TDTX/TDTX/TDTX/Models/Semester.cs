@@ -6,10 +6,7 @@ namespace TDTX.Models
 {
     public class Semester
     {
-        public int id { get; set; }
-
-        public string TenHocKy { get; set; }
-
-        public bool CanCompute => true;
+        public DateTime start { get; set; }
+        public List<Course> tkb { get; set; }
     }
 }

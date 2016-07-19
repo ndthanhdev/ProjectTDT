@@ -2,9 +2,31 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDTX.App"
+             
              xmlns:themes="clr-namespace:TDTX.Views.Themes;assembly=TDTX">
   <Application.Resources>
-    <ResourceDictionary MergedWith="themes:LightTheme" />
+    <!--<ResourceDictionary MergedWith="themes:LightTheme" />-->
     <!--<ResourceDictionary MergedWith="themes:LightThemeResources"/>-->
+    <ResourceDictionary>
+      <!--Static Value-->
+      <x:Int32 x:Key="ButtonBorderRadius">6</x:Int32>
+
+      <!--Color-->
+      <Color x:Key="PrimaryBackgroundColor">White</Color>
+      <Color x:Key="PrimaryForceGroundColor">Black</Color>
+      <Color x:Key="WarningContentBackgroundColor">#FFCC00</Color>
+
+      <!--Button-->
+      <Style Class="PrimaryButton" TargetType="Button" >
+        <Setter Property="BackgroundColor" Value="#0061AD"/>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryBackgroundColor}"/>
+        <Setter Property="BorderRadius" Value="{StaticResource ButtonBorderRadius}" />
+      </Style>
+      <Style Class="WarningButton" TargetType="Button" >
+        <Setter Property="BackgroundColor" Value="#FFCC00"/>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryBackgroundColor}" />
+        <Setter Property="BorderRadius" Value="{StaticResource ButtonBorderRadius}" />
+      </Style>
+    </ResourceDictionary>
   </Application.Resources>
 </Application>
