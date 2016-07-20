@@ -118,6 +118,7 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\Laos_flag_icon.png" />
     <Content Include="Images\menu.png" />
+    <Content Include="Images\piggy-bank.png" />
     <Content Include="Images\settings.png" />
     <Content Include="Images\United_Kingdom_flag_icon.png" />
     <Content Include="Images\user.png" />

@@ -148,4 +148,7 @@
   <data name="Time table" xml:space="preserve">
     <value>Time table</value>
   </data>
+  <data name="Tuition" xml:space="preserve">
+    <value>Tuition</value>
+  </data>
 </root>

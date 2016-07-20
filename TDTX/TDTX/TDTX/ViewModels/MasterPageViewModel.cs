@@ -29,7 +29,8 @@ namespace TDTX.ViewModels
                 //new MasterPageItem() {Title = "Option", TargetType = typeof(OptionPage)},
                 new MasterPageItem() {Title = "Time table",TargetType = typeof(TimeTablePage),IconSource = "Images/calendar.png"},
                 new MasterPageItem() {Title = "Notification",TargetType = typeof(NotificationPage),IconSource = "Images/worldwide.png"},
-                new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage), IconSource = "Images/settings.png"},
+                new MasterPageItem() {Title = "Tuition",TargetType = typeof(TuitionPage),IconSource = "Images/piggy-bank.png"},
+
                 //new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage), IconSource = "Images/settings.png"},
                 //new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage), IconSource = "Images/settings.png"},
                 //new MasterPageItem() {Title = "Settings", TargetType = typeof(TestPage), IconSource = "Images/settings.png"},

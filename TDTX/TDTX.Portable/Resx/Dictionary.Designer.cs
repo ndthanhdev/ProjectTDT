@@ -197,6 +197,15 @@ namespace TDTX.Portable.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tuition.
+        /// </summary>
+        public static string Tuition {
+            get {
+                return ResourceManager.GetString("Tuition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown.
         /// </summary>
         public static string Unknown {

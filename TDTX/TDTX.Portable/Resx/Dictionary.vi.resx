@@ -168,4 +168,7 @@
   <data name="Time table" xml:space="preserve">
     <value>Thời khóa biểu</value>
   </data>
+  <data name="Tuition" xml:space="preserve">
+    <value>Học phí</value>
+  </data>
 </root>
