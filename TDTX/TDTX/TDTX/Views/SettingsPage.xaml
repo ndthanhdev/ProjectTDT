@@ -8,7 +8,7 @@
              BindingContext="{x:Static vm:SettingsPageViewModel.Instance}">
   <!--<ScrollView Margin="16,24,8,8">
   </ScrollView>-->
-  <StackLayout>
+  <StackLayout Margin="16,24,8,8">
     <!--1-->
     <StackLayout Orientation="Horizontal">
       <Image Source="Images/user.png"></Image>

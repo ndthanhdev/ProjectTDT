@@ -15,7 +15,7 @@ namespace TDTX.Views.Controls
 
         public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create("CommandParameter", typeof(object), typeof(ButtonTextBottom), null);
 
-        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create("FontSize", typeof(double), typeof(ButtonTextBottom), 10.0D);
+        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create("FontSize", typeof(double), typeof(ButtonTextBottom), 9D);
 
         public static readonly BindableProperty ImageProperty = BindableProperty.Create("Image", typeof(string), typeof(ButtonTextBottom), string.Empty);
 

@@ -19,7 +19,7 @@
                      Factor=1,
                      Constant=-42}"/>
 
-        <Grid x:Name="AppBar" BackgroundColor="Aqua"
+        <Grid x:Name="AppBar" BackgroundColor="Silver"
                  RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0 }"
                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
                       Factor=1,
@@ -30,7 +30,7 @@
                Factor=1}"
                RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,
                      Constant=42}">
-          <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="36">
+          <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="36" Padding="3,3,3,3">
             <controls:ButtonTextBottom Text="alo" Image="Images/calendar.png"
                                        Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}" 
                                        CommandParameter="{x:Type views:TestPage}"/>

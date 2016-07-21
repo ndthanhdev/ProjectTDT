@@ -2,8 +2,7 @@
 <Grid xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDTX.Views.Controls.ButtonTextBottom" RowSpacing="0"
-      xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
-      BackgroundColor="Blue">
+      xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX">
   <Grid.GestureRecognizers>
     <TapGestureRecognizer Command="{Binding Command}" CommandParameter="{Binding CommandParameter}"/>
   </Grid.GestureRecognizers>
