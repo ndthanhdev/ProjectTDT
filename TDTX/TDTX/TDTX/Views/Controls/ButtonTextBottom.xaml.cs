@@ -13,6 +13,8 @@ namespace TDTX.Views.Controls
     {
         public static readonly BindableProperty CommandProperty = BindableProperty.Create("Command", typeof(ICommand), typeof(ButtonTextBottom), null);
 
+        public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create("CommandParameter", typeof(object), typeof(ButtonTextBottom), null);
+
         public static readonly BindableProperty FontSizeProperty = BindableProperty.Create("FontSize", typeof(double), typeof(ButtonTextBottom), 10.0D);
 
         public static readonly BindableProperty ImageProperty = BindableProperty.Create("Image", typeof(string), typeof(ButtonTextBottom), string.Empty);
@@ -24,6 +26,12 @@ namespace TDTX.Views.Controls
         {
             get { return (ICommand)GetValue(CommandProperty); }
             set { SetValue(CommandProperty, value); }
+        }
+
+        public object CommandParameter
+        {
+            get { return GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
         }
 
         public double FontSize
@@ -50,6 +58,7 @@ namespace TDTX.Views.Controls
         {
             InitializeComponent();
             this.BindingContext = this;
+
         }
     }
 }

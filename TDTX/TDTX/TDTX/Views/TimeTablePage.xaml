@@ -5,9 +5,10 @@
              xmlns:views="clr-namespace:TDTX.Views;assembly=TDTX"
              xmlns:controls="clr-namespace:TDTX.Views.Controls;assembly=TDTX"
              x:Class="TDTX.Views.TimeTablePage"
+             xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
              Title="{extensions:Translate Time table}">
   <MultiPage.Children>
-    <ContentPage>
+    <ContentPage BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}">
       <RelativeLayout x:Name="BackgroundLayout">
         <Grid x:Name="ContentLayout" BackgroundColor="Gray"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
@@ -30,11 +31,14 @@
                RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,
                      Constant=42}">
           <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="36">
-            <controls:ButtonTextBottom Text="alo" Image="Images/calendar.png"/>
-            <controls:ButtonTextBottom Text="ola" Image="Images/calendar.png"/>
+            <controls:ButtonTextBottom Text="alo" Image="Images/calendar.png"
+                                       Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}" 
+                                       CommandParameter="{x:Type views:TestPage}"/>
+            <controls:ButtonTextBottom Text="ola" Image="Images/calendar.png"
+                                       Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}" 
+                                       CommandParameter="{x:Type views:SettingsPage}"/>
             <controls:ButtonTextBottom Text="ala" Image="Images/calendar.png"/>
           </StackLayout>
-
         </Grid>
 
       </RelativeLayout>

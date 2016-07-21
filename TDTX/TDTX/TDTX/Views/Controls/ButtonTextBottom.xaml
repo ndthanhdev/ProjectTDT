@@ -1,16 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Grid xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TDTX.Views.Controls.ButtonTextBottom" RowSpacing="0">
+             x:Class="TDTX.Views.Controls.ButtonTextBottom" RowSpacing="0"
+      xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
+      BackgroundColor="Blue">
   <Grid.GestureRecognizers>
-    <TapGestureRecognizer Command="{Binding Command}"/>
+    <TapGestureRecognizer Command="{Binding Command}" CommandParameter="{Binding CommandParameter}"/>
   </Grid.GestureRecognizers>
   <Grid.RowDefinitions>
     <RowDefinition/>
     <RowDefinition Height="Auto"/>
   </Grid.RowDefinitions>
   <Image Grid.Row="0"  Source="{Binding Image}" Aspect="AspectFit" VerticalOptions="Center" />
-	<Label Grid.Row="1" Text="{Binding Text}" 
+  <Label Grid.Row="1" Text="{Binding Text}"
           VerticalOptions="StartAndExpand" VerticalTextAlignment="Start"
           HorizontalTextAlignment="Center"/>
 </Grid>

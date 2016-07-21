@@ -6,27 +6,28 @@
              x:Class="TDTX.Views.SettingsPage"
              Title="{extensions:Translate Settings}"
              BindingContext="{x:Static vm:SettingsPageViewModel.Instance}">
-  <ScrollView Margin="16,24,8,8">
-    <StackLayout>
-      <!--1-->
-      <StackLayout Orientation="Horizontal">
-        <Image Source="Images/user.png"></Image>
-        <Button Text="{extensions:Translate Logout}" StyleClass="PrimaryButton" Command="{Binding LogoutCommand}"/>
-      </StackLayout>
-      <BoxView HeightRequest="16"></BoxView>
-      <!--2-->
-      <StackLayout Orientation="Horizontal">
-        <Image Source="Images/internet.png"/>
-        <Label VerticalOptions="Center" Text="Languages"/>
-      </StackLayout>
-      <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-        <Button Image="Images/United_Kingdom_flag_icon.png" Text="English"
-                Command="{Binding SelectLanguageCommand}" CommandParameter="en" />
-        <Button Image="Images/Laos_flag_icon.png" Text="Laos" IsEnabled="False"/>
-        <Button Image="Images/Vietnam_flag_icon.png" Text="Tiếng Việt"
-                 Command="{Binding SelectLanguageCommand}" CommandParameter="vi"/>
-      </StackLayout>
-
+  <!--<ScrollView Margin="16,24,8,8">
+  </ScrollView>-->
+  <StackLayout>
+    <!--1-->
+    <StackLayout Orientation="Horizontal">
+      <Image Source="Images/user.png"></Image>
+      <Button Text="{extensions:Translate Logout}" StyleClass="PrimaryButton" Command="{Binding LogoutCommand}"/>
     </StackLayout>
-  </ScrollView>
+    <BoxView HeightRequest="16"></BoxView>
+    <!--2-->
+    <StackLayout Orientation="Horizontal">
+      <Image Source="Images/internet.png"/>
+      <Label VerticalOptions="Center" Text="Languages"/>
+    </StackLayout>
+    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+      <Button Image="Images/United_Kingdom_flag_icon.png" Text="English"
+              Command="{Binding SelectLanguageCommand}" CommandParameter="en" />
+      <Button Image="Images/Laos_flag_icon.png" Text="Laos" IsEnabled="False"/>
+      <Button Image="Images/Vietnam_flag_icon.png" Text="Tiếng Việt"
+              Command="{Binding SelectLanguageCommand}" CommandParameter="vi"/>
+    </StackLayout>
+
+  </StackLayout>
+
 </ContentPage>

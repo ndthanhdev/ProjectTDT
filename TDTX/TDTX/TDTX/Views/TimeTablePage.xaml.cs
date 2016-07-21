@@ -3,26 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using GalaSoft.MvvmLight.Command;
+using TDTX.ViewModels;
 using Xamarin.Forms;
 
 namespace TDTX.Views
 {
     public partial class TimeTablePage : MultiPage<Page>
     {
-        private SettingsPage sp;
+        private Page DetailPage
+        {
+            get
+            {
+                if (Children.Count < 2)
+                    return null;
+                return Children[1];
+            }
+            set
+            {
+                Children.Add(value);
+                while (Children.Count > 2)
+                    Children.RemoveAt(1);
+            }
+        }
         public TimeTablePage()
         {
             InitializeComponent();
-            sp= new SettingsPage();
-            Children.Add(sp);
+            DetailPage = new SettingsPage();
+            Children.Add(DetailPage);
             BackgroundLayout.SizeChanged += BackgroundLayout_SizeChanged;
+            TimeTablePageViewModel.Instance.Navigated += page =>
+            {
+                DetailPage = page;
+                DetailPage?.Layout(ContentLayout.Bounds);
+            };
         }
 
-        private  void BackgroundLayout_SizeChanged(object sender, EventArgs e)
+        private void BackgroundLayout_SizeChanged(object sender, EventArgs e)
         {
             if (ContentLayout.Bounds.Height > 0)
-                sp.Layout(ContentLayout.Bounds);
+                DetailPage?.Layout(ContentLayout.Bounds);
+
         }
 
         protected override Page CreateDefault(object item)
@@ -31,5 +52,7 @@ namespace TDTX.Views
             p.Content = new Label() { Text = "time table default" };
             return p;
         }
+
+
     }
 }
