@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
              xmlns:views="clr-namespace:TDTX.Views;assembly=TDTX"
+             xmlns:controls="clr-namespace:TDTX.Views.Controls;assembly=TDTX"
              x:Class="TDTX.Views.TimeTablePage"
              Title="{extensions:Translate Time table}">
   <MultiPage.Children>
@@ -11,25 +12,29 @@
         <Grid x:Name="ContentLayout" BackgroundColor="Gray"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                      Property=Width,
-                     Factor=1,
-                     Constant=-30}"
+                     Factor=1}"
                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                      Property=Height,
                      Factor=1,
-                     Constant=-36}"/>
+                     Constant=-42}"/>
 
         <Grid x:Name="AppBar" BackgroundColor="Aqua"
                  RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0 }"
                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
                       Factor=1,
-                      Constant=-36,
+                      Constant=-42,
                       Property=Height}"
                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                Property=Width,
-               Factor=1,
-               Constant=-20}"
+               Factor=1}"
                RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,
-                     Constant=36}">
+                     Constant=42}">
+          <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="36">
+            <controls:ButtonTextBottom Text="alo" Image="Images/calendar.png"/>
+            <controls:ButtonTextBottom Text="ola" Image="Images/calendar.png"/>
+            <controls:ButtonTextBottom Text="ala" Image="Images/calendar.png"/>
+          </StackLayout>
+
         </Grid>
 
       </RelativeLayout>

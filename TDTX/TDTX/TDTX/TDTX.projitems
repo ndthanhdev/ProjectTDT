@@ -44,6 +44,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Base\FileImageProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Base\ImageProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Base\TextProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\ButtonTextBottom.xaml.cs">
+      <DependentUpon>ButtonTextBottom.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\ImageResourceConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\String2String.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\TranslateConverter.cs" />
@@ -166,6 +170,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TuitionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Controls\ButtonTextBottom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

@@ -19,11 +19,10 @@ namespace TDTX.Views
             BackgroundLayout.SizeChanged += BackgroundLayout_SizeChanged;
         }
 
-        private async void BackgroundLayout_SizeChanged(object sender, EventArgs e)
+        private  void BackgroundLayout_SizeChanged(object sender, EventArgs e)
         {
-            while (ContentLayout.Bounds.Width < 0 || ContentLayout.Bounds.Height < 0)
-                await Task.Yield();
-            sp.Layout(ContentLayout.Bounds);
+            if (ContentLayout.Bounds.Height > 0)
+                sp.Layout(ContentLayout.Bounds);
         }
 
         protected override Page CreateDefault(object item)
