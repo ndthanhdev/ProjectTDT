@@ -13,16 +13,30 @@ namespace TDTX.ViewModels
         private static TimeTablePageViewModel _instance;
         public static TimeTablePageViewModel Instance => _instance ?? new TimeTablePageViewModel();
 
+        private Page _detail;
+        /// <summary>
+        /// Current page show on main zone
+        /// </summary>
+        public Page Detail
+        {
+            get { return _detail = _detail ?? new SettingsPage(); }
+            set
+            {
+                _detail = value;
+
+                Navigated?.Invoke(_detail);
+            }
+        }
+
         private TimeTablePageViewModel()
         {
-            DetailPage = new SettingsPage();
+            Detail = new SettingsPage();
             _instance = this;
         }
 
-        public Page DetailPage { get; set; }
         public RelayCommand<Type> SelectPageCommand => new RelayCommand<Type>(t =>
         {
-            Navigated((Page)Activator.CreateInstance(t));
+            Detail = (Page)Activator.CreateInstance(t);
         });
 
         public delegate void NavigateEventHandler(Page destinationPage);

@@ -28,15 +28,16 @@ namespace TDTX.Views
         }
         public TimeTablePage()
         {
-            InitializeComponent();
-            DetailPage = new SettingsPage();
-            Children.Add(DetailPage);
-            BackgroundLayout.SizeChanged += BackgroundLayout_SizeChanged;
-            TimeTablePageViewModel.Instance.Navigated += page =>
+            TimeTablePageViewModel.Instance.Navigated = page =>
             {
                 DetailPage = page;
                 DetailPage?.Layout(ContentLayout.Bounds);
             };
+
+            InitializeComponent();
+            DetailPage = TimeTablePageViewModel.Instance.Detail;
+            BackgroundLayout.SizeChanged += BackgroundLayout_SizeChanged;
+
         }
 
         private void BackgroundLayout_SizeChanged(object sender, EventArgs e)
