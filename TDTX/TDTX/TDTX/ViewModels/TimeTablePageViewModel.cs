@@ -4,6 +4,7 @@ using System.Text;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using TDTX.Views;
+using TDTX.Views.TimeTableSubs;
 using Xamarin.Forms;
 
 namespace TDTX.ViewModels
@@ -19,7 +20,7 @@ namespace TDTX.ViewModels
         /// </summary>
         public Page Detail
         {
-            get { return _detail = _detail ?? new SettingsPage(); }
+            get { return _detail = _detail ?? new DayPage(); }
             set
             {
                 _detail = value;
@@ -30,7 +31,6 @@ namespace TDTX.ViewModels
 
         private TimeTablePageViewModel()
         {
-            Detail = new SettingsPage();
             _instance = this;
         }
 

@@ -6,58 +6,65 @@
              xmlns:controls="clr-namespace:TDTX.Views.Controls;assembly=TDTX"
              x:Class="TDTX.Views.TimeTablePage"
              xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
+             xmlns:timeTableSubs="clr-namespace:TDTX.Views.TimeTableSubs;assembly=TDTX"
              Title="{extensions:Translate Time table}">
   <MultiPage.Children>
     <ContentPage BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}">
       <RelativeLayout x:Name="BackgroundLayout">
-        <Grid x:Name="ContentLayout" BackgroundColor="Gray"
+        <Grid x:Name="ContentLayout"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                      Property=Width,
                      Factor=1}"
                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                      Property=Height,
                      Factor=1,
-                     Constant=-42}"/>
-
-        <Grid x:Name="AppBar" BackgroundColor="Silver"
+                     Constant=-43}"/>
+        <BoxView BackgroundColor="Gray"
+                 RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0 }"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                      Factor=1,
+                      Constant=-43,
+                      Property=Height}"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                      Property=Width,
+                      Factor=1}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,
+                      Constant=1}"/>
+        <Grid x:Name="AppBar"
                  RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0 }"
                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
                       Factor=1,
                       Constant=-42,
                       Property=Height}"
-               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
-               Property=Width,
-               Factor=1}"
-               RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,
-                     Constant=42}">
-          <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="36" Padding="3,3,3,3">
-            <controls:ButtonTextBottom Text="alo" Image="Images/calendar.png"
-                                       Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}" 
-                                       CommandParameter="{x:Type views:TestPage}"/>
-            <controls:ButtonTextBottom Text="ola" Image="Images/calendar.png"
-                                       Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}" 
-                                       CommandParameter="{x:Type views:SettingsPage}"/>
-            <controls:ButtonTextBottom Text="ala" Image="Images/calendar.png"/>
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                      Property=Width,
+                      Factor=1}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,
+                      Constant=42}"
+                 Padding="3,3,8,3">
+          <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="36" >
+            <!--Day-->
+            <controls:ButtonTextBottom x:Name="DayBtb" Text="{extensions:Translate Day}"
+                            Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}"
+                            CommandParameter="{x:Type timeTableSubs:DayPage}"/>
+            <!--Week-->
+            <controls:ButtonTextBottom x:Name="WeekBtb" Text="{extensions:Translate Week}"
+                            Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}"
+                            CommandParameter="{x:Type timeTableSubs:WeekPage}"/>
+            <!--Month-->
+            <controls:ButtonTextBottom x:Name="MonthBtb" Text="{extensions:Translate Month}"
+                            Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}"
+                            CommandParameter="{x:Type timeTableSubs:MonthPage}"/>
+            <!--Overall-->
+            <controls:ButtonTextBottom x:Name="OverallBtb" Text="{extensions:Translate Overall}"
+                            Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}"
+                            CommandParameter="{x:Type timeTableSubs:OverallPage}"/>
+
           </StackLayout>
         </Grid>
 
       </RelativeLayout>
     </ContentPage>
-    <!--<CarouselPage x:Name="ContentPages" BackgroundColor="White">
-      <ContentPage>
-        <Label Text="1"></Label>
-      </ContentPage>
-      <ContentPage>
-        <Label Text="2"></Label>
-      </ContentPage>
-
-    </CarouselPage>-->
-
-
-
-    <!--<ContentPage x:Name="RootPage" BackgroundColor="Gray">
-    </ContentPage>-->
-
   </MultiPage.Children>
 
 

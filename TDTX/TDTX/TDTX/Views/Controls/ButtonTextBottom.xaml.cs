@@ -21,6 +21,8 @@ namespace TDTX.Views.Controls
 
         public static readonly BindableProperty TextProperty = BindableProperty.Create("Text", typeof(string), typeof(ButtonTextBottom), string.Empty);
 
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(ButtonTextBottom), Color.Default);
+
 
         public ICommand Command
         {
@@ -52,13 +54,17 @@ namespace TDTX.Views.Controls
             set { SetValue(TextProperty, value); }
         }
 
+        public Color TextColor
+        {
+            get { return (Color)GetValue(TextColorProperty); }
+            set { SetValue(TextColorProperty, value); }
+        }
 
 
         public ButtonTextBottom()
         {
             InitializeComponent();
             this.BindingContext = this;
-
         }
     }
 }

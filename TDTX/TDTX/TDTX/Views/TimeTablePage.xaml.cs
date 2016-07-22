@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
 using TDTX.ViewModels;
+using TDTX.Views.TimeTableSubs;
 using Xamarin.Forms;
 
 namespace TDTX.Views
@@ -28,16 +29,11 @@ namespace TDTX.Views
         }
         public TimeTablePage()
         {
-            TimeTablePageViewModel.Instance.Navigated = page =>
-            {
-                DetailPage = page;
-                DetailPage?.Layout(ContentLayout.Bounds);
-            };
 
             InitializeComponent();
-            DetailPage = TimeTablePageViewModel.Instance.Detail;
+            Navigated(TimeTablePageViewModel.Instance.Detail);
             BackgroundLayout.SizeChanged += BackgroundLayout_SizeChanged;
-
+            TimeTablePageViewModel.Instance.Navigated = Navigated;
         }
 
         private void BackgroundLayout_SizeChanged(object sender, EventArgs e)
@@ -54,6 +50,47 @@ namespace TDTX.Views
             return p;
         }
 
+        private void Navigated(Page page)
+        {
+            DetailPage = page;
+            DetailPage?.Layout(ContentLayout.Bounds);
+            UpdateAppBarUI(DetailPage.GetType());
+        }
 
+        private void UpdateAppBarUI(Type t)
+        {
+            //reset
+            DayBtb.Image = "Images/day.png";
+            DayBtb.TextColor = Color.Gray;
+            WeekBtb.Image = "Images/week.png";
+            WeekBtb.TextColor = Color.Gray;
+            MonthBtb.Image = "Images/month.png";
+            MonthBtb.TextColor = Color.Gray;
+            OverallBtb.Image = "Images/overall.png";
+            OverallBtb.TextColor = Color.Gray;
+
+            if (t.Equals(typeof(DayPage)))
+            {
+                DayBtb.Image = "Images/day selected.png";
+                DayBtb.TextColor = Color.FromHex("#006DF0");
+            }
+            else if (t.Equals(typeof(WeekPage)))
+            {
+                WeekBtb.Image = "Images/week selected.png";
+                WeekBtb.TextColor = Color.FromHex("#006DF0");
+            }
+            else if (t.Equals(typeof(MonthPage)))
+            {
+                MonthBtb.Image = "Images/month selected.png";
+                MonthBtb.TextColor = Color.FromHex("#006DF0");
+            }
+            else if (t.Equals(typeof(OverallPage)))
+            {
+                OverallBtb.Image = "Images/overall selected.png";
+                OverallBtb.TextColor = Color.FromHex("#006DF0");
+            }
+
+
+        }
     }
 }

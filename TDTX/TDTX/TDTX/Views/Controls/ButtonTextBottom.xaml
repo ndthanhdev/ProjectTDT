@@ -11,7 +11,7 @@
     <RowDefinition Height="Auto"/>
   </Grid.RowDefinitions>
   <Image Grid.Row="0"  Source="{Binding Image}" Aspect="AspectFit" VerticalOptions="Center" />
-  <Label Grid.Row="1" Text="{Binding Text}"
+  <Label Grid.Row="1" Text="{Binding Text}" FontSize="{Binding FontSize}" TextColor="{Binding TextColor}"
           VerticalOptions="StartAndExpand" VerticalTextAlignment="Start"
           HorizontalTextAlignment="Center"/>
 </Grid>

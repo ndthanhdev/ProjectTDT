@@ -112,12 +112,20 @@
     <None Include="Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\week selected.png" />
+    <Content Include="Images\week.png" />
+    <Content Include="Images\day selected.png" />
+    <Content Include="Images\day.png" />
+    <Content Include="Images\month.png" />
     <Content Include="circle_earn.png" />
-    <Content Include="Images\calendar.png" />
+    <Content Include="Images\month selected.png" />
+    <Content Include="Images\Calendar.png" />
     <Content Include="Images\internet.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\Laos_flag_icon.png" />
     <Content Include="Images\menu.png" />
+    <Content Include="Images\overall selected.png" />
+    <Content Include="Images\overall.png" />
     <Content Include="Images\piggy-bank.png" />
     <Content Include="Images\settings.png" />
     <Content Include="Images\United_Kingdom_flag_icon.png" />
