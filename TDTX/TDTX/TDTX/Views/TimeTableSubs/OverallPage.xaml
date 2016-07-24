@@ -5,14 +5,18 @@
              x:Class="TDTX.Views.TimeTableSubs.OverallPage"
              xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
              BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}">
-  <StackLayout>
-
-    <Grid Margin="16,24,8,8">
-      <Picker x:Name="SemesterPicker" Title="{extensions:Translate Choose a semester}" 
-              SelectedIndex="{Binding SelectedSemesterIndex,Mode=OneWayToSource}" />
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Grid Grid.Row="0" Margin="16,24,8,8">
+      <Picker x:Name="SemesterPicker" Title="{extensions:Translate Choose a semester}"
+              SelectedIndex="{Binding SelectedSemesterIndex,Mode=OneWayToSource}"
+              SelectedIndexChanged="SemesterPicker_OnSelectedIndexChanged" />
     </Grid>
 
-    <Grid VerticalOptions="FillAndExpand">
+    <Grid Grid.Row="1" VerticalOptions="FillAndExpand">
       <Grid.RowDefinitions>
         <RowDefinition Height="1"/>
         <RowDefinition/>
@@ -36,16 +40,30 @@
       <BoxView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
       <BoxView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
 
-      <Grid Grid.Row="1" Grid.Column="0"></Grid>
-      <Grid Grid.Row="1" Grid.Column="2"></Grid>
-      <Grid Grid.Row="3" Grid.Column="0"></Grid>
-      <Grid Grid.Row="3" Grid.Column="2"></Grid>
-      <Grid Grid.Row="5" Grid.Column="0"></Grid>
-      <Grid Grid.Row="5" Grid.Column="2"></Grid>
-      <Grid Grid.Row="7" Grid.Column="0"></Grid>
+      <Grid Grid.Row="1" Grid.Column="0">
+        <ListView Header="{extensions:Translate MON}" ItemsSource="{Binding OverallMonday}"/>
+      </Grid>
+      <Grid Grid.Row="1" Grid.Column="2">
+        <ListView Header="{extensions:Translate TUE}" ItemsSource="{Binding OverallTuesday}"/>
+      </Grid>
+      <Grid Grid.Row="3" Grid.Column="0">
+        <ListView Header="{extensions:Translate WED}" ItemsSource="{Binding OverallWednesday}"/>
+      </Grid>
+      <Grid Grid.Row="3" Grid.Column="2">
+        <ListView Header="{extensions:Translate THU}" ItemsSource="{Binding OverallThursday}"/>
+      </Grid>
+      <Grid Grid.Row="5" Grid.Column="0">
+        <ListView Header="{extensions:Translate FRI}" ItemsSource="{Binding OverallFriday}"/>
+      </Grid>
+      <Grid Grid.Row="5" Grid.Column="2">
+        <ListView Header="{extensions:Translate SAT}" ItemsSource="{Binding OverallSaturday}"/>
+      </Grid>
+      <Grid Grid.Row="7" Grid.Column="0">
+        <ListView Header="{extensions:Translate SUN}" ItemsSource="{Binding OverallSunday}"/>
+      </Grid>
 
       <Grid Grid.Row="7" Grid.Column="2"></Grid>
     </Grid>
 
-  </StackLayout>
+  </Grid>
 </ContentPage>

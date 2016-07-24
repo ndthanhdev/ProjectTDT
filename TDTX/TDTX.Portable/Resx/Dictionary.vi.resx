@@ -186,4 +186,25 @@
   <data name="Choose a semester" xml:space="preserve">
     <value>Chọn một học kỳ</value>
   </data>
+  <data name="MON" xml:space="preserve">
+    <value>T2</value>
+  </data>
+  <data name="TUE" xml:space="preserve">
+    <value>T3</value>
+  </data>
+  <data name="WED" xml:space="preserve">
+    <value>T4</value>
+  </data>
+  <data name="THU" xml:space="preserve">
+    <value>T5</value>
+  </data>
+  <data name="FRI" xml:space="preserve">
+    <value>T6</value>
+  </data>
+  <data name="SAT" xml:space="preserve">
+    <value>T7</value>
+  </data>
+  <data name="SUN" xml:space="preserve">
+    <value>CN</value>
+  </data>
 </root>

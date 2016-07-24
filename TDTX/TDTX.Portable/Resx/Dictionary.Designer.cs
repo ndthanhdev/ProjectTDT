@@ -89,6 +89,15 @@ namespace TDTX.Portable.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FRI.
+        /// </summary>
+        public static string FRI {
+            get {
+                return ResourceManager.GetString("FRI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {
@@ -112,6 +121,15 @@ namespace TDTX.Portable.Resx {
         public static string Menu {
             get {
                 return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MON.
+        /// </summary>
+        public static string MON {
+            get {
+                return ResourceManager.GetString("MON", resourceCulture);
             }
         }
         
@@ -197,6 +215,15 @@ namespace TDTX.Portable.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SAT.
+        /// </summary>
+        public static string SAT {
+            get {
+                return ResourceManager.GetString("SAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {
@@ -215,6 +242,24 @@ namespace TDTX.Portable.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SUN.
+        /// </summary>
+        public static string SUN {
+            get {
+                return ResourceManager.GetString("SUN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to THU.
+        /// </summary>
+        public static string THU {
+            get {
+                return ResourceManager.GetString("THU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time table.
         /// </summary>
         public static string Time_table {
@@ -229,6 +274,15 @@ namespace TDTX.Portable.Resx {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TUE.
+        /// </summary>
+        public static string TUE {
+            get {
+                return ResourceManager.GetString("TUE", resourceCulture);
             }
         }
         
@@ -256,6 +310,15 @@ namespace TDTX.Portable.Resx {
         public static string UnknownDetail {
             get {
                 return ResourceManager.GetString("UnknownDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WED.
+        /// </summary>
+        public static string WED {
+            get {
+                return ResourceManager.GetString("WED", resourceCulture);
             }
         }
         

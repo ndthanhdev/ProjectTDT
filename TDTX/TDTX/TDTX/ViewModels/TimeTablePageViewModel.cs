@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace TDTX.ViewModels
 {
-    public class TimeTablePageViewModel : ViewModelBase
+    public partial class TimeTablePageViewModel : ViewModelBase
     {
         private static TimeTablePageViewModel _instance;
         public static TimeTablePageViewModel Instance => _instance ?? new TimeTablePageViewModel();
@@ -30,12 +30,6 @@ namespace TDTX.ViewModels
                 MessagingCenter.Send<TimeTablePageViewModel, ContentPage>(this, "Navigated", _detail);
             }
         }
-
-        /// <summary>
-        /// indicated index of SemesterList
-        /// </summary>
-        [JsonIgnore]
-        public int SelectedSemesterIndex{get;set;}
 
         private TimeTablePageViewModel()
         {
@@ -56,10 +50,7 @@ namespace TDTX.ViewModels
             {
                 return _semesterInforList = _semesterInforList ?? new List<SemesterInfor>()
             {
-                new SemesterInfor() {id = 1,TenHocKy = "HK 1"},
-                new SemesterInfor() {id = 2,TenHocKy = "HK 2"},
-                new SemesterInfor() {id = 3,TenHocKy = "HK 3"},
-
+                new SemesterInfor() {id = 83,TenHocKy = "HK 3/HK hè 2015-2016"}
             };
             }
             set
@@ -70,6 +61,13 @@ namespace TDTX.ViewModels
         }
 
         private Dictionary<SemesterInfor, Semester> _semesterDictionary;
-        public Dictionary<SemesterInfor, Semester> SemesterDictionary => null;
+        /// <summary>
+        /// provide infor of all semester ready to use
+        /// </summary>
+        public Dictionary<SemesterInfor, Semester> SemesterDictionary
+        {
+            get { return _semesterDictionary = _semesterDictionary ?? new Dictionary<SemesterInfor, Semester>(); }
+            set { _semesterDictionary = value; }
+        }
     }
 }

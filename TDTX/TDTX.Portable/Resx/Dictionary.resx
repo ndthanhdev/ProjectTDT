@@ -166,4 +166,25 @@
   <data name="Choose a semester" xml:space="preserve">
     <value>Choose a semester</value>
   </data>
+  <data name="MON" xml:space="preserve">
+    <value>MON</value>
+  </data>
+  <data name="TUE" xml:space="preserve">
+    <value>TUE</value>
+  </data>
+  <data name="WED" xml:space="preserve">
+    <value>WED</value>
+  </data>
+  <data name="THU" xml:space="preserve">
+    <value>THU</value>
+  </data>
+  <data name="FRI" xml:space="preserve">
+    <value>FRI</value>
+  </data>
+  <data name="SAT" xml:space="preserve">
+    <value>SAT</value>
+  </data>
+  <data name="SUN" xml:space="preserve">
+    <value>SUN</value>
+  </data>
 </root>

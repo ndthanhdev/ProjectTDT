@@ -28,5 +28,9 @@ namespace TDTX.Views.TimeTableSubs
                 SemesterPicker.Items.Add(si.TenHocKy);
         }
 
+        private void SemesterPicker_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            TimeTablePageViewModel.Instance.UpdateOverall();
+        }
     }
 }
