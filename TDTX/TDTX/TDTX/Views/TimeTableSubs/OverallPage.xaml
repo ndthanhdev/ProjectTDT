@@ -2,10 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
-             x:Class="TDTX.Views.TimeTableSubs.OverallPage">
+             x:Class="TDTX.Views.TimeTableSubs.OverallPage"
+             xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
+             BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}">
   <StackLayout>
+
+    <Grid Margin="16,24,8,8">
+      <Picker x:Name="SemesterPicker" Title="{extensions:Translate Choose a semester}" 
+              SelectedIndex="{Binding SelectedSemesterIndex,Mode=OneWayToSource}" />
+    </Grid>
+
     <Grid VerticalOptions="FillAndExpand">
       <Grid.RowDefinitions>
+        <RowDefinition Height="1"/>
         <RowDefinition/>
         <RowDefinition Height="1"/>
         <RowDefinition/>
@@ -20,23 +29,23 @@
         <ColumnDefinition/>
       </Grid.ColumnDefinitions>
       <!--seperator-->
-      <BoxView Grid.Row="0" Grid.Column="1" Grid.RowSpan="7" BackgroundColor="Gray"/>
+      <BoxView Grid.Row="0" Grid.Column="1" Grid.RowSpan="8" BackgroundColor="Gray"/>
 
-      <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
-      <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
-      <BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
+      <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
+      <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
+      <BoxView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
+      <BoxView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
 
-      <Grid Grid.Row="0" Grid.Column="0">
-        <Button Text="t2"></Button>
-      </Grid>
-      <Grid Grid.Row="0" Grid.Column="2" HeightRequest="100">
-        <Button Text="t3"></Button>
-      </Grid>
-      <Grid Grid.Row="2" Grid.Column="0"></Grid>
-      <Grid Grid.Row="2" Grid.Column="2"></Grid>
-      <Grid Grid.Row="4" Grid.Column="0"></Grid>
-      <Grid Grid.Row="4" Grid.Column="2"></Grid>
-      <Grid Grid.Row="6" Grid.Column="0"></Grid>
+      <Grid Grid.Row="1" Grid.Column="0"></Grid>
+      <Grid Grid.Row="1" Grid.Column="2"></Grid>
+      <Grid Grid.Row="3" Grid.Column="0"></Grid>
+      <Grid Grid.Row="3" Grid.Column="2"></Grid>
+      <Grid Grid.Row="5" Grid.Column="0"></Grid>
+      <Grid Grid.Row="5" Grid.Column="2"></Grid>
+      <Grid Grid.Row="7" Grid.Column="0"></Grid>
+
+      <Grid Grid.Row="7" Grid.Column="2"></Grid>
     </Grid>
+
   </StackLayout>
 </ContentPage>

@@ -22,7 +22,9 @@ namespace TDTX.Views
             }
             set
             {
+                value.SizeChanged += BackgroundLayout_SizeChanged;
                 Children.Add(value);
+
                 while (Children.Count > 2)
                     Children.RemoveAt(1);
             }
@@ -34,7 +36,7 @@ namespace TDTX.Views
             InitializeComponent();
             Navigated(TimeTablePageViewModel.Instance.Detail);
             BackgroundLayout.SizeChanged += BackgroundLayout_SizeChanged;
-            TimeTablePageViewModel.Instance.Navigated = Navigated;
+            MessagingCenter.Subscribe<TimeTablePageViewModel,ContentPage>(this,"Navigated",(sender,page)=>Navigated(page));
         }
 
         private void BackgroundLayout_SizeChanged(object sender, EventArgs e)

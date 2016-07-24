@@ -62,6 +62,15 @@ namespace TDTX.Portable.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose a semester.
+        /// </summary>
+        public static string Choose_a_semester {
+            get {
+                return ResourceManager.GetString("Choose a semester", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Day.
         /// </summary>
         public static string Day {

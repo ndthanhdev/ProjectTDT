@@ -183,4 +183,7 @@
   <data name="Month" xml:space="preserve">
     <value>Tháng</value>
   </data>
+  <data name="Choose a semester" xml:space="preserve">
+    <value>Chọn một học kỳ</value>
+  </data>
 </root>
