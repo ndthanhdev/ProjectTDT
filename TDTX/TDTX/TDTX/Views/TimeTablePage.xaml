@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MultiPage x:TypeArguments="Page" xmlns="http://xamarin.com/schemas/2014/forms"
+<MultiPage x:TypeArguments="ContentPage" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
              xmlns:views="clr-namespace:TDTX.Views;assembly=TDTX"
@@ -11,11 +11,14 @@
   <MultiPage.Children>
     <ContentPage BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}">
       <RelativeLayout x:Name="BackgroundLayout">
-        <Grid x:Name="ContentLayout"
+        <AbsoluteLayout x:Name="ContentLayout"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                      Property=Width,
                      Factor=1}"
-                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                      Property=Height,
                      Factor=1,
                      Constant=-43}"/>
@@ -30,7 +33,7 @@
                       Factor=1}"
                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,
                       Constant=1}"/>
-        <Grid x:Name="AppBar"
+        <Grid x:Name="BarLayout"
                  RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0 }"
                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
                       Factor=1,
@@ -61,6 +64,7 @@
                             CommandParameter="{x:Type timeTableSubs:OverallPage}"/>
 
           </StackLayout>
+
         </Grid>
 
       </RelativeLayout>

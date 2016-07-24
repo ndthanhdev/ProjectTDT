@@ -14,11 +14,11 @@ namespace TDTX.ViewModels
         private static TimeTablePageViewModel _instance;
         public static TimeTablePageViewModel Instance => _instance ?? new TimeTablePageViewModel();
 
-        private Page _detail;
+        private ContentPage _detail;
         /// <summary>
         /// Current page show on main zone
         /// </summary>
-        public Page Detail
+        public ContentPage Detail
         {
             get { return _detail = _detail ?? new DayPage(); }
             set
@@ -36,10 +36,10 @@ namespace TDTX.ViewModels
 
         public RelayCommand<Type> SelectPageCommand => new RelayCommand<Type>(t =>
         {
-            Detail = (Page)Activator.CreateInstance(t);
+            Detail = (ContentPage)Activator.CreateInstance(t);
         });
 
-        public delegate void NavigateEventHandler(Page destinationPage);
+        public delegate void NavigateEventHandler(ContentPage destinationPage);
 
         public NavigateEventHandler Navigated;
     }

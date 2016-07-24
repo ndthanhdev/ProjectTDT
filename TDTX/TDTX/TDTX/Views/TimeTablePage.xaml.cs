@@ -10,9 +10,9 @@ using Xamarin.Forms;
 
 namespace TDTX.Views
 {
-    public partial class TimeTablePage : MultiPage<Page>
+    public partial class TimeTablePage : MultiPage<ContentPage>
     {
-        private Page DetailPage
+        private ContentPage DetailPage
         {
             get
             {
@@ -27,6 +27,7 @@ namespace TDTX.Views
                     Children.RemoveAt(1);
             }
         }
+
         public TimeTablePage()
         {
 
@@ -39,21 +40,20 @@ namespace TDTX.Views
         private void BackgroundLayout_SizeChanged(object sender, EventArgs e)
         {
             if (ContentLayout.Bounds.Height > 0)
-                DetailPage?.Layout(ContentLayout.Bounds);
-
+                DetailPage?.LayoutTo(ContentLayout.Bounds);
         }
 
-        protected override Page CreateDefault(object item)
+        protected override ContentPage CreateDefault(object item)
         {
             var p = new ContentPage();
             p.Content = new Label() { Text = "time table default" };
             return p;
         }
 
-        private void Navigated(Page page)
+        private void Navigated(ContentPage page)
         {
             DetailPage = page;
-            DetailPage?.Layout(ContentLayout.Bounds);
+            DetailPage?.LayoutTo(ContentLayout.Bounds);
             UpdateAppBarUI(DetailPage.GetType());
         }
 

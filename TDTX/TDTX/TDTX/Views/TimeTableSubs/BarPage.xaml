@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:TDTX.Views.Controls;assembly=TDTX"
+             xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
+             xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
+             xmlns:timeTableSubs="clr-namespace:TDTX.Views.TimeTableSubs;assembly=TDTX"
+             x:Class="TDTX.Views.TimeTableSubs.BarPage">
+  <Grid>
+    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="36" >
+      <!--Day-->
+      <controls:ButtonTextBottom x:Name="DayBtb" Text="{extensions:Translate Day}"
+                      Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}"
+                      CommandParameter="{x:Type timeTableSubs:DayPage}"/>
+      <!--Week-->
+      <controls:ButtonTextBottom x:Name="WeekBtb" Text="{extensions:Translate Week}"
+                      Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}"
+                      CommandParameter="{x:Type timeTableSubs:WeekPage}"/>
+      <!--Month-->
+      <controls:ButtonTextBottom x:Name="MonthBtb" Text="{extensions:Translate Month}"
+                      Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}"
+                      CommandParameter="{x:Type timeTableSubs:MonthPage}"/>
+      <!--Overall-->
+      <controls:ButtonTextBottom x:Name="OverallBtb" Text="{extensions:Translate Overall}"
+                      Command="{Binding Source={x:Static vm:TimeTablePageViewModel.Instance}, Path=SelectPageCommand}"
+                      CommandParameter="{x:Type timeTableSubs:OverallPage}"/>
+
+    </StackLayout>
+  </Grid>
+</ContentPage>
