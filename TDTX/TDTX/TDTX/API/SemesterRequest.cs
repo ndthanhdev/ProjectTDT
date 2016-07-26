@@ -8,6 +8,6 @@ namespace TDTX.API
     {
         public override string act => "tkb";
         public string option => "ln";
-        public string id => "83";
+        public int id { get; set; }
     }
 }

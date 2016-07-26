@@ -91,8 +91,12 @@ namespace TDTX.Views
                 OverallBtb.Image = "Images/overall selected.png";
                 OverallBtb.TextColor = Color.FromHex("#006DF0");
             }
+        }
 
-
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await TimeTablePageViewModel.Instance.UpdateTask();
         }
     }
 }

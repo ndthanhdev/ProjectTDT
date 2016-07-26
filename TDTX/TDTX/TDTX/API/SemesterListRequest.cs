@@ -10,7 +10,6 @@ namespace TDTX.API
     {
         public override string act => "tkb";
 
-        [ApiIgnore]
         public string option => "lhk";
     }
 }

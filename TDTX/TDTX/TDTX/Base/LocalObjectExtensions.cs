@@ -25,5 +25,12 @@ namespace TDTX.Base
             await DependencyService.Get<ISaveAndLoad>().SaveTextAsync(current.FileName, text);
         }
 
+
+        public static async Task Save<T>(this ILocalObject current)
+        {
+            string text = JsonConvert.SerializeObject(current);
+            await DependencyService.Get<ISaveAndLoad>().SaveTextAsync(current.FileName, text);
+        }
+
     }
 }

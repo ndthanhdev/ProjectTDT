@@ -14,17 +14,17 @@ namespace TDTX.Views.TimeTableSubs
         public OverallPage()
         {
             InitializeComponent();
-            SemesterListChanged(TimeTablePageViewModel.Instance.SemesterInforList);
+            SemesterListChanged(TimeTablePageViewModel.Instance.SemesterDictionary);
             //use when semester list updated
-            MessagingCenter.Subscribe<TimeTablePageViewModel, IList<SemesterInfor>>(this, "SemesterListChanged",
-                (sender, list) => SemesterListChanged(list));
+            MessagingCenter.Subscribe<TimeTablePageViewModel, IDictionary<SemesterInfor, Semester>>(this, "SemesterDictionaryChanged",
+                (sender, dic) => SemesterListChanged(dic));
         }
 
-        private async void SemesterListChanged(IList<SemesterInfor> newList)
+        private async void SemesterListChanged(IDictionary<SemesterInfor, Semester> newDic)
         {
             await Task.Yield();
             SemesterPicker.Items.Clear();
-            foreach (SemesterInfor si in newList)
+            foreach (var si in newDic.Keys)
                 SemesterPicker.Items.Add(si.TenHocKy);
         }
 

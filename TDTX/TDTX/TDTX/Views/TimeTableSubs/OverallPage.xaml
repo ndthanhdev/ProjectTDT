@@ -40,26 +40,26 @@
       <BoxView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
       <BoxView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
 
-      <Grid Grid.Row="1" Grid.Column="0" MinimumHeightRequest="50">
+      <Grid Grid.Row="1" Grid.Column="0">
+        <ListView Header="{extensions:Translate SUN}" ItemsSource="{Binding OverallSunday}"/>
+      </Grid>
+      <Grid Grid.Row="1" Grid.Column="2">
         <ListView Header="{extensions:Translate MON}" ItemsSource="{Binding OverallMonday}"/>
       </Grid>
-      <Grid Grid.Row="1" Grid.Column="2" >
+      <Grid Grid.Row="3" Grid.Column="0" >
         <ListView Header="{extensions:Translate TUE}" ItemsSource="{Binding OverallTuesday}"/>
       </Grid>
-      <Grid Grid.Row="3" Grid.Column="0" MinimumHeightRequest="50">
+      <Grid Grid.Row="3" Grid.Column="2">
         <ListView Header="{extensions:Translate WED}" ItemsSource="{Binding OverallWednesday}"/>
       </Grid>
-      <Grid Grid.Row="3" Grid.Column="2" >
+      <Grid Grid.Row="5" Grid.Column="0" >
         <ListView Header="{extensions:Translate THU}" ItemsSource="{Binding OverallThursday}"/>
       </Grid>
-      <Grid Grid.Row="5" Grid.Column="0" MinimumHeightRequest="50">
+      <Grid Grid.Row="5" Grid.Column="2">
         <ListView Header="{extensions:Translate FRI}" ItemsSource="{Binding OverallFriday}"/>
       </Grid>
-      <Grid Grid.Row="5" Grid.Column="2" >
+      <Grid Grid.Row="7" Grid.Column="0" >
         <ListView Header="{extensions:Translate SAT}" ItemsSource="{Binding OverallSaturday}"/>
-      </Grid>
-      <Grid Grid.Row="7" Grid.Column="0" MinimumHeightRequest="50">
-        <ListView Header="{extensions:Translate SUN}" ItemsSource="{Binding OverallSunday}"/>
       </Grid>
 
       <Grid Grid.Row="7" Grid.Column="2" ></Grid>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,64 @@ namespace TDTX.ViewModels
 {
     public partial class TimeTablePageViewModel
     {
+        private ObservableCollection<string> _overallSunday;
+        private ObservableCollection<string> _overallMonday;
+        private ObservableCollection<string> _overallTuesday;
+        private ObservableCollection<string> _overallWednesday;
+        private ObservableCollection<string> _overallThursday;
+        private ObservableCollection<string> _overallFriday;
+        private ObservableCollection<string> _overallSaturday;
+
+        [JsonIgnore]
+        public ObservableCollection<string> OverallSunday
+        {
+            get { return _overallSunday = _overallSunday ?? new ObservableCollection<string>(); }
+            private set { _overallSunday = value; }
+        }
+
+        [JsonIgnore]
+        public ObservableCollection<string> OverallMonday
+        {
+            get { return _overallMonday = _overallMonday ?? new ObservableCollection<string>(); }
+            private set { _overallMonday = value; }
+        }
+
+        [JsonIgnore]
+        public ObservableCollection<string> OverallTuesday
+        {
+            get { return _overallTuesday = _overallTuesday ?? new ObservableCollection<string>(); }
+            private set { _overallTuesday = value; }
+        }
+
+        [JsonIgnore]
+        public ObservableCollection<string> OverallWednesday
+        {
+            get { return _overallWednesday = _overallWednesday ?? new ObservableCollection<string>(); }
+            private set { _overallWednesday = value; }
+        }
+
+        [JsonIgnore]
+        public ObservableCollection<string> OverallThursday
+        {
+            get { return _overallThursday = _overallThursday ?? new ObservableCollection<string>(); }
+            private set { _overallThursday = value; }
+        }
+
+        [JsonIgnore]
+        public ObservableCollection<string> OverallFriday
+        {
+            get { return _overallFriday = _overallFriday ?? new ObservableCollection<string>(); }
+            private set { _overallFriday = value; }
+        }
+
+        [JsonIgnore]
+        public ObservableCollection<string> OverallSaturday
+        {
+            get { return _overallSaturday = _overallSaturday ?? new ObservableCollection<string>(); }
+            private set { _overallSaturday = value; }
+        }
+
+
         /// <summary>
         /// indicated index of SemesterList
         /// </summary>
@@ -21,29 +80,23 @@ namespace TDTX.ViewModels
         public async void UpdateOverall()
         {
             await Task.Yield();
-            if (SelectedSemesterIndex < 0 || SelectedSemesterIndex > SemesterInforList.Count - 1)
+
+            ClearOverallProperty();
+            // RaiseOverallProperty();
+
+            if (SelectedSemesterIndex < 0 || SelectedSemesterIndex > SemesterDictionary.Count - 1)
                 return;
-            //add if not exist
-            if (!SemesterDictionary.ContainsKey(SemesterInforList[SelectedSemesterIndex]))
-            {
-                var respond = await Transporter.Transport<SemesterRequest, Semester>(new SemesterRequest()
-                {
-                    user = Settings.Instance.UserId,
-                    pass = Settings.Instance.UserPassword
-                });
-                if (respond.Status == TransportStatusCode.OK)
-                    SemesterDictionary.Add(SemesterInforList[SelectedSemesterIndex], respond.Respond);
-            }
-            var semester = SemesterDictionary[SemesterInforList[SelectedSemesterIndex]];
+            //add if haven't yet data
+            if (SemesterDictionary.Values.ElementAt(SelectedSemesterIndex) == null)
+                await ProvideSemesterData(SelectedSemesterIndex);
 
-            OverallMonday = new List<string>();
-            OverallTuesday = new List<string>();
-            OverallWednesday = new List<string>();
-            OverallThursday = new List<string>();
-            OverallFriday = new List<string>();
-            OverallSaturday = new List<string>();
-            OverallSunday = new List<string>();
+            var semester = SemesterDictionary[SemesterDictionary.Keys.ElementAt(SelectedSemesterIndex)];
 
+
+            if (semester.tkb == null)
+                return;
+
+            // ClearOverallProperty();
             foreach (var course in semester.tkb)
             {
                 foreach (var schedule in course.Lich)
@@ -72,9 +125,23 @@ namespace TDTX.ViewModels
                             OverallSunday.Add(course.TenMH + "\n" + schedule.phong + "\n" + schedule.tiet);
                             break;
                     }
-
                 }
             }
+        }
+
+        private void ClearOverallProperty()
+        {
+            OverallMonday.Clear();
+            OverallTuesday.Clear();
+            OverallWednesday.Clear();
+            OverallThursday.Clear();
+            OverallFriday.Clear();
+            OverallSaturday.Clear();
+            OverallSunday.Clear();
+        }
+
+        private void RaiseOverallProperty()
+        {
             RaisePropertyChanged(nameof(OverallMonday));
             RaisePropertyChanged(nameof(OverallTuesday));
             RaisePropertyChanged(nameof(OverallWednesday));
@@ -82,16 +149,6 @@ namespace TDTX.ViewModels
             RaisePropertyChanged(nameof(OverallFriday));
             RaisePropertyChanged(nameof(OverallSaturday));
             RaisePropertyChanged(nameof(OverallSunday));
-
         }
-
-        public List<string> OverallMonday { get; private set; }
-        public List<string> OverallTuesday { get; private set; }
-        public List<string> OverallWednesday { get; private set; }
-        public List<string> OverallThursday { get; private set; }
-        public List<string> OverallFriday { get; private set; }
-        public List<string> OverallSaturday { get; private set; }
-        public List<string> OverallSunday { get; private set; }
-
     }
 }

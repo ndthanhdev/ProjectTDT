@@ -11,6 +11,7 @@ using TDTX.API;
 using TDTX.Base;
 using TDTX.Models;
 using TDTX.Services;
+using TDTX.ViewModels;
 using TDTX.Views;
 using Xamarin.Forms;
 
@@ -20,12 +21,6 @@ namespace TDTX
     {
         public App()
         {
-            Task.Run(async () =>
-            {
-                var r = await Transporter.Transport<SemesterRequest,Semester>
-                (new SemesterRequest() {user = "51403318",pass = "51403318TDT",});
-            });
-
             InitializeComponent();
             MainPage= new SplashPage();
         }
@@ -37,13 +32,14 @@ namespace TDTX
                 MainPage = new MainPage();
             else
                 MainPage = new LoginPage();
-
+            await TimeTablePageViewModel.Instance.Load<TimeTablePageViewModel>();
         }
 
         protected override async void OnSleep()
         {
             // Handle when your app sleeps
             await Settings.Instance.Save();
+            await TimeTablePageViewModel.Instance.Save();
         }
 
         //protected override void OnResume()
