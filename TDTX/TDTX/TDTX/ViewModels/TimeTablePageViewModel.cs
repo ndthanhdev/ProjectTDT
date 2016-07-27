@@ -13,6 +13,7 @@ using TDTX.Views;
 using TDTX.Views.TimeTableSubs;
 using Xamarin.Forms;
 using System.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace TDTX.ViewModels
 {
@@ -48,13 +49,13 @@ namespace TDTX.ViewModels
                 Detail = (ContentPage)Activator.CreateInstance(t);
         });
 
-        private Dictionary<SemesterInfor, Semester> _semesterDictionary;
+        private DictionarySerializeToArray<SemesterInfor, Semester> _semesterDictionary;
         /// <summary>
         /// provide infor of all semester ready to use
         /// </summary>
-        public Dictionary<SemesterInfor, Semester> SemesterDictionary
+        public DictionarySerializeToArray<SemesterInfor, Semester> SemesterDictionary
         {
-            get { return _semesterDictionary = _semesterDictionary ?? new Dictionary<SemesterInfor, Semester>(); }
+            get { return _semesterDictionary = _semesterDictionary ?? new DictionarySerializeToArray<SemesterInfor, Semester>(); }
             set
             {
                 _semesterDictionary = value;
@@ -72,8 +73,12 @@ namespace TDTX.ViewModels
             await Task.Yield();
             if (!await UpdateListSemester())
                 return false;
-            for (int i = 0; i < Math.Min(SemesterDictionary.Count, 6); i++)
+
+            for (int i = 0; i < Math.Min(SemesterDictionary.Count, 1); i++)
                 await ProvideSemesterData(i);
+            string s = JsonConvert.SerializeObject(Instance,Formatting.Indented);
+            var t = JsonConvert.DeserializeObject<TimeTablePageViewModel>(s);
+
             return true;
         }
 
@@ -87,7 +92,7 @@ namespace TDTX.ViewModels
                });
             if (respond.Status != TransportStatusCode.OK)
                 return false;
-            var newDic = new Dictionary<SemesterInfor, Semester>();
+            var newDic = new DictionarySerializeToArray<SemesterInfor, Semester>();
             foreach (var si in respond.Respond)
             {
                 if (SemesterDictionary.ContainsKey(si))
@@ -124,4 +129,11 @@ namespace TDTX.ViewModels
             return true;
         }
     }
+
+    [JsonArray]
+    public class DictionarySerializeToArray<TKey,TValue>:Dictionary<TKey,TValue>
+    {
+        
+    }
+
 }

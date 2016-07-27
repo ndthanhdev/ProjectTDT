@@ -1,16 +1,20 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using TDTX.Dependencies;
 using Xamarin.Forms;
+using System.Reflection;
 
 namespace TDTX.Base
 {
     public static class LocalObjectExtensions
     {
-        public static async Task Load<T>(this ILocalObject current) where T:ILocalObject
+        public static async Task Load<T>(this ILocalObject current) where T : ILocalObject
         {
             if (await DependencyService.Get<ISaveAndLoad>().FileExists(current.FileName))
             {
@@ -21,16 +25,9 @@ namespace TDTX.Base
 
         public static async Task Save(this ILocalObject current)
         {
-            string text = JsonConvert.SerializeObject(current);
+            string text = JsonConvert.SerializeObject(current, Formatting.Indented);
             await DependencyService.Get<ISaveAndLoad>().SaveTextAsync(current.FileName, text);
         }
-
-
-        public static async Task Save<T>(this ILocalObject current)
-        {
-            string text = JsonConvert.SerializeObject(current);
-            await DependencyService.Get<ISaveAndLoad>().SaveTextAsync(current.FileName, text);
-        }
-
     }
+
 }

@@ -9,7 +9,5 @@ namespace TDTX.Models
         public int id { get; set; }
 
         public string TenHocKy { get; set; }
-
-        public bool CanCompute => true;
     }
 }
