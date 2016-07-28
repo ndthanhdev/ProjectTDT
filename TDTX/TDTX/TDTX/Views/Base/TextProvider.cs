@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using TDTX.Views.Extensions;
+using TDTX.Models;
 
 namespace TDTX.Views.Base
 {

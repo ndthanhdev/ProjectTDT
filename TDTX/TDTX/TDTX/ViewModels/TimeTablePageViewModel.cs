@@ -17,12 +17,14 @@ using Newtonsoft.Json.Serialization;
 
 namespace TDTX.ViewModels
 {
-    public partial class TimeTablePageViewModel : ViewModelBase, IOnlineContent, ILocalObject
+    public partial class TimeTablePageViewModel : ViewModelBase,IOnlineContent
     {
         private static TimeTablePageViewModel _instance;
         public static TimeTablePageViewModel Instance => _instance ?? new TimeTablePageViewModel();
 
         private ContentPage _detail;
+
+
         /// <summary>
         /// Current page show on main zone
         /// </summary>
@@ -37,6 +39,7 @@ namespace TDTX.ViewModels
             }
         }
 
+
         private TimeTablePageViewModel()
         {
             _instance = this;
@@ -49,24 +52,23 @@ namespace TDTX.ViewModels
                 Detail = (ContentPage)Activator.CreateInstance(t);
         });
 
-        private DictionarySerializeToArray<SemesterInfor, Semester> _semesterDictionary;
+
         /// <summary>
         /// provide infor of all semester ready to use
         /// </summary>
         public DictionarySerializeToArray<SemesterInfor, Semester> SemesterDictionary
         {
-            get { return _semesterDictionary = _semesterDictionary ?? new DictionarySerializeToArray<SemesterInfor, Semester>(); }
+            get { return TimeTable.Instance.SemesterDictionary; }
             set
             {
-                _semesterDictionary = value;
-                MessagingCenter.Send<TimeTablePageViewModel, IDictionary<SemesterInfor, Semester>>(this, "SemesterDictionaryChanged",
-                    _semesterDictionary);
+                TimeTable.Instance.SemesterDictionary = value;
+                MessagingCenter.Send<TimeTablePageViewModel, IDictionary<SemesterInfor, Semester>>(this,
+                    "SemesterDictionaryChanged",
+                    TimeTable.Instance.SemesterDictionary);
             }
         }
 
         public bool IsNeedUpdate => true;
-
-        public string FileName => "b.json";
 
         public async Task<bool> UpdateTask()
         {
@@ -74,22 +76,21 @@ namespace TDTX.ViewModels
             if (!await UpdateListSemester())
                 return false;
 
-            for (int i = 0; i < Math.Min(SemesterDictionary.Count, 1); i++)
+            for (int i = 0; i < Math.Min(SemesterDictionary.Count, 3); i++)
                 await ProvideSemesterData(i);
-            string s = JsonConvert.SerializeObject(Instance,Formatting.Indented);
-            var t = JsonConvert.DeserializeObject<TimeTablePageViewModel>(s);
 
             return true;
         }
 
+
         private async Task<bool> UpdateListSemester()
         {
             var respond = await Transporter.Transport<SemesterListRequest, List<SemesterInfor>>(
-               new SemesterListRequest()
-               {
-                   user = Settings.Instance.UserId,
-                   pass = Settings.Instance.UserPassword
-               });
+                new SemesterListRequest()
+                {
+                    user = Settings.Instance.UserId,
+                    pass = Settings.Instance.UserPassword
+                });
             if (respond.Status != TransportStatusCode.OK)
                 return false;
             var newDic = new DictionarySerializeToArray<SemesterInfor, Semester>();
@@ -103,6 +104,9 @@ namespace TDTX.ViewModels
             SemesterDictionary = newDic;
             return true;
         }
+
+
+
 
         /// <summary>
         /// 
@@ -129,11 +133,4 @@ namespace TDTX.ViewModels
             return true;
         }
     }
-
-    [JsonArray]
-    public class DictionarySerializeToArray<TKey,TValue>:Dictionary<TKey,TValue>
-    {
-        
-    }
-
 }

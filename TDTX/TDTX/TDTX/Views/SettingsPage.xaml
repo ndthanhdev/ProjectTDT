@@ -5,7 +5,8 @@
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
              x:Class="TDTX.Views.SettingsPage"
              Title="{extensions:Translate Settings}"
-             BindingContext="{x:Static vm:SettingsPageViewModel.Instance}">
+              BindingContext="{x:Static vm:SettingsPageViewModel.Instance}">
+
   <!--<ScrollView Margin="16,24,8,8">
   </ScrollView>-->
   <StackLayout Margin="16,24,8,8">

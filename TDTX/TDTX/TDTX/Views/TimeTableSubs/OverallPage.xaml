@@ -5,6 +5,15 @@
              x:Class="TDTX.Views.TimeTableSubs.OverallPage"
              xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
              BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <DataTemplate x:Key="ItemTemplate">
+        <ViewCell>
+          <Label Text="{Binding}" FontSize="10"/>
+        </ViewCell>
+      </DataTemplate>
+    </ResourceDictionary>
+  </ContentPage.Resources>
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
@@ -41,25 +50,25 @@
       <BoxView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
 
       <Grid Grid.Row="1" Grid.Column="0">
-        <ListView Header="{extensions:Translate SUN}" ItemsSource="{Binding OverallSunday}"/>
+        <ListView Header="{extensions:Translate SUN}" ItemsSource="{Binding OverallSunday}" ItemTemplate="{StaticResource ItemTemplate}"/>
       </Grid>
       <Grid Grid.Row="1" Grid.Column="2">
-        <ListView Header="{extensions:Translate MON}" ItemsSource="{Binding OverallMonday}"/>
+        <ListView Header="{extensions:Translate MON}" ItemsSource="{Binding OverallMonday}" ItemTemplate="{StaticResource ItemTemplate}"/>
       </Grid>
       <Grid Grid.Row="3" Grid.Column="0" >
-        <ListView Header="{extensions:Translate TUE}" ItemsSource="{Binding OverallTuesday}"/>
+        <ListView Header="{extensions:Translate TUE}" ItemsSource="{Binding OverallTuesday}" ItemTemplate="{StaticResource ItemTemplate}"/>
       </Grid>
       <Grid Grid.Row="3" Grid.Column="2">
-        <ListView Header="{extensions:Translate WED}" ItemsSource="{Binding OverallWednesday}"/>
+        <ListView Header="{extensions:Translate WED}" ItemsSource="{Binding OverallWednesday}" ItemTemplate="{StaticResource ItemTemplate}"/>
       </Grid>
       <Grid Grid.Row="5" Grid.Column="0" >
-        <ListView Header="{extensions:Translate THU}" ItemsSource="{Binding OverallThursday}"/>
+        <ListView Header="{extensions:Translate THU}" ItemsSource="{Binding OverallThursday}" ItemTemplate="{StaticResource ItemTemplate}"/>
       </Grid>
       <Grid Grid.Row="5" Grid.Column="2">
-        <ListView Header="{extensions:Translate FRI}" ItemsSource="{Binding OverallFriday}"/>
+        <ListView Header="{extensions:Translate FRI}" ItemsSource="{Binding OverallFriday}" ItemTemplate="{StaticResource ItemTemplate}"/>
       </Grid>
       <Grid Grid.Row="7" Grid.Column="0" >
-        <ListView Header="{extensions:Translate SAT}" ItemsSource="{Binding OverallSaturday}"/>
+        <ListView Header="{extensions:Translate SAT}" ItemsSource="{Binding OverallSaturday}" ItemTemplate="{StaticResource ItemTemplate}"/>
       </Grid>
 
       <Grid Grid.Row="7" Grid.Column="2" ></Grid>

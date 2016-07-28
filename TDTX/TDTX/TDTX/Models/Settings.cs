@@ -4,7 +4,7 @@ using System.Text;
 using Newtonsoft.Json;
 using TDTX.Base;
 
-namespace TDTX
+namespace TDTX.Models
 {
     [JsonObject]
     public class Settings:ILocalObject

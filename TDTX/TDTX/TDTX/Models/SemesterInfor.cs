@@ -9,5 +9,17 @@ namespace TDTX.Models
         public int id { get; set; }
 
         public string TenHocKy { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is SemesterInfor)
+                return id == (obj as SemesterInfor).id;
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return id;
+        }
     }
 }

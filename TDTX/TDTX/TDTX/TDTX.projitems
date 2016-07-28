@@ -23,6 +23,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)AppExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\DictionarySerializeToArray.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\IOnlineContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\ILocalObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\LocalObjectExtensions.cs" />
@@ -35,9 +36,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\MasterPageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Semester.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SemesterInfor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\TimeTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Transporter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)test\Class1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SettingsPageViewModel.cs" />

@@ -66,7 +66,7 @@ namespace TDTX.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            //await Navigation.PopToRootAsync();
+            
         }
 
         protected override async void OnDisappearing()

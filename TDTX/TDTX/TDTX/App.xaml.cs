@@ -10,7 +10,6 @@ using Newtonsoft.Json;
 using TDTX.API;
 using TDTX.Base;
 using TDTX.Models;
-using TDTX.Services;
 using TDTX.ViewModels;
 using TDTX.Views;
 using Xamarin.Forms;
@@ -28,23 +27,27 @@ namespace TDTX
         {
             // Handle when your app starts  
             await Settings.Instance.Load<Settings>();
+            await TimeTable.Instance.Load<TimeTable>();
+
             if (Settings.Instance.CanTryLogin())
                 MainPage = new MainPage();
             else
                 MainPage = new LoginPage();
-            await TimeTablePageViewModel.Instance.Load<TimeTablePageViewModel>();
         }
 
         protected override async void OnSleep()
         {
             // Handle when your app sleeps
             await Settings.Instance.Save();
-            await TimeTablePageViewModel.Instance.Save();
+            await TimeTable.Instance.Save();
         }
 
-        //protected override void OnResume()
-        //{
-        //    // Handle when your app resumes
-        //}
+        protected override async void OnResume()
+        {
+            // Handle when your app resumes
+            //await Settings.Instance.Load<Settings>();
+            //await TimeTable.Instance.Load<TimeTable>();
+
+        }
     }
 }
