@@ -21,7 +21,7 @@
     </Grid.RowDefinitions>
     <Grid Grid.Row="0" Margin="16,24,8,8">
       <Picker x:Name="SemesterPicker" Title="{extensions:Translate Choose a semester}"
-              SelectedIndex="{Binding SelectedSemesterIndex,Mode=OneWayToSource}"
+              SelectedIndex="{Binding SelectedSemesterIndex,Mode=OneWay}"
               SelectedIndexChanged="SemesterPicker_OnSelectedIndexChanged" />
     </Grid>
 

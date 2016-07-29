@@ -23,14 +23,21 @@ namespace TDTX.Views.TimeTableSubs
         private async void SemesterListChanged(IDictionary<SemesterInfor, Semester> newDic)
         {
             await Task.Yield();
+            int oldIndex = TimeTablePageViewModel.Instance.SelectedSemesterIndex;
+            var oldSi = oldIndex >= 0 && oldIndex < TimeTablePageViewModel.Instance.SemesterDictionary.Count ?
+                TimeTablePageViewModel.Instance.SemesterDictionary.Keys.ElementAt(oldIndex) : null;
             SemesterPicker.Items.Clear();
             foreach (var si in newDic.Keys)
+            {
                 SemesterPicker.Items.Add(si.TenHocKy);
+                if (Equals(si, oldSi))
+                    SemesterPicker.SelectedIndex = SemesterPicker.Items.Count - 1;
+            }
         }
 
         private void SemesterPicker_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            TimeTablePageViewModel.Instance.UpdateOverall();
+            TimeTablePageViewModel.Instance.SelectedSemesterIndex = (sender as Picker).SelectedIndex;
         }
     }
 }

@@ -24,7 +24,6 @@ namespace TDTX.ViewModels
 
         private ContentPage _detail;
 
-
         /// <summary>
         /// Current page show on main zone
         /// </summary>

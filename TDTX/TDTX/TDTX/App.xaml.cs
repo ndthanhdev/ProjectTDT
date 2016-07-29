@@ -21,14 +21,17 @@ namespace TDTX
         public App()
         {
             InitializeComponent();
-            MainPage= new SplashPage();
+            MainPage = new SplashPage();
         }
+
+        private bool _loaded = false;
         protected override async void OnStart()
         {
+            await Task.Yield();
+            
             // Handle when your app starts  
-            await Settings.Instance.Load<Settings>();
-            await TimeTable.Instance.Load<TimeTable>();
-
+            await Task.WhenAll(Settings.Instance.Load<Settings>(),TimeTable.Instance.Load<TimeTable>());
+            _loaded = true;
             if (Settings.Instance.CanTryLogin())
                 MainPage = new MainPage();
             else
@@ -37,9 +40,11 @@ namespace TDTX
 
         protected override async void OnSleep()
         {
-            // Handle when your app sleeps
-            await Settings.Instance.Save();
-            await TimeTable.Instance.Save();
+            await Task.Yield();
+            if (_loaded)
+            {
+                await Task.WhenAll(Settings.Instance.Save(), TimeTable.Instance.Save());
+            }
         }
 
         protected override async void OnResume()

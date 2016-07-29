@@ -20,6 +20,7 @@ namespace TDTX.ViewModels
         private ObservableCollection<string> _overallThursday;
         private ObservableCollection<string> _overallFriday;
         private ObservableCollection<string> _overallSaturday;
+        private int _selectedSemesterIndex;
 
         [JsonIgnore]
         public ObservableCollection<string> OverallSunday
@@ -74,10 +75,17 @@ namespace TDTX.ViewModels
         /// <summary>
         /// indicated index of SemesterList
         /// </summary>
-        [JsonIgnore]
-        public int SelectedSemesterIndex { get; set; }
+        public int SelectedSemesterIndex
+        {
+            get { return _selectedSemesterIndex; }
+            set
+            {
+                _selectedSemesterIndex = value;
+                UpdateOverall();
+            }
+        }
 
-        public async void UpdateOverall()
+        private async void UpdateOverall()
         {
             await Task.Yield();
 
@@ -140,15 +148,5 @@ namespace TDTX.ViewModels
             OverallSunday.Clear();
         }
 
-        private void RaiseOverallProperty()
-        {
-            RaisePropertyChanged(nameof(OverallMonday));
-            RaisePropertyChanged(nameof(OverallTuesday));
-            RaisePropertyChanged(nameof(OverallWednesday));
-            RaisePropertyChanged(nameof(OverallThursday));
-            RaisePropertyChanged(nameof(OverallFriday));
-            RaisePropertyChanged(nameof(OverallSaturday));
-            RaisePropertyChanged(nameof(OverallSunday));
-        }
     }
 }

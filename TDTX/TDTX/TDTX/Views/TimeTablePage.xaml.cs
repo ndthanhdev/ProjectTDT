@@ -95,6 +95,7 @@ namespace TDTX.Views
 
         protected override async void OnAppearing()
         {
+            await Task.Yield();
             base.OnAppearing();
             await TimeTablePageViewModel.Instance.UpdateTask();
         }
