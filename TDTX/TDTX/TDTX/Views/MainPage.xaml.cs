@@ -18,7 +18,7 @@ namespace TDTX.Views
         {
             InitializeComponent();
             ((MasterPage)Master).PrimaryListView.ItemSelected += PrimaryListView_ItemSelected;
-            ((MasterPage) Master).SettingTapGesture.Command = PageSelect;
+            ((MasterPage)Master).SettingTapGesture.Command = PageSelect;
             //((MasterPage) Master).SettingTapGesture.CommandParameter = typeof(SettingsPage);
             this.IsPresentedChanged += MainPage_IsPresentedChanged;
 

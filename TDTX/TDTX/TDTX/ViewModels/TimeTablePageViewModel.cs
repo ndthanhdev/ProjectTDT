@@ -30,7 +30,7 @@ namespace TDTX.ViewModels
         [JsonIgnore]
         public ContentPage Detail
         {
-            get { return _detail = _detail ?? new DayPage(); }
+            get { return _detail = _detail ?? new OverallPage(); }
             set
             {
                 _detail = value;

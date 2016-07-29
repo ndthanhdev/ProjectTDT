@@ -9,7 +9,7 @@
              xmlns:timeTableSubs="clr-namespace:TDTX.Views.TimeTableSubs;assembly=TDTX"
              Title="{extensions:Translate Time table}">
   <MultiPage.Children>
-    <ContentPage BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}">
+    <ContentPage BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}" BackgroundColor="{StaticResource PrimaryBackgroundColor}">
       <RelativeLayout x:Name="BackgroundLayout">
         <AbsoluteLayout x:Name="ContentLayout"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"

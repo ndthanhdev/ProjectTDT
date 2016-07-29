@@ -4,7 +4,8 @@
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions;assembly=TDTX"
              x:Class="TDTX.Views.TimeTableSubs.OverallPage"
              xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
-             BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}">
+             BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}"
+             BackgroundColor="{StaticResource PrimaryBackgroundColor}">
   <ContentPage.Resources>
     <ResourceDictionary>
       <DataTemplate x:Key="ItemTemplate">

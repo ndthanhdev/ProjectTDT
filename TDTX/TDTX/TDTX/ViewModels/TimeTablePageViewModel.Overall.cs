@@ -101,7 +101,7 @@ namespace TDTX.ViewModels
             var semester = SemesterDictionary[SemesterDictionary.Keys.ElementAt(SelectedSemesterIndex)];
 
 
-            if (semester.tkb == null)
+            if (semester == null || semester.tkb == null)
                 return;
 
             // ClearOverallProperty();

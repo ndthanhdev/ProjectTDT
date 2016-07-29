@@ -22,11 +22,15 @@ namespace TDTX.Views
             }
             set
             {
+                if(Children.Count>1)
+                    Task.Run(async () => await Children[1].LayoutTo(new Rectangle(-1, -1, 0, 0)));
+                    
+                while (Children.Count > 1)
+                {
+                    Children.RemoveAt(1);
+                }
                 value.SizeChanged += BackgroundLayout_SizeChanged;
                 Children.Add(value);
-
-                while (Children.Count > 2)
-                    Children.RemoveAt(1);
             }
         }
 
@@ -98,6 +102,12 @@ namespace TDTX.Views
             await Task.Yield();
             base.OnAppearing();
             await TimeTablePageViewModel.Instance.UpdateTask();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<TimeTablePageViewModel,string>(this,"Navigated");
         }
     }
 }
