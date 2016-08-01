@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TDTX.Models;
 using TDTX.ViewModels;
+using TDTX.Views.Base;
 using Xamarin.Forms;
 
 namespace TDTX.Views.TimeTableSubs
@@ -38,6 +39,17 @@ namespace TDTX.Views.TimeTableSubs
         private void SemesterPicker_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             TimeTablePageViewModel.Instance.SelectedSemesterIndex = (sender as Picker).SelectedIndex;
+        }
+
+        private async void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                TimeTableItem ttItem = e.SelectedItem as TimeTableItem;
+
+                await DisplayAlert(ttItem.Course.TenMH, ttItem.ProvideDetail(), TextProvider.Translate("OK"));
+                (sender as ListView).SelectedItem = null;
+            }
         }
     }
 }

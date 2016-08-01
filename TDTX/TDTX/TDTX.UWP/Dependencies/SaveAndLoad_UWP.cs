@@ -24,7 +24,7 @@ namespace TDTX.UWP.Dependencies
             StorageFile file =
                 await
                     ApplicationData.Current.LocalFolder.CreateFileAsync(filename,
-                        CreationCollisionOption.ReplaceExisting);
+                        CreationCollisionOption.OpenIfExists);
             
             using (var stream = await file.OpenStreamForWriteAsync())// OpenAsync(FileAccessMode.ReadWrite))
             {

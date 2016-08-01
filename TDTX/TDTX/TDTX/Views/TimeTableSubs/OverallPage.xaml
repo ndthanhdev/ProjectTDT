@@ -53,25 +53,32 @@
       <BoxView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Gray"/>
 
       <Grid Grid.Row="1" Grid.Column="0">
-        <ListView Header="{extensions:Translate SUN}" ItemsSource="{Binding OverallSunday}" ItemTemplate="{StaticResource ItemTemplate}"/>
+        <ListView Header="{extensions:Translate SUN}" ItemsSource="{Binding OverallSunday}" 
+                  ItemTemplate="{StaticResource ItemTemplate}" ItemSelected="ListView_OnItemSelected"/>
       </Grid>
       <Grid Grid.Row="1" Grid.Column="2">
-        <ListView Header="{extensions:Translate MON}" ItemsSource="{Binding OverallMonday}" ItemTemplate="{StaticResource ItemTemplate}"/>
+        <ListView Header="{extensions:Translate MON}"  ItemsSource="{Binding OverallMonday}" 
+                  ItemTemplate="{StaticResource ItemTemplate}" ItemSelected="ListView_OnItemSelected"/>
       </Grid>
       <Grid Grid.Row="3" Grid.Column="0" >
-        <ListView Header="{extensions:Translate TUE}" ItemsSource="{Binding OverallTuesday}" ItemTemplate="{StaticResource ItemTemplate}"/>
+        <ListView Header="{extensions:Translate TUE}" ItemsSource="{Binding OverallTuesday}" 
+                  ItemTemplate="{StaticResource ItemTemplate}" ItemSelected="ListView_OnItemSelected"/>
       </Grid>
       <Grid Grid.Row="3" Grid.Column="2">
-        <ListView Header="{extensions:Translate WED}" ItemsSource="{Binding OverallWednesday}" ItemTemplate="{StaticResource ItemTemplate}"/>
+        <ListView Header="{extensions:Translate WED}" ItemsSource="{Binding OverallWednesday}"
+                  ItemTemplate="{StaticResource ItemTemplate}" ItemSelected="ListView_OnItemSelected"/>
       </Grid>
       <Grid Grid.Row="5" Grid.Column="0" >
-        <ListView Header="{extensions:Translate THU}" ItemsSource="{Binding OverallThursday}" ItemTemplate="{StaticResource ItemTemplate}"/>
+        <ListView Header="{extensions:Translate THU}" ItemsSource="{Binding OverallThursday}"
+                  ItemTemplate="{StaticResource ItemTemplate}" ItemSelected="ListView_OnItemSelected"/>
       </Grid>
       <Grid Grid.Row="5" Grid.Column="2">
-        <ListView Header="{extensions:Translate FRI}" ItemsSource="{Binding OverallFriday}" ItemTemplate="{StaticResource ItemTemplate}"/>
+        <ListView Header="{extensions:Translate FRI}" ItemsSource="{Binding OverallFriday}"
+                  ItemTemplate="{StaticResource ItemTemplate}" ItemSelected="ListView_OnItemSelected"/>
       </Grid>
       <Grid Grid.Row="7" Grid.Column="0" >
-        <ListView Header="{extensions:Translate SAT}" ItemsSource="{Binding OverallSaturday}" ItemTemplate="{StaticResource ItemTemplate}"/>
+        <ListView Header="{extensions:Translate SAT}" ItemsSource="{Binding OverallSaturday}"
+                  ItemTemplate="{StaticResource ItemTemplate}" ItemSelected="ListView_OnItemSelected"/>
       </Grid>
 
       <Grid Grid.Row="7" Grid.Column="2" ></Grid>

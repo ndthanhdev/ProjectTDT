@@ -207,4 +207,19 @@
   <data name="SUN" xml:space="preserve">
     <value>CN</value>
   </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="SubjectCode" xml:space="preserve">
+    <value>Mã môn học</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Nhóm</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Tổ</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>
