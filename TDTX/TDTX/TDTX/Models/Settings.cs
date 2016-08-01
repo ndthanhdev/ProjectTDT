@@ -19,6 +19,6 @@ namespace TDTX.Models
         public string Language { get; set; }
         public string UserId { get; set; }
         public string UserPassword { get; set; }
-        public string FileName => "a.json";
+        public string FileName => App.SettingsFile;
     }
 }

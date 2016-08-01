@@ -15,7 +15,9 @@ namespace TDTX
             iOS: "TDTX.iOS",
             WinPhone: "TDTX.UWP");
 
-        public static readonly string SettingsFile = "Setting.json";
+        public static readonly string SettingsFile = "Setting.txt";
+
+        public static readonly string TimeTableFile = "TimeTable.txt";
 
         public static readonly string Host = "http://trautre.azurewebsites.net/api.php?";
 

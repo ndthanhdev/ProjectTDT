@@ -96,12 +96,12 @@ namespace TDTX.ViewModels
                 return;
             //add if haven't yet data
             if (SemesterDictionary.Values.ElementAt(SelectedSemesterIndex) == null)
-                await ProvideSemesterData(SelectedSemesterIndex);
+                if (!(await ProvideSemesterData(SelectedSemesterIndex)))
+                    return;
 
             var semester = SemesterDictionary[SemesterDictionary.Keys.ElementAt(SelectedSemesterIndex)];
 
-
-            if (semester == null || semester.tkb == null)
+            if(semester.tkb==null)
                 return;
 
             // ClearOverallProperty();

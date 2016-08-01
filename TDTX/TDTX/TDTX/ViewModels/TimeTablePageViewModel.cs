@@ -123,13 +123,16 @@ namespace TDTX.ViewModels
                     id = SemesterDictionary.Keys.ElementAt(index).id
                 });
                 if (respond.Status == TransportStatusCode.OK)
+                {
                     SemesterDictionary[SemesterDictionary.Keys.ElementAt(index)] = respond.Respond;
+                    return true;
+                }
+                return false;
             }
             catch (Exception)
             {
                 return false;
             }
-            return true;
         }
     }
 }

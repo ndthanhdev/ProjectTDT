@@ -13,6 +13,7 @@
 
       <!--Color-->
       <Color x:Key="PrimaryBackgroundColor">White</Color>
+      <Color x:Key="SecondaryBackgroundColor">#014A8C</Color>
       <Color x:Key="PrimaryForceGroundColor">Black</Color>
       <Color x:Key="WarningContentBackgroundColor">#FFCC00</Color>
 

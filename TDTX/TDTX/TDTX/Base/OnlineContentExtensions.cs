@@ -10,9 +10,16 @@ namespace TDTX.Base
         public static async Task<bool> UpdateAsync(this IOnlineContent content)
         {
             await Task.Yield();
-            if (content.IsNeedUpdate)
-                return await content.UpdateTask();
-            return false;
+            try
+            {
+                if (content.IsNeedUpdate)
+                    return await content.UpdateTask();
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
