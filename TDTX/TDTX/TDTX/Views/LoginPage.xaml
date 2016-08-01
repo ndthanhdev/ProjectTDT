@@ -14,11 +14,9 @@
       <RowDefinition Height="1*"/>
       <RowDefinition Height="8*"/>
     </Grid.RowDefinitions>
-
-    <!--<StackLayout Orientation="Horizontal">      
-      <Label BackgroundColor="Blue" Text="Đăng nhập"/>
-    </StackLayout>-->
     <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Grid.Column="1" Grid.Row="1"  >
+      <Image Source="Images/logo.png" HeightRequest="32" Aspect="AspectFit" Opacity="0.6"></Image>
+      <Grid HeightRequest="32"></Grid>
       <Entry x:Name="euser" Placeholder="{extensions:Translate Student ID}" />
       <Entry x:Name="epass" Placeholder="{extensions:Translate Password}" IsPassword="True" />
       <Grid HeightRequest="32"></Grid>

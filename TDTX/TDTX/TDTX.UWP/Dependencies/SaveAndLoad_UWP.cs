@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,18 +24,14 @@ namespace TDTX.UWP.Dependencies
             StorageFile file =
                 await
                     ApplicationData.Current.LocalFolder.CreateFileAsync(filename,
-                        CreationCollisionOption.OpenIfExists);
-            using (var stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                        CreationCollisionOption.ReplaceExisting);
+            
+            using (var stream = await file.OpenStreamForWriteAsync())// OpenAsync(FileAccessMode.ReadWrite))
             {
-                using (var outstream = stream.GetOutputStreamAt(0))
+                using (StreamWriter writer = new StreamWriter(stream))
                 {
-                    using (var writer = new DataWriter(outstream))
-                    {
-                        writer.WriteString(text);
-                        await writer.StoreAsync();
-                        writer.DetachStream();
-                    }
-                    await outstream.FlushAsync();
+                    writer.Write(text);
+                    writer.Flush();
                 }
             }
         }
@@ -48,7 +45,7 @@ namespace TDTX.UWP.Dependencies
             {
                 using (var reader = new StreamReader(stream))
                 {
-                    text = await reader.ReadToEndAsync();
+                    text = reader.ReadToEnd();
                 }
             }
             return text;

@@ -13,61 +13,61 @@ namespace TDTX.ViewModels
 {
     public partial class TimeTablePageViewModel
     {
-        private ObservableCollection<string> _overallSunday;
-        private ObservableCollection<string> _overallMonday;
-        private ObservableCollection<string> _overallTuesday;
-        private ObservableCollection<string> _overallWednesday;
-        private ObservableCollection<string> _overallThursday;
-        private ObservableCollection<string> _overallFriday;
-        private ObservableCollection<string> _overallSaturday;
+        private ObservableCollection<TimeTableItem> _overallSunday;
+        private ObservableCollection<TimeTableItem> _overallMonday;
+        private ObservableCollection<TimeTableItem> _overallTuesday;
+        private ObservableCollection<TimeTableItem> _overallWednesday;
+        private ObservableCollection<TimeTableItem> _overallThursday;
+        private ObservableCollection<TimeTableItem> _overallFriday;
+        private ObservableCollection<TimeTableItem> _overallSaturday;
         private int _selectedSemesterIndex;
 
         [JsonIgnore]
-        public ObservableCollection<string> OverallSunday
+        public ObservableCollection<TimeTableItem> OverallSunday
         {
-            get { return _overallSunday = _overallSunday ?? new ObservableCollection<string>(); }
+            get { return _overallSunday = _overallSunday ?? new ObservableCollection<TimeTableItem>(); }
             private set { _overallSunday = value; }
         }
 
         [JsonIgnore]
-        public ObservableCollection<string> OverallMonday
+        public ObservableCollection<TimeTableItem> OverallMonday
         {
-            get { return _overallMonday = _overallMonday ?? new ObservableCollection<string>(); }
+            get { return _overallMonday = _overallMonday ?? new ObservableCollection<TimeTableItem>(); }
             private set { _overallMonday = value; }
         }
 
         [JsonIgnore]
-        public ObservableCollection<string> OverallTuesday
+        public ObservableCollection<TimeTableItem> OverallTuesday
         {
-            get { return _overallTuesday = _overallTuesday ?? new ObservableCollection<string>(); }
+            get { return _overallTuesday = _overallTuesday ?? new ObservableCollection<TimeTableItem>(); }
             private set { _overallTuesday = value; }
         }
 
         [JsonIgnore]
-        public ObservableCollection<string> OverallWednesday
+        public ObservableCollection<TimeTableItem> OverallWednesday
         {
-            get { return _overallWednesday = _overallWednesday ?? new ObservableCollection<string>(); }
+            get { return _overallWednesday = _overallWednesday ?? new ObservableCollection<TimeTableItem>(); }
             private set { _overallWednesday = value; }
         }
 
         [JsonIgnore]
-        public ObservableCollection<string> OverallThursday
+        public ObservableCollection<TimeTableItem> OverallThursday
         {
-            get { return _overallThursday = _overallThursday ?? new ObservableCollection<string>(); }
+            get { return _overallThursday = _overallThursday ?? new ObservableCollection<TimeTableItem>(); }
             private set { _overallThursday = value; }
         }
 
         [JsonIgnore]
-        public ObservableCollection<string> OverallFriday
+        public ObservableCollection<TimeTableItem> OverallFriday
         {
-            get { return _overallFriday = _overallFriday ?? new ObservableCollection<string>(); }
+            get { return _overallFriday = _overallFriday ?? new ObservableCollection<TimeTableItem>(); }
             private set { _overallFriday = value; }
         }
 
         [JsonIgnore]
-        public ObservableCollection<string> OverallSaturday
+        public ObservableCollection<TimeTableItem> OverallSaturday
         {
-            get { return _overallSaturday = _overallSaturday ?? new ObservableCollection<string>(); }
+            get { return _overallSaturday = _overallSaturday ?? new ObservableCollection<TimeTableItem>(); }
             private set { _overallSaturday = value; }
         }
 
@@ -101,7 +101,7 @@ namespace TDTX.ViewModels
 
             var semester = SemesterDictionary[SemesterDictionary.Keys.ElementAt(SelectedSemesterIndex)];
 
-            if(semester.tkb==null)
+            if (semester.tkb == null)
                 return;
 
             // ClearOverallProperty();
@@ -109,28 +109,29 @@ namespace TDTX.ViewModels
             {
                 foreach (var schedule in course.Lich)
                 {
+                    TimeTableItem tti = new TimeTableItem() { Course = course, Schedule = schedule };
                     switch (schedule.thu)
                     {
                         case "2":
-                            OverallMonday.Add(course.TenMH + "\n" + schedule.phong + "\n" + schedule.tiet);
+                            OverallMonday.Add(tti);
                             break;
                         case "3":
-                            OverallTuesday.Add(course.TenMH + "\n" + schedule.phong + "\n" + schedule.tiet);
+                            OverallTuesday.Add(tti);
                             break;
                         case "4":
-                            OverallWednesday.Add(course.TenMH + "\n" + schedule.phong + "\n" + schedule.tiet);
+                            OverallWednesday.Add(tti);
                             break;
                         case "5":
-                            OverallThursday.Add(course.TenMH + "\n" + schedule.phong + "\n" + schedule.tiet);
+                            OverallThursday.Add(tti);
                             break;
                         case "6":
-                            OverallFriday.Add(course.TenMH + "\n" + schedule.phong + "\n" + schedule.tiet);
+                            OverallFriday.Add(tti);
                             break;
                         case "7":
-                            OverallSaturday.Add(course.TenMH + "\n" + schedule.phong + "\n" + schedule.tiet);
+                            OverallSaturday.Add(tti);
                             break;
                         default:
-                            OverallSunday.Add(course.TenMH + "\n" + schedule.phong + "\n" + schedule.tiet);
+                            OverallSunday.Add(tti);
                             break;
                     }
                 }

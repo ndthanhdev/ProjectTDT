@@ -34,6 +34,6 @@ namespace TDTX.Models
             }
         }
 
-        public string FileName => "asdasd";
+        public string FileName => "TimeTable.txt";
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TDTX.API;
+using TDTX.Base;
 using TDTX.Models;
 using TDTX.Services;
 using Xamarin.Forms;
@@ -66,13 +67,13 @@ namespace TDTX.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            
+            //await Task.WhenAll(Settings.Instance.Delete(), TimeTable.Instance.Delete());
         }
 
         protected override async void OnDisappearing()
         {
             base.OnDisappearing();
-            //await Navigation.PopToRootAsync();
+            await Task.WhenAll(Settings.Instance.Delete(), TimeTable.Instance.Delete());
         }
 
         //private override 

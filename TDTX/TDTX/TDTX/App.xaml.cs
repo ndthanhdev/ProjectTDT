@@ -40,6 +40,8 @@ namespace TDTX
 
         protected override async void OnSleep()
         {
+            //await Task.WhenAll(Settings.Instance.Save(), TimeTable.Instance.Save());
+            
             await Task.Yield();
             if (_loaded)
             {

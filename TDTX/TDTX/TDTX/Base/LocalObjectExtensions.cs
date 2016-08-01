@@ -9,6 +9,7 @@ using Newtonsoft.Json.Serialization;
 using TDTX.Dependencies;
 using Xamarin.Forms;
 using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace TDTX.Base
 {
@@ -27,6 +28,11 @@ namespace TDTX.Base
         {
             string text = JsonConvert.SerializeObject(current, Formatting.Indented);
             await DependencyService.Get<ISaveAndLoad>().SaveTextAsync(current.FileName, text);
+        }
+
+        public static async Task Delete(this ILocalObject current)
+        {
+            await DependencyService.Get<ISaveAndLoad>().SaveTextAsync(current.FileName, "");
         }
     }
 
