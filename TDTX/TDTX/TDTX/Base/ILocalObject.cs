@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -11,7 +12,7 @@ namespace TDTX.Base
     public interface ILocalObject
     {
         [JsonIgnore]
-        string FileName { get; }
+        string Key { get; }
 
     }
 }

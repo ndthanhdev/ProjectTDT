@@ -45,8 +45,9 @@ namespace TDTX
             await Task.Yield();
             if (_loaded)
             {
-                await Task.WhenAll(Settings.Instance.Save(), TimeTable.Instance.Save());
+                await Task.WhenAll(Settings.Instance.Save(),TimeTable.Instance.Save());
             }
+            await this.SavePropertiesAsync();
         }
 
         protected override async void OnResume()

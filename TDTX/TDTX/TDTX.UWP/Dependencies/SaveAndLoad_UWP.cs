@@ -25,9 +25,10 @@ namespace TDTX.UWP.Dependencies
                 await
                     ApplicationData.Current.LocalFolder.CreateFileAsync(filename,
                         CreationCollisionOption.OpenIfExists);
-            
-            using (var stream = await file.OpenStreamForWriteAsync())// OpenAsync(FileAccessMode.ReadWrite))
+
+            using (var stream = await file.OpenStreamForWriteAsync())
             {
+                stream.SetLength(0);
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
                     writer.Write(text);

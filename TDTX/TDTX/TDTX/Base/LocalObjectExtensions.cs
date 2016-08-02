@@ -17,9 +17,9 @@ namespace TDTX.Base
     {
         public static async Task Load<T>(this ILocalObject current) where T : ILocalObject
         {
-            if (await DependencyService.Get<ISaveAndLoad>().FileExists(current.FileName))
+            if (Application.Current.Properties.ContainsKey(current.Key))
             {
-                string text = await DependencyService.Get<ISaveAndLoad>().LoadTextAsync(current.FileName);
+                string text = (string)Application.Current.Properties[current.Key];
                 current = JsonConvert.DeserializeObject<T>(text);
             }
         }
@@ -27,12 +27,12 @@ namespace TDTX.Base
         public static async Task Save(this ILocalObject current)
         {
             string text = JsonConvert.SerializeObject(current, Formatting.Indented);
-            await DependencyService.Get<ISaveAndLoad>().SaveTextAsync(current.FileName, text);
+            Application.Current.Properties[current.Key] = text;
         }
 
         public static async Task Delete(this ILocalObject current)
         {
-            await DependencyService.Get<ISaveAndLoad>().SaveTextAsync(current.FileName, "");
+            Application.Current.Properties[current.Key] = string.Empty;
         }
     }
 

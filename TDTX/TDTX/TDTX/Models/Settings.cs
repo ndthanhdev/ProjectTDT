@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 using TDTX.Base;
+using System.Runtime.Serialization;
+
 
 namespace TDTX.Models
 {
     [JsonObject]
-    public class Settings:ILocalObject
+    public class Settings : ILocalObject
     {
         private static Settings _instance;
         public static Settings Instance => _instance ?? new Settings();
@@ -15,10 +17,11 @@ namespace TDTX.Models
         {
             Language = "en";
             _instance = this;
+
         }
         public string Language { get; set; }
         public string UserId { get; set; }
         public string UserPassword { get; set; }
-        public string FileName => App.SettingsFile;
+        public string Key => App.SettingsFile;
     }
 }

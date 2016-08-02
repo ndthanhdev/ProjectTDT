@@ -34,6 +34,6 @@ namespace TDTX.Models
             }
         }
 
-        public string FileName => "TimeTable.txt";
+        public string Key => "TimeTable.txt";
     }
 }
