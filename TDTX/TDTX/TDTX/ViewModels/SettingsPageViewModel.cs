@@ -39,8 +39,10 @@ namespace TDTX.ViewModels
             {
                 await Task.Yield();
                 Settings.Instance.Language = ci;
-                ((MasterDetailPage)Application.Current.MainPage).Detail =
-                    new NavigationPage((Page)Activator.CreateInstance(typeof(SettingsPage)));
+#if UWP
+            Windows.UI.Xaml.Application.Current.Exit();
+#endif
+
 
             });
         public RelayCommand LogoutCommand => new RelayCommand(async () =>

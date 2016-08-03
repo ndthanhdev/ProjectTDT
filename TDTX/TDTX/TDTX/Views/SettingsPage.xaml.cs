@@ -14,15 +14,12 @@ namespace TDTX.Views
         public SettingsPage()
         {
             InitializeComponent();
+            //MessagingCenter.Subscribe<SettingsPageViewModel,>();
         }
 
         private async void ChangeLanguage_OnClicked(object sender, EventArgs e)
         {
             SettingsPageViewModel.Instance.SelectLanguageCommand.Execute((sender as Button).CommandParameter);
-            await DisplayAlert("Title", "Closing", "OK");
-#if UWP
-            Windows.UI.Xaml.Application.Current.Exit();
-#endif
 
         }
 
