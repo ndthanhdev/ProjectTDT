@@ -14,6 +14,7 @@ using TDTX.Views.TimeTableSubs;
 using Xamarin.Forms;
 using System.Linq;
 using Newtonsoft.Json.Serialization;
+using TDTX.Common;
 
 namespace TDTX.ViewModels
 {

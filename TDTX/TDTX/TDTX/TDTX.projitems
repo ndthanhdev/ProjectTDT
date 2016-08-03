@@ -23,13 +23,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)AppExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\DictionarySerializeToArray.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\IInstanceObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\InstanceObjectExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\IOnlineContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\ILocalObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\LocalObjectExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\OnlineContentExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\DictionarySerializeToArray.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\FileImageProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ImageProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\TextProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dependencies\ISaveAndLoad.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Avatar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Course.cs" />
@@ -47,9 +50,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TimeTablePageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TimeTablePageViewModel.Overall.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Base\FileImageProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Base\ImageProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Base\TextProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\ButtonTextBottom.xaml.cs">
       <DependentUpon>ButtonTextBottom.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -123,7 +123,6 @@
     <None Include="$(MSBuildThisFileDirectory)GettingStarted.Xamarin" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Common\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Base\" />
   </ItemGroup>
   <ItemGroup>

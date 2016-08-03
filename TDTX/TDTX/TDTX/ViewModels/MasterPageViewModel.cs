@@ -5,7 +5,6 @@ using System.Text;
 using GalaSoft.MvvmLight;
 using TDTX.Models;
 using TDTX.Views;
-using TDTX.Views.Base;
 using Xamarin.Forms;
 
 namespace TDTX.ViewModels

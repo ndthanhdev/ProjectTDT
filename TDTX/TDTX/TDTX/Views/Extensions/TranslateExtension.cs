@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
+using TDTX.Common;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,7 +24,7 @@ namespace TDTX.Views.Extensions
 
         public object ProvideValue(IServiceProvider serviceProvider)
         {
-            return Views.Base.TextProvider.Translate(Text);
+            return TextProvider.Translate(Text);
         }
     }
 }

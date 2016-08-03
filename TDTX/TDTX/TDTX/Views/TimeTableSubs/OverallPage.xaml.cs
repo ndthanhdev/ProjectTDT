@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TDTX.Models;
 using TDTX.ViewModels;
-using TDTX.Views.Base;
+using TDTX.Common;
 using Xamarin.Forms;
 
 namespace TDTX.Views.TimeTableSubs

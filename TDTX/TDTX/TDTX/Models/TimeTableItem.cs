@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TDTX.Views.Base;
+using TDTX.Common;
 
 namespace TDTX.Models
 {

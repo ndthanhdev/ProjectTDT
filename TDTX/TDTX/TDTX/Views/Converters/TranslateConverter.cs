@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using TDTX.Common;
 using Xamarin.Forms;
 
 namespace TDTX.Views.Converters
@@ -10,7 +11,7 @@ namespace TDTX.Views.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Base.TextProvider.Translate(value as string);
+            return TextProvider.Translate(value as string);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

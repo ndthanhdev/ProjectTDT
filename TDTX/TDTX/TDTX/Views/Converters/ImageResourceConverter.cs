@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-using TDTX.Views.Base;
+using TDTX.Common;
 using Xamarin.Forms;
 
 namespace TDTX.Views.Converters

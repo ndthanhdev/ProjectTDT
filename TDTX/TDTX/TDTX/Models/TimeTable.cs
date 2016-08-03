@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TDTX.API;
 using TDTX.Base;
+using TDTX.Common;
 using TDTX.Services;
 using TDTX.ViewModels;
 using Xamarin.Forms;

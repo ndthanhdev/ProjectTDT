@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TDTX.API;
 using TDTX.Base;
+using TDTX.Common;
 using TDTX.Models;
 using TDTX.Services;
 using Xamarin.Forms;
@@ -38,18 +39,18 @@ namespace TDTX.Views
                 }
                 else if (respond.Status == TransportStatusCode.NotAuthorized)
                 {
-                    await DisplayAlert(Base.TextProvider.Translate("NotAuthorized"),
-                        Base.TextProvider.Translate("NotAuthorizedDetail"), "OK");
+                    await DisplayAlert(TextProvider.Translate("NotAuthorized"),
+                        TextProvider.Translate("NotAuthorizedDetail"), "OK");
                 }
                 else if (respond.Status == TransportStatusCode.Offline)
                 {
-                    await DisplayAlert(Base.TextProvider.Translate("Offline"),
-                        Base.TextProvider.Translate("OfflineDetail"), "OK");
+                    await DisplayAlert(TextProvider.Translate("Offline"),
+                        TextProvider.Translate("OfflineDetail"), "OK");
                 }
                 else
                 {
-                    await DisplayAlert(Base.TextProvider.Translate("Unknown"),
-                        Base.TextProvider.Translate("UnknownDetail"), "OK");
+                    await DisplayAlert(TextProvider.Translate("Unknown"),
+                        TextProvider.Translate("UnknownDetail"), "OK");
                 }
             }
             catch (Exception)

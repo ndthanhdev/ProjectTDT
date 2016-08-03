@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
-using System.Text;
-using TDTX.Views.Extensions;
 using TDTX.Models;
+using TDTX.Views.Extensions;
 
-namespace TDTX.Views.Base
+namespace TDTX.Common
 {
     public class TextProvider
     {
