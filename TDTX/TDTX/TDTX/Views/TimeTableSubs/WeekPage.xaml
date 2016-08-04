@@ -3,5 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDTX.Views.TimeTableSubs.WeekPage"
              BackgroundColor="{StaticResource PrimaryBackgroundColor}">
-	<Label Text="TODO week" VerticalOptions="Center" HorizontalOptions="Center" />
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="2*"/>
+      <ColumnDefinition Width="8*"/>
+      <ColumnDefinition Width="2*"/>
+    </Grid.ColumnDefinitions>
+    <!--row 1-->
+    <DatePicker Grid.Row="0" Grid.Column="1" Margin="12"/>
+    <Button/>
+    <Button/>
+  </Grid>
+
+
+
 </ContentPage>

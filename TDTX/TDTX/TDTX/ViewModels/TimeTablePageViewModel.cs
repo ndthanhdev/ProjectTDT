@@ -23,19 +23,19 @@ namespace TDTX.ViewModels
         private static TimeTablePageViewModel _instance;
         public static TimeTablePageViewModel Instance => _instance ?? new TimeTablePageViewModel();
 
-        private ContentPage _detail;
+        private Page _detail;
 
         /// <summary>
         /// Current page show on main zone
         /// </summary>
         [JsonIgnore]
-        public ContentPage Detail
+        public Page Detail
         {
             get { return _detail = _detail ?? new OverallPage(); }
             set
             {
                 _detail = value;
-                MessagingCenter.Send<TimeTablePageViewModel, ContentPage>(this, "Navigated", _detail);
+                MessagingCenter.Send<TimeTablePageViewModel, Page>(this, "Navigated", _detail);
             }
         }
 
@@ -49,7 +49,7 @@ namespace TDTX.ViewModels
         public RelayCommand<Type> SelectPageCommand => new RelayCommand<Type>(t =>
         {
             if (t != Detail.GetType())
-                Detail = (ContentPage)Activator.CreateInstance(t);
+                Detail = (Page)Activator.CreateInstance(t);
         });
 
 

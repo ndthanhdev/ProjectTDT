@@ -202,4 +202,10 @@
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="Closing" xml:space="preserve">
+    <value>Closing</value>
+  </data>
+  <data name="ClosingMessage" xml:space="preserve">
+    <value>Please re-open app to see change</value>
+  </data>
 </root>

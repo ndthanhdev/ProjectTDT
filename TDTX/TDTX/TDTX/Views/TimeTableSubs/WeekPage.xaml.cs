@@ -9,7 +9,7 @@ using Xamarin.Forms;
 namespace TDTX.Views.TimeTableSubs
 {
 	public partial class WeekPage : ContentPage
-	{
+    {
 		public WeekPage ()
 		{
 			InitializeComponent ();

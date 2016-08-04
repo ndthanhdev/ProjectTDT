@@ -39,11 +39,7 @@ namespace TDTX.ViewModels
             {
                 await Task.Yield();
                 Settings.Instance.Language = ci;
-#if UWP
-            Windows.UI.Xaml.Application.Current.Exit();
-#endif
-
-
+                MessagingCenter.Send(this, "LanguageChanged");
             });
         public RelayCommand LogoutCommand => new RelayCommand(async () =>
         {

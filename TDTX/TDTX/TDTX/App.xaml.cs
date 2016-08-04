@@ -25,14 +25,15 @@ namespace TDTX
         }
 
         private bool _loaded = false;
+        private bool _saved = false;
+
 
         protected override async void OnStart()
         {
             await Task.Yield();
 
             // Handle when your app starts  
-            await Task.WhenAll(Settings.Instance.Load<Settings>(), TimeTable.Instance.Load<TimeTable>());
-            _loaded = true;
+            await LoadSate();
             if (Settings.Instance.CanTryLogin())
                 MainPage = new MainPage();
             else
@@ -46,18 +47,32 @@ namespace TDTX
             await Task.Yield();
             if (_loaded)
             {
-                await Task.WhenAll(Settings.Instance.Save(), TimeTable.Instance.Save());
+                await SaveSate();
             }
-            await this.SavePropertiesAsync();
         }
 
         protected override async void OnResume()
         {
             // Handle when your app resumes
-            if (_loaded)
+            if (_saved)
             {
-                await Task.WhenAll(Settings.Instance.Load<Settings>(), TimeTable.Instance.Load<TimeTable>());
+                await LoadSate();
             }
+        }
+
+        public async Task SaveSate()
+        {
+            await Task.WhenAll(Settings.Instance.Save(), TimeTable.Instance.Save());
+            await this.SavePropertiesAsync();
+            _loaded = false;
+            _saved = true;
+        }
+
+        public async Task LoadSate()
+        {
+            await Task.WhenAll(Settings.Instance.Load<Settings>(), TimeTable.Instance.Load<TimeTable>());
+            _loaded = true;
+            _saved = false;
         }
     }
 }

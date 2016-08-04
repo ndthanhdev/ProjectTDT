@@ -222,4 +222,10 @@
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="Closing" xml:space="preserve">
+    <value>Đang thoát</value>
+  </data>
+  <data name="ClosingMessage" xml:space="preserve">
+    <value>Mở lại ứng dụng để thấy sự thay đổi</value>
+  </data>
 </root>

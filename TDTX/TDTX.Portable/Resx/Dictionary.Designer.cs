@@ -71,6 +71,24 @@ namespace TDTX.Portable.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Closing.
+        /// </summary>
+        public static string Closing {
+            get {
+                return ResourceManager.GetString("Closing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please re-open app to see change.
+        /// </summary>
+        public static string ClosingMessage {
+            get {
+                return ResourceManager.GetString("ClosingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Day.
         /// </summary>
         public static string Day {
