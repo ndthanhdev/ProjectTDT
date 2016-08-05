@@ -49,7 +49,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TimeTablePageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TimeTablePageViewModel.Day.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TimeTablePageViewModel.Overall.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TimeTablePageViewModel.Week.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\ButtonTextBottom.xaml.cs">
       <DependentUpon>ButtonTextBottom.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -11,19 +11,26 @@
     <!--row 1-->
     <DatePicker Grid.Row="0" HorizontalOptions="Center" Margin="0,12,0,12"/>
     <!--row 2-->
-    <TableView Grid.Row="1">
-      <TableRoot>
-        <TableSection Title="123">
-          <TextCell Text="A001 Chịch"/>
-        </TableSection>
-        <TableSection Title="456">
-          <TextCell Text="A001 fck"/>
-        </TableSection>
-        <TableSection Title="789">
-          <TextCell Text="A001 du"/>
-        </TableSection>
-
-      </TableRoot>
-    </TableView>
+    <Grid Grid.Row="1">
+      <ListView Margin="8,8,8,8">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition/>
+                  <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition/>
+                  <RowDefinition/>
+                </Grid.RowDefinitions>
+              
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </Grid>
   </Grid>
 </ContentPage>
