@@ -38,15 +38,11 @@ namespace TDTX.ViewModels
                     continue;
                 if (DateTime.Now.Subtract(keyValuePair.Value.start).Days > 365)
                     break;
-                SemesterDictionary.co
+                //SemesterDictionary.co
 
             }
         }
 
-        private bool containsDate(TimeTableItem tti, DateTime dt)
-        {
-            return true;
-        }
 
     }
 }

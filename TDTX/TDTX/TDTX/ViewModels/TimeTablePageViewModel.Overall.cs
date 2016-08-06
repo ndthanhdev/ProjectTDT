@@ -112,22 +112,22 @@ namespace TDTX.ViewModels
                     TimeTableItem tti = new TimeTableItem() { Course = course, Schedule = schedule };
                     switch (schedule.thu)
                     {
-                        case "2":
+                        case 2:
                             OverallMonday.Add(tti);
                             break;
-                        case "3":
+                        case 3:
                             OverallTuesday.Add(tti);
                             break;
-                        case "4":
+                        case 4:
                             OverallWednesday.Add(tti);
                             break;
-                        case "5":
+                        case 5:
                             OverallThursday.Add(tti);
                             break;
-                        case "6":
+                        case 6:
                             OverallFriday.Add(tti);
                             break;
-                        case "7":
+                        case 7:
                             OverallSaturday.Add(tti);
                             break;
                         default:
