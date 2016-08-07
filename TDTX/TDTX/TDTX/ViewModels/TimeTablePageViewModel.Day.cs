@@ -22,7 +22,7 @@ namespace TDTX.ViewModels
             get { return _selectedDateTime; }
             set
             {
-                _selectedDateTime = value;                
+                _selectedDateTime = value;
                 UpdateDay();
             }
         }
@@ -45,7 +45,7 @@ namespace TDTX.ViewModels
                 {
                     foreach (var courseSchedule in course.Lich)
                     {
-                       if(IsWorkOnDate(courseSchedule,keyValuePair.Value.start,SelectedDateTime))
+                        if (IsWorkOnDate(courseSchedule, keyValuePair.Value.start, SelectedDateTime))
                             tempList.Add(new TimeTableItem()
                             {
                                 Course = course,
@@ -54,6 +54,7 @@ namespace TDTX.ViewModels
                     }
                 }
             }
+            //TODO The application called an interface that was marshalled for a different thread 
             lock (Day)
             {
                 Day.Clear();

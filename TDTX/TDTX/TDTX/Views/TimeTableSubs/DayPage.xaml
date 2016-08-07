@@ -35,11 +35,19 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding Course.TenMH}"/>
-                                <Label Text="{Binding Schedule.tiet}"/>
-                                <Label/>
-                            </StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="48"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48"/>
+                                    <ColumnDefinition/>                                    
+                                </Grid.ColumnDefinitions>
+                                <Button Text="6:50" BackgroundColor="{StaticResource PrimaryForceGroundColor}"  FontSize="12"
+                                        TextColor="{StaticResource PrimaryBackgroundColor}" BorderRadius="24"/>
+                                <Label Grid.Column="1" Text="{Binding Course.TenMH}"/>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
