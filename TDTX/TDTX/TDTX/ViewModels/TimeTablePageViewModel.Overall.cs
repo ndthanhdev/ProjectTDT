@@ -89,8 +89,8 @@ namespace TDTX.ViewModels
         {
             await Task.Yield();
 
+            //TODO fix lock
             ClearOverallProperty();
-            // RaiseOverallProperty();
 
             if (SelectedSemesterIndex < 0 || SelectedSemesterIndex > SemesterDictionary.Count - 1)
                 return;
@@ -104,7 +104,6 @@ namespace TDTX.ViewModels
             if (semester.tkb == null)
                 return;
 
-            // ClearOverallProperty();
             foreach (var course in semester.tkb)
             {
                 foreach (var schedule in course.Lich)

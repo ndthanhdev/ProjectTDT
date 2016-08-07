@@ -80,6 +80,8 @@ namespace TDTX.ViewModels
             for (int i = 0; i < Math.Min(SemesterDictionary.Count, 6); i++)
                 provideSemesters.Add(ProvideSemesterData(i));
             await Task.WhenAll(provideSemesters);
+            await Task.WhenAll(Task.Factory.StartNew(UpdateDay),
+                Task.Factory.StartNew(UpdateOverall));
             return true;
         }
 

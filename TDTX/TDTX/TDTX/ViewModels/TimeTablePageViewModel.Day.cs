@@ -10,7 +10,7 @@ namespace TDTX.ViewModels
     public partial class TimeTablePageViewModel
     {
         private ObservableCollection<TimeTableItem> _day;
-        private DateTime _selectedDateTime;
+        private DateTime _selectedDateTime = DateTime.Parse("08/15/2016");
 
         public ObservableCollection<TimeTableItem> Day
         {
@@ -22,18 +22,20 @@ namespace TDTX.ViewModels
             get { return _selectedDateTime; }
             set
             {
-                _selectedDateTime = value;
-                UpdateDay().RunSynchronously();
+                _selectedDateTime = value;                
+                UpdateDay();
             }
         }
 
-        public async Task UpdateDay()
+        public async void UpdateDay()
         {
             await Task.Yield();
             ObservableCollection<TimeTableItem> tempList = new ObservableCollection<TimeTableItem>();
             foreach (KeyValuePair<SemesterInfor, Semester> keyValuePair in SemesterDictionary)
             {
                 if (keyValuePair.Value == null)
+                    continue;
+                if (keyValuePair.Value.tkb == null)
                     continue;
                 if (keyValuePair.Value.start > SelectedDateTime)
                     continue;
@@ -51,12 +53,14 @@ namespace TDTX.ViewModels
                             });
                     }
                 }
-
             }
-            Day.Clear();
-            foreach (var timeTableItem in tempList)
+            lock (Day)
             {
-                Day.Add(timeTableItem);
+                Day.Clear();
+                foreach (var timeTableItem in tempList)
+                {
+                    Day.Add(timeTableItem);
+                }
             }
         }
 
