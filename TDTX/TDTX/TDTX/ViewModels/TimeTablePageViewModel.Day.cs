@@ -23,26 +23,68 @@ namespace TDTX.ViewModels
             set
             {
                 _selectedDateTime = value;
-                UpdateTask().RunSynchronously();
+                UpdateDay().RunSynchronously();
             }
         }
 
-        public async void UpdateDay()
+        public async Task UpdateDay()
         {
             await Task.Yield();
+            ObservableCollection<TimeTableItem> tempList = new ObservableCollection<TimeTableItem>();
             foreach (KeyValuePair<SemesterInfor, Semester> keyValuePair in SemesterDictionary)
             {
                 if (keyValuePair.Value == null)
                     continue;
-                if (keyValuePair.Value.start > DateTime.Now)
+                if (keyValuePair.Value.start > SelectedDateTime)
                     continue;
-                if (DateTime.Now.Subtract(keyValuePair.Value.start).Days > 365)
+                if (SelectedDateTime.Subtract(keyValuePair.Value.start).Days > 365)
                     break;
-                //SemesterDictionary.co
+                foreach (var course in keyValuePair.Value.tkb)
+                {
+                    foreach (var courseSchedule in course.Lich)
+                    {
+                       if(IsWorkOnDate(courseSchedule,keyValuePair.Value.start,SelectedDateTime))
+                            tempList.Add(new TimeTableItem()
+                            {
+                                Course = course,
+                                Schedule = courseSchedule
+                            });
+                    }
+                }
 
             }
+            Day.Clear();
+            foreach (var timeTableItem in tempList)
+            {
+                Day.Add(timeTableItem);
+            }
+        }
+
+        private bool IsWorkOnDate(CourseSchedule schedule, DateTime startDate, DateTime date)
+        {
+            if (date < startDate)
+                return false;
+            int differenceDay = date.Subtract(startDate).Days;
+            int index = differenceDay / 7;
+            if (index > schedule.tuan.Length - 1)
+                return false;
+            if (schedule.tuan[index] == '-')
+                return false;
+            return DayInWeek(startDate.AddDays(index * 7), schedule.thu) == date;
+        }
+        /// <summary>
+        /// using startDate of week and dayOfWeek to calculate real date
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="dayOfWeek"></param>
+        /// <returns></returns>
+        private DateTime DayInWeek(DateTime start, int dayOfWeek)
+        {
+
+            return start.AddDays(dayOfWeek < 2 ? 6 : dayOfWeek - 2);
         }
 
 
     }
 }
+

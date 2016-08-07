@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDTX.Views.TimeTableSubs.DayPage"
+             xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
+             BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}"
              BackgroundColor="{StaticResource PrimaryBackgroundColor}">
   <Grid>
     <Grid.RowDefinitions>
@@ -9,11 +11,12 @@
       <RowDefinition/>
     </Grid.RowDefinitions>
     <!--row 1-->
-    <DatePicker Grid.Row="0" HorizontalOptions="Center" Margin="0,12,0,12"/>
+    <DatePicker Grid.Row="0" Date="{Binding SelectedDateTime,Mode=TwoWay}" HorizontalOptions="Center" Margin="0,12,0,12"/>
     <!--row 2-->
     <Grid Grid.Row="1">
-      <ListView Margin="8,8,8,8">
-        <ListView.ItemTemplate>
+      <ListView Margin="8,8,8,8" ItemsSource="{Binding Day}">
+        
+        <!--<ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
               <Grid>
@@ -25,11 +28,11 @@
                   <RowDefinition/>
                   <RowDefinition/>
                 </Grid.RowDefinitions>
-              
               </Grid>
             </ViewCell>
           </DataTemplate>
-        </ListView.ItemTemplate>
+        </ListView.ItemTemplate>-->
+
       </ListView>
     </Grid>
   </Grid>

@@ -17,7 +17,6 @@ namespace TDTX.Views
         public LoginPage()
         {
             InitializeComponent();
-
         }
 
 
@@ -29,7 +28,7 @@ namespace TDTX.Views
                 (sender as Button).IsEnabled = false;
                 euser.IsEnabled = false;
                 epass.IsEnabled = false;
-                var respond = await Transporter.Transport<AvatarRequest,Avatar>(
+                var respond = await Transporter.Transport<AvatarRequest, Avatar>(
                     new AvatarRequest() { user = euser.Text, pass = epass.Text });
                 if (respond.Status == TransportStatusCode.OK)
                 {
@@ -67,6 +66,7 @@ namespace TDTX.Views
 
         protected override async void OnAppearing()
         {
+            await Task.Yield();
             base.OnAppearing();
             //await Task.WhenAll(Settings.Instance.Delete(), TimeTable.Instance.Delete());
         }

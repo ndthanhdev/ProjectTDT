@@ -13,6 +13,7 @@ namespace TDTX.Views.TimeTableSubs
 		public DayPage ()
 		{
 			InitializeComponent ();
+
 		}
 	}
 }

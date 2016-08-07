@@ -17,6 +17,7 @@ namespace TDTX.Base
     {
         public static async Task Load<T>(this ILocalObject current) where T : ILocalObject
         {
+            await Task.Yield();
             if (Application.Current.Properties.ContainsKey(current.Key))
             {
                 string text = (string)Application.Current.Properties[current.Key];
@@ -26,12 +27,14 @@ namespace TDTX.Base
 
         public static async Task Save(this ILocalObject current)
         {
+            await Task.Yield();
             string text = JsonConvert.SerializeObject(current, Formatting.Indented);
             Application.Current.Properties[current.Key] = text;
         }
 
         public static async Task Delete(this ILocalObject current)
         {
+            await Task.Yield();
             Application.Current.Properties[current.Key] = string.Empty;
         }
     }

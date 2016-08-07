@@ -75,10 +75,11 @@ namespace TDTX.ViewModels
             await Task.Yield();
             if (!await UpdateListSemester())
                 return false;
-            //TODO try multi request
-            for (int i = 0; i < Math.Min(SemesterDictionary.Count, 3); i++)
-                await ProvideSemesterData(i);
-
+            //TODO try multi requesta
+            List<Task> provideSemesters= new List<Task>();
+            for (int i = 0; i < Math.Min(SemesterDictionary.Count, 6); i++)
+                provideSemesters.Add(ProvideSemesterData(i));
+            await Task.WhenAll(provideSemesters);
             return true;
         }
 
