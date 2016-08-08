@@ -18,7 +18,7 @@ using TDTX.Common;
 
 namespace TDTX.ViewModels
 {
-    public partial class TimeTablePageViewModel : ViewModelBase,IOnlineContent
+    public partial class TimeTablePageViewModel : ViewModelBase, IOnlineContent
     {
         private static TimeTablePageViewModel _instance;
         public static TimeTablePageViewModel Instance => _instance ?? new TimeTablePageViewModel();
@@ -42,6 +42,19 @@ namespace TDTX.ViewModels
 
         private TimeTablePageViewModel()
         {
+            //_detail = new OverallPage();
+
+            Day = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+
+            OverallSunday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            OverallMonday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            OverallTuesday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            OverallWednesday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            OverallThursday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            OverallFriday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            OverallSaturday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            OverallSunday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+
             _instance = this;
         }
 
@@ -76,16 +89,11 @@ namespace TDTX.ViewModels
             if (!await UpdateListSemester())
                 return false;
             //TODO try multi requesta
-            List<Task> provideSemesters= new List<Task>();
+            List<Task> provideSemesters = new List<Task>();
             for (int i = 0; i < Math.Min(SemesterDictionary.Count, 6); i++)
                 provideSemesters.Add(ProvideSemesterData(i));
             await Task.WhenAll(provideSemesters);
-            Device.BeginInvokeOnMainThread(()=>
-            {
-                UpdateDay();
-                UpdateOverall();
-                
-            });
+            await Task.WhenAll(new Task(UpdateDay), new Task(UpdateOverall));
             return true;
         }
 

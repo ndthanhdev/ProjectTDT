@@ -10,17 +10,14 @@ namespace TDTX.ViewModels
     public partial class TimeTablePageViewModel
     {
         private ObservableCollection<TimeTableItem> _day;
-        private DateTime _selectedDateTime = DateTime.Parse("08/15/2016");
+        private DateTime _selectedDateTime = DateTime.Now;//.Parse("08/15/2016");
 
         public ObservableCollection<TimeTableItem> Day
         {
-            get { return _day = _day ?? new ObservableCollection<TimeTableItem>(); }
+            get { return _day; }
             set
             {
-                lock(_day)
-                {
-                    _day = value;
-                }
+                _day = value;
             }
         }
 

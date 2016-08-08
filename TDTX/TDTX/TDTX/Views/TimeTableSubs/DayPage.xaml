@@ -54,16 +54,9 @@
                                 </StackLayout>
                                 <BoxView Grid.Column="2" Grid.RowSpan="2" Color="{StaticResource PrimaryForceGroundColor}"/>
                                 <StackLayout Grid.Column="3" Grid.RowSpan="2">
-                                    <Label Text="{Binding Source.Path,StringFormat='MaMH: {0}'}"/>
-                                    <!--<Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="MaMH: "/>
-                                            <Span Text="{Binding Course.MaMH}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>-->
-
-                                    <Label  Text="{Binding Course.Nhom}"/>
-                                    <Label  Text="{Binding Course.To}"/>
+                                    <Label Text="{Binding Course.MaMH,StringFormat='MaMH: {0}'}"/>
+                                    <Label  Text="{Binding Course.Nhom,StringFormat='MaMH: {0}'}"/>
+                                    <Label  Text="{Binding Course.To,StringFormat='MaMH: {0}'}"/>
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

@@ -25,49 +25,49 @@ namespace TDTX.ViewModels
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallSunday
         {
-            get { return _overallSunday = _overallSunday ?? new ObservableCollection<TimeTableItem>(); }
+            get { return _overallSunday; }
             private set { _overallSunday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallMonday
         {
-            get { return _overallMonday = _overallMonday ?? new ObservableCollection<TimeTableItem>(); }
+            get { return _overallMonday; }
             private set { _overallMonday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallTuesday
         {
-            get { return _overallTuesday = _overallTuesday ?? new ObservableCollection<TimeTableItem>(); }
+            get { return _overallTuesday; }
             private set { _overallTuesday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallWednesday
         {
-            get { return _overallWednesday = _overallWednesday ?? new ObservableCollection<TimeTableItem>(); }
+            get { return _overallWednesday; }
             private set { _overallWednesday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallThursday
         {
-            get { return _overallThursday = _overallThursday ?? new ObservableCollection<TimeTableItem>(); }
+            get { return _overallThursday; }
             private set { _overallThursday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallFriday
         {
-            get { return _overallFriday = _overallFriday ?? new ObservableCollection<TimeTableItem>(); }
+            get { return _overallFriday; }
             private set { _overallFriday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallSaturday
         {
-            get { return _overallSaturday = _overallSaturday ?? new ObservableCollection<TimeTableItem>(); }
+            get { return _overallSaturday; }
             private set { _overallSaturday = value; }
         }
 
@@ -88,8 +88,9 @@ namespace TDTX.ViewModels
         private async void UpdateOverall()
         {
             await Task.Yield();
-
+            //TODO fix semester changed
             //TODO fix lock
+            //TODO add effect
             ClearOverallProperty();
 
             if (SelectedSemesterIndex < 0 || SelectedSemesterIndex > SemesterDictionary.Count - 1)
