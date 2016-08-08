@@ -14,5 +14,12 @@ namespace TDTX.Views.TimeTableSubs
 		{
 			InitializeComponent ();                    
 		}
-	}
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            (sender as ListView).SelectedItem = null;
+            //Label = new Label() { FormattedText}
+            
+        }
+    }
 }

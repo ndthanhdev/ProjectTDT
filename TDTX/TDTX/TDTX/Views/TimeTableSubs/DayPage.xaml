@@ -31,22 +31,40 @@
         </DatePicker>
 
         <Grid Grid.Row="1">
-            <ListView Margin="8,8,8,8" ItemsSource="{Binding Day}">
+            <ListView Margin="8,8,8,8" ItemsSource="{Binding Day}" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="48"/>
-                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="48"/>
-                                    <ColumnDefinition/>                                    
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="1"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Button Text="6:50" BackgroundColor="{StaticResource PrimaryForceGroundColor}"  FontSize="12"
                                         TextColor="{StaticResource PrimaryBackgroundColor}" BorderRadius="24"/>
-                                <Label Grid.Column="1" Text="{Binding Course.TenMH}"/>
+                                <StackLayout Grid.Column="1" Grid.RowSpan="2">
+                                    <Label  Text="{Binding Course.TenMH}"/>
+                                    <Label  Text="{Binding Schedule.phong}"/>
+                                </StackLayout>
+                                <BoxView Grid.Column="2" Grid.RowSpan="2" Color="{StaticResource PrimaryForceGroundColor}"/>
+                                <StackLayout Grid.Column="3" Grid.RowSpan="2">
+                                    <Label Text="{Binding Source.Path,StringFormat='MaMH: {0}'}"/>
+                                    <!--<Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="MaMH: "/>
+                                            <Span Text="{Binding Course.MaMH}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>-->
+
+                                    <Label  Text="{Binding Course.Nhom}"/>
+                                    <Label  Text="{Binding Course.To}"/>
+                                </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

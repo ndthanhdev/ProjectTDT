@@ -15,6 +15,13 @@ namespace TDTX.ViewModels
         public ObservableCollection<TimeTableItem> Day
         {
             get { return _day = _day ?? new ObservableCollection<TimeTableItem>(); }
+            set
+            {
+                lock(_day)
+                {
+                    _day = value;
+                }
+            }
         }
 
         public DateTime SelectedDateTime
