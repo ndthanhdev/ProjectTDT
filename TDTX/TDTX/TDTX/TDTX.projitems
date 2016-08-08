@@ -56,8 +56,10 @@
       <DependentUpon>ButtonTextBottom.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\SpanTextBindable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\ImageResourceConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\String2String.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\BindingConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\tietToStartTime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\TimeTableItemToShortString.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\TranslateConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Extensions\Base\Ext.cs" />

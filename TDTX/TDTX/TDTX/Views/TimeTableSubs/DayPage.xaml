@@ -4,66 +4,73 @@
              x:Class="TDTX.Views.TimeTableSubs.DayPage"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
+             xmlns:converter="clr-namespace:TDTX.Views.Converters"
+             xmlns:extensions="clr-namespace:TDTX.Views.Extensions"
              BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}"
              BackgroundColor="{StaticResource PrimaryBackgroundColor}">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <!--row 1-->
-        <DatePicker Grid.Row="0" Date="{Binding SelectedDateTime,Mode=TwoWay}" HorizontalOptions="Center" Margin="0,12,0,12">
-            <!--<DatePicker.Format>dd-MM-yyyy</DatePicker.Format>-->
-            <DatePicker.MinimumDate>
-                <sys:DateTime x:FactoryMethod="Parse">
-                    <x:Arguments>
-                        <x:String>Jan 1 1998</x:String>
-                    </x:Arguments>
-                </sys:DateTime>
-            </DatePicker.MinimumDate>
-            <DatePicker.MaximumDate>
-                <sys:DateTime x:FactoryMethod="Parse">
-                    <x:Arguments>
-                        <x:String>Dec 31 2018</x:String>
-                    </x:Arguments>
-                </sys:DateTime>
-            </DatePicker.MaximumDate>
-        </DatePicker>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converter:tietToStartTime  x:Key="TietToStartTime"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <!--row 1-->
+    <DatePicker Grid.Row="0" Date="{Binding SelectedDateTime,Mode=TwoWay}" HorizontalOptions="Center" Margin="0,12,0,12">
+      <!--<DatePicker.Format>dd-MM-yyyy</DatePicker.Format>-->
+      <DatePicker.MinimumDate>
+        <sys:DateTime x:FactoryMethod="Parse">
+          <x:Arguments>
+            <x:String>Jan 1 1998</x:String>
+          </x:Arguments>
+        </sys:DateTime>
+      </DatePicker.MinimumDate>
+      <DatePicker.MaximumDate>
+        <sys:DateTime x:FactoryMethod="Parse">
+          <x:Arguments>
+            <x:String>Dec 31 2018</x:String>
+          </x:Arguments>
+        </sys:DateTime>
+      </DatePicker.MaximumDate>
+    </DatePicker>
 
-        <Grid Grid.Row="1">
-            <ListView Margin="8,8,8,8" ItemsSource="{Binding Day}" ItemSelected="ListView_ItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="48"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="48"/>
-                                    <ColumnDefinition Width="5*"/>
-                                    <ColumnDefinition Width="1"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Text="6:50" BackgroundColor="{StaticResource PrimaryForceGroundColor}"  FontSize="12"
-                                        TextColor="{StaticResource PrimaryBackgroundColor}" BorderRadius="24"/>
-                                <StackLayout Grid.Column="1" Grid.RowSpan="2">
-                                    <Label  Text="{Binding Course.TenMH}"/>
-                                    <Label  Text="{Binding Schedule.phong}"/>
-                                </StackLayout>
-                                <BoxView Grid.Column="2" Grid.RowSpan="2" Color="{StaticResource PrimaryForceGroundColor}"/>
-                                <StackLayout Grid.Column="3" Grid.RowSpan="2">
-                                    <Label Text="{Binding Course.MaMH,StringFormat='MaMH: {0}'}"/>
-                                    <Label  Text="{Binding Course.Nhom,StringFormat='MaMH: {0}'}"/>
-                                    <Label  Text="{Binding Course.To,StringFormat='MaMH: {0}'}"/>
-                                </StackLayout>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+    <Grid Grid.Row="1">
+      <ListView Margin="8,8,8,8" ItemsSource="{Binding Day}" ItemSelected="ListView_ItemSelected" IsRefreshing="True" IsPullToRefreshEnabled="True">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="48"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="48"/>
+                  <ColumnDefinition Width="5*"/>
+                  <ColumnDefinition Width="1"/>
+                  <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Text="{Binding Schedule.tiet,Converter={StaticResource TietToStartTime}}" BackgroundColor="{StaticResource PrimaryForceGroundColor}"  FontSize="12"
+                        TextColor="{StaticResource PrimaryBackgroundColor}" BorderRadius="24"/>
+                <StackLayout Grid.Column="1" Grid.RowSpan="2">
+                  <Label  Text="{Binding Course.TenMH}"/>
+                  <Label  Text="{Binding Schedule.phong}"/>
+                </StackLayout>
+                <BoxView Grid.Column="2" Grid.RowSpan="2" Color="{StaticResource PrimaryForceGroundColor}"/>
+                <StackLayout Grid.Column="3" Grid.RowSpan="2">
+                  <Label Text="{Binding Course.MaMH,StringFormat='MaMH: {0}'}"/>
+                  <Label Text="{Binding Course.Nhom,StringFormat='Nhom: {0}'}"/>
+                  <Label  Text="{Binding Course.To,StringFormat='To: {0}'}"/>
+                </StackLayout>
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
 
-            </ListView>
-        </Grid>
+      </ListView>
     </Grid>
+  </Grid>
 </ContentPage>

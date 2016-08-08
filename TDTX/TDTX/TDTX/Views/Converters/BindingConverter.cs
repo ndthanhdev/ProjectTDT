@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace TDTX.Views.Converters
 {
-    public class String2String:IValueConverter
+    public class BindingConverter:IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
