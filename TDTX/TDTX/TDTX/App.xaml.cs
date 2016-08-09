@@ -20,6 +20,7 @@ namespace TDTX
     {
         public App()
         {
+            string ob=null;
             InitializeComponent();
             MainPage = new SplashPage();
         }

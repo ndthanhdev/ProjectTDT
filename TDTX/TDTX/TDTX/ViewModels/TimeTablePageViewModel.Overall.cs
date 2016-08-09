@@ -25,49 +25,49 @@ namespace TDTX.ViewModels
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallSunday
         {
-            get { return _overallSunday; }
-            private set { _overallSunday = value; }
+            get { return _overallSunday ?? (_overallSunday = new ObservableCollection<TimeTableItem>()); }
+            private set{_overallSunday = value;}
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallMonday
         {
-            get { return _overallMonday; }
+            get { return _overallMonday ?? (_overallMonday = new ObservableCollection<TimeTableItem>()); }
             private set { _overallMonday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallTuesday
         {
-            get { return _overallTuesday; }
+            get { return _overallTuesday ?? (_overallTuesday = new ObservableCollection<TimeTableItem>()); }
             private set { _overallTuesday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallWednesday
         {
-            get { return _overallWednesday; }
+            get { return _overallWednesday ?? (_overallWednesday = new ObservableCollection<TimeTableItem>()); }
             private set { _overallWednesday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallThursday
         {
-            get { return _overallThursday; }
+            get { return _overallThursday ?? (_overallThursday = new ObservableCollection<TimeTableItem>()); }
             private set { _overallThursday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallFriday
         {
-            get { return _overallFriday; }
+            get { return _overallFriday ?? (_overallFriday = new ObservableCollection<TimeTableItem>()); }
             private set { _overallFriday = value; }
         }
 
         [JsonIgnore]
         public ObservableCollection<TimeTableItem> OverallSaturday
         {
-            get { return _overallSaturday; }
+            get { return _overallSaturday ?? (_overallSaturday = new ObservableCollection<TimeTableItem>()); }
             private set { _overallSaturday = value; }
         }
 

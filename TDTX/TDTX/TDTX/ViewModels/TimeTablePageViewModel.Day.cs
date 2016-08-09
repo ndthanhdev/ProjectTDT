@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TDTX.Models;
@@ -14,7 +15,7 @@ namespace TDTX.ViewModels
 
         public ObservableCollection<TimeTableItem> Day
         {
-            get { return _day; }
+            get { return _day ?? (_day = new ObservableCollection<TimeTableItem>()); }
             set
             {
                 _day = value;
@@ -34,7 +35,7 @@ namespace TDTX.ViewModels
         public async void UpdateDay()
         {
             await Task.Yield();
-            ObservableCollection<TimeTableItem> tempList = new ObservableCollection<TimeTableItem>();
+            List<TimeTableItem> tempList = new List<TimeTableItem>();
             foreach (KeyValuePair<SemesterInfor, Semester> keyValuePair in SemesterDictionary)
             {
                 if (keyValuePair.Value == null)
@@ -58,6 +59,7 @@ namespace TDTX.ViewModels
                     }
                 }
             }
+            tempList.Sort();
             //TODO The application called an interface that was marshalled for a different thread 
             lock (Day)
             {
@@ -89,7 +91,6 @@ namespace TDTX.ViewModels
         /// <returns></returns>
         private DateTime DayInWeek(DateTime start, int dayOfWeek)
         {
-
             return start.AddDays(dayOfWeek < 2 ? 6 : dayOfWeek - 2);
         }
 

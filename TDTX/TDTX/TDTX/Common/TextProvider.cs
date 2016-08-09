@@ -15,7 +15,7 @@ namespace TDTX.Common
         {
             if (key == null)
                 return "";
-
+            
             ResourceManager resmgr = new ResourceManager(ResourceId
                                 , typeof(TranslateExtension).GetTypeInfo().Assembly);
             CultureInfo ci = new CultureInfo(Settings.Instance.Language);

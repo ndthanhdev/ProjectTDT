@@ -44,16 +44,16 @@ namespace TDTX.ViewModels
         {
             //_detail = new OverallPage();
 
-            Day = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            //Day = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
 
-            OverallSunday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
-            OverallMonday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
-            OverallTuesday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
-            OverallWednesday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
-            OverallThursday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
-            OverallFriday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
-            OverallSaturday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
-            OverallSunday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            //OverallSunday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            //OverallMonday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            //OverallTuesday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            //OverallWednesday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            //OverallThursday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            //OverallFriday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            //OverallSaturday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
+            //OverallSunday = new System.Collections.ObjectModel.ObservableCollection<TimeTableItem>();
 
             _instance = this;
         }
