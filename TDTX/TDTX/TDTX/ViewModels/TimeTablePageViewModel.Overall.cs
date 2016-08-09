@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TDTX.API;
+using TDTX.Common;
 using TDTX.Models;
 using TDTX.Services;
 
@@ -113,25 +114,25 @@ namespace TDTX.ViewModels
                     switch (schedule.thu)
                     {
                         case 2:
-                            OverallMonday.Add(tti);
+                            OverallMonday.AddToOrdered(tti);
                             break;
                         case 3:
-                            OverallTuesday.Add(tti);
+                            OverallTuesday.AddToOrdered(tti);
                             break;
                         case 4:
-                            OverallWednesday.Add(tti);
+                            OverallWednesday.AddToOrdered(tti);
                             break;
                         case 5:
-                            OverallThursday.Add(tti);
+                            OverallThursday.AddToOrdered(tti);
                             break;
                         case 6:
-                            OverallFriday.Add(tti);
+                            OverallFriday.AddToOrdered(tti);
                             break;
                         case 7:
-                            OverallSaturday.Add(tti);
+                            OverallSaturday.AddToOrdered(tti);
                             break;
                         default:
-                            OverallSunday.Add(tti);
+                            OverallSunday.AddToOrdered(tti);
                             break;
                     }
                 }

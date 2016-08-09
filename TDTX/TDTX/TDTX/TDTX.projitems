@@ -32,6 +32,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\DictionarySerializeToArray.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\FileImageProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ImageProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ObservableCollectionExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\TextProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dependencies\ISaveAndLoad.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Avatar.cs" />
