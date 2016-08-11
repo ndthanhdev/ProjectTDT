@@ -19,7 +19,6 @@ namespace TDTX.Views.TimeTableSubs
         {
             (sender as ListView).SelectedItem = null;
             //Label = new Label() { FormattedText}
-            
         }
     }
 }

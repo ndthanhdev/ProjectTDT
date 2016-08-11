@@ -119,6 +119,10 @@
       <DependentUpon>WeekPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\TimtableView.xaml.cs">
+      <DependentUpon>TimtableView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\TuitionPage.xaml.cs">
       <DependentUpon>TuitionPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -131,9 +135,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Base\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Views\circle_earn.png">
-      <CustomToolNamespace>TDTX.Resources</CustomToolNamespace>
-    </Content>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -225,6 +226,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TimeTableSubs\MonthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TimtableView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

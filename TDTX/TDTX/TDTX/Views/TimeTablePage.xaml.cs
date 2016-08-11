@@ -22,9 +22,9 @@ namespace TDTX.Views
             }
             set
             {
-                if(Children.Count>1)
+                if (Children.Count > 1)
                     Task.Run(async () => await Children[1].LayoutTo(new Rectangle(-1, -1, 0, 0)));
-                    
+
                 while (Children.Count > 1)
                 {
                     Children.RemoveAt(1);
@@ -33,14 +33,13 @@ namespace TDTX.Views
                 Children.Add(value);
             }
         }
-
         public TimeTablePage()
         {
 
             InitializeComponent();
             Navigated(TimeTablePageViewModel.Instance.Detail);
             BackgroundLayout.SizeChanged += BackgroundLayout_SizeChanged;
-            MessagingCenter.Subscribe<TimeTablePageViewModel, Page>(this,"Navigated",(sender,page)=>Navigated(page));
+            MessagingCenter.Subscribe<TimeTablePageViewModel, Page>(this, "Navigated", (sender, page) => Navigated(page));
         }
 
         private void BackgroundLayout_SizeChanged(object sender, EventArgs e)
@@ -56,7 +55,7 @@ namespace TDTX.Views
             return p;
         }
 
-        private void Navigated(Page page)
+        private async void Navigated(Page page)
         {
             DetailPage = page;
             DetailPage?.LayoutTo(ContentLayout.Bounds);
@@ -107,7 +106,7 @@ namespace TDTX.Views
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<TimeTablePageViewModel,string>(this,"Navigated");
+            MessagingCenter.Unsubscribe<TimeTablePageViewModel, string>(this, "Navigated");
         }
     }
 }

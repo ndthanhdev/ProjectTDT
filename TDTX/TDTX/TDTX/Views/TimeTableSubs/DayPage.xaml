@@ -7,10 +7,13 @@
              xmlns:converter="clr-namespace:TDTX.Views.Converters"
              xmlns:extensions="clr-namespace:TDTX.Views.Extensions"
              BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}"
-             BackgroundColor="{StaticResource PrimaryBackgroundColor}">
+             BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+             Icon="Images/piggy-bank.png"
+             Title="{extensions:Translate Day}">
   <ContentPage.Resources>
     <ResourceDictionary>
       <converter:tietToStartTime  x:Key="TietToStartTime"/>
+
     </ResourceDictionary>
   </ContentPage.Resources>
   <Grid>
@@ -38,38 +41,42 @@
     </DatePicker>
 
     <Grid Grid.Row="1">
-      <ListView Margin="8,8,8,8" ItemsSource="{Binding Day}" ItemSelected="ListView_ItemSelected" IsRefreshing="True" IsPullToRefreshEnabled="True">
+      <ListView Margin="8,8,8,8" ItemsSource="{Binding Day}" ItemSelected="ListView_ItemSelected" IsRefreshing="True" IsPullToRefreshEnabled="True"
+                HasUnevenRows="True">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
-              <Grid>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="48"/>
-                  <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="48"/>
-                  <ColumnDefinition Width="5*"/>
-                  <ColumnDefinition Width="1"/>
-                  <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Text="{Binding Schedule.tiet,Converter={StaticResource TietToStartTime}}" BackgroundColor="{StaticResource PrimaryForceGroundColor}"  FontSize="12"
-                        TextColor="{StaticResource PrimaryBackgroundColor}" BorderRadius="24"/>
-                <StackLayout Grid.Column="1" Grid.RowSpan="2">
-                  <Label  Text="{Binding Course.TenMH}"/>
-                  <Label  Text="{Binding Schedule.phong}"/>
-                </StackLayout>
-                <BoxView Grid.Column="2" Grid.RowSpan="2" Color="{StaticResource PrimaryForceGroundColor}"/>
-                <StackLayout Grid.Column="3" Grid.RowSpan="2">
-                  <Label Text="{Binding Course.MaMH,StringFormat='MaMH: {0}'}"/>
-                  <Label Text="{Binding Course.Nhom,StringFormat='Nhom: {0}'}"/>
-                  <Label  Text="{Binding Course.To,StringFormat='To: {0}'}"/>
-                </StackLayout>
-              </Grid>
+              <ViewCell.View>
+                <Grid VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="0,0,0,6">
+                  <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="2*"/>
+                  </Grid.ColumnDefinitions>
+                  <Button VerticalOptions="StartAndExpand" HeightRequest="48" Grid.Row="0" WidthRequest="48" Grid.Column="0" Text="{Binding Schedule.tiet,Converter={StaticResource TietToStartTime}}" BackgroundColor="{StaticResource PrimaryForceGroundColor}"  FontSize="12"
+                          TextColor="{StaticResource PrimaryBackgroundColor}" BorderRadius="24"/>
+                  <StackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="FillAndExpand">
+                    <Label  Text="{Binding Course.TenMH}"/>
+                    <Label  Text="{Binding Schedule.phong}"/>
+                  </StackLayout>
+                  <BoxView WidthRequest="1"  Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Color="{StaticResource PrimaryForceGroundColor}"/>
+                  <StackLayout Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="FillAndExpand">
+                    <Label Text="{Binding Course.MaMH,StringFormat='MaMH: {0}'}"/>
+                    <Label Text="{Binding Course.Nhom,StringFormat='Nhom: {0}'}"/>
+                    <Label  Text="{Binding Course.To,StringFormat='To: {0}'}"/>
+                  </StackLayout>
+                </Grid>
+              </ViewCell.View>
+
             </ViewCell>
           </DataTemplate>
-        </ListView.ItemTemplate>
 
+        </ListView.ItemTemplate>
       </ListView>
     </Grid>
   </Grid>

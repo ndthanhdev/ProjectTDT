@@ -6,7 +6,9 @@
              xmlns:vm="clr-namespace:TDTX.ViewModels;assembly=TDTX"
              xmlns:converters="clr-namespace:TDTX.Views.Converters;assembly=TDTX"
              BindingContext="{x:Static vm:TimeTablePageViewModel.Instance}"
-             BackgroundColor="{StaticResource PrimaryBackgroundColor}">
+             BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+             Icon="Images/piggy-bank.png"
+             Title="{extensions:Translate Overall}">
   <ContentPage.Resources>
     <ResourceDictionary>
       <converters:TimeTableItemToShortString x:Key="TTI2SS"/>
