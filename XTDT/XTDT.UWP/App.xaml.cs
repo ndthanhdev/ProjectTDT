@@ -53,7 +53,6 @@ namespace XTDT.UWP
         {
             // long-running startup tasks go here
             await Task.Delay(5000);
-
             NavigationService.Navigate(typeof(Views.LoginPage));
             await Task.CompletedTask;
         }

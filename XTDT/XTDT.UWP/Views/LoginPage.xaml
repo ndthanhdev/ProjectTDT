@@ -48,7 +48,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" VerticalAlignment="Center">
+            <StackPanel Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" VerticalAlignment="Center">
                 <TextBox PlaceholderText="Student ID" VerticalAlignment="Center"
                  Background="{ThemeResource SystemControlBackgroundBaseHighBrush}" 
                  Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"                      
@@ -57,18 +57,18 @@
                  Background="{ThemeResource SystemControlBackgroundBaseHighBrush}"
                  Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}">
                     <Interactivity:Interaction.Behaviors>
-                        <Behaviors:TextBoxEnterKeyBehavior>
-                            <!--login work-->
-                        </Behaviors:TextBoxEnterKeyBehavior>
+                        <Behaviors:KeyBehavior Key="Enter">
+                            <Core:CallMethodAction MethodName="lol"/>
+                        </Behaviors:KeyBehavior>
                     </Interactivity:Interaction.Behaviors>
                 </PasswordBox>
             </StackPanel>
-            <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" 
-                    HorizontalAlignment="Stretch" 
+            <Button Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" 
+                    VerticalAlignment="Top" HorizontalAlignment="Stretch" 
                     Content="Login"/>
             <HyperlinkButton Grid.Row="6" Grid.Column="2" 
                              Grid.ColumnSpan="3" HorizontalAlignment="Center"
-                             Content="Forgot password?"/>
+                             Content="Forgot password?" NavigateUri="http://tuvanhocduong.tdt.edu.vn/"/>
         </Grid>
     </RelativePanel>
 
