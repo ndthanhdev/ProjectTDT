@@ -1,2 +1,2 @@
-# CSharp
-my C# project
+# A cross platform project for my School
+
