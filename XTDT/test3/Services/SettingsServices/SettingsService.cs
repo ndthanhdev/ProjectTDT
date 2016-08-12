@@ -3,7 +3,7 @@ using Template10.Common;
 using Template10.Utils;
 using Windows.UI.Xaml;
 
-namespace XTDT.UWP.Services.SettingsServices
+namespace test3.Services.SettingsServices
 {
     public class SettingsService
     {
