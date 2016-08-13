@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Template10.Mvvm;
 using XTDT.UWP.Views;
+using XTDT.API.ServiceAccess;
+using XTDT.API.Requests;
+using XTDT.API.Respond;
+using XTDT.API.Material;
+using XTDT.UWP.Services.LocalDataServices;
 
 namespace XTDT.UWP.ViewModels
 {
@@ -30,7 +35,16 @@ namespace XTDT.UWP.ViewModels
             try
             {
                 Busy.SetBusy(true);
+                var package = await Transporter.Transport<AvatarRequest, Avartar>(new AvatarRequest() { user = StudentID, pass = StudentPassword });
+                if (package.Status == PackageStatusCode.OK)
+                {
+                    Busy.SetBusy(true, "Logged");
+                    LocalDataService.Instance.IsLogged = true;
+                    NavigationService.Navigate(typeof(MainPage));
+                }
+
                 await Task.Delay(3000);
+
             }
             catch { }
             finally

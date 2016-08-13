@@ -12,8 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using XTDT.UWP.Services.LocalDataServices;
-using XTDT.UWP.ViewModels;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,17 +20,11 @@ namespace XTDT.UWP.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LoginPage : Page
+    public sealed partial class TimeTablePage : Page
     {
-        public LoginPage()
+        public TimeTablePage()
         {
             this.InitializeComponent();
-        }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            //foreach (var hamburgerButton in Shell.HamburgerMenu.PrimaryButtons)
-            //    hamburgerButton.IsEnabled = false;
         }
     }
 }
