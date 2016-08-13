@@ -7,6 +7,7 @@ using Template10.Common;
 using System;
 using System.Linq;
 using Windows.UI.Xaml.Data;
+using XTDT.UWP.Services.LocalDataServices;
 
 namespace XTDT.UWP
 {
@@ -29,6 +30,10 @@ namespace XTDT.UWP
             ShowShellBackButton = _settings.UseShellBackButton;
 
             #endregion
+
+            #region Local Data
+            var _localdata = LocalDataService.Instance;
+            #endregion
         }
 
         public override async Task OnInitializeAsync(IActivatedEventArgs args)
@@ -45,6 +50,7 @@ namespace XTDT.UWP
                     Content = new Views.Shell(nav),
                     ModalContent = new Views.Busy(),
                 };
+                
             }
             await Task.CompletedTask;
         }

@@ -9,5 +9,7 @@
     <Import_RootNamespace>XTDT</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IServices\ILocalDataService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginPageViewModel.cs" />
   </ItemGroup>
 </Project>

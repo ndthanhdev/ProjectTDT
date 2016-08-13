@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XTDT.UWP", "XTDT.UWP\XTDT.U
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		XTDT\XTDT.projitems*{0e537ba5-32ba-4504-8f90-0b42876ea7a8}*SharedItemsImports = 4
 		XTDT\XTDT.projitems*{fbc9dfee-6175-41a4-bafe-b8f211f1faf1}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
