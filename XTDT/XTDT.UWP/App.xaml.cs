@@ -7,7 +7,6 @@ using Template10.Common;
 using System;
 using System.Linq;
 using Windows.UI.Xaml.Data;
-using XTDT.UWP.Services.LocalDataServices;
 
 namespace XTDT.UWP
 {
@@ -21,18 +20,12 @@ namespace XTDT.UWP
         {
             InitializeComponent();
             SplashFactory = (e) => new Views.Splash(e);
-
             #region App settings
-
             var _settings = SettingsService.Instance;
             RequestedTheme = _settings.AppTheme;
             CacheMaxDuration = _settings.CacheMaxDuration;
             ShowShellBackButton = _settings.UseShellBackButton;
 
-            #endregion
-
-            #region Local Data
-            var _localdata = LocalDataService.Instance;
             #endregion
         }
 

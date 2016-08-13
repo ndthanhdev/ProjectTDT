@@ -29,8 +29,9 @@ namespace XTDT.UWP.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            foreach (var hamburgerButton in Shell.HamburgerMenu.PrimaryButtons)
-                hamburgerButton.IsEnabled = false;
+            //foreach (var hamburgerButton in Shell.HamburgerMenu.PrimaryButtons)
+            //    hamburgerButton.IsEnabled = false;
+           
         }
     }
 }
