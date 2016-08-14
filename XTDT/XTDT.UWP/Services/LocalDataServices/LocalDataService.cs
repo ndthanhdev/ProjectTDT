@@ -1,12 +1,14 @@
 using System;
 using Template10.Common;
+using Template10.Mvvm;
 using Template10.Utils;
 using Windows.UI.Xaml;
 
 namespace XTDT.UWP.Services.LocalDataServices
 {
-    public class LocalDataService
+    public class LocalDataService:ViewModelBase
     {
+
         static LocalDataService _instance;
         public static LocalDataService Instance => _instance ?? (_instance = new LocalDataService());
         Template10.Services.SettingsService.ISettingsHelper _helper;
@@ -26,6 +28,7 @@ namespace XTDT.UWP.Services.LocalDataServices
             set
             {
                 _helper.Write<bool>(nameof(IsLogged), value);
+                RaisePropertyChanged();
             }
         }
     }
