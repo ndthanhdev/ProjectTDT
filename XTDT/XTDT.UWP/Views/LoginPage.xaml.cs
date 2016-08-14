@@ -32,19 +32,19 @@ namespace XTDT.UWP.Views
         {
             base.OnNavigatedTo(e);
             LocalDataService.Instance.IsLogged = false;
-            //foreach (var hamburgerButton in Shell.HamburgerMenu.PrimaryButtons)
-            //    hamburgerButton.IsEnabled = false;
-            //LoginButton.Content = "Login";
+            foreach (var hamburgerButton in Shell.HamburgerMenu.PrimaryButtons)
+                hamburgerButton.IsEnabled = false;
+            LoginButton.Content = "Login";
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
             bool state = LocalDataService.Instance.IsLogged;
-            //foreach (var hamburgerButton in Shell.HamburgerMenu.PrimaryButtons)
-            //    hamburgerButton.IsEnabled = state;
-            //if (state)
-            //    LoginButton.Content = "Logout";
+            foreach (var hamburgerButton in Shell.HamburgerMenu.PrimaryButtons)
+                hamburgerButton.IsEnabled = state;
+            if (state)
+                LoginButton.Content = "Logout";
         }
     }
 }
