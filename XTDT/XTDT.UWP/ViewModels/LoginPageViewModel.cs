@@ -39,11 +39,15 @@ namespace XTDT.UWP.ViewModels
                 if (package.Status == PackageStatusCode.OK)
                 {
                     Busy.SetBusy(true, "Logged");
+                    LocalDataService.Instance.StudentID = StudentID;
+                    LocalDataService.Instance.Password = StudentPassword;
+                    LocalDataService.Instance.Name = package.Respond.Name;
+                    LocalDataService.Instance.Avatar = package.Respond.src;
                     LocalDataService.Instance.IsLogged = true;
                     NavigationService.Navigate(typeof(MainPage));
                 }
 
-                await Task.Delay(3000);
+                await Task.Delay(1800);
 
             }
             catch { }

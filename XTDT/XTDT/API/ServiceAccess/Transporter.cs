@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using XTDT.API.Material;
@@ -79,7 +80,11 @@ namespace XTDT.API.ServiceAccess
         {
             await Task.Yield();
             HttpClient client = new HttpClient();
-            return await client.GetStringAsync(Host + query);
+            var response = await client.GetAsync(Host + query);
+            var bytes = await response.Content.ReadAsByteArrayAsync();
+            
+            var result = Encoding.UTF8.GetString(bytes);
+            return result;
         }
 
     }
