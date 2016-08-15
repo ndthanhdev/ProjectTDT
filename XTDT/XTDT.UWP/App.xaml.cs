@@ -7,6 +7,8 @@ using Template10.Common;
 using System;
 using System.Linq;
 using Windows.UI.Xaml.Data;
+using XTDT.UWP.Services.LocalDataServices;
+using XTDT.UWP.Views;
 
 namespace XTDT.UWP
 {
@@ -43,7 +45,7 @@ namespace XTDT.UWP
                     Content = new Views.Shell(nav),
                     ModalContent = new Views.Busy(),
                 };
-                
+
             }
             await Task.CompletedTask;
         }
@@ -52,7 +54,14 @@ namespace XTDT.UWP
         {
             // long-running startup tasks go here
             await Task.Delay(5000);
-            NavigationService.Navigate(typeof(Views.LoginPage));
+            if (LocalDataService.Instance.IsLogged)
+            {
+                NavigationService.Navigate(typeof(TimeTablePage));
+            }
+            else
+            {
+                NavigationService.Navigate(typeof(Views.LoginPage));
+            }
             await Task.CompletedTask;
         }
     }

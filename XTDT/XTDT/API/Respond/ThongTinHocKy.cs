@@ -8,7 +8,7 @@ namespace XTDT.API.Respond
     public class ThongTinHocKy
     {
         [JsonProperty("id")]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("TenHocKy")]
         public string TenHocKy { get; set; }

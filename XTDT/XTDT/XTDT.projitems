@@ -9,21 +9,21 @@
     <Import_RootNamespace>XTDT</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)API\Attributes\APIIgnoreAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\Material\Package.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\Requests\AvatarRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\Requests\BasicRequestObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\Requests\RequestObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)API\Requests\SemesterListRequest.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)API\Requests\SemesterRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API\Requests\HocKyListRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API\Requests\HocKyRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\Respond\Avartar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\Respond\ThongTinHocKy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\Respond\Tkb.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\Respond\Lich.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\Respond\HocKy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\ServiceAccess\Transporter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\DictionarySerializeToArray.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataController\TkbDataController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\TkbItem.cs" />
   </ItemGroup>
 </Project>

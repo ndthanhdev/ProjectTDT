@@ -4,10 +4,10 @@ using System.Text;
 
 namespace XTDT.API.Requests
 {
-    public class SemesterRequest : BasicRequestObject
+    public class HocKyListRequest : BasicRequestObject
     {
         public override string act => "tkb";
-        public string option => "ln";
-        public int id { get; set; }
+
+        public string option => "lhk";
     }
 }

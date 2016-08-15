@@ -6,7 +6,7 @@ using Windows.UI.Xaml;
 
 namespace XTDT.UWP.Services.LocalDataServices
 {
-    public class LocalDataService:ViewModelBase
+    public class LocalDataService
     {
 
         static LocalDataService _instance;
@@ -28,7 +28,6 @@ namespace XTDT.UWP.Services.LocalDataServices
             set
             {
                 _helper.Write<bool>(nameof(IsLogged), value);
-                RaisePropertyChanged();
             }
         }
     }

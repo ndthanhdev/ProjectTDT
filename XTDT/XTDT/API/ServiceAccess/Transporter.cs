@@ -66,6 +66,7 @@ namespace XTDT.API.ServiceAccess
             catch (Exception e)
             {
                 respond.Status = PackageStatusCode.UnknownError;
+                throw e;
             }
             return respond;
         }
