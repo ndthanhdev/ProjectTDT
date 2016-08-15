@@ -12,5 +12,10 @@ namespace XTDT.API.Respond
 
         [JsonProperty("TenHocKy")]
         public string TenHocKy { get; set; }
+
+        public override int GetHashCode()
+        {
+            return Id;
+        }
     }
 }

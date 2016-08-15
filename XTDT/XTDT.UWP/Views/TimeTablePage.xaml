@@ -7,10 +7,14 @@
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:controls="using:Template10.Controls"
     xmlns:mycontrols="using:XTDT.UWP.Controls"
+    xmlns:vm="using:XTDT.UWP.ViewModels"
     xmlns:local="using:XTDT.UWP.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.DataContext>
+        <vm:TimTablePageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <VisualStateManager.VisualStateGroups>
@@ -63,7 +67,7 @@
                                               Data="M4.0000144,28.001998L32.000014,28.001998 32.000014,30.001998 4.0000144,30.001998z M1.6689301E-05,21.999999L28.000016,21.999999 28.000016,23.999999 1.6689301E-05,23.999999z M4.0000168,14.999999L32.000016,14.999999 32.000016,16.999999 4.0000168,16.999999z M5.5000166,8.9999981L28.000016,8.9999981 28.000016,10.999998 5.5000166,10.999998z M14.000017,2.9999981L32.000016,2.9999981 32.000016,4.9999981 14.000017,4.9999981z M5.4999999,0C8.5320001,0,11,2.467001,11,5.5L9,5.5C9,3.5699997 7.4299998,2 5.4999999,2 3.5699998,2 1.9999998,3.5699997 1.9999995,5.5 1.9999998,7.4300003 3.5699998,9 5.4999999,9L5.4999999,11C2.4679998,11 0,8.5330009 0,5.5 0,2.467001 2.4679998,0 5.4999999,0z"/>
                 </PivotItem.Header>
                 <Grid>
-                    <ComboBox />
+                    <ComboBox/>
                     <ListView/>
                 </Grid>
             </PivotItem>
