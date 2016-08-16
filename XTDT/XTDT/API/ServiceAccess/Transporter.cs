@@ -79,12 +79,17 @@ namespace XTDT.API.ServiceAccess
         public static async Task<string> GetString(string query)
         {
             await Task.Yield();
-            HttpClient client = new HttpClient();
-            var response = await client.GetAsync(Host + query);
-            var bytes = await response.Content.ReadAsByteArrayAsync();
-            
-            var result = Encoding.UTF8.GetString(bytes);
-            return result;
+
+            using (HttpClient client = new HttpClient())
+            {
+
+                client.Timeout = TimeSpan.FromSeconds(60);
+                //var response = await client.GetAsync(Host + query);
+                //var bytes = await response.Content.ReadAsByteArrayAsync();
+
+                var result = await client.GetStringAsync(Host + query);//Encoding.UTF8.GetString(bytes);
+                return result;
+            }
         }
 
     }

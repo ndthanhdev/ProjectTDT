@@ -78,6 +78,18 @@ namespace XTDT.UWP.Services.LocalDataServices
                 _helper.Write<string>(nameof(Name), value);
             }
         }
+        public string TkbData
+        {
+            get
+            {
+                string result = _helper.Read<string>(nameof(TkbData), string.Empty);
+                return result;
+            }
+            set
+            {
+                _helper.Write<string>(nameof(TkbData), value);
+            }
+        }
 
 
 

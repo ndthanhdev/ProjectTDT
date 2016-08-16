@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +15,8 @@ namespace XTDT.DataController
 {
     public class TkbDataController
     {
-        private static TkbDataController _instance;
-        public static TkbDataController Instance => _instance ?? (_instance = new TkbDataController());
-
         public TkbDataController()
         {
-            _instance = this;
         }
 
         private DictionarySerializeToArray<ThongTinHocKy, HocKy> _hocKyDictionary;
@@ -28,20 +26,18 @@ namespace XTDT.DataController
             set { _hocKyDictionary = value; }
         }
 
-        public async Task<bool> UpdateAsync(string id, string password)
+        public async Task<bool> UpdateDictionaryValueAsync(string id, string password, int number = 3)
         {
             await Task.Yield();
-            if (!await UpdateHocKyDictionaryKey(id, password))
-                return false;
             //TODO try multi requesta
             List<Task> provideSemesters = new List<Task>();
-            for (int i = 0; i < Math.Min(HocKyDictionary.Count, 6); i++)
+            for (int i = 0; i < Math.Min(HocKyDictionary.Count, number); i++)
                 provideSemesters.Add(ProvideHocKyValue(id, password, HocKyDictionary.Keys.ElementAt(i)));
             await Task.WhenAll(provideSemesters);
             return true;
         }
 
-        private async Task<bool> UpdateHocKyDictionaryKey(string id, string password)
+        public async Task<bool> UpdateHocKyDictionaryKey(string id, string password)
         {
             var respond = await Transporter.Transport<HocKyListRequest, List<ThongTinHocKy>>(
                 new HocKyListRequest()
@@ -85,8 +81,9 @@ namespace XTDT.DataController
                 }
                 return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.Write(ex.Message);
                 return false;
             }
         }
