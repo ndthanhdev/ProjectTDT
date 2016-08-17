@@ -47,10 +47,12 @@ namespace XTDT.UWP.ViewModels
             await Task.Yield();
             if (await DataCotroller.UpdateHocKyDictionaryKey(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password))
             {
+                //TODO for prevent from reset selected
+                var currentSelected = SelectedTTHK;
                 HocKyList.Clear();
                 foreach (var thongTinHocKy in DataCotroller.HocKyDictionary.Keys)
                     HocKyList.Add(thongTinHocKy);
-                SelectedTTHK = HocKyList[0];
+                SelectedTTHK = currentSelected;
             }
             //TODO add new data to
             await DataCotroller.UpdateDictionaryValueAsync(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);

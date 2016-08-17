@@ -19,7 +19,7 @@
                             Stretch="Uniform"
                             Margin="0,12,0,0"
                             Data="{Binding Data}"
-                            Fill="White" />
+                            Fill="{ThemeResource SystemControlBackgroundBaseHighBrush}" />
         <TextBlock
                             FontFamily="Segoe UI"
                             Text="{Binding Label}"

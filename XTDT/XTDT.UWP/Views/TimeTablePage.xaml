@@ -8,6 +8,7 @@
     xmlns:controls="using:Template10.Controls"
     xmlns:mycontrols="using:XTDT.UWP.Controls"
     xmlns:vm="using:XTDT.UWP.ViewModels"
+    xmlns:models="using:XTDT.Models"
     xmlns:local="using:XTDT.UWP.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -15,6 +16,15 @@
     <Page.DataContext>
         <vm:TimTablePageViewModel x:Name="ViewModel"/>
     </Page.DataContext>
+    <Page.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="listTemplate" x:DataType="models:TkbItem">
+                <TextBlock>
+                    <Run Text="{Binding Tkb.TenMH}"/>
+                </TextBlock>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Page.Resources>
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <VisualStateManager.VisualStateGroups>
@@ -112,13 +122,13 @@
                         <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
                         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
 
-                        <ListView Header="SUN" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding OverallSunday}" />
-                        <ListView Header="MON" Grid.Row="0" Grid.Column="2" ItemsSource="{Binding OverallMonday}"/>
-                        <ListView Header="TUE" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding OverallTuesday}"/>
-                        <ListView Header="WED" Grid.Row="2" Grid.Column="2" ItemsSource="{Binding OverallWednesday}"/>
-                        <ListView Header="THU" Grid.Row="4" Grid.Column="0" ItemsSource="{Binding OverallThursday}"/>
-                        <ListView Header="FRI" Grid.Row="4" Grid.Column="2" ItemsSource="{Binding OverallFriday}"/>
-                        <ListView Header="SAT" Grid.Row="6" Grid.Column="0" ItemsSource="{Binding OverallSaturday}"/>
+                        <ListView Header="SUN" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding OverallSunday}" ItemTemplate="{StaticResource listTemplate}" />
+                        <ListView Header="MON" Grid.Row="0" Grid.Column="2" ItemsSource="{Binding OverallMonday}" ItemTemplate="{StaticResource listTemplate}"/>
+                        <ListView Header="TUE" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding OverallTuesday}" ItemTemplate="{StaticResource listTemplate}"/>
+                        <ListView Header="WED" Grid.Row="2" Grid.Column="2" ItemsSource="{Binding OverallWednesday}" ItemTemplate="{StaticResource listTemplate}"/>
+                        <ListView Header="THU" Grid.Row="4" Grid.Column="0" ItemsSource="{Binding OverallThursday}" ItemTemplate="{StaticResource listTemplate}"/>
+                        <ListView Header="FRI" Grid.Row="4" Grid.Column="2" ItemsSource="{Binding OverallFriday}" ItemTemplate="{StaticResource listTemplate}"/>
+                        <ListView Header="SAT" Grid.Row="6" Grid.Column="0" ItemsSource="{Binding OverallSaturday}" ItemTemplate="{StaticResource listTemplate}"/>
                     </Grid>
                 </Grid>
             </PivotItem>

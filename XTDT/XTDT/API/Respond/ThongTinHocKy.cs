@@ -20,7 +20,10 @@ namespace XTDT.API.Respond
         public override bool Equals(object obj)
         {
             if (obj is ThongTinHocKy)
-                return (obj as ThongTinHocKy).Id == Id;
+            {
+                var other = (obj as ThongTinHocKy);
+                return other.Id == Id && other.TenHocKy == TenHocKy;
+            }
             return base.Equals(obj);
         }
     }
