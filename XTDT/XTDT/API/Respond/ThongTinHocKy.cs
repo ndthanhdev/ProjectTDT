@@ -15,7 +15,13 @@ namespace XTDT.API.Respond
 
         public override int GetHashCode()
         {
-            return Id;
+            return Id.GetHashCode();
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is ThongTinHocKy)
+                return (obj as ThongTinHocKy).Id == Id;
+            return base.Equals(obj);
         }
     }
 }

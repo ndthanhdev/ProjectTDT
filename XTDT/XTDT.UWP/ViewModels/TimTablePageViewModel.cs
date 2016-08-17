@@ -45,9 +45,13 @@ namespace XTDT.UWP.ViewModels
         public async Task UpdateAsync()
         {
             await Task.Yield();
-            await DataCotroller.UpdateHocKyDictionaryKey(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
-            foreach (var thongTinHocKy in DataCotroller.HocKyDictionary.Keys)
-                HocKyList.Add(thongTinHocKy);
+            if (await DataCotroller.UpdateHocKyDictionaryKey(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password))
+            {
+                HocKyList.Clear();
+                foreach (var thongTinHocKy in DataCotroller.HocKyDictionary.Keys)
+                    HocKyList.Add(thongTinHocKy);
+                SelectedTTHK = HocKyList[0];
+            }
             //TODO add new data to
             await DataCotroller.UpdateDictionaryValueAsync(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
             await SaveAndLoad.SaveTextAsync("TkbData.txt", JsonConvert.SerializeObject(DataCotroller));
@@ -57,80 +61,148 @@ namespace XTDT.UWP.ViewModels
         {
             var json = await SaveAndLoad.LoadTextAsync("TkbData.txt");
             DataCotroller = JsonConvert.DeserializeObject<TkbDataController>(json);
-            RaisePropertyChanged(nameof(HocKyList));
+            foreach (var thongTinHocKy in DataCotroller.HocKyDictionary.Keys)
+                HocKyList.Add(thongTinHocKy);
+            if (HocKyList.Count > 0)
+                SelectedTTHK = HocKyList[0];
+
         }
         public async Task PrepareData()
         {
             await LoadData();
             await UpdateAsync();
         }
-        public ICommand SelectHocKyCommand => new DelegateCommand<ThongTinHocKy>( async (tthk) => await SelectHocKy(tthk));
+
+        public async Task<bool> ProvideHocKyValue(ThongTinHocKy tthk)
+        {
+            var result = await DataCotroller.ProvideHocKyValue(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password, tthk);
+            await SaveAndLoad.SaveTextAsync("TkbData.txt", JsonConvert.SerializeObject(DataCotroller));
+            return result;
+        }
+
+        public ICommand SelectHocKyCommand => new DelegateCommand<ThongTinHocKy>(async (tthk) => await SelectHocKy(tthk));
 
         public async Task SelectHocKy(ThongTinHocKy tthk)
         {
             //TODO check busy
             await Task.Yield();
-
             //TODO clear
+            ClearOverallProperty();
+
             if (tthk == null)
                 return;
             if (!DataCotroller.HocKyDictionary.ContainsKey(tthk))
                 return;
             if (DataCotroller.HocKyDictionary[tthk] == null)
-                await DataCotroller.ProvideHocKyValue(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password, tthk);
+                //TODO save data here
+                if (!await ProvideHocKyValue(tthk))
+                    return;
+            //TODO comfirm
+            if (tthk != SelectedTTHK)
+                return;
+            if (DataCotroller.HocKyDictionary[tthk].Tkb == null)
+                return;
             //TODO update display
+            var hk = DataCotroller.HocKyDictionary[tthk];
+            foreach (var tkb in hk.Tkb)
+            {
+                foreach (var lich in tkb.Lich)
+                {
+                    TkbItem tti = new TkbItem() { Tkb = tkb, Lich = lich };
+                    switch (lich.Thu)
+                    {
+                        case 2:
+                            OverallMonday.AddToOrdered(tti);
+                            break;
+                        case 3:
+                            OverallTuesday.AddToOrdered(tti);
+                            break;
+                        case 4:
+                            OverallWednesday.AddToOrdered(tti);
+                            break;
+                        case 5:
+                            OverallThursday.AddToOrdered(tti);
+                            break;
+                        case 6:
+                            OverallFriday.AddToOrdered(tti);
+                            break;
+                        case 7:
+                            OverallSaturday.AddToOrdered(tti);
+                            break;
+                        default:
+                            OverallSunday.AddToOrdered(tti);
+                            break;
+                    }
+                }
+            }
         }
 
-        //private ObservableCollection<TkbItem> _overallSunday;
-        //private ObservableCollection<TkbItem> _overallMonday;
-        //private ObservableCollection<TkbItem> _overallTuesday;
-        //private ObservableCollection<TkbItem> _overallWednesday;
-        //private ObservableCollection<TkbItem> _overallThursday;
-        //private ObservableCollection<TkbItem> _overallFriday;
-        //private ObservableCollection<TkbItem> _overallSaturday;
-        //private int _selectedSemesterIndex;
+        private ThongTinHocKy _selectedTTHK;
+        public ThongTinHocKy SelectedTTHK
+        {
+            get { return _selectedTTHK; }
+            set { Set(ref _selectedTTHK, value); }
+        }
 
-        //public ObservableCollection<TkbItem> OverallSunday
-        //{
-        //    get { return _overallSunday ?? (_overallSunday = new ObservableCollection<TkbItem>()); }
-        //    private set { _overallSunday = value; }
-        //}
+        private ObservableCollection<TkbItem> _overallSunday;
+        private ObservableCollection<TkbItem> _overallMonday;
+        private ObservableCollection<TkbItem> _overallTuesday;
+        private ObservableCollection<TkbItem> _overallWednesday;
+        private ObservableCollection<TkbItem> _overallThursday;
+        private ObservableCollection<TkbItem> _overallFriday;
+        private ObservableCollection<TkbItem> _overallSaturday;
 
-        //public ObservableCollection<TkbItem> OverallMonday
-        //{
-        //    get { return _overallMonday ?? (_overallMonday = new ObservableCollection<TkbItem>()); }
-        //    private set { _overallMonday = value; }
-        //}
+        public ObservableCollection<TkbItem> OverallSunday
+        {
+            get { return _overallSunday ?? (_overallSunday = new ObservableCollection<TkbItem>()); }
+            private set { _overallSunday = value; }
+        }
 
-        //public ObservableCollection<TkbItem> OverallTuesday
-        //{
-        //    get { return _overallTuesday ?? (_overallTuesday = new ObservableCollection<TkbItem>()); }
-        //    private set { _overallTuesday = value; }
-        //}
+        public ObservableCollection<TkbItem> OverallMonday
+        {
+            get { return _overallMonday ?? (_overallMonday = new ObservableCollection<TkbItem>()); }
+            private set { _overallMonday = value; }
+        }
 
-        //public ObservableCollection<TkbItem> OverallWednesday
-        //{
-        //    get { return _overallWednesday ?? (_overallWednesday = new ObservableCollection<TkbItem>()); }
-        //    private set { _overallWednesday = value; }
-        //}
+        public ObservableCollection<TkbItem> OverallTuesday
+        {
+            get { return _overallTuesday ?? (_overallTuesday = new ObservableCollection<TkbItem>()); }
+            private set { _overallTuesday = value; }
+        }
 
-        //public ObservableCollection<TkbItem> OverallThursday
-        //{
-        //    get { return _overallThursday ?? (_overallThursday = new ObservableCollection<TkbItem>()); }
-        //    private set { _overallThursday = value; }
-        //}
+        public ObservableCollection<TkbItem> OverallWednesday
+        {
+            get { return _overallWednesday ?? (_overallWednesday = new ObservableCollection<TkbItem>()); }
+            private set { _overallWednesday = value; }
+        }
 
-        //public ObservableCollection<TkbItem> OverallFriday
-        //{
-        //    get { return _overallFriday ?? (_overallFriday = new ObservableCollection<TkbItem>()); }
-        //    private set { _overallFriday = value; }
-        //}
+        public ObservableCollection<TkbItem> OverallThursday
+        {
+            get { return _overallThursday ?? (_overallThursday = new ObservableCollection<TkbItem>()); }
+            private set { _overallThursday = value; }
+        }
 
-        //public ObservableCollection<TkbItem> OverallSaturday
-        //{
-        //    get { return _overallSaturday ?? (_overallSaturday = new ObservableCollection<TkbItem>()); }
-        //    private set { _overallSaturday = value; }
-        //}
+        public ObservableCollection<TkbItem> OverallFriday
+        {
+            get { return _overallFriday ?? (_overallFriday = new ObservableCollection<TkbItem>()); }
+            private set { _overallFriday = value; }
+        }
 
+        public ObservableCollection<TkbItem> OverallSaturday
+        {
+            get { return _overallSaturday ?? (_overallSaturday = new ObservableCollection<TkbItem>()); }
+            private set { _overallSaturday = value; }
+        }
+
+        private void ClearOverallProperty()
+        {
+            OverallMonday.Clear();
+            OverallTuesday.Clear();
+            OverallWednesday.Clear();
+            OverallThursday.Clear();
+            OverallFriday.Clear();
+            OverallSaturday.Clear();
+            OverallSunday.Clear();
+        }
     }
 }

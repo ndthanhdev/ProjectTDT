@@ -11,7 +11,7 @@ namespace XTDT.API.Respond
         public string Tiet { get; set; }
 
         [JsonProperty("thu")]
-        public string Thu { get; set; }
+        public int Thu { get; set; }
 
         [JsonProperty("phong")]
         public string Phong { get; set; }

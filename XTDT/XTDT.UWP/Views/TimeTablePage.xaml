@@ -75,7 +75,8 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <ComboBox HorizontalAlignment="Stretch" Name="cbb"
-                        ItemsSource="{Binding HocKyList,UpdateSourceTrigger=PropertyChanged}">
+                        ItemsSource="{Binding HocKyList,UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding SelectedTTHK,Mode=TwoWay}">
                         <Interactivity:Interaction.Behaviors>
                             <Core:EventTriggerBehavior EventName="SelectionChanged">
                                 <Core:InvokeCommandAction Command="{Binding SelectHocKyCommand}" CommandParameter="{Binding SelectedItem, ElementName=cbb}"/>
@@ -111,13 +112,13 @@
                         <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
                         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
 
-                        <ListView Header="SUN" Grid.Row="0" Grid.Column="0" />
-                        <ListView Header="MON" Grid.Row="0" Grid.Column="2" />
-                        <ListView Header="TUE" Grid.Row="2" Grid.Column="0" />
-                        <ListView Header="WED" Grid.Row="2" Grid.Column="2" />
-                        <ListView Header="THU" Grid.Row="4" Grid.Column="0" />
-                        <ListView Header="FRI" Grid.Row="4" Grid.Column="2" />
-                        <ListView Header="SAT" Grid.Row="6" Grid.Column="0" />
+                        <ListView Header="SUN" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding OverallSunday}" />
+                        <ListView Header="MON" Grid.Row="0" Grid.Column="2" ItemsSource="{Binding OverallMonday}"/>
+                        <ListView Header="TUE" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding OverallTuesday}"/>
+                        <ListView Header="WED" Grid.Row="2" Grid.Column="2" ItemsSource="{Binding OverallWednesday}"/>
+                        <ListView Header="THU" Grid.Row="4" Grid.Column="0" ItemsSource="{Binding OverallThursday}"/>
+                        <ListView Header="FRI" Grid.Row="4" Grid.Column="2" ItemsSource="{Binding OverallFriday}"/>
+                        <ListView Header="SAT" Grid.Row="6" Grid.Column="0" ItemsSource="{Binding OverallSaturday}"/>
                     </Grid>
                 </Grid>
             </PivotItem>
