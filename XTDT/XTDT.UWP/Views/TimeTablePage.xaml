@@ -19,8 +19,14 @@
     <Page.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="listTemplate" x:DataType="models:TkbItem">
-                <TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="["/>
+                    <Run Text="{Binding Lich.Tiet}"/>
+                    <Run Text="]"/>
                     <Run Text="{Binding Tkb.TenMH}"/>
+                    <Run Text="("/>
+                    <Run Text="{Binding Lich.Phong}"/>
+                    <Run Text=")"/>
                 </TextBlock>
             </DataTemplate>
         </ResourceDictionary>
@@ -122,7 +128,7 @@
                         <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
                         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
 
-                        <ListView Header="SUN" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding OverallSunday}" ItemTemplate="{StaticResource listTemplate}" />
+                        <ListView Header="SUN" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding OverallSunday}" ItemTemplate="{StaticResource listTemplate}"/>
                         <ListView Header="MON" Grid.Row="0" Grid.Column="2" ItemsSource="{Binding OverallMonday}" ItemTemplate="{StaticResource listTemplate}"/>
                         <ListView Header="TUE" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding OverallTuesday}" ItemTemplate="{StaticResource listTemplate}"/>
                         <ListView Header="WED" Grid.Row="2" Grid.Column="2" ItemsSource="{Binding OverallWednesday}" ItemTemplate="{StaticResource listTemplate}"/>
