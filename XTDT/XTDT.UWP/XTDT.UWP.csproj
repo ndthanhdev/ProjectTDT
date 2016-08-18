@@ -206,6 +206,11 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Syncfusion.SfSchedule.UWP">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.2.0.26\Assemblies for Universal Windows\10.0\Syncfusion.SfSchedule.UWP.dll</HintPath>
+    </Reference>
+  </ItemGroup>
   <Import Project="..\XTDT\XTDT.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
