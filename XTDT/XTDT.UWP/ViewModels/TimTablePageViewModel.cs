@@ -54,7 +54,7 @@ namespace XTDT.UWP.ViewModels
                     HocKyList.Add(thongTinHocKy);
                 SelectedTTHK = currentSelected;
             }
-            //TODO add new data to
+            // add new data to
             await DataCotroller.UpdateDictionaryValueAsync(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
             await SaveAndLoad.SaveTextAsync("TkbData.txt", JsonConvert.SerializeObject(DataCotroller));
         }
@@ -67,7 +67,6 @@ namespace XTDT.UWP.ViewModels
                 HocKyList.Add(thongTinHocKy);
             if (HocKyList.Count > 0)
                 SelectedTTHK = HocKyList[0];
-
         }
         public async Task PrepareData()
         {

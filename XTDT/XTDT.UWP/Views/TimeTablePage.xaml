@@ -19,6 +19,326 @@
     </Page.DataContext>
     <Page.Resources>
         <ResourceDictionary>
+            <Style x:Key="TabsStylePivotStyle" TargetType="Pivot">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Pivot">
+                            <Grid x:Name="RootElement"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            Background="{TemplateBinding Background}">
+
+                                <Grid.Resources>
+                                    <Style x:Key="BaseContentControlStyle" TargetType="ContentControl">
+                                        <Setter Property="FontFamily" Value="Segoe UI" />
+                                        <Setter Property="FontWeight" Value="SemiBold" />
+                                        <Setter Property="FontSize" Value="15" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ContentControl">
+                                                    <ContentPresenter
+                                                    Margin="{TemplateBinding Padding}"
+                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                    Content="{TemplateBinding Content}"
+                                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                    ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                    OpticalMarginAlignment="TrimSideBearings" />
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+
+                                    <Style x:Key="TitleContentControlStyle" BasedOn="{StaticResource BaseContentControlStyle}" TargetType="ContentControl">
+                                        <Setter Property="FontWeight" Value="SemiLight" />
+                                        <Setter Property="FontSize" Value="24" />
+                                    </Style>
+
+                                    <!-- While used here to remove the spacing between header items, the PivotHeaderItem template can also be used to
+                                display custom 'selected' visuals -->
+                                    <Style TargetType="PivotHeaderItem">
+                                        <Setter Property="Padding" Value="0" />
+                                    </Style>
+                                </Grid.Resources>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="Orientation">
+                                        <VisualState x:Name="Portrait">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TitleContentControl" Storyboard.TargetProperty="Margin">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotPortraitThemePadding}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Landscape">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TitleContentControl" Storyboard.TargetProperty="Margin">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotLandscapeThemePadding}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="NavigationButtonsVisibility">
+                                        <VisualState x:Name="NavigationButtonsHidden" />
+                                        <VisualState x:Name="NavigationButtonsVisible">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NextButton" Storyboard.TargetProperty="Opacity">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NextButton" Storyboard.TargetProperty="IsEnabled">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="True" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PreviousButton" Storyboard.TargetProperty="Opacity">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PreviousButton" Storyboard.TargetProperty="IsEnabled">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="True" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="HeaderStates">
+                                        <VisualState x:Name="HeaderDynamic" />
+                                        <VisualState x:Name="HeaderStatic">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Header" Storyboard.TargetProperty="Visibility">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StaticHeader" Storyboard.TargetProperty="Visibility">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <ContentControl x:Name="TitleContentControl"
+                                Margin="{StaticResource PivotPortraitThemePadding}"
+                                Content="{TemplateBinding Title}"
+                                ContentTemplate="{TemplateBinding TitleTemplate}"
+                                IsTabStop="False"
+                                Style="{StaticResource TitleContentControlStyle}"
+                                Visibility="Collapsed" />
+
+                                <Grid Grid.Row="1">
+
+                                    <Grid.Resources>
+                                        <ResourceDictionary>
+                                            <ResourceDictionary.ThemeDictionaries>
+                                                <ResourceDictionary x:Key="Default">
+                                                    <SolidColorBrush x:Key="SystemControlPageBackgroundChromeMediumBrush" Color="{ThemeResource SystemChromeMediumColor}" />
+                                                    <SolidColorBrush x:Key="SystemControlForegroundChromeMediumBrush" Color="{ThemeResource SystemChromeMediumColor}" />
+                                                </ResourceDictionary>
+                                                <ResourceDictionary x:Key="Light">
+                                                    <SolidColorBrush x:Key="SystemControlPageBackgroundChromeMediumBrush" Color="{ThemeResource SystemChromeMediumColor}" />
+                                                    <SolidColorBrush x:Key="SystemControlForegroundChromeMediumBrush" Color="{ThemeResource SystemChromeMediumColor}" />
+                                                </ResourceDictionary>
+                                                <ResourceDictionary x:Key="HighContrast">
+                                                    <SolidColorBrush x:Key="SystemControlPageBackgroundChromeMediumBrush" Color="{ThemeResource SystemColorWindowColor}" />
+                                                    <SolidColorBrush x:Key="SystemControlForegroundChromeMediumBrush" Color="{ThemeResource SystemColorButtonTextColor}" />
+                                                </ResourceDictionary>
+                                            </ResourceDictionary.ThemeDictionaries>
+
+                                            <ControlTemplate x:Key="NextTemplate" TargetType="Button">
+                                                <Border x:Name="Root"
+                                                Background="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"
+                                                BorderBrush="{ThemeResource SystemControlForegroundTransparentBrush}"
+                                                BorderThickness="{ThemeResource PivotNavButtonBorderThemeThickness}">
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup x:Name="CommonStates">
+                                                            <VisualState x:Name="Normal" />
+                                                            <VisualState x:Name="PointerOver">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="Background">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumBrush}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="Foreground">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltAltMediumHighBrush}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Pressed">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="Background">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumHighBrush}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="Foreground">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltAltMediumHighBrush}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                    <FontIcon x:Name="Arrow"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="{ThemeResource SymbolThemeFontFamily}"
+                                                    FontSize="12"
+                                                    Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"
+                                                    Glyph="&#xE0E3;"
+                                                    MirroredWhenRightToLeft="True"
+                                                    UseLayoutRounding="False" />
+                                                </Border>
+                                            </ControlTemplate>
+
+                                            <ControlTemplate x:Key="PreviousTemplate" TargetType="Button">
+                                                <Border x:Name="Root"
+                                                Background="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"
+                                                BorderBrush="{ThemeResource SystemControlForegroundTransparentBrush}"
+                                                BorderThickness="{ThemeResource PivotNavButtonBorderThemeThickness}">
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup x:Name="CommonStates">
+                                                            <VisualState x:Name="Normal" />
+                                                            <VisualState x:Name="PointerOver">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="Background">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumBrush}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="Foreground">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltAltMediumHighBrush}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Pressed">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="Background">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumHighBrush}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="Foreground">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltAltMediumHighBrush}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                    <FontIcon x:Name="Arrow"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="{ThemeResource SymbolThemeFontFamily}"
+                                                    FontSize="12"
+                                                    Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"
+                                                    Glyph="&#xE0E2;"
+                                                    MirroredWhenRightToLeft="True"
+                                                    UseLayoutRounding="False" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </ResourceDictionary>
+                                    </Grid.Resources>
+
+                                    <ScrollViewer x:Name="ScrollViewer"
+                                    Margin="{TemplateBinding Padding}"
+                                    VerticalContentAlignment="Stretch"
+                                    BringIntoViewOnFocusChange="False"
+                                    HorizontalScrollBarVisibility="Hidden"
+                                    HorizontalSnapPointsAlignment="Center"
+                                    HorizontalSnapPointsType="MandatorySingle"
+                                    Template="{StaticResource ScrollViewerScrollBarlessTemplate}"
+                                    VerticalScrollBarVisibility="Disabled"
+                                    VerticalScrollMode="Disabled"
+                                    VerticalSnapPointsType="None"
+                                    ZoomMode="Disabled">
+                                        <PivotPanel x:Name="Panel" VerticalAlignment="Stretch">
+                                            <Grid x:Name="PivotLayoutElement" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+
+                                                <!-- By setting the column definitions to *,Auto,* allows the tabs to be centered by default -->
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RenderTransform>
+                                                    <CompositeTransform x:Name="PivotLayoutElementTranslateTransform" />
+                                                </Grid.RenderTransform>
+
+                                                <!--  This border is used as a backplate for the header area  -->
+                                                <Border
+                                                Grid.ColumnSpan="3"
+                                                Background="{ThemeResource SystemControlPageBackgroundChromeMediumBrush}"
+                                                BorderBrush="{ThemeResource SystemControlForegroundChromeMediumBrush}"
+                                                BorderThickness="0,0,0,1" />
+
+                                                <ContentPresenter x:Name="LeftHeaderPresenter"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Content="{TemplateBinding LeftHeader}"
+                                                ContentTemplate="{TemplateBinding LeftHeaderTemplate}" />
+                                                <ContentControl x:Name="HeaderClipper"
+                                                Grid.Column="1"
+                                                HorizontalContentAlignment="Stretch"
+                                                UseSystemFocusVisuals="True">
+                                                    <ContentControl.Clip>
+                                                        <RectangleGeometry x:Name="HeaderClipperGeometry" />
+                                                    </ContentControl.Clip>
+                                                    <Grid Background="Transparent">
+                                                        <PivotHeaderPanel x:Name="StaticHeader" Visibility="Collapsed" />
+                                                        <PivotHeaderPanel x:Name="Header">
+                                                            <PivotHeaderPanel.RenderTransform>
+                                                                <TransformGroup>
+                                                                    <CompositeTransform x:Name="HeaderTranslateTransform" />
+                                                                    <CompositeTransform x:Name="HeaderOffsetTranslateTransform" />
+                                                                </TransformGroup>
+                                                            </PivotHeaderPanel.RenderTransform>
+                                                        </PivotHeaderPanel>
+                                                    </Grid>
+                                                </ContentControl>
+                                                <Button x:Name="PreviousButton"
+                                                Grid.Column="1"
+                                                Width="20"
+                                                Height="36"
+                                                Margin="{ThemeResource PivotNavButtonMargin}"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Top"
+                                                Background="Transparent"
+                                                IsEnabled="False"
+                                                IsTabStop="False"
+                                                Opacity="0"
+                                                Template="{StaticResource PreviousTemplate}"
+                                                UseSystemFocusVisuals="False" />
+                                                <Button x:Name="NextButton"
+                                                Grid.Column="1"
+                                                Width="20"
+                                                Height="36"
+                                                Margin="{ThemeResource PivotNavButtonMargin}"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Top"
+                                                Background="Transparent"
+                                                IsEnabled="False"
+                                                IsTabStop="False"
+                                                Opacity="0"
+                                                Template="{StaticResource NextTemplate}"
+                                                UseSystemFocusVisuals="False" />
+                                                <ContentPresenter x:Name="RightHeaderPresenter"
+                                                Grid.Column="2"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Content="{TemplateBinding RightHeader}"
+                                                ContentTemplate="{TemplateBinding RightHeaderTemplate}" />
+                                                <ItemsPresenter x:Name="PivotItemPresenter" Grid.Row="1" Grid.ColumnSpan="3">
+                                                    <ItemsPresenter.RenderTransform>
+                                                        <TransformGroup>
+                                                            <TranslateTransform x:Name="ItemsPresenterTranslateTransform" />
+                                                            <CompositeTransform x:Name="ItemsPresenterCompositeTransform" />
+                                                        </TransformGroup>
+                                                    </ItemsPresenter.RenderTransform>
+                                                </ItemsPresenter>
+                                            </Grid>
+                                        </PivotPanel>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <DataTemplate x:Key="listTemplate" x:DataType="models:TkbItem">
                 <TextBlock TextWrapping="Wrap">
                     <Run Text="["/>
@@ -74,10 +394,11 @@
         <!--<ScrollViewer 
                       VerticalScrollBarVisibility="Auto">
         </ScrollViewer>-->
-        <Pivot Padding="12,8,0,0" RelativePanel.AlignBottomWithPanel="True"
+        <Pivot RelativePanel.AlignBottomWithPanel="True"
                       RelativePanel.AlignLeftWithPanel="True"
                       RelativePanel.AlignRightWithPanel="True"
-                      RelativePanel.Below="pageHeader">
+                      RelativePanel.Below="pageHeader"
+               Style="{StaticResource TabsStylePivotStyle}">
             <PivotItem>
                 <PivotItem.Header>
                     <mycontrols:TabHeader Label="Overall"
@@ -142,12 +463,44 @@
             <PivotItem>
                 <PivotItem.Header>
                     <mycontrols:TabHeader Label="Calendar"
-                                              Data="M4.0000144,28.001998L32.000014,28.001998 32.000014,30.001998 4.0000144,30.001998z M1.6689301E-05,21.999999L28.000016,21.999999 28.000016,23.999999 1.6689301E-05,23.999999z M4.0000168,14.999999L32.000016,14.999999 32.000016,16.999999 4.0000168,16.999999z M5.5000166,8.9999981L28.000016,8.9999981 28.000016,10.999998 5.5000166,10.999998z M14.000017,2.9999981L32.000016,2.9999981 32.000016,4.9999981 14.000017,4.9999981z M5.4999999,0C8.5320001,0,11,2.467001,11,5.5L9,5.5C9,3.5699997 7.4299998,2 5.4999999,2 3.5699998,2 1.9999998,3.5699997 1.9999995,5.5 1.9999998,7.4300003 3.5699998,9 5.4999999,9L5.4999999,11C2.4679998,11 0,8.5330009 0,5.5 0,2.467001 2.4679998,0 5.4999999,0z"/>
+                                              Data="M25.353003,21.018997L22.951994,24.640997 25.353003,24.640997z M16.760988,17.918013C17.791988,17.918013 18.600988,18.201014 19.189987,18.764013 19.778986,19.328012 20.073986,20.029013 20.073986,20.868013 20.073986,21.345015 19.989986,21.800014 19.820986,22.231014 19.651987,22.662014 19.384987,23.114014 19.018988,23.586014 18.776987,23.900015 18.339987,24.350014 17.707989,24.938015 17.076988,25.526014 16.676989,25.917015 16.50799,26.109015 16.338989,26.302015 16.20299,26.490015 16.098989,26.673014L20.073986,26.673014 20.073986,28.560015 13.055992,28.560015C13.131991,27.847015 13.359992,27.171015 13.739991,26.532015 14.119991,25.894014 14.86999,25.046015 15.99099,23.991014 16.89399,23.138014 17.446989,22.559013 17.651989,22.256014 17.926989,21.837013 18.064987,21.423014 18.064987,21.013014 18.064987,20.559013 17.944988,20.212013 17.704988,19.968014 17.464989,19.725014 17.133989,19.603014 16.710989,19.603014 16.29299,19.603014 15.95999,19.731014 15.71399,19.986013 15.46699,20.242014 15.32399,20.666014 15.28599,21.258015L13.290992,21.056013C13.409991,19.938013 13.782991,19.136013 14.40999,18.648014 15.03699,18.162014 15.81999,17.918013 16.760988,17.918013z M25.610004,17.916996L27.29101,17.916996 27.29101,24.640997 28.588015,24.640997 28.588015,26.425997 27.29101,26.425997 27.29101,28.558998 25.353003,28.558998 25.353003,26.425997 21.078987,26.425997 21.078987,24.647997z M4.0529909,15.058002L8.034996,15.058002 8.034996,17.191006 4.0529909,17.191006z M14.93401,4.0770197L17.067015,4.0770197 17.067015,8.0929985 14.93401,8.0929985z M15.999992,0C24.823025,7.6103788E-08,32,7.232996,32,16.12401L29.867002,16.12401C29.867002,8.409997 23.646999,2.1330244 15.999992,2.1330242 8.3539925,2.1330244 2.1339884,8.409997 2.1339884,16.12401 2.1339884,21.449995 5.0659966,26.243998 9.7860003,28.634987L8.821003,30.538C3.3799913,27.780983 0,22.258007 0,16.12401 0,7.232996 7.1779971,7.6103788E-08 15.999992,0z"/>
                 </PivotItem.Header>
-                <Schedule:SfSchedule />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Schedule:SfSchedule Name="schedule" />
+                    
+                    <CommandBar Grid.Row="1">
+                        <AppBarButton Label="Day" Icon="CalendarDay">
+                            <Interactivity:Interaction.Behaviors>
+                                <Core:EventTriggerBehavior EventName="Tapped">
+                                    <Core:ChangePropertyAction TargetObject="{Binding ElementName=schedule}"
+                                                               PropertyName="ScheduleType" Value="Day"/>
+                                </Core:EventTriggerBehavior>
+                            </Interactivity:Interaction.Behaviors>
+                        </AppBarButton>
+                        <AppBarButton Label="Week" Icon="CalendarWeek">
+                            <Interactivity:Interaction.Behaviors>
+                                <Core:EventTriggerBehavior EventName="Tapped">
+                                    <Core:ChangePropertyAction TargetObject="{Binding ElementName=schedule}"
+                                                               PropertyName="ScheduleType" Value="WorkWeek"/>
+                                </Core:EventTriggerBehavior>
+                            </Interactivity:Interaction.Behaviors>
+                        </AppBarButton>
+                        <AppBarButton Label="Month" Icon="Calendar">
+                            <Interactivity:Interaction.Behaviors>
+                                <Core:EventTriggerBehavior EventName="Tapped">
+                                    <Core:ChangePropertyAction TargetObject="{Binding ElementName=schedule}"
+                                                               PropertyName="ScheduleType" Value="Month"/>
+                                </Core:EventTriggerBehavior>
+                            </Interactivity:Interaction.Behaviors>
+                        </AppBarButton>
+
+                    </CommandBar>
+                </Grid>
             </PivotItem>
         </Pivot>
-
-
     </RelativePanel>
 </Page>
