@@ -32,5 +32,11 @@ namespace XTDT.UWP.Views
             base.OnNavigatedTo(e);
             await (DataContext as TimTablePageViewModel).PrepareData();
         }
+
+        private void ListViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems != null)
+                (sender as ListView).SelectedItem = null;
+        }
     }
 }

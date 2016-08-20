@@ -338,7 +338,10 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="ListViewStyle" TargetType="ListView">
+                <Setter Property="ItemTemplate" Value="{StaticResource listTemplate}"/>
 
+            </Style>
             <DataTemplate x:Key="listTemplate" x:DataType="models:TkbItem">
                 <TextBlock TextWrapping="Wrap">
                     <Run Text="["/>
@@ -450,13 +453,27 @@
                         <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
                         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
 
-                        <ListView Header="SUN" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding OverallSunday}" ItemTemplate="{StaticResource listTemplate}"/>
-                        <ListView Header="MON" Grid.Row="0" Grid.Column="2" ItemsSource="{Binding OverallMonday}" ItemTemplate="{StaticResource listTemplate}"/>
-                        <ListView Header="TUE" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding OverallTuesday}" ItemTemplate="{StaticResource listTemplate}"/>
-                        <ListView Header="WED" Grid.Row="2" Grid.Column="2" ItemsSource="{Binding OverallWednesday}" ItemTemplate="{StaticResource listTemplate}"/>
-                        <ListView Header="THU" Grid.Row="4" Grid.Column="0" ItemsSource="{Binding OverallThursday}" ItemTemplate="{StaticResource listTemplate}"/>
-                        <ListView Header="FRI" Grid.Row="4" Grid.Column="2" ItemsSource="{Binding OverallFriday}" ItemTemplate="{StaticResource listTemplate}"/>
-                        <ListView Header="SAT" Grid.Row="6" Grid.Column="0" ItemsSource="{Binding OverallSaturday}" ItemTemplate="{StaticResource listTemplate}"/>
+                        <ListView Header="SUN" Grid.Row="0" Grid.Column="0" Style="{StaticResource ListViewStyle}"
+                                  ItemsSource="{Binding OverallSunday}" 
+                                  SelectionChanged="ListViewSelectionChanged"/>
+                        <ListView Header="MON" Grid.Row="0" Grid.Column="2" Style="{StaticResource ListViewStyle}"
+                                  ItemsSource="{Binding OverallMonday}"
+                                  SelectionChanged="ListViewSelectionChanged"/>
+                        <ListView Header="TUE" Grid.Row="2" Grid.Column="0" Style="{StaticResource ListViewStyle}"
+                                  ItemsSource="{Binding OverallTuesday}"
+                                  SelectionChanged="ListViewSelectionChanged"/>
+                        <ListView Header="WED" Grid.Row="2" Grid.Column="2" Style="{StaticResource ListViewStyle}"
+                                  ItemsSource="{Binding OverallWednesday}"
+                                  SelectionChanged="ListViewSelectionChanged"/>
+                        <ListView Header="THU" Grid.Row="4" Grid.Column="0" Style="{StaticResource ListViewStyle}"
+                                  ItemsSource="{Binding OverallThursday}"
+                                  SelectionChanged="ListViewSelectionChanged"/>
+                        <ListView Header="FRI" Grid.Row="4" Grid.Column="2" Style="{StaticResource ListViewStyle}"
+                                  ItemsSource="{Binding OverallFriday}"
+                                  SelectionChanged="ListViewSelectionChanged"/>
+                        <ListView Header="SAT" Grid.Row="6" Grid.Column="0" Style="{StaticResource ListViewStyle}"
+                                  ItemsSource="{Binding OverallSaturday}"
+                                  SelectionChanged="ListViewSelectionChanged"/>
                     </Grid>
                 </Grid>
             </PivotItem>
@@ -470,8 +487,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Schedule:SfSchedule Name="schedule" />
-                    
+                    <Schedule:SfSchedule Name="schedule"/>
+
                     <CommandBar Grid.Row="1">
                         <AppBarButton Label="Day" Icon="CalendarDay">
                             <Interactivity:Interaction.Behaviors>
@@ -485,7 +502,7 @@
                             <Interactivity:Interaction.Behaviors>
                                 <Core:EventTriggerBehavior EventName="Tapped">
                                     <Core:ChangePropertyAction TargetObject="{Binding ElementName=schedule}"
-                                                               PropertyName="ScheduleType" Value="WorkWeek"/>
+                                                               PropertyName="ScheduleType" Value="Week"/>
                                 </Core:EventTriggerBehavior>
                             </Interactivity:Interaction.Behaviors>
                         </AppBarButton>
