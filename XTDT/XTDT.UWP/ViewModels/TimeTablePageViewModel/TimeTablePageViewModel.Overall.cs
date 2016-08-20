@@ -1,89 +1,32 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Template10.Mvvm;
 using XTDT.API.Respond;
-using XTDT.DataController;
 using XTDT.Models;
-using XTDT.UWP.Base.Local;
 using XTDT.UWP.Common;
-using XTDT.UWP.Services.LocalDataServices;
 
 namespace XTDT.UWP.ViewModels
 {
-    public class TimTablePageViewModel : ViewModelBase
+    public partial class TimeTablePageViewModel : ViewModelBase
     {
-        public TimTablePageViewModel()
+        public Task UpdateOverallKey()
         {
+            //TODO for prevent from reset selected
+
+            Task.Yield();
+            var current = SelectedTTHK;
+            HocKyList.Clear();
+            foreach (var tthk in DataCotroller.HocKyDictionary.Keys)
+                HocKyList.Add(tthk);
+            SelectedTTHK = HocKyList.Contains(current) ? current : (HocKyList.Count > 0 ? HocKyList[0] : null);
+            return Task.CompletedTask;
         }
-        private static TkbDataController _dataController;
-        public TkbDataController DataCotroller
-        {
-            get
-            {
-                return _dataController ?? new TkbDataController();
-            }
-            set { _dataController = value; }
-
-        }
-
-        private ObservableCollection<ThongTinHocKy> _hocKyList;
-        public ObservableCollection<ThongTinHocKy> HocKyList
-        {
-            get { return _hocKyList ?? (_hocKyList = new ObservableCollection<ThongTinHocKy>(DataCotroller.HocKyDictionary.Keys)); }
-            set { Set(ref _hocKyList, value); }
-        }
-        public ICommand UpdateCommand => new DelegateCommand(async () => await UpdateAsync());
-
-
-        public async Task UpdateAsync()
-        {
-            await Task.Yield();
-            if (await DataCotroller.UpdateHocKyDictionaryKey(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password))
-            {
-                //TODO for prevent from reset selected
-                var currentSelected = SelectedTTHK;
-                HocKyList.Clear();
-                foreach (var thongTinHocKy in DataCotroller.HocKyDictionary.Keys)
-                    HocKyList.Add(thongTinHocKy);
-                SelectedTTHK = currentSelected;
-            }
-            // add new data to
-            await DataCotroller.UpdateDictionaryValueAsync(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
-            await SaveAndLoad.SaveTextAsync("TkbData.txt", JsonConvert.SerializeObject(DataCotroller));
-        }
-
-        public async Task LoadData()
-        {
-            var json = await SaveAndLoad.LoadTextAsync("TkbData.txt");
-            DataCotroller = JsonConvert.DeserializeObject<TkbDataController>(json);
-            foreach (var thongTinHocKy in DataCotroller.HocKyDictionary.Keys)
-                HocKyList.Add(thongTinHocKy);
-            if (HocKyList.Count > 0)
-                SelectedTTHK = HocKyList[0];
-        }
-        public async Task PrepareData()
-        {
-            await LoadData();
-            await UpdateAsync();
-        }
-
-        public async Task<bool> ProvideHocKyValue(ThongTinHocKy tthk)
-        {
-            var result = await DataCotroller.ProvideHocKyValue(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password, tthk);
-            await SaveAndLoad.SaveTextAsync("TkbData.txt", JsonConvert.SerializeObject(DataCotroller));
-            return result;
-        }
-
-        public ICommand SelectHocKyCommand => new DelegateCommand<ThongTinHocKy>(async (tthk) => await SelectHocKy(tthk));
-
-        public async Task SelectHocKy(ThongTinHocKy tthk)
+        public async Task UpdateOverallValue(ThongTinHocKy tthk)
         {
             //TODO check busy
             await Task.Yield();
@@ -136,7 +79,9 @@ namespace XTDT.UWP.ViewModels
                     }
                 }
             }
+
         }
+        public ICommand SelectHocKyCommand => new DelegateCommand<ThongTinHocKy>(async (tthk) => await UpdateOverallValue(tthk));
 
         private ThongTinHocKy _selectedTTHK;
         public ThongTinHocKy SelectedTTHK
@@ -205,5 +150,6 @@ namespace XTDT.UWP.ViewModels
             OverallSaturday.Clear();
             OverallSunday.Clear();
         }
+
     }
 }

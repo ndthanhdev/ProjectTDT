@@ -30,7 +30,7 @@ namespace XTDT.UWP.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            await (DataContext as TimTablePageViewModel).PrepareData();
+            await (DataContext as TimeTablePageViewModel).PrepareData();
         }
 
         private void ListViewSelectionChanged(object sender, SelectionChangedEventArgs e)
