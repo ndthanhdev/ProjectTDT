@@ -8,7 +8,7 @@ namespace XTDT.API.Respond
     public class HocKy
     {
         [JsonProperty("start")]
-        public string Start { get; set; }
+        public DateTime Start { get; set; }
 
         [JsonProperty("tkb")]
         public IList<Tkb> Tkb { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,12 +22,6 @@ namespace XTDT.UWP.ViewModels
     {
         public TimeTablePageViewModel()
         {
-            Schedule.Add(new Syncfusion.UI.Xaml.Schedule.ScheduleAppointment()
-            {
-                StartTime = DateTime.Parse("08/20/2016"),
-                EndTime = DateTime.Parse("08/21/2016"),
-                Subject="test appointment"
-            });
         }
         private static TkbDataController _dataController;
         public TkbDataController DataCotroller
@@ -57,7 +52,7 @@ namespace XTDT.UWP.ViewModels
             }
             // add new data to
             await DataCotroller.UpdateDictionaryValueAsync(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
-            await SaveAndLoad.SaveTextAsync("TkbData.txt", JsonConvert.SerializeObject(DataCotroller));
+            await SaveAndLoad.SaveTextAsync("TkbData.txt", JsonConvert.SerializeObject(DataCotroller, Formatting.Indented));
             await UpdateOverallValue(SelectedTTHK);
         }
 
@@ -65,6 +60,7 @@ namespace XTDT.UWP.ViewModels
         {
             var json = await SaveAndLoad.LoadTextAsync("TkbData.txt");
             DataCotroller = JsonConvert.DeserializeObject<TkbDataController>(json);
+            await InitializeCalendar();
             await UpdateOverallKey();
             await UpdateOverallValue(SelectedTTHK);
         }

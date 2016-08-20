@@ -487,7 +487,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Schedule:SfSchedule Name="schedule" Appointments="{Binding Schedule}"/>
+                    <Schedule:SfSchedule Name="schedule" Appointments="{Binding Schedule}"
+                                         AllowEditing="False"/>
 
                     <CommandBar Grid.Row="1">
                         <AppBarButton Label="Day" Icon="CalendarDay">
