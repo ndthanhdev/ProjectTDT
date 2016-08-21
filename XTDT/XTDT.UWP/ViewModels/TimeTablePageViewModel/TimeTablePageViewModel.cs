@@ -28,7 +28,7 @@ namespace XTDT.UWP.ViewModels
         {
             get
             {
-                return _dataController ?? new TkbDataController();
+                return _dataController ?? (_dataController = new TkbDataController());
             }
             set { _dataController = value; }
 
@@ -54,6 +54,7 @@ namespace XTDT.UWP.ViewModels
             await DataCotroller.UpdateDictionaryValueAsync(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
             await SaveAndLoad.SaveTextAsync("TkbData.txt", JsonConvert.SerializeObject(DataCotroller, Formatting.Indented));
             await UpdateOverallValue(SelectedTTHK);
+            await InitializeCalendar();
         }
 
         public async Task LoadData()

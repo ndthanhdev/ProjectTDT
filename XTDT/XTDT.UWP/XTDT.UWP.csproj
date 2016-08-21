@@ -115,6 +115,7 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
+    <Compile Include="ViewModels\TimeTablePageViewModel\TimeTablePageViewModel.Agenda.cs" />
     <Compile Include="ViewModels\TimeTablePageViewModel\TimeTablePageViewModel.Calendar.cs" />
     <Compile Include="ViewModels\TimeTablePageViewModel\TimeTablePageViewModel.Overall.cs" />
     <Compile Include="ViewModels\TimeTablePageViewModel\TimeTablePageViewModel.cs" />

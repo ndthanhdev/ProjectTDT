@@ -20,6 +20,7 @@ namespace XTDT.UWP.ViewModels
         public async Task InitializeCalendar()
         {
             await Task.Yield();
+            Schedule.Clear();
             foreach (var hk in DataCotroller.HocKyDictionary.Values)
             {
                 if (hk == null || hk.Tkb == null)
@@ -41,8 +42,8 @@ namespace XTDT.UWP.ViewModels
                                 sa.StartTime = rootStart + TimeSpan.FromDays(i * 7);
                                 sa.EndTime = rootEnd + TimeSpan.FromDays(i * 7);
                                 sa.Subject = string.Format("{0} ({1})", tkb.TenMH, lich.Phong);
-                                sa.Notes = string.Format("Mã môn học:{0}\nNhóm:{1}\nTổ:{2}\nThứ:{3}\nTuần:{4}", 
-                                    tkb.MaMH, tkb.Nhom, tkb.To, lich.Thu, lich.Tuan);                              
+                                sa.Notes = string.Format("Mã môn học:{0}\nNhóm:{1}\nTổ:{2}\nThứ:{3}\nTuần:{4}",
+                                    tkb.MaMH, tkb.Nhom, tkb.To, lich.Thu, lich.Tuan);
                                 Schedule.Add(sa);
                             }
                         }
