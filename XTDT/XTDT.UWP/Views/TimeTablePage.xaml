@@ -401,6 +401,7 @@
                       RelativePanel.AlignLeftWithPanel="True"
                       RelativePanel.AlignRightWithPanel="True"
                       RelativePanel.Below="pageHeader"
+                      Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                Style="{StaticResource TabsStylePivotStyle}">
             <PivotItem>
                 <PivotItem.Header>
@@ -411,8 +412,17 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <DatePicker Date="{Binding SelectedDate,Mode=TwoWay}" DateChanged="DatePicker_DateChanged"/>
-                    <ListView  Grid.Row="1" ItemsSource="{Binding Agenda}"/>
+                    <DatePicker 
+                        Margin="36,0,36,0" HorizontalAlignment="Center" MinWidth="160"
+                        Date="{Binding SelectedDate,Mode=TwoWay}" DateChanged="DatePicker_DateChanged"/>
+                    <ListView Grid.Row="1"
+                              ItemsSource="{Binding Agenda}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
             </PivotItem>
 
