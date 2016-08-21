@@ -38,5 +38,10 @@ namespace XTDT.UWP.Views
             if (e.AddedItems != null)
                 (sender as ListView).SelectedItem = null;
         }
+
+        private async void DatePicker_DateChanged(object sender, DatePickerValueChangedEventArgs e)
+        {
+            await (DataContext as TimeTablePageViewModel).UpdateAgenda(e.NewDate.Date);
+        }
     }
 }

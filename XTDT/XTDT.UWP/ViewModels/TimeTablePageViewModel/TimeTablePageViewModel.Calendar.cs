@@ -30,7 +30,7 @@ namespace XTDT.UWP.ViewModels
                 {
                     foreach (var lich in tkb.Lich)
                     {
-                        TimeSpan dayOfWeek = TimeSpan.FromDays(lich.Thu > 1 ? lich.Thu - 2 : 6);
+                        TimeSpan dayOfWeek = ThuToBonusDay(lich.Thu);
                         DateTime rootDate = root + dayOfWeek;
                         DateTime rootStart = rootDate + TimeBegin(lich.Tiet);
                         DateTime rootEnd = rootDate + TimeEnd(lich.Tiet);

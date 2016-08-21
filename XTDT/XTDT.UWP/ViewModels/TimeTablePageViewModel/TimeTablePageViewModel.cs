@@ -78,5 +78,10 @@ namespace XTDT.UWP.ViewModels
             return result;
         }
 
+        private TimeSpan ThuToBonusDay(int thu)
+        {
+            return TimeSpan.FromDays(thu > 1 ? thu - 2 : 6);
+        }
+
     }
 }
