@@ -439,25 +439,52 @@
                                         <RowDefinition Height="5"/>
                                         <RowDefinition/>
                                         <RowDefinition Height="8"/>
-                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+
                                     </Grid.RowDefinitions>
                                     <Border Grid.Row="2" CornerRadius="90" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
                                             Width="48" Height="48"
                                             VerticalAlignment="Top">
-                                        <TextBlock Text="23:59" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                                        <TextBlock Text="23:59" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
                                     </Border>
                                     <Border Grid.Row="4" CornerRadius="90" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
                                             Width="36" Height="36"
-                                            VerticalAlignment="Top">
+                                            VerticalAlignment="Bottom">
                                         <TextBlock Text="23:59" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10"/>
                                     </Border>
-                                    <TextBlock Grid.ColumnSpan="2" Text="tên môn học nào đó"/>
+                                    <TextBlock Grid.ColumnSpan="2" FontSize="20">
+                                        <Run Text="{Binding Tkb.TenMH}"/>
+                                        <Run Text="("/>
+                                        <Run Text="{Binding Lich.Phong}"/>
+                                        <Run Text=")"/>
+                                    </TextBlock>
                                     <Grid Grid.Row="1" Grid.ColumnSpan="2" Height="1" VerticalAlignment="Center" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"/>
-                                    <StackPanel Grid.Row="2" Grid.RowSpan="3" Grid.Column="1">
-                                        <TextBlock Text="asdasdasd"/>
-                                        <TextBlock Text="asdasdasd"/>
-                                        <TextBlock Text="asdasdasd"/>
-                                        <TextBlock Text="asdasdasd"/>
+                                    <StackPanel Grid.Row="2" Grid.RowSpan="3" Grid.Column="1"
+                                                Padding="4,4,4,4">
+                                        <TextBlock>
+                                            <Run Text="Mã Môn Học: "/>
+                                            <Run Text="{Binding Tkb.MaMH}"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="Nhóm: "/>
+                                            <Run Text="{Binding Tkb.Nhom}"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="Tổ: "/>
+                                            <Run Text="{Binding Tkb.To}"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="Tiết: "/>
+                                            <Run Text="{Binding Lich.Tiet}"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="Thứ: "/>
+                                            <Run Text="{Binding Lich.Thu}"/>
+                                        </TextBlock>
+                                        <TextBlock >
+                                            <Run Text="Tuần: "/>
+                                            <Run Text="{Binding Lich.Tuan}"/>
+                                        </TextBlock>
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
@@ -477,7 +504,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Schedule:SfSchedule Name="schedule" Appointments="{Binding Schedule}"
-                                         AllowEditing="False"/>
+                                         AllowEditing="False" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"/>
 
                     <CommandBar Grid.Row="1">
                         <AppBarButton Label="Day" Icon="CalendarDay">
