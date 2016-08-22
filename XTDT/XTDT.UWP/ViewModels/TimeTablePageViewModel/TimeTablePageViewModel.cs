@@ -53,14 +53,16 @@ namespace XTDT.UWP.ViewModels
             // add new data to
             await DataCotroller.UpdateDictionaryValueAsync(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
             await SaveAndLoad.SaveTextAsync("TkbData.txt", JsonConvert.SerializeObject(DataCotroller, Formatting.Indented));
-            await UpdateOverallValue(SelectedTTHK);
+            await UpdateAgenda(SelectedDate.Date);
             await InitializeCalendar();
+            await UpdateOverallValue(SelectedTTHK);
         }
 
         public async Task LoadData()
         {
             var json = await SaveAndLoad.LoadTextAsync("TkbData.txt");
             DataCotroller = JsonConvert.DeserializeObject<TkbDataController>(json);
+            await UpdateAgenda(SelectedDate.Date);
             await InitializeCalendar();
             await UpdateOverallKey();
             await UpdateOverallValue(SelectedTTHK);

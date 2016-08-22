@@ -8,6 +8,7 @@ using System.Windows.Input;
 using Template10.Mvvm;
 using XTDT.API.Respond;
 using XTDT.Models;
+using XTDT.UWP.Common;
 
 namespace XTDT.UWP.ViewModels
 {
@@ -19,6 +20,17 @@ namespace XTDT.UWP.ViewModels
             get { return _agenda ?? (_agenda = new ObservableCollection<TkbItem>()); }
             set { Set(ref _agenda, value); }
         }
+        private DateTimeOffset _selectedDate = DateTimeOffset.Now;
+        public DateTimeOffset SelectedDate
+        {
+            get { return _selectedDate; }
+            set
+            {
+                Set(ref _selectedDate, value);
+                UpdateAgenda(_selectedDate.Date);
+            }
+        }
+
         public Task UpdateAgenda(DateTime selectedDate)
         {
             List<TkbItem> tempList = new List<TkbItem>();
@@ -42,7 +54,7 @@ namespace XTDT.UWP.ViewModels
             }
             Agenda.Clear();
             foreach (var tkbItem in tempList)
-                Agenda.Add(tkbItem);
+                Agenda.AddToOrdered(tkbItem);
             return Task.CompletedTask;
         }
 
