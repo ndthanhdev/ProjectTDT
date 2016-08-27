@@ -70,5 +70,13 @@ namespace XTDT.UWP.ViewModels
                 return false;
             return startDate.AddDays(index * 7) + ThuToBonusDay(lich.Thu) == date;
         }
+
+        public ICommand ChangeDateCommand => new DelegateCommand<int>((i) =>
+        {
+            if (i != 0)
+                SelectedDate = SelectedDate.AddDays(i);
+            else
+                SelectedDate = DateTime.Now;
+        });
     }
 }
