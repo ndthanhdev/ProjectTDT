@@ -47,7 +47,7 @@
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
             <!--  loginpage button  -->
-            <Controls:HamburgerButtonInfo x:Name="LoginButton"
+            <!--<Controls:HamburgerButtonInfo x:Name="LoginButton"
                                           PageType="views:LoginPage">
                 <Controls:HamburgerButtonInfo.NavigationTransitionInfo>
                     <SuppressNavigationTransitionInfo />
@@ -66,7 +66,7 @@
                     <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
                                Text="Logout" />
                 </StackPanel>
-            </Controls:HamburgerButtonInfo>
+            </Controls:HamburgerButtonInfo>-->
 
         </Controls:HamburgerMenu.SecondaryButtons>
 

@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Converters\InvertBoolConverter.cs" />
     <Compile Include="Converters\IsEnablebBrushConverter.cs" />
+    <Compile Include="Converters\NotEqualZeroConverter.cs" />
     <Compile Include="Converters\TietToBeginTime.cs" />
     <Compile Include="Converters\TietToEndTime.cs" />
     <Compile Include="Models\PageItem.cs" />

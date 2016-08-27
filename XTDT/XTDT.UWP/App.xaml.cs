@@ -53,7 +53,7 @@ namespace XTDT.UWP
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
             // long-running startup tasks go here
-            await Task.Delay(5000);
+            //await Task.Delay(5000);
             if (LocalDataService.Instance.IsLogged)
             {
                 NavigationService.Navigate(typeof(HomePage));

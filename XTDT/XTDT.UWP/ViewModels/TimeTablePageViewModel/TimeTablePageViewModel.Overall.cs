@@ -16,68 +16,85 @@ namespace XTDT.UWP.ViewModels
     {
         public Task UpdateOverallKey()
         {
-            //TODO for prevent from reset selected
-
-            Task.Yield();
-            var current = SelectedTTHK;
-            HocKyList.Clear();
-            foreach (var tthk in DataCotroller.HocKyDictionary.Keys)
-                HocKyList.Add(tthk);
-            SelectedTTHK = HocKyList.Contains(current) ? current : (HocKyList.Count > 0 ? HocKyList[0] : null);
-            return Task.CompletedTask;
+            try
+            {
+                Quest++;
+                //TODO for prevent from reset selected
+                Task.Yield();
+                var current = SelectedTTHK;
+                HocKyList.Clear();
+                foreach (var tthk in DataCotroller.HocKyDictionary.Keys)
+                    HocKyList.Add(tthk);
+                SelectedTTHK = HocKyList.Contains(current) ? current : (HocKyList.Count > 0 ? HocKyList[0] : null);
+                return Task.CompletedTask;
+            }
+            catch
+            {
+                return Task.CompletedTask;
+            }
+            finally { Quest--; }
         }
         public async Task UpdateOverallValue(ThongTinHocKy tthk)
         {
-            //TODO check busy
-            await Task.Yield();
-            //TODO clear
-            ClearOverallProperty();
-
-            if (tthk == null)
-                return;
-            if (!DataCotroller.HocKyDictionary.ContainsKey(tthk))
-                return;
-            if (DataCotroller.HocKyDictionary[tthk] == null)
-                //TODO save data here
-                if (!await ProvideHocKyValue(tthk))
-                    return;
-            //TODO comfirm
-            if (tthk != SelectedTTHK)
-                return;
-            if (DataCotroller.HocKyDictionary[tthk].Tkb == null)
-                return;
-            //TODO update display
-            var hk = DataCotroller.HocKyDictionary[tthk];
-            foreach (var tkb in hk.Tkb)
+            try
             {
-                foreach (var lich in tkb.Lich)
+                Quest++;
+                //TODO check busy
+                await Task.Yield();
+                //TODO clear
+                ClearOverallProperty();
+
+                if (tthk == null)
+                    return;
+                if (!DataCotroller.HocKyDictionary.ContainsKey(tthk))
+                    return;
+                if (DataCotroller.HocKyDictionary[tthk] == null)
+                    //TODO save data here
+                    if (!await ProvideHocKyValue(tthk))
+                        return;
+                //TODO comfirm
+                if (tthk != SelectedTTHK)
+                    return;
+                if (DataCotroller.HocKyDictionary[tthk].Tkb == null)
+                    return;
+                //TODO update display
+                var hk = DataCotroller.HocKyDictionary[tthk];
+                foreach (var tkb in hk.Tkb)
                 {
-                    TkbItem tti = new TkbItem() { Tkb = tkb, Lich = lich };
-                    switch (lich.Thu)
+                    foreach (var lich in tkb.Lich)
                     {
-                        case 2:
-                            OverallMonday.AddToOrdered(tti);
-                            break;
-                        case 3:
-                            OverallTuesday.AddToOrdered(tti);
-                            break;
-                        case 4:
-                            OverallWednesday.AddToOrdered(tti);
-                            break;
-                        case 5:
-                            OverallThursday.AddToOrdered(tti);
-                            break;
-                        case 6:
-                            OverallFriday.AddToOrdered(tti);
-                            break;
-                        case 7:
-                            OverallSaturday.AddToOrdered(tti);
-                            break;
-                        default:
-                            OverallSunday.AddToOrdered(tti);
-                            break;
+                        TkbItem tti = new TkbItem() { Tkb = tkb, Lich = lich };
+                        switch (lich.Thu)
+                        {
+                            case 2:
+                                OverallMonday.AddToOrdered(tti);
+                                break;
+                            case 3:
+                                OverallTuesday.AddToOrdered(tti);
+                                break;
+                            case 4:
+                                OverallWednesday.AddToOrdered(tti);
+                                break;
+                            case 5:
+                                OverallThursday.AddToOrdered(tti);
+                                break;
+                            case 6:
+                                OverallFriday.AddToOrdered(tti);
+                                break;
+                            case 7:
+                                OverallSaturday.AddToOrdered(tti);
+                                break;
+                            default:
+                                OverallSunday.AddToOrdered(tti);
+                                break;
+                        }
                     }
                 }
+            }
+            catch { }
+            finally
+            {
+                Quest--;
             }
 
         }
