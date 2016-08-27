@@ -56,7 +56,7 @@ namespace XTDT.UWP
             await Task.Delay(5000);
             if (LocalDataService.Instance.IsLogged)
             {
-                NavigationService.Navigate(typeof(TimeTablePage));
+                NavigationService.Navigate(typeof(HomePage));
             }
             else
             {

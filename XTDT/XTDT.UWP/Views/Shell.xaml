@@ -71,7 +71,7 @@
         </Controls:HamburgerMenu.SecondaryButtons>
 
         <!--  mainpage button  -->
-        <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:MainPage" 
+        <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:HomePage" 
                                           AutomationProperties.Name="Jerry" >
             <StackPanel Orientation="Horizontal">
                 <Grid Width="48" Height="48">

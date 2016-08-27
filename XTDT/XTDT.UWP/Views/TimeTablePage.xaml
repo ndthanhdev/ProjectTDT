@@ -452,12 +452,12 @@
                                           Width="1" VerticalAlignment="Stretch"
                                           Grid.Row="2" Grid.RowSpan="3" />
 
-                                    <!--<Border CornerRadius="90" Width="32" Height="32"
+                                    <Border CornerRadius="90" Width="32" Height="32"
                                                 Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
                                             Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center">
                                         <TextBlock Text="1:00" HorizontalAlignment="Center" VerticalAlignment="Center"
                                                    FontSize="8"/>
-                                    </Border>-->
+                                    </Border>
 
                                     <Border Grid.Row="2" CornerRadius="90" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
                                             Width="48" Height="48"
@@ -521,8 +521,8 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Schedule:SfSchedule x:Name="schedule" Appointments="{Binding Schedule}"
-                                         AllowEditing="False" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
-                                         />
+                                       Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" 
+                                       ScheduleType="Week"/>
 
                     <CommandBar Grid.Row="1">
                         <AppBarButton Label="Day" Icon="CalendarDay">
@@ -630,5 +630,6 @@
                 </Grid>
             </PivotItem>
         </Pivot>
+
     </RelativePanel>
 </Page>

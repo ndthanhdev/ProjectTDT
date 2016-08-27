@@ -26,19 +26,19 @@ namespace XTDT.UWP.Views
         public TimeTablePage()
         {
             this.InitializeComponent();
-            schedule.ManipulationStarted += Schedule_ManipulationStarted;
-            schedule.ManipulationCompleted += Schedule_ManipulationCompleted;
+            //schedule.ManipulationStarted += Schedule_ManipulationStarted;
+            //schedule.ManipulationCompleted += Schedule_ManipulationCompleted;
         }
 
-        private void Schedule_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
-        {
-            pivot.IsHitTestVisible = true;
-        }
+        //private void Schedule_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        //{
+        //    pivot.IsHitTestVisible = true;
+        //}
 
-        private void Schedule_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
-        {
-            pivot.IsHitTestVisible = false;            
-        }
+        //private void Schedule_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        //{
+        //    pivot.IsHitTestVisible = false;            
+        //}
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
