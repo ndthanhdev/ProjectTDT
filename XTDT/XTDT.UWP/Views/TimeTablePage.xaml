@@ -20,6 +20,18 @@
         <vm:TimeTablePageViewModel x:Name="ViewModel"/>
     </Page.DataContext>
     <Page.Resources>
+        <DataTemplate x:Key="listTemplate" x:DataType="models:TkbItem">
+            <TextBlock TextWrapping="Wrap">
+                    <Run Text="["/>
+                    <Run Text="{Binding Lich.Tiet}"/>
+                    <Run Text="]"/>
+                    <Run Text="{Binding Tkb.TenMH}"/>
+                    <Run Text="("/>
+                    <Run Text="{Binding Lich.Phong}"/>
+                    <Run Text=")"/>
+            </TextBlock>
+        </DataTemplate>
+
         <Style x:Key="TabsStylePivotStyle" TargetType="Pivot">
             <Setter Property="Template">
                 <Setter.Value>
@@ -343,17 +355,6 @@
         <Style x:Key="ListViewStyle" TargetType="ListView">
             <Setter Property="ItemTemplate" Value="{StaticResource listTemplate}"/>
         </Style>
-        <DataTemplate x:Key="listTemplate" x:DataType="models:TkbItem">
-            <TextBlock TextWrapping="Wrap">
-                    <Run Text="["/>
-                    <Run Text="{Binding Lich.Tiet}"/>
-                    <Run Text="]"/>
-                    <Run Text="{Binding Tkb.TenMH}"/>
-                    <Run Text="("/>
-                    <Run Text="{Binding Lich.Phong}"/>
-                    <Run Text=")"/>
-            </TextBlock>
-        </DataTemplate>
         <converters:TietToBeginTime x:Key="beginConverter"/>
         <converters:TietToEndTime x:Key="endConverter"/>
         <convert:ValueWhenConverter x:Key="notEqualZero">

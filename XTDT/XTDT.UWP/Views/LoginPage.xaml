@@ -53,11 +53,11 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image 
+            <!--<Image 
                 Source="ms-appx:///Assets/Square44x44Logo.targetsize-24_altform-unplated.png"
                 Grid.Row="2"
                 Grid.Column="3"
-                Stretch="None"/>
+                Stretch="None"/>-->
             <StackPanel Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" VerticalAlignment="Center">
                 <TextBox PlaceholderText="Student ID" VerticalAlignment="Center"
                          Margin="0,0,0,8" 
