@@ -85,7 +85,10 @@
             </Interactivity:Interaction.Behaviors>
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="100" Height="100">
+                    <Grid Width="100" Height="100" CornerRadius="8" 
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+                          Padding="4,4,4,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>

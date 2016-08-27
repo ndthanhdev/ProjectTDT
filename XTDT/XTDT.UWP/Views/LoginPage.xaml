@@ -55,14 +55,10 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" VerticalAlignment="Center">
                 <TextBox PlaceholderText="Student ID" VerticalAlignment="Center"
-                         Background="{ThemeResource SystemControlBackgroundBaseHighBrush}" 
-                         Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"                      
                          Margin="0,0,0,8" 
                          IsEnabled="{Binding Path=IsLogging,Converter={StaticResource InvertBool}}"
                          Text="{Binding Path=StudentID,Mode=TwoWay}"/>
                 <PasswordBox PlaceholderText="Password" VerticalAlignment="Top" 
-                             Background="{ThemeResource SystemControlBackgroundBaseHighBrush}"
-                             Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
                              IsEnabled="{Binding Path=IsLogging,Converter={StaticResource InvertBool}}"
                              Password="{Binding Path=StudentPassword,Mode=TwoWay}">
                     <Interactivity:Interaction.Behaviors>
