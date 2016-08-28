@@ -1,2 +1,2 @@
-MainPackage=D:\WorkSpace\CSharp\ProjectTDT\XTDT\XTDT.UWP\bin\x64\Debug\XTDT.UWP_1.0.23.0_x64_Debug.appx
-SymbolPackage=D:\WorkSpace\CSharp\ProjectTDT\XTDT\XTDT.UWP\AppPackages\XTDT.UWP_1.0.23.0_Debug_Test\XTDT.UWP_1.0.23.0_x64_Debug.appxsym
+MainPackage=D:\WorkSpace\CSharp\ProjectTDT\XTDT\XTDT.UWP\bin\x64\Debug\XTDT.UWP_1.0.24.0_x64_Debug.appx
+SymbolPackage=D:\WorkSpace\CSharp\ProjectTDT\XTDT\XTDT.UWP\AppPackages\XTDT.UWP_1.0.24.0_Debug_Test\XTDT.UWP_1.0.24.0_x64_Debug.appxsym
