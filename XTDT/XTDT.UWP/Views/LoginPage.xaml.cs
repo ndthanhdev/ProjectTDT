@@ -43,8 +43,6 @@ namespace XTDT.UWP.Views
             bool state = LocalDataService.Instance.IsLogged;
             foreach (var hamburgerButton in Shell.HamburgerMenu.PrimaryButtons)
                 hamburgerButton.IsEnabled = state;
-            if (state)
-                LoginButton.Content = "Logout";
         }
     }
 }
