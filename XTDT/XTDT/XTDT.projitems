@@ -26,7 +26,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)API\Respond\HocKy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\ServiceAccess\Transporter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\DictionarySerializeToArray.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ObservableCollectionExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\StringUtilities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Ultility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataController\NotificationDataController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataController\TkbDataController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ThongBaoItem.cs" />

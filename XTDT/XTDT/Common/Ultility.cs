@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XTDT.UWP.Common
+namespace XTDT.Common
 {
     public static class Ultility
     {

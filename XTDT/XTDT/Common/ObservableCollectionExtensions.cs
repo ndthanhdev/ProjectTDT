@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XTDT.UWP.Common
+namespace XTDT.Common
 {
-    public static class ObservableCollectionExtensions
+    public static class CollectionExtensions
     {
-        public static void AddToOrdered<T>(this ObservableCollection<T> source, T item, bool increase = true) where T : IComparable<T>
+        public static void AddToOrdered<T>(this IList<T> source, T item, bool increase = true) where T : IComparable<T>
         {
             for (int i = 0; i < source.Count; i++)
             {

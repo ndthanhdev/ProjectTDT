@@ -9,10 +9,10 @@ namespace XTDT.Models
 {
     public class ThongBaoItem
     {
-        private static string _checkNewRegex = @"\((0[1-9]|[12][0-9]|3[01]])\-(0[1-9]|1[012])-\d{4}\) Mới ";
-        private static string _dateRegex = @"(0[1-9]|[12][0-9]|3[01]])\-(0[1-9]|1[012])-\d{4}";
+        private static string _checkNewRegex = @"\((0[1-9]|[12][0-9]|3[01])\-(0[1-9]|1[012])-\d{4}\) +Mới";
+        private static string _dateRegex = @"(0[1-9]|[12][0-9]|3[01])\-(0[1-9]|1[012])-\d{4}";
         public string Title { get; set; }
-        public string Id { get; set; }
+        public int Id { get; set; }
         public DateTime Publish { get; set; }
         public bool IsNew { get; set; }
         public ThongBaoItem() { }
@@ -26,7 +26,7 @@ namespace XTDT.Models
 
             rg = new Regex(_dateRegex, RegexOptions.RightToLeft);
             var match = rg.Match(tb.Title);
-            Publish = DateTime.ParseExact(match.Value, "dd-mm-yyyy", CultureInfo.InvariantCulture);
+            Publish = DateTime.ParseExact(match.Value, "dd-MM-yyyy", CultureInfo.InvariantCulture);
 
             Title = tb.Title.Substring(0, match.Index - 1);
         }

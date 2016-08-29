@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
-using XTDT.UWP.Common;
+using XTDT.Common;
 
 namespace XTDT.UWP.ViewModels
 {

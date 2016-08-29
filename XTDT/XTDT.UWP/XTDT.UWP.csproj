@@ -101,9 +101,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\Local\ILocalObject.cs" />
-    <Compile Include="Common\ObservableCollectionExtensions.cs" />
     <Compile Include="Common\SaveAndLoad.cs" />
-    <Compile Include="Common\Ultility.cs" />
     <Compile Include="Controls\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>

@@ -20,13 +20,13 @@ namespace XTDT.API.Respond
 
     }
 
-    public class ThongBao
+    public class ThongBao : IComparable<ThongBao>
     {
         [JsonProperty("title")]
         public string Title { get; set; }
 
         [JsonProperty("id")]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public override int GetHashCode()
         {
@@ -34,11 +34,20 @@ namespace XTDT.API.Respond
         }
         public override bool Equals(object obj)
         {
-            if (obj is DonVi)
+            if (obj is ThongBao)
             {
-                return (obj as DonVi).Id == Id;
+                return (obj as ThongBao).Id == Id;
             }
             return base.Equals(obj);
+        }
+
+        public int CompareTo(ThongBao obj)
+        {
+            if (object.ReferenceEquals(obj, null))
+            {
+                return 1;
+            }
+            return Id.CompareTo(obj.Id);
         }
     }
 
@@ -51,7 +60,7 @@ namespace XTDT.API.Respond
         public IList<ThongBao> Thongbao { get; set; }
 
         [JsonProperty("numpage")]
-        public string Numpage { get; set; }
+        public int Numpage { get; set; }
     }
 
 }

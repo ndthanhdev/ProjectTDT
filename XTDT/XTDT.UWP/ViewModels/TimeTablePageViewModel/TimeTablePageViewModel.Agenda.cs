@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Template10.Mvvm;
 using XTDT.API.Respond;
+using XTDT.Common;
 using XTDT.Models;
-using XTDT.UWP.Common;
 
 namespace XTDT.UWP.ViewModels
 {
