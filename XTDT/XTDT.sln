@@ -7,9 +7,12 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "XTDT.Shared", "XTDT\XTDT.Sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XTDT.UWP", "XTDT.UWP\XTDT.UWP.csproj", "{0E537BA5-32BA-4504-8F90-0B42876EA7A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testZone", "testZone\testZone.csproj", "{7389E9CE-1856-4B95-8286-93BD019C4819}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		XTDT\XTDT.projitems*{0e537ba5-32ba-4504-8f90-0b42876ea7a8}*SharedItemsImports = 4
+		XTDT\XTDT.projitems*{7389e9ce-1856-4b95-8286-93bd019c4819}*SharedItemsImports = 4
 		XTDT\XTDT.projitems*{fbc9dfee-6175-41a4-bafe-b8f211f1faf1}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +46,22 @@ Global
 		{0E537BA5-32BA-4504-8F90-0B42876EA7A8}.Release|x86.ActiveCfg = Release|x86
 		{0E537BA5-32BA-4504-8F90-0B42876EA7A8}.Release|x86.Build.0 = Release|x86
 		{0E537BA5-32BA-4504-8F90-0B42876EA7A8}.Release|x86.Deploy.0 = Release|x86
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Debug|ARM.Build.0 = Debug|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Debug|x64.Build.0 = Debug|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Debug|x86.Build.0 = Debug|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Release|ARM.Build.0 = Release|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Release|x64.ActiveCfg = Release|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Release|x64.Build.0 = Release|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Release|x86.ActiveCfg = Release|Any CPU
+		{7389E9CE-1856-4B95-8286-93BD019C4819}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,6 +12,12 @@ namespace XTDT.API.Respond
 
         [JsonProperty("id")]
         public string Id { get; set; }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+
     }
 
     public class ThongBao
@@ -21,6 +27,19 @@ namespace XTDT.API.Respond
 
         [JsonProperty("id")]
         public string Id { get; set; }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is DonVi)
+            {
+                return (obj as DonVi).Id == Id;
+            }
+            return base.Equals(obj);
+        }
     }
 
     public class DSThongBao
