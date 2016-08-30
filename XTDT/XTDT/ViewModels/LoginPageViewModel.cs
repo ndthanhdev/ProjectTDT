@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Template10.Mvvm;
-using XTDT.API.Material;
+using XTDT.API.ServiceAccess;
 using XTDT.API.Requests;
 using XTDT.API.Respond;
-using XTDT.API.ServiceAccess;
+using XTDT.API.Material;
+using XTDT.Views;
 using XTDT.Services.LocalDataServices;
-using XTDT.UWP.Views;
 
-namespace XTDT.UWP.ViewModels
+namespace XTDT.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {

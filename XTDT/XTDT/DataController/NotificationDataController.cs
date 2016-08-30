@@ -44,7 +44,7 @@ namespace XTDT.DataController
             }
             return true;
         }
-        public async Task<bool> ProvideValue(string id, string password, DonVi key)
+        public async Task<bool> ProvideValue(string id, string password, DonVi key, int threshold = 100)
         {
             var request = new DSThongBaoRequest()
             {
