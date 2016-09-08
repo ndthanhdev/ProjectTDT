@@ -9,18 +9,14 @@ namespace XTDT.API.Requests
 {
     public abstract class RequestObject
     {
-        [APIIgnore]
-        public string Query
+        public virtual string GenerateQuery()
         {
-            get
-            {
-                Type t = this.GetType();
+            Type t = this.GetType();
 
-                var keyValues = from pro in t.GetProperties()
-                                where !pro.IsDefined(typeof(APIIgnoreAttribute))
-                                select string.Concat(pro.Name, "=", pro.GetValue(this)?.ToString() ?? "");
-                return string.Join("&", keyValues);
-            }
+            var keyValues = from pro in t.GetProperties()
+                            where !pro.IsDefined(typeof(APIIgnoreAttribute))
+                            select string.Concat(pro.Name, "=", pro.GetValue(this)?.ToString() ?? "");
+            return string.Join("&", keyValues);
         }
         /// <summary>
         /// set not null property of other to Instance

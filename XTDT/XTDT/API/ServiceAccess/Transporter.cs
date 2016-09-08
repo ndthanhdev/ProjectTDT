@@ -22,6 +22,7 @@ namespace XTDT.API.ServiceAccess
         /// </summary>
         /// <param name="requester"></param>
         /// <returns>true if completed</returns>
+        /// 
         public static async Task<Package<T, U>> Transport<T, U>(T request) where T : RequestObject
         {
             await Task.Yield();
@@ -29,7 +30,7 @@ namespace XTDT.API.ServiceAccess
             respond.Request = request;
             try
             {
-                string content = await GetString(request.Query);
+                string content = await GetString(request.GenerateQuery());
                 JToken token = JToken.Parse(content);
                 if (token == null)
                 {
@@ -73,6 +74,48 @@ namespace XTDT.API.ServiceAccess
             }
             return respond;
         }
+
+        //public static async Task<Package<T, U>> Transport<T, U>(T request) where T : AuthRequestObject
+        //{
+        //    await Task.Yield();
+        //    Package<T, U> respond = new Package<T, U>();
+        //    respond.Request = request;
+        //    try
+        //    {
+        //        string query = await request.GenerateQueryAsync();
+        //        if (string.IsNullOrEmpty(query))
+        //        {
+        //            respond.Status = PackageStatusCode.NotAuthorized;
+        //            goto EndPoint;
+        //        }
+        //        string content = await GetString(query);
+        //        JToken token = JToken.Parse(content);
+        //        if (token == null || !token["data"].HasValues)
+        //        {
+        //            respond.Status = PackageStatusCode.UnknownError;
+        //        }
+        //        else //well transport
+        //        {
+        //            respond.Status = PackageStatusCode.OK;
+        //            //can replace with populate
+        //            U respondContent = JsonConvert.DeserializeObject<U>(token["data"].ToString(),
+        //                new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy" });
+        //            respond.Respond = respondContent;
+        //        }
+        //        EndPoint:
+        //        await Task.Yield();
+        //    }
+        //    catch (HttpRequestException) //Offline
+        //    {
+        //        respond.Status = PackageStatusCode.Offline;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        respond.Status = PackageStatusCode.UnknownError;
+        //        throw e;
+        //    }
+        //    return respond;
+        //}
         /// <summary>
         /// get 
         /// </summary>
@@ -92,7 +135,7 @@ namespace XTDT.API.ServiceAccess
                     return result;
                 }
             }
-            
+
             //HttpClient client = new HttpClient(handler);
             //client.DefaultRequestHeaders.Accept.ParseAdd("text/html, application/xhtml+xml, application/json, image/jxr, */*");
             //client.DefaultRequestHeaders.AcceptEncoding.ParseAdd("gzip, deflate");

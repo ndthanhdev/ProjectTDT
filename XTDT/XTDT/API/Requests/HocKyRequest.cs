@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XTDT.API.Requests
 {
-    public class HocKyRequest : BasicRequestObject
+    public class HocKyRequest : AuthRequestObject
     {
         public override string act => "tkb";
         public string option => "ln";

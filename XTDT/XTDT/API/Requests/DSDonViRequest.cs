@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XTDT.API.Requests
 {
-    public class DSDonViRequest : BasicRequestObject
+    public class DSDonViRequest : AuthRequestObject
     {
         public override string act => "tb";
     }

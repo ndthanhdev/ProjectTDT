@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XTDT.API.Requests
 {
-    public class AvatarRequest : BasicRequestObject
+    public class AvatarRequest : AuthRequestObject
     {
         public override string act => "avatar";
     }
