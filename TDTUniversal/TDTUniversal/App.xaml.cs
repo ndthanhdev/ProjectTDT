@@ -10,6 +10,9 @@ using Windows.UI.Xaml.Data;
 using TDTUniversal.API.Requests;
 using TDTUniversal.API;
 using System.Diagnostics;
+using System.Text;
+using System.Net.Http;
+using System.Net;
 
 namespace TDTUniversal
 {
@@ -27,8 +30,15 @@ namespace TDTUniversal
             Task.Run(async () =>
             {
                 TokenProvider tp = new TokenProvider("51403318", "51403318TDT");
-                AvatarRequest ar = new AvatarRequest("51403318", "51403318TDT");
-                var s = await RequestBuilder.BuildUrl(ar,tp);
+                DSHocKyRequest dshkr = new DSHocKyRequest("51403318");
+                var url = await RequestBuilder.BuildUrl(dshkr, tp);
+                HttpClientHandler handler = new HttpClientHandler();
+                handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+                HttpClient client = new HttpClient(handler);
+                // client.DefaultRequestHeaders.AcceptCharset.ParseAdd("utf-8");
+                var s = await client.GetStringAsync(new Uri(url));
+                var ss = WebUtility.HtmlDecode(s);
+
                 await Task.Yield();
             });
 

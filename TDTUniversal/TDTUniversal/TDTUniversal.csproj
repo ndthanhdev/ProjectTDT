@@ -107,6 +107,7 @@
     <Compile Include="API\Interfaces\IRequestWithToken.cs" />
     <Compile Include="API\RequestBuilder.cs" />
     <Compile Include="API\Requests\AvatarRequest.cs" />
+    <Compile Include="API\Requests\DSHocKyRequest.cs" />
     <Compile Include="API\TokenProvider.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
