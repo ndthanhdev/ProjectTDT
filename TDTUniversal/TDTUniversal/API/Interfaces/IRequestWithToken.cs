@@ -9,7 +9,5 @@ namespace TDTUniversal.API.Interfaces
 {
     public interface IRequestWithToken
     {
-        [RequestParameter(Name = "token")]
-        string Token { get; }
     }
 }

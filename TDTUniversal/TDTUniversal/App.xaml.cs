@@ -7,6 +7,9 @@ using Template10.Common;
 using System;
 using System.Linq;
 using Windows.UI.Xaml.Data;
+using TDTUniversal.API.Requests;
+using TDTUniversal.API;
+using System.Diagnostics;
 
 namespace TDTUniversal
 {
@@ -18,7 +21,18 @@ namespace TDTUniversal
     {
         public App()
         {
+
             InitializeComponent();
+
+            Task.Run(async () =>
+            {
+                TokenProvider tp = new TokenProvider("51403318", "51403318TDT");
+                AvatarRequest ar = new AvatarRequest("51403318", "51403318TDT");
+                var s = await RequestBuilder.BuildUrl(ar,tp);
+                await Task.Yield();
+            });
+
+
             SplashFactory = (e) => new Views.Splash(e);
 
             #region App settings

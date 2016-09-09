@@ -9,47 +9,44 @@ using TDTUniversal.API.Interfaces;
 
 namespace TDTUniversal.API
 {
-    public class RequestBuilder
+    public static class RequestBuilder
     {
-        private string _host = "https://api.trautre.cf/v2.php?";
-        private object _request;
-        public RequestBuilder(object requestObject)
+        private static string _host = "https://api.trautre.cf/v2.php";
+        public static async Task<String> BuildUrl(object requestObject, TokenProvider tokenProvider = null)
         {
-            if (_request == null)
+            if (requestObject == null)
                 throw new NullReferenceException();
-            _request = requestObject;
-        }
-        public async Task<String> BuildQuery()
-        {
-            await Task.Yield();
-            if(_request is IRequestWithToken)
+            if (requestObject is IRequestWithToken)
             {
-
+                var tokenTask = tokenProvider.GetTokenAsync();
+                var rawUrl = GenerateUrl(requestObject);
+                await tokenTask;
+                return $"{rawUrl}&token={tokenTask.Result}";
             }
-            return ObjectToQuery();
+            return GenerateUrl(requestObject);
         }
-        private string ObjectToQuery()
+        private static string GenerateUrl(object requestObject)
         {
-            var tp = _request.GetType();
+            var tp = requestObject.GetType();
             var properties = from pro in tp.GetProperties()
                              where !pro.IsDefined(typeof(RequestIgnoreAttribute))
                              select pro;
-            StringBuilder sb = new StringBuilder();
-            sb.Append(_host);
+            List<string> ls = new List<string>();
             foreach (var pro in properties)
             {
                 if (pro.IsDefined(typeof(RequestParameterAttribute)))
                 {
                     var attribute = (RequestParameterAttribute)pro.GetCustomAttribute(typeof(RequestParameterAttribute));
-                    sb.Append($"{attribute.Name}={pro.GetValue(_request)?.ToString() ?? string.Empty}");
+                    ls.Add($"{attribute.Name}={pro.GetValue(requestObject)?.ToString() ?? string.Empty}");
                 }
                 else
-                    sb.Append($"{pro.Name}={pro.GetValue(_request)?.ToString() ?? string.Empty}");
+                    ls.Add($"{pro.Name}={pro.GetValue(requestObject)?.ToString() ?? string.Empty}");
             }
-            return sb.ToString();
+            var query = string.Join("&", ls);
+            return $"{_host}?{query}";
         }
 
-        
+
 
     }
 }
