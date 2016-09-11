@@ -32,12 +32,8 @@ namespace TDTUniversal
                 TokenProvider tp = new TokenProvider("51403318", "51403318TDT");
                 DSHocKyRequest dshkr = new DSHocKyRequest("51403318");
                 var url = await RequestBuilder.BuildUrl(dshkr, tp);
-                HttpClientHandler handler = new HttpClientHandler();
-                handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-                HttpClient client = new HttpClient(handler);
-                // client.DefaultRequestHeaders.AcceptCharset.ParseAdd("utf-8");
-                var s = await client.GetStringAsync(new Uri(url));
-                var ss = WebUtility.HtmlDecode(s);
+               
+                var s = await ApiClient.GetString(url);
 
                 await Task.Yield();
             });

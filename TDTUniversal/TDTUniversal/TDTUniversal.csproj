@@ -102,9 +102,11 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\ApiClient.cs" />
     <Compile Include="API\Attributes\RequestIgnoreAttribute.cs" />
     <Compile Include="API\Attributes\RequestParameterAttribute.cs" />
     <Compile Include="API\Interfaces\IRequestWithToken.cs" />
+    <Compile Include="API\Package.cs" />
     <Compile Include="API\RequestBuilder.cs" />
     <Compile Include="API\Requests\AvatarRequest.cs" />
     <Compile Include="API\Requests\DSHocKyRequest.cs" />
