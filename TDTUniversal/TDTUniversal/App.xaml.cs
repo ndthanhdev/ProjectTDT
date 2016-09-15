@@ -14,6 +14,7 @@ using System.Text;
 using System.Net.Http;
 using System.Net;
 using TDTUniversal.API.Respond;
+using TDTUniversal.Services;
 
 namespace TDTUniversal
 {
@@ -25,18 +26,13 @@ namespace TDTUniversal
     {
         public App()
         {
-
             InitializeComponent();
 
             Task.Run(async () =>
             {
-                TokenProvider tp = new TokenProvider("51403318", "51403318TDT");
-                //DSHocKyRequest dshkr = new DSHocKyRequest("51403318");
-                AvatarRequest ar = new AvatarRequest("51403318", "51403318TDT");
-                //var url = await RequestBuilder.BuildUrl(dshkr, tp);
-
-                var s = await ApiClient.GetAsync<AvatarRequest, Avatar>(ar, tp);
-
+                SettingsService.Instance.User = "51403318";
+                SettingsService.Instance.Password = "51403318TDT";
+                var sv = await TokenService.Instance.TokenProvider.GetTokenAsync();
                 await Task.Yield();
             });
 
@@ -49,6 +45,7 @@ namespace TDTUniversal
             RequestedTheme = _settings.AppTheme;
             CacheMaxDuration = _settings.CacheMaxDuration;
             ShowShellBackButton = _settings.UseShellBackButton;
+
 
             #endregion
         }
