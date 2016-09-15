@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Net.Http;
 using System.Net;
+using TDTUniversal.API.Respond;
 
 namespace TDTUniversal
 {
@@ -30,10 +31,11 @@ namespace TDTUniversal
             Task.Run(async () =>
             {
                 TokenProvider tp = new TokenProvider("51403318", "51403318TDT");
-                DSHocKyRequest dshkr = new DSHocKyRequest("51403318");
-                var url = await RequestBuilder.BuildUrl(dshkr, tp);
-               
-                var s = await ApiClient.GetString(url);
+                //DSHocKyRequest dshkr = new DSHocKyRequest("51403318");
+                AvatarRequest ar = new AvatarRequest("51403318", "51403318TDT");
+                //var url = await RequestBuilder.BuildUrl(dshkr, tp);
+
+                var s = await ApiClient.GetAsync<AvatarRequest, Avatar>(ar, tp);
 
                 await Task.Yield();
             });

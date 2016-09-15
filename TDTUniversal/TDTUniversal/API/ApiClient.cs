@@ -22,16 +22,14 @@ namespace TDTUniversal.API
             {
                 var url = await RequestBuilder.BuildUrl(request, tokenProvider);
                 string content = await ApiClient.GetString(url);
-                JToken jtoken = JToken.Parse(content);
-                if (jtoken == null || (bool)jtoken["status"] != true)
-                {
-                    respond.Status = false;
+                var box = JsonConvert.DeserializeObject<Wrapper<U>>(content,
+                       new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy" });
+                respond.Status = box.Status;
+                if (!respond.Status)
+                {                   
                     return respond;
                 }
-                respond.Status = true;
-                U respondContent = JsonConvert.DeserializeObject<U>(jtoken["data"].Value<string>(),
-                       new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy" });
-                respond.Respond = respondContent;
+                respond.Respond = box.Data;
             }
             catch (Exception ex)
             {
@@ -55,6 +53,15 @@ namespace TDTUniversal.API
                     return result;
                 }
             }
+        }
+
+        class Wrapper<T>
+        {
+            [JsonProperty("status")]
+            public bool Status { get; set; }
+
+            [JsonProperty("data")]
+            public T Data { get; set; }
         }
     }
 }
