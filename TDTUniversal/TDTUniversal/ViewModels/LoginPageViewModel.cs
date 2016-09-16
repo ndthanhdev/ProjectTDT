@@ -36,7 +36,7 @@ namespace TDTUniversal.ViewModels
             {
                 IsLogging = true;
                 var avatar = await ApiClient.GetAsync<AvatarRequest, Avatar>(new AvatarRequest(StudentID, StudentPassword),
-                    TokenService.Instance.TokenProvider);
+                    TokenService.GetTokenProvider());
                 if (avatar.Status)
                 {
                     //login true
@@ -59,7 +59,9 @@ namespace TDTUniversal.ViewModels
                     await md.ShowAsync();
                 }
             }
-            catch { }
+            catch(Exception ex)
+            {
+            }
             finally
             {
                 IsLogging = false;

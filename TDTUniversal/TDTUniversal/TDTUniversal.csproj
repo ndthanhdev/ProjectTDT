@@ -111,9 +111,11 @@
     <Compile Include="API\RequestBuilder.cs" />
     <Compile Include="API\Requests\AvatarRequest.cs" />
     <Compile Include="API\Requests\DSHocKyRequest.cs" />
-    <Compile Include="API\Requests\DSMonHocRequest.cs" />
+    <Compile Include="API\Requests\HocKyDataRequest.cs" />
     <Compile Include="API\Respond\Avatar.cs" />
+    <Compile Include="API\Respond\HocKyData.cs" />
     <Compile Include="API\Respond\LichHoc.cs" />
+    <Compile Include="API\Respond\ThoiKhoaBieu.cs" />
     <Compile Include="API\Respond\ThongTinHocKy.cs" />
     <Compile Include="API\TokenProvider.cs" />
     <Compile Include="App.xaml.cs">
@@ -159,6 +161,9 @@
     </Compile>
     <Compile Include="Views\Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimeTablePage.xaml.cs">
+      <DependentUpon>TimeTablePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +230,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TimeTablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

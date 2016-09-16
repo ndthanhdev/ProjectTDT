@@ -8,16 +8,20 @@ using TDTUniversal.API.Interfaces;
 
 namespace TDTUniversal.API.Requests
 {
-    public class DSMonHocRequest : IRequestWithToken
+    public class HocKyDataRequest : IRequestWithToken
     {
 
         public string act => "tkb";
         public string option => "ln";
         [RequestParameter(Name = "id")]
         public int Id { get; set; }
-        public DSMonHocRequest(int id)
+        [RequestParameter(Name = "user")]
+        public string User { get; set; }
+
+        public HocKyDataRequest(int id,string user)
         {
             Id = id;
+            User = user;
         }
 
     }

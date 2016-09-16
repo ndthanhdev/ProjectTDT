@@ -10,16 +10,19 @@ namespace TDTUniversal.Services
 {
     public class TokenService
     {
-        public static TokenService Instance { get; private set; } = new TokenService();
+        //public static TokenService Instance { get; private set; } = new TokenService();
 
-        public TokenProvider TokenProvider { get; private set; }
+        //public TokenProvider TokenProvider { get; private set; }
 
-        public TokenService()
+        //public TokenService()
+        //{
+        //    TokenProvider = new TokenProvider(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
+        //    Instance = this;
+        //}
+        public static TokenProvider GetTokenProvider()
         {
-            TokenProvider = new TokenProvider(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
-            Instance = this;
+            return new TokenProvider(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
         }
-
 
     }
 }

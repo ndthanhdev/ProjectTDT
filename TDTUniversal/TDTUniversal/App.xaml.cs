@@ -35,8 +35,8 @@ namespace TDTUniversal
             {
                 LocalDataService.Instance.StudentID = "51403318";
                 LocalDataService.Instance.Password = "51403318TDT";
-                var sv = await TokenService.Instance.TokenProvider.GetTokenAsync();
-                var r = await ApiClient.GetAsync<DSHocKyRequest, List<ThongTinHocKy>>(new DSHocKyRequest("51403318"), TokenService.Instance.TokenProvider);
+                var sv = await TokenService.GetTokenProvider().GetTokenAsync();
+                var r = await ApiClient.GetAsync<DSHocKyRequest, List<ThongTinHocKy>>(new DSHocKyRequest("51403318"), TokenService.GetTokenProvider());
                 await Task.Yield();
             });
 
