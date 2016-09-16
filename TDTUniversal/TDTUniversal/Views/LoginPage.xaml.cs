@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using TDTUniversal.DataContext;
 using TDTUniversal.Services;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -26,6 +28,21 @@ namespace TDTUniversal.Views
         public LoginPage()
         {
             this.InitializeComponent();
+            using (var database = new TDTContext())
+            {
+                //var ls = database.HocKy.ToList();
+
+                var ls = database.HocKy.ToList();
+
+                database.HocKy.Add(new HocKy() { HocKyId = Guid.NewGuid().ToString(), TenHocKy = "hk 0hh" });
+                database.HocKy.Add(new HocKy() { HocKyId = Guid.NewGuid().ToString(), TenHocKy = "hk 1" });
+                database.HocKy.Add(new HocKy() { HocKyId = Guid.NewGuid().ToString(), TenHocKy = "hk 2" });
+                var i = database.SaveChanges();
+                ls = database.HocKy.ToList();
+                Task.Yield();
+            }
+
+
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

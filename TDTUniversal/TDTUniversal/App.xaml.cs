@@ -15,6 +15,8 @@ using System.Net.Http;
 using System.Net;
 using TDTUniversal.API.Respond;
 using TDTUniversal.Services;
+using TDTUniversal.DataContext;
+using Microsoft.Data.Entity;
 
 namespace TDTUniversal
 {
@@ -38,6 +40,20 @@ namespace TDTUniversal
 
 
             SplashFactory = (e) => new Views.Splash(e);
+
+            // Before running the app for the first time, follow these steps:
+            // 1- Build -> Build the Project
+            // 2- Tools –> NuGet Package Manager –> Package Manager Console
+            // 3- Run "Add-Migration MyFirstMigration" to scaffold a migration to create the initial set of tables for your model
+            // See here for more information https://docs.efproject.net/en/latest/platforms/uwp/getting-started.html#create-your-database
+
+            using (var database = new TDTContext())
+            {
+                database.Database.EnsureCreated();
+            }
+
+            //Read more at https://blogs.windows.com/buildingapps/2016/05/03/data-access-in-universal-windows-platform-uwp-apps/#6ma6lWSGcKGtTfTo.99
+
 
             #region App settings
 
