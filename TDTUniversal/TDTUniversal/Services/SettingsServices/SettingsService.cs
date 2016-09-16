@@ -47,7 +47,7 @@ namespace TDTUniversal.Services.SettingsServices
 
         public TimeSpan CacheMaxDuration
         {
-            get { return _helper.Read<TimeSpan>(nameof(CacheMaxDuration), TimeSpan.FromDays(2)); }
+            get { return _helper.Read<TimeSpan>(nameof(CacheMaxDuration), TimeSpan.FromDays(15)); }
             set
             {
                 _helper.Write(nameof(CacheMaxDuration), value);

@@ -1,0 +1,100 @@
+﻿<Page
+    x:Class="TDTUniversal.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    xmlns:Behaviors="using:Template10.Behaviors"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:converters="using:Template10.Converters"
+    xmlns:local="using:TDTUniversal.Views"
+    xmlns:vm="using:TDTUniversal.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <vm:LoginPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+    <Page.Resources>
+        <converters:ValueWhenConverter x:Key="InvertBool">
+            <converters:ValueWhenConverter.When>
+                <x:Boolean>True</x:Boolean>
+            </converters:ValueWhenConverter.When>
+            <converters:ValueWhenConverter.Value>
+                <x:Boolean>False</x:Boolean>
+            </converters:ValueWhenConverter.Value>
+            <converters:ValueWhenConverter.Otherwise>
+                <x:Boolean>True</x:Boolean>
+            </converters:ValueWhenConverter.Otherwise>
+        </converters:ValueWhenConverter>
+    </Page.Resources>
+
+    <RelativePanel  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True" Text="Đăng nhập">
+
+            <!--  secondary commands  -->
+
+        </controls:PageHeader>
+        <Grid x:Name="parameterResizer" Margin="16,16,16,0"
+              RelativePanel.AlignLeftWithPanel="True"
+              RelativePanel.AlignRightWithPanel="True"
+              RelativePanel.AlignBottomWithPanel="True"
+              RelativePanel.Below="pageHeader">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image 
+                Source="ms-appx:///Assets/Square44x44Logo.targetsize-24_altform-unplated.png"
+                Grid.Row="1"
+                Grid.Column="3"
+                Stretch="None"/>
+            <ProgressRing
+                Grid.Row="2"
+                Grid.Column="3"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"    
+                IsActive="{Binding IsLogging}"/>
+            <StackPanel Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" VerticalAlignment="Center">
+                <TextBox PlaceholderText="Student ID" VerticalAlignment="Center"
+                         Margin="0,0,0,8" 
+                         IsEnabled="{Binding Path=IsLogging,Converter={StaticResource InvertBool}}"
+                         Text="{Binding Path=StudentID,Mode=TwoWay}"/>
+                <PasswordBox PlaceholderText="Password" VerticalAlignment="Top" 
+                             IsEnabled="{Binding Path=IsLogging,Converter={StaticResource InvertBool}}"
+                             Password="{Binding Path=StudentPassword,Mode=TwoWay}">
+                    <Interactivity:Interaction.Behaviors>
+                        <Behaviors:KeyBehavior Key="Enter">
+                            <Core:CallMethodAction MethodName="lol"/>
+                        </Behaviors:KeyBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                </PasswordBox>
+            </StackPanel>
+            <Button x:Name="LoginButton" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" 
+                    VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                    Content="Đăng nhập" Command="{x:Bind ViewModel.LoginCommand}"
+                    IsEnabled="{Binding Path=IsLogging,Converter={StaticResource InvertBool}}"/>
+
+            <HyperlinkButton Grid.Row="6" Grid.Column="2" 
+                             Grid.ColumnSpan="3" HorizontalAlignment="Center"
+                             Content="Quên mật khẩu?" NavigateUri="http://tuvanhocduong.tdt.edu.vn/"/>
+        </Grid>
+    </RelativePanel>
+</Page>

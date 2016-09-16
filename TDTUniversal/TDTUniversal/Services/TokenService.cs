@@ -16,7 +16,7 @@ namespace TDTUniversal.Services
 
         public TokenService()
         {
-            TokenProvider = new TokenProvider(SettingsService.Instance.User, SettingsService.Instance.Password);
+            TokenProvider = new TokenProvider(LocalDataService.Instance.StudentID, LocalDataService.Instance.Password);
             Instance = this;
         }
 

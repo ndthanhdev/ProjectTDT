@@ -29,7 +29,7 @@
 
         <Controls:HamburgerMenu.SecondaryButtons>
             <!--  settingspage button  -->
-            <Controls:HamburgerButtonInfo x:Name="SettingsButton" PageParameter="0"
+            <!--<Controls:HamburgerButtonInfo x:Name="SettingsButton" PageParameter="0"
                                           PageType="views:SettingsPage">
                 <Controls:HamburgerButtonInfo.NavigationTransitionInfo>
                     <SuppressNavigationTransitionInfo />
@@ -40,7 +40,7 @@
                     <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
                                Text="Settings" />
                 </StackPanel>
-            </Controls:HamburgerButtonInfo>
+            </Controls:HamburgerButtonInfo>-->
         </Controls:HamburgerMenu.SecondaryButtons>
 
     </Controls:HamburgerMenu>
