@@ -111,7 +111,10 @@
     <Compile Include="API\RequestBuilder.cs" />
     <Compile Include="API\Requests\AvatarRequest.cs" />
     <Compile Include="API\Requests\DSHocKyRequest.cs" />
+    <Compile Include="API\Requests\DSMonHocRequest.cs" />
     <Compile Include="API\Respond\Avatar.cs" />
+    <Compile Include="API\Respond\LichHoc.cs" />
+    <Compile Include="API\Respond\ThongTinHocKy.cs" />
     <Compile Include="API\TokenProvider.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -132,6 +135,7 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
+    <Compile Include="ViewModels\TimeTablePageViewModel.cs" />
     <Compile Include="Views\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
     </Compile>

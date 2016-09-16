@@ -54,37 +54,6 @@ namespace TDTUniversal.Services.SettingsServices
                 BootStrapper.Current.CacheMaxDuration = value;
             }
         }
-
-        public string User
-        {
-            get { return _helper.Read<string>(nameof(User), ""); }
-            set
-            {
-                _helper.Write(nameof(User), value);
-                new TokenService();
-            }
-        }
-
-        public string Password
-        {
-            get { return _helper.Read<string>(nameof(Password), ""); }
-            set
-            {
-                _helper.Write(nameof(Password), value);
-                new TokenService();
-            }
-        }
-
-        public bool IsLogged
-        {
-            get { return _helper.Read<bool>(nameof(IsLogged), false); }
-            set
-            {
-                _helper.Write(nameof(IsLogged), value);
-            }
-        }
-
-
     }
 }
 

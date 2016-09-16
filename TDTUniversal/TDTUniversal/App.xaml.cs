@@ -17,6 +17,7 @@ using TDTUniversal.API.Respond;
 using TDTUniversal.Services;
 using TDTUniversal.DataContext;
 using Microsoft.Data.Entity;
+using System.Collections.Generic;
 
 namespace TDTUniversal
 {
@@ -32,9 +33,10 @@ namespace TDTUniversal
 
             Task.Run(async () =>
             {
-                SettingsService.Instance.User = "51403318";
-                SettingsService.Instance.Password = "51403318TDT";
+                LocalDataService.Instance.StudentID = "51403318";
+                LocalDataService.Instance.Password = "51403318TDT";
                 var sv = await TokenService.Instance.TokenProvider.GetTokenAsync();
+                var r = await ApiClient.GetAsync<DSHocKyRequest, List<ThongTinHocKy>>(new DSHocKyRequest("51403318"), TokenService.Instance.TokenProvider);
                 await Task.Yield();
             });
 
@@ -47,10 +49,6 @@ namespace TDTUniversal
             // 3- Run "Add-Migration MyFirstMigration" to scaffold a migration to create the initial set of tables for your model
             // See here for more information https://docs.efproject.net/en/latest/platforms/uwp/getting-started.html#create-your-database
 
-            using (var database = new TDTContext())
-            {
-                database.Database.EnsureCreated();
-            }
 
             //Read more at https://blogs.windows.com/buildingapps/2016/05/03/data-access-in-universal-windows-platform-uwp-apps/#6ma6lWSGcKGtTfTo.99
 
@@ -88,8 +86,18 @@ namespace TDTUniversal
         {
             // long-running startup tasks go here
             // await Task.Delay(5000);
-
-            NavigationService.Navigate(typeof(Views.LoginPage));
+            if (LocalDataService.Instance.IsLogged)
+            {
+                using (var database = new TDTContext())
+                {
+                    await database.Database.EnsureCreatedAsync();
+                }
+                NavigationService.Navigate(typeof(Views.HomePage));
+            }
+            else
+            {
+                NavigationService.Navigate(typeof(Views.LoginPage));
+            }
             await Task.CompletedTask;
         }
     }

@@ -28,19 +28,6 @@ namespace TDTUniversal.Views
         public LoginPage()
         {
             this.InitializeComponent();
-            using (var database = new TDTContext())
-            {
-                //var ls = database.HocKy.ToList();
-
-                var ls = database.HocKy.ToList();
-
-                database.HocKy.Add(new HocKy() { HocKyId = Guid.NewGuid().ToString(), TenHocKy = "hk 0hh" });
-                database.HocKy.Add(new HocKy() { HocKyId = Guid.NewGuid().ToString(), TenHocKy = "hk 1" });
-                database.HocKy.Add(new HocKy() { HocKyId = Guid.NewGuid().ToString(), TenHocKy = "hk 2" });
-                var i = database.SaveChanges();
-                ls = database.HocKy.ToList();
-                Task.Yield();
-            }
 
 
         }
@@ -59,7 +46,6 @@ namespace TDTUniversal.Views
             bool state = LocalDataService.Instance.IsLogged;
             foreach (var hamburgerButton in Shell.HamburgerMenu.PrimaryButtons)
                 hamburgerButton.IsEnabled = state;
-
         }
 
     }

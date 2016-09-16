@@ -7,6 +7,7 @@ using System.Windows.Input;
 using TDTUniversal.API;
 using TDTUniversal.API.Requests;
 using TDTUniversal.API.Respond;
+using TDTUniversal.DataContext;
 using TDTUniversal.Services;
 using TDTUniversal.Views;
 using Template10.Mvvm;
@@ -44,6 +45,10 @@ namespace TDTUniversal.ViewModels
                     LocalDataService.Instance.IsLogged = true;
                     LocalDataService.Instance.Avatar = avatar.Respond.src;
                     LocalDataService.Instance.Name = avatar.Respond.Name;
+                    using (var database = new TDTContext())
+                    {
+                        await database.Database.EnsureCreatedAsync();
+                    }
                     await NavigationService.NavigateAsync(typeof(HomePage));
                 }
                 else
