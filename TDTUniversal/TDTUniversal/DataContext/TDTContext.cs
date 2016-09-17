@@ -54,7 +54,7 @@ namespace TDTUniversal.DataContext
 
         public override bool Equals(object obj)
         {
-            if(obj is MonHoc)
+            if (obj is MonHoc)
             {
                 var other = obj as MonHoc;
                 return HocKy == other.HocKy && TenMH == other.TenMH;
@@ -80,6 +80,20 @@ namespace TDTUniversal.DataContext
         public int Thu { get; set; }
         public string Phong { get; set; }
         public string Tuan { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is LichHoc)
+            {
+                var other = obj as LichHoc;
+                return HocKy == other.HocKy && TenMH == other.TenMH;
+            }
+            return base.Equals(obj);
+        }
+        public override int GetHashCode()
+        {
+            return TenMH.GetHashCode();
+        }
     }
 
 

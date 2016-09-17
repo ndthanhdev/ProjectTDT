@@ -34,7 +34,6 @@ namespace TDTUniversal.API
             catch (Exception ex)
             {
                 respond.Status = false;
-                throw ex;
             }
             return respond;
         }
