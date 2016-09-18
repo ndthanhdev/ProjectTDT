@@ -36,6 +36,65 @@ namespace TDTUniversal.ViewModels
             set { Set(ref _hocKyList, value); }
         }
 
+        private ObservableCollection<DataContext.LichHoc> _overallSunday;
+        private ObservableCollection<DataContext.LichHoc> _overallMonday;
+        private ObservableCollection<DataContext.LichHoc> _overallTuesday;
+        private ObservableCollection<DataContext.LichHoc> _overallWednesday;
+        private ObservableCollection<DataContext.LichHoc> _overallThursday;
+        private ObservableCollection<DataContext.LichHoc> _overallFriday;
+        private ObservableCollection<DataContext.LichHoc> _overallSaturday;
+
+        public ObservableCollection<DataContext.LichHoc> OverallSunday
+        {
+            get { return _overallSunday ?? (_overallSunday = new ObservableCollection<DataContext.LichHoc>()); }
+            private set { Set(ref _overallSunday, value); }
+        }
+
+        public ObservableCollection<DataContext.LichHoc> OverallMonday
+        {
+            get { return _overallMonday ?? (_overallMonday = new ObservableCollection<DataContext.LichHoc>()); }
+            private set { Set(ref _overallMonday, value); }
+        }
+
+        public ObservableCollection<DataContext.LichHoc> OverallTuesday
+        {
+            get { return _overallTuesday ?? (_overallTuesday = new ObservableCollection<DataContext.LichHoc>()); }
+            private set { Set(ref _overallTuesday, value); }
+        }
+
+        public ObservableCollection<DataContext.LichHoc> OverallWednesday
+        {
+            get { return _overallWednesday ?? (_overallWednesday = new ObservableCollection<DataContext.LichHoc>()); }
+            private set { Set(ref _overallWednesday, value); }
+        }
+
+        public ObservableCollection<DataContext.LichHoc> OverallThursday
+        {
+            get { return _overallThursday ?? (_overallThursday = new ObservableCollection<DataContext.LichHoc>()); }
+            private set { Set(ref _overallThursday, value); }
+        }
+
+        public ObservableCollection<DataContext.LichHoc> OverallFriday
+        {
+            get { return _overallFriday ?? (_overallFriday = new ObservableCollection<DataContext.LichHoc>()); }
+            private set { Set(ref _overallFriday, value); }
+        }
+
+        public ObservableCollection<DataContext.LichHoc> OverallSaturday
+        {
+            get { return _overallSaturday ?? (_overallSaturday = new ObservableCollection<DataContext.LichHoc>()); }
+            private set { Set(ref _overallSaturday, value); }
+        }
+
+        private HocKy _selectedHK;
+        public HocKy SelectedHK
+        {
+            get { return _selectedHK; }
+            set { Set(ref _selectedHK, value); }
+        }
+
+
+
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             await base.OnNavigatedToAsync(parameter, mode, state);
@@ -126,11 +185,11 @@ namespace TDTUniversal.ViewModels
                 //xóa mh ko còn tồn tại
                 db.MonHoc.RemoveRange(listRemoveMh);
 
-                    //lấy tên mh không còn tồn tại
-                    //var listRemoveTenMH = from mh in listRemoveMh select mh.TenMH;
+                //lấy tên mh không còn tồn tại
+                //var listRemoveTenMH = from mh in listRemoveMh select mh.TenMH;
                 //lấy lh không còn tồn tại
                 var removeLichHoc = from mh in listRemoveMh select new DataContext.LichHoc() { HocKy = hk.HocKyId, TenMH = mh.TenMH };
-                     //var removeLichHoc = from lh in db.LichHoc where lh.HocKy == hk.HocKyId && listRemoveTenMH.Contains(lh.TenMH) select lh;
+                //var removeLichHoc = from lh in db.LichHoc where lh.HocKy == hk.HocKyId && listRemoveTenMH.Contains(lh.TenMH) select lh;
                 //xóa lh không còn tồn tại
                 db.LichHoc.RemoveRange(removeLichHoc);
 
@@ -167,6 +226,24 @@ namespace TDTUniversal.ViewModels
             {
 
             }
+        }
+
+        public Task UpdateUITongQuat()
+        {
+            Task.Yield();
+            if (SelectedHK == null)
+                return Task.CompletedTask;
+            using (TDTContext db = new TDTContext())
+            {
+                var listMH = from mh in db.MonHoc where mh.HocKy == SelectedHK.HocKyId select mh;
+                var listLH = new List<DataContext.LichHoc>();
+                foreach (var mh in listMH)
+                {
+                    listLH.AddRange(from lh in db.LichHoc where lh.TenMH == mh.TenMH && lh.HocKy == mh.HocKy select lh);
+                }
+                listLH.Sort();
+            }
+            return Task.CompletedTask;
         }
     }
 

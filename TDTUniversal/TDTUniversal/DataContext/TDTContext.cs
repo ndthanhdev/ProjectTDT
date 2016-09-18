@@ -66,7 +66,7 @@ namespace TDTUniversal.DataContext
             return TenMH.GetHashCode();
         }
     }
-    public class LichHoc
+    public class LichHoc : IComparable<LichHoc>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -93,6 +93,33 @@ namespace TDTUniversal.DataContext
         public override int GetHashCode()
         {
             return TenMH.GetHashCode();
+        }
+
+        public int CompareTo(LichHoc other)
+        {
+            int length = Math.Min(Tiet.Length, other.Tiet.Length);
+            for (int i = 0; i < length; i++)
+            {
+                if (Tiet[i] != '-' || other.Tiet[i] != '-')
+                {
+                    if (Tiet[i] == '-')
+                        return 1;
+                    if (other.Tiet[i] == '-')
+                        return -1;
+                    for (int j = i; j < length; j++)
+                    {
+                        if (Tiet[i] == '-' || other.Tiet[i] == '-')
+                        {
+                            if (Tiet[i] != '-')
+                                return 1;
+                            if (other.Tiet[i] != '-')
+                                return -1;
+                        }
+                    }
+                    return 0;
+                }
+            }
+            return 0;
         }
     }
 

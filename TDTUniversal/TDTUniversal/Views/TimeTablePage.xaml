@@ -86,7 +86,7 @@
                     </Grid.RowDefinitions>
                     <ComboBox HorizontalAlignment="Stretch" Name="cbb"
                         ItemsSource="{x:Bind ViewModel.HocKyList}"
-                              SelectedItem="{Binding SelectedTTHK,Mode=TwoWay}">
+                              SelectedItem="{Binding SelectedHK,Mode=TwoWay}">
                         <Interactivity:Interaction.Behaviors>
                             <Core:EventTriggerBehavior EventName="SelectionChanged">
                                 <Core:InvokeCommandAction Command="{Binding SelectHocKyCommand}" CommandParameter="{Binding SelectedItem, ElementName=cbb}"/>
