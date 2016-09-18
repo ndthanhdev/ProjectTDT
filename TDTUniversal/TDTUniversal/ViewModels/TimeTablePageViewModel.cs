@@ -32,8 +32,20 @@ namespace TDTUniversal.ViewModels
         private ObservableCollection<HocKy> _hocKyList;
         public ObservableCollection<HocKy> HocKyList
         {
-            get { return _hocKyList ?? (_hocKyList = new ObservableCollection<HocKy>() { new HocKy() { TenHocKy = "123" } }); }
-            set { Set(ref _hocKyList, value); }
+            get { return _hocKyList ?? (_hocKyList = new ObservableCollection<HocKy>()); }
+            set
+            {
+                var old = SelectedHK;
+                if (value.Contains(old))
+                {
+                    Set(ref _hocKyList, new ObservableCollection<HocKy>(value.OrderByDescending(h => h.HocKyId)));
+                    SelectedHK = old;
+                }
+                else
+                {
+                    Set(ref _hocKyList, new ObservableCollection<HocKy>(value.OrderByDescending(h => h.HocKyId)));
+                }
+            }
         }
 
         private ObservableCollection<DataContext.LichHoc> _overallSunday;
@@ -93,20 +105,21 @@ namespace TDTUniversal.ViewModels
             set { Set(ref _selectedHK, value); }
         }
 
-
+        public System.Windows.Input.ICommand SelectHKCommand => new DelegateCommand(async () => await SelectHK());
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             await base.OnNavigatedToAsync(parameter, mode, state);
             await LoadData();
+            await Task.Delay(15000);
             await UpdateData();
         }
         public async Task LoadData()
         {
             await Task.Yield();
-            using (TDTContext context = new TDTContext())
+            using (TDTContext db = new TDTContext())
             {
-                var ls = context.HocKy.ToList();
+                var ls = db.HocKy.ToArray();
                 HocKyList = new ObservableCollection<HocKy>(ls);
             }
         }
@@ -120,11 +133,9 @@ namespace TDTUniversal.ViewModels
                 {
                     await UpdateHocKy(context);
                     await context.SaveChangesAsync();
-                    var ls = context.HocKy.ToList();
-                    ls.Reverse();
-                    HocKyList = new ObservableCollection<HocKy>(ls);
+                    HocKyList = new ObservableCollection<HocKy>(context.HocKy.ToArray());
                     List<Task> quest = new List<Task>();
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < Math.Min(4, HocKyList.Count); i++)
                     {
                         quest.Add(UpdateMonHocLichHoc(HocKyList[i], context));
                     }
@@ -162,7 +173,9 @@ namespace TDTUniversal.ViewModels
             foreach (var hk in dshk)
             {
                 if (db.HocKy.Contains(hk))
-                    db.HocKy.Update(hk);
+                {
+                    //todo update TenHK
+                }
                 else
                     db.HocKy.Add(hk);
             }
@@ -242,8 +255,27 @@ namespace TDTUniversal.ViewModels
                     listLH.AddRange(from lh in db.LichHoc where lh.TenMH == mh.TenMH && lh.HocKy == mh.HocKy select lh);
                 }
                 listLH.Sort();
+                OverallSunday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 1 select lh);
+                OverallMonday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 2 select lh);
+                OverallTuesday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 3 select lh);
+                OverallWednesday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 4 select lh);
+                OverallThursday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 5 select lh);
+                OverallFriday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 6 select lh);
+                OverallSaturday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 7 select lh);
             }
             return Task.CompletedTask;
+        }
+        public async Task SelectHK()
+        {
+            await UpdateUITongQuat();
+            if (SelectedHK != null)
+            {
+                using (TDTContext db = new TDTContext())
+                {
+                    await Task.WhenAll(UpdateMonHocLichHoc(SelectedHK, db));
+                    await Task.WhenAll(db.SaveChangesAsync(), UpdateUITongQuat());
+                }
+            }
         }
     }
 

@@ -7,6 +7,7 @@
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:controls="using:Template10.Controls"
     xmlns:vm="using:TDTUniversal.ViewModels"
+    xmlns:context="using:TDTUniversal.DataContext"
     xmlns:local="using:TDTUniversal.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -15,14 +16,14 @@
         <vm:TimeTablePageViewModel x:Name="ViewModel"/>
     </Page.DataContext>
     <Page.Resources>
-        <DataTemplate x:Key="listTemplate">
+        <DataTemplate x:Key="listTemplate" x:DataType="context:LichHoc">
             <TextBlock TextWrapping="Wrap">
                     <Run Text="["/>
-                    <Run Text="{Binding Lich.Tiet}"/>
+                    <Run Text="{Binding Tiet}"/>
                     <Run Text="]"/>
-                    <Run Text="{Binding Tkb.TenMH}"/>
+                    <Run Text="{Binding TenMH}"/>
                     <Run Text="("/>
-                    <Run Text="{Binding Lich.Phong}"/>
+                    <Run Text="{Binding Phong}"/>
                     <Run Text=")"/>
             </TextBlock>
         </DataTemplate>
@@ -85,11 +86,12 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <ComboBox HorizontalAlignment="Stretch" Name="cbb"
-                        ItemsSource="{x:Bind ViewModel.HocKyList}"
-                              SelectedItem="{Binding SelectedHK,Mode=TwoWay}">
+                              PlaceholderText="Chọn học kỳ"
+                        ItemsSource="{Binding HocKyList,UpdateSourceTrigger=PropertyChanged}"
+                        SelectedItem="{Binding SelectedHK,Mode=TwoWay}">
                         <Interactivity:Interaction.Behaviors>
                             <Core:EventTriggerBehavior EventName="SelectionChanged">
-                                <Core:InvokeCommandAction Command="{Binding SelectHocKyCommand}" CommandParameter="{Binding SelectedItem, ElementName=cbb}"/>
+                                <Core:InvokeCommandAction Command="{Binding SelectHKCommand}"/>
                             </Core:EventTriggerBehavior>
                         </Interactivity:Interaction.Behaviors>
                         <ComboBox.ItemTemplate>
@@ -122,7 +124,7 @@
                         <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
                         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
 
-                        <!--<ListView Header="SUN" Grid.Row="0" Grid.Column="0" Style="{StaticResource ListViewStyle}"
+                        <ListView Header="SUN" Grid.Row="0" Grid.Column="0" Style="{StaticResource ListViewStyle}"
                                   ItemsSource="{Binding OverallSunday}" 
                                   SelectionChanged="ListViewSelectionChanged"/>
                         <ListView Header="MON" Grid.Row="0" Grid.Column="2" Style="{StaticResource ListViewStyle}"
@@ -142,7 +144,7 @@
                                   SelectionChanged="ListViewSelectionChanged"/>
                         <ListView Header="SAT" Grid.Row="6" Grid.Column="0" Style="{StaticResource ListViewStyle}"
                                   ItemsSource="{Binding OverallSaturday}"
-                                  SelectionChanged="ListViewSelectionChanged"/>-->
+                                  SelectionChanged="ListViewSelectionChanged"/>
                     </Grid>
                 </Grid>
 

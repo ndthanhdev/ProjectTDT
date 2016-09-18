@@ -26,5 +26,11 @@ namespace TDTUniversal.Views
         {
             this.InitializeComponent();
         }
+        private void ListViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems != null)
+                (sender as ListView).SelectedItem = null;
+        }
+
     }
 }
