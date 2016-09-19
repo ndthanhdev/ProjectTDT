@@ -18,14 +18,12 @@ namespace TDTUniversal.DataContext
         {
             optionsBuilder.UseSqlite("Filename=tdtuniversal.sqlite");
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<HocKy>().HasKey(e => e.HocKyId);
-            modelBuilder.Entity<MonHoc>().HasKey(e => new { e.HocKy, e.TenMH });
-        }
     }
     public class HocKy
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public int HocKyId { get; set; }
         public string TenHocKy { get; set; }
         public DateTime NgayBatDau { get; set; }
@@ -43,8 +41,12 @@ namespace TDTUniversal.DataContext
     }
     public class MonHoc
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
         [Required]
-        public int HocKy { get; set; }
+        public int HocKyId { get; set; }
 
         [Required]
         public string TenMH { get; set; }
@@ -57,7 +59,7 @@ namespace TDTUniversal.DataContext
             if (obj is MonHoc)
             {
                 var other = obj as MonHoc;
-                return HocKy == other.HocKy && TenMH == other.TenMH;
+                return HocKyId == other.HocKyId && TenMH == other.TenMH;
             }
             return base.Equals(obj);
         }
@@ -72,7 +74,7 @@ namespace TDTUniversal.DataContext
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        public int HocKy { get; set; }
+        public int HocKyId { get; set; }
         [Required]
         public string TenMH { get; set; }
 
@@ -86,7 +88,7 @@ namespace TDTUniversal.DataContext
             if (obj is LichHoc)
             {
                 var other = obj as LichHoc;
-                return HocKy == other.HocKy && TenMH == other.TenMH;
+                return HocKyId == other.HocKyId && TenMH == other.TenMH;
             }
             return base.Equals(obj);
         }

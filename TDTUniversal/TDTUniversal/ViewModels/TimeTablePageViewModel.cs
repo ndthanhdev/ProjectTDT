@@ -127,23 +127,21 @@ namespace TDTUniversal.ViewModels
         {
             try
             {
-                await Task.Yield();
-                Quest++;
-                using (TDTContext context = new TDTContext())
+                using (TDTContext db = new TDTContext())
                 {
-                    await UpdateHocKy(context);
-                    await context.SaveChangesAsync();
-                    HocKyList = new ObservableCollection<HocKy>(context.HocKy.ToArray());
+                    await Task.Yield();
+                    Quest++;
+                    await UpdateHocKy();
+                    HocKyList = new ObservableCollection<HocKy>(db.HocKy.ToArray());
                     List<Task> quest = new List<Task>();
                     for (int i = 0; i < Math.Min(4, HocKyList.Count); i++)
                     {
-                        quest.Add(UpdateMonHocLichHoc(HocKyList[i], context));
+                        quest.Add(UpdateMonHocLichHoc(HocKyList[i]));
                     }
                     await Task.WhenAll(quest);
-                    await context.SaveChangesAsync();
 
-                    var mh = context.MonHoc.ToList();
-                    var lich = context.LichHoc.ToList();
+                    var mh = db.MonHoc.ToList();
+                    var lich = db.LichHoc.ToList();
                 }
             }
             catch (Exception ex)
@@ -154,105 +152,125 @@ namespace TDTUniversal.ViewModels
             }
         }
 
-        public async Task UpdateHocKy(TDTContext db)
-        {
-            await Task.Yield();
-            var dstthk = await ApiClient.GetAsync<DSHocKyRequest, List<ThongTinHocKy>>(new DSHocKyRequest(LocalDataService.Instance.StudentID),
-             TokenService.GetTokenProvider());
-            if (dstthk.Respond == null)
-                return;
-            var dshk = from tthk in dstthk.Respond select new HocKy() { HocKyId = tthk.Id, TenHocKy = tthk.TenHocKy };
-            //lấy danh sách học kỳ không còn tồn tại
-            var removesHK = from hk in db.HocKy where !dshk.Contains(hk) select hk;
-            db.HocKy.RemoveRange(removesHK);
-            //lấy danh sách id hk ko còn tồn tại
-            var removesHKID = from hk in removesHK select hk.HocKyId;
-            //xóa các mh và lh dư
-            db.MonHoc.RemoveRange(from mh in db.MonHoc where removesHKID.Contains(mh.HocKy) select mh);
-            db.LichHoc.RemoveRange(from lh in db.LichHoc where removesHKID.Contains(lh.HocKy) select lh);
-            foreach (var hk in dshk)
-            {
-                if (db.HocKy.Contains(hk))
-                {
-                    //todo update TenHK
-                }
-                else
-                    db.HocKy.Add(hk);
-            }
-        }
-
-        private async Task UpdateMonHocLichHoc(HocKy hk, TDTContext db)
+        public async Task UpdateHocKy()
         {
             try
             {
                 await Task.Yield();
-                var data = await ApiClient.GetAsync<HocKyDataRequest, HocKyData>(new HocKyDataRequest(hk.HocKyId, LocalDataService.Instance.StudentID), TokenService.GetTokenProvider());
-                if (data.Respond == null || data.Respond.TKB == null)
-                    return;
-                hk.NgayBatDau = data.Respond.Start;
-                db.Update(hk);
-                var listEntityMH = from mh in data.Respond.TKB select new MonHoc() { HocKy = hk.HocKyId, MaMH = mh.MaMH, TenMH = mh.TenMH, Nhom = mh.Nhom, To = mh.To };
-
-                //lấy danh sách môn học không tồn tại trong hk hiện tại
-                var listRemoveMh = from mh in db.MonHoc where mh.HocKy == hk.HocKyId && !listEntityMH.Contains(mh) select mh;
-                //xóa mh ko còn tồn tại
-                db.MonHoc.RemoveRange(listRemoveMh);
-
-                //lấy tên mh không còn tồn tại
-                //var listRemoveTenMH = from mh in listRemoveMh select mh.TenMH;
-                //lấy lh không còn tồn tại
-                var removeLichHoc = from mh in listRemoveMh select new DataContext.LichHoc() { HocKy = hk.HocKyId, TenMH = mh.TenMH };
-                //var removeLichHoc = from lh in db.LichHoc where lh.HocKy == hk.HocKyId && listRemoveTenMH.Contains(lh.TenMH) select lh;
-                //xóa lh không còn tồn tại
-                db.LichHoc.RemoveRange(removeLichHoc);
-
-                foreach (var mh in data.Respond.TKB)
+                using (TDTContext db = new TDTContext())
                 {
-                    var entityMH = new MonHoc() { HocKy = hk.HocKyId, MaMH = mh.MaMH, TenMH = mh.TenMH, Nhom = mh.Nhom, To = mh.To };
 
-                    //clear old 
-
-                    if (db.MonHoc.Contains(entityMH))
-                        db.MonHoc.Update(entityMH);
-                    else
-                        db.MonHoc.Add(entityMH);
-
-                    var remove = from lh in db.LichHoc where lh.HocKy == hk.HocKyId && lh.TenMH == entityMH.TenMH select lh;
-                    db.LichHoc.RemoveRange(remove);
-
-                    foreach (var lich in mh.Lich)
+                    var dstthk = await ApiClient.GetAsync<DSHocKyRequest, List<ThongTinHocKy>>(new DSHocKyRequest(LocalDataService.Instance.StudentID),
+                 TokenService.GetTokenProvider());
+                    if (dstthk.Respond == null)
+                        return;
+                    var dshk = from tthk in dstthk.Respond select new HocKy() { HocKyId = tthk.Id, TenHocKy = tthk.TenHocKy };
+                    //lấy danh sách học kỳ không còn tồn tại
+                    var removesHK = from hk in db.HocKy where !dshk.Contains(hk) select hk;
+                    db.HocKy.RemoveRange(removesHK);
+                    //lấy danh sách id hk ko còn tồn tại
+                    var removesHKID = from hk in removesHK select hk.HocKyId;
+                    //xóa các mh và lh dư
+                    db.MonHoc.RemoveRange(from mh in db.MonHoc where removesHKID.Contains(mh.HocKyId) select mh);
+                    db.LichHoc.RemoveRange(from lh in db.LichHoc where removesHKID.Contains(lh.HocKyId) select lh);
+                    foreach (var hk in dshk)
                     {
-                        var entityLich = new DataContext.LichHoc()
+                        if (db.HocKy.Contains(hk))
                         {
-                            HocKy = hk.HocKyId,
-                            TenMH = mh.TenMH,
-                            Phong = lich.Phong,
-                            Tiet = lich.Tiet,
-                            Thu = lich.Thu,
-                            Tuan = lich.Tuan
-                        };
-                        db.Add(entityLich);
+                            //todo update TenHK
+                        }
+                        else
+                            db.HocKy.Add(hk);
                     }
+                    await db.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+        }
+
+        private async Task UpdateMonHocLichHoc(HocKy hk)
+        {
+            try
+            {
+                await Task.Yield();
+                using (TDTContext db = new TDTContext())
+                {
+                    var data = await ApiClient.GetAsync<HocKyDataRequest, HocKyData>(new HocKyDataRequest(hk.HocKyId, LocalDataService.Instance.StudentID), TokenService.GetTokenProvider());
+                    if (data.Respond == null || data.Respond.TKB == null)
+                        return;
+                    hk.NgayBatDau = data.Respond.Start;
+                    db.Update(hk);
+                    db.MonHoc.RemoveRange(from mh in db.MonHoc where mh.HocKyId == hk.HocKyId select mh);
+                    db.LichHoc.RemoveRange(from lh in db.LichHoc where lh.HocKyId == hk.HocKyId select lh);
+
+                    /// cũ
+                    //var listEntityMH = from mh in data.Respond.TKB select new MonHoc() { HocKy = hk.HocKyId, MaMH = mh.MaMH, TenMH = mh.TenMH, Nhom = mh.Nhom, To = mh.To };
+                    ////lấy danh sách môn học không tồn tại trong hk hiện tại
+                    //var listRemoveMh = from mh in db.MonHoc where mh.HocKy == hk.HocKyId && !listEntityMH.Contains(mh) select mh;
+                    ////xóa mh ko còn tồn tại
+                    //db.MonHoc.RemoveRange(listRemoveMh);
+
+                    ////lấy tên mh không còn tồn tại
+                    ////var listRemoveTenMH = from mh in listRemoveMh select mh.TenMH;
+                    ////lấy lh không còn tồn tại
+                    //var removeLichHoc = from mh in listRemoveMh select new DataContext.LichHoc() { HocKy = hk.HocKyId, TenMH = mh.TenMH };
+                    ////var removeLichHoc = from lh in db.LichHoc where lh.HocKy == hk.HocKyId && listRemoveTenMH.Contains(lh.TenMH) select lh;
+                    ////xóa lh không còn tồn tại
+                    //db.LichHoc.RemoveRange(removeLichHoc);
+
+                    foreach (var mh in data.Respond.TKB)
+                    {
+                        var entityMH = new MonHoc() { HocKyId = hk.HocKyId, MaMH = mh.MaMH, TenMH = mh.TenMH, Nhom = mh.Nhom, To = mh.To };
+                        //cũ
+                        ////clear old 
+                        //if (db.MonHoc.Contains(entityMH))
+                        //    db.MonHoc.Update(entityMH);
+                        //else
+
+                       db.MonHoc.Add(entityMH);
+
+                        //var remove = from lh in db.LichHoc where lh.HocKy == hk.HocKyId && lh.TenMH == entityMH.TenMH select lh;
+                        //db.LichHoc.RemoveRange(remove);
+
+                        foreach (var lich in mh.Lich)
+                        {
+                            var entityLich = new DataContext.LichHoc()
+                            {
+                                HocKyId = hk.HocKyId,
+                                TenMH = mh.TenMH,
+                                Phong = lich.Phong,
+                                Tiet = lich.Tiet,
+                                Thu = lich.Thu,
+                                Tuan = lich.Tuan
+                            };
+                            db.Add(entityLich);
+                        }
+                    }
+                    await db.SaveChangesAsync();
                 }
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
         }
 
         public Task UpdateUITongQuat()
         {
             Task.Yield();
-            if (SelectedHK == null)
-                return Task.CompletedTask;
             using (TDTContext db = new TDTContext())
             {
-                var listMH = from mh in db.MonHoc where mh.HocKy == SelectedHK.HocKyId select mh;
+
+
+                if (SelectedHK == null)
+                    return Task.CompletedTask;
+                var listMH = from mh in db.MonHoc where mh.HocKyId == SelectedHK.HocKyId select mh;
                 var listLH = new List<DataContext.LichHoc>();
                 foreach (var mh in listMH)
                 {
-                    listLH.AddRange(from lh in db.LichHoc where lh.TenMH == mh.TenMH && lh.HocKy == mh.HocKy select lh);
+                    listLH.AddRange(from lh in db.LichHoc where lh.TenMH == mh.TenMH && lh.HocKyId == mh.HocKyId select lh);
                 }
                 listLH.Sort();
                 OverallSunday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 1 select lh);
@@ -262,19 +280,17 @@ namespace TDTUniversal.ViewModels
                 OverallThursday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 5 select lh);
                 OverallFriday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 6 select lh);
                 OverallSaturday = new ObservableCollection<DataContext.LichHoc>(from lh in listLH where lh.Thu == 7 select lh);
+                return Task.CompletedTask;
             }
-            return Task.CompletedTask;
         }
+
         public async Task SelectHK()
         {
             await UpdateUITongQuat();
             if (SelectedHK != null)
             {
-                using (TDTContext db = new TDTContext())
-                {
-                    await Task.WhenAll(UpdateMonHocLichHoc(SelectedHK, db));
-                    await Task.WhenAll(db.SaveChangesAsync(), UpdateUITongQuat());
-                }
+                await UpdateMonHocLichHoc(SelectedHK);
+                await UpdateUITongQuat();
             }
         }
     }
