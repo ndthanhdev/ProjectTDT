@@ -13,6 +13,7 @@ using TDTUniversal.Views;
 using Template10.Mvvm;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace TDTUniversal.ViewModels
 {
@@ -67,6 +68,12 @@ namespace TDTUniversal.ViewModels
                 IsLogging = false;
             }
 
+        }
+        public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        {
+            //no more go back
+            NavigationService.ClearHistory();
+            return base.OnNavigatedToAsync(parameter, mode, state);
         }
 
     }

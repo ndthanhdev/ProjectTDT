@@ -31,14 +31,14 @@ namespace TDTUniversal
         {
             InitializeComponent();
 
-            Task.Run(async () =>
-            {
-                LocalDataService.Instance.StudentID = "51403318";
-                LocalDataService.Instance.Password = "51403318TDT";
-                var sv = await TokenService.GetTokenProvider().GetTokenAsync();
-                var r = await ApiClient.GetAsync<DSHocKyRequest, List<ThongTinHocKy>>(new DSHocKyRequest("51403318"), TokenService.GetTokenProvider());
-                await Task.Yield();
-            });
+            //Task.Run(async () =>
+            //{
+            //    LocalDataService.Instance.StudentID = "51403318";
+            //    LocalDataService.Instance.Password = "51403318TDT";
+            //    var sv = await TokenService.GetTokenProvider().GetTokenAsync();
+            //    var r = await ApiClient.GetAsync<DSHocKyRequest, List<ThongTinHocKy>>(new DSHocKyRequest("51403318"), TokenService.GetTokenProvider());
+            //    await Task.Yield();
+            //});
 
 
             SplashFactory = (e) => new Views.Splash(e);
@@ -85,7 +85,7 @@ namespace TDTUniversal
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
             // long-running startup tasks go here
-            // await Task.Delay(5000);
+            //await Task.Delay(500);
             if (LocalDataService.Instance.IsLogged)
             {
                 using (var database = new TDTContext())
