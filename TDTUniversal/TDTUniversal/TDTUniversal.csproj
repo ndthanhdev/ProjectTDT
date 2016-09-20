@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TDTUniversal</RootNamespace>
     <AssemblyName>TDTUniversal</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>vi-vn</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
@@ -125,6 +125,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\TietToBeginTime.cs" />
+    <Compile Include="Converters\TietToEndTime.cs" />
     <Compile Include="DataContext\TDTContext.cs" />
     <Compile Include="Models\PageItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,7 +144,9 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
+    <Compile Include="ViewModels\TimeTablePageViewModel.Agenda.cs" />
     <Compile Include="ViewModels\TimeTablePageViewModel.cs" />
+    <Compile Include="ViewModels\TimeTablePageViewModel.Overall.cs" />
     <Compile Include="Views\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
     </Compile>

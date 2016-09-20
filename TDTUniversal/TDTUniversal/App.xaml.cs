@@ -40,7 +40,6 @@ namespace TDTUniversal
             //    await Task.Yield();
             //});
 
-
             SplashFactory = (e) => new Views.Splash(e);
 
             // Before running the app for the first time, follow these steps:

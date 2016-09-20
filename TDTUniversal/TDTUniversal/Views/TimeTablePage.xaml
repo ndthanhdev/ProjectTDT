@@ -8,6 +8,8 @@
     xmlns:controls="using:Template10.Controls"
     xmlns:vm="using:TDTUniversal.ViewModels"
     xmlns:context="using:TDTUniversal.DataContext"
+    xmlns:t10converters="using:Template10.Converters"
+    xmlns:myconverters="using:TDTUniversal.Converters"
     xmlns:local="using:TDTUniversal.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -30,6 +32,19 @@
         <Style x:Key="ListViewStyle" TargetType="ListView">
             <Setter Property="ItemTemplate" Value="{StaticResource listTemplate}"/>
         </Style>
+        <t10converters:ValueWhenConverter x:Key="notEqualZero">
+            <t10converters:ValueWhenConverter.When>
+                <x:Int32>0</x:Int32>
+            </t10converters:ValueWhenConverter.When>
+            <t10converters:ValueWhenConverter.Value>
+                <x:Boolean>False</x:Boolean>
+            </t10converters:ValueWhenConverter.Value>
+            <t10converters:ValueWhenConverter.Otherwise>
+                <x:Boolean>True</x:Boolean>
+            </t10converters:ValueWhenConverter.Otherwise>
+        </t10converters:ValueWhenConverter>
+        <myconverters:TietToBeginTime x:Key="beginTimeConverter"/>
+        <myconverters:TietToEndTime x:Key="endTimeConverter"/>
     </Page.Resources>
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
@@ -74,6 +89,206 @@
             RelativePanel.Below="pageHeader"
             Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
             <PivotItem Header="Theo ngày">
+                <Grid Margin="0,8,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Grid.Row="0">
+                        <Button Margin="4" HorizontalAlignment="Right">
+                            <Interactivity:Interaction.Behaviors>
+                                <Core:EventTriggerBehavior EventName="Tapped">
+                                    <Core:InvokeCommandAction 
+                                        Command="{Binding ChangeDateCommand}">
+                                        <Core:InvokeCommandAction.CommandParameter>
+                                            <x:Int32>0</x:Int32>
+                                        </Core:InvokeCommandAction.CommandParameter>
+                                    </Core:InvokeCommandAction>
+                                </Core:EventTriggerBehavior>
+                            </Interactivity:Interaction.Behaviors>
+
+                            <Button.Content>
+                                <SymbolIcon Symbol="GoToToday"/>
+                            </Button.Content>
+                        </Button>
+                        <Grid Width="1" 
+                              Background="{ThemeResource SystemControlBackgroundBaseHighBrush}"
+                              Margin="4"/>
+                        <Button Margin="4">
+                            <Interactivity:Interaction.Behaviors>
+                                <Core:EventTriggerBehavior EventName="Tapped">
+                                    <Core:InvokeCommandAction 
+                                        Command="{Binding ChangeDateCommand}">
+                                        <Core:InvokeCommandAction.CommandParameter>
+                                            <x:Int32>-1</x:Int32>
+                                        </Core:InvokeCommandAction.CommandParameter>
+                                    </Core:InvokeCommandAction>
+                                </Core:EventTriggerBehavior>
+                            </Interactivity:Interaction.Behaviors>
+                            <Button.Content>
+                                <SymbolIcon Symbol="Back"/>
+                            </Button.Content>
+                        </Button>
+                        <DatePicker  MinWidth="172"
+                            Name="datePicker"
+                        Margin="4" HorizontalAlignment="Center"
+                        Date="{Binding SelectedDate,Mode=TwoWay}"
+                            DayFormat="{}{day.integer} {dayofweek.abbreviated}"/>
+                        <Button Margin="4">
+                            <Interactivity:Interaction.Behaviors>
+                                <Core:EventTriggerBehavior EventName="Tapped">
+                                    <Core:InvokeCommandAction 
+                                        Command="{Binding ChangeDateCommand}">
+                                        <Core:InvokeCommandAction.CommandParameter>
+                                            <x:Int32>1</x:Int32>
+                                        </Core:InvokeCommandAction.CommandParameter>
+                                    </Core:InvokeCommandAction>
+                                </Core:EventTriggerBehavior>
+                            </Interactivity:Interaction.Behaviors>
+                            <Button.Content>
+                                <SymbolIcon Symbol="Forward"/>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                    <Grid Name="agendaBackground" Grid.Row="1">
+                        <Grid Name="backgroundGrid" Width="128" Height="128" Visibility="Collapsed" />
+                        <Path Data="M7.223949,9.4380012L14.896656,20.452017 14.954648,20.443169 15.038101,20.438957 22.702677,9.4380012 12.611923,9.4380012 16.402582,15.283004C16.703574,15.746004 16.571578,16.366004 16.107589,16.666004 15.939593,16.775004 15.751598,16.827004 15.564603,16.827004 15.237611,16.827004 14.91662,16.666004 14.724624,16.371004L10.228492,9.4380012z M24.523184,4.6517372C23.118502,4.6253121 21.802285,5.5018895 21.338339,6.8920636 21.261776,7.1213114 21.111136,7.3046221 20.921677,7.4235734L20.896046,7.4380009 24.617651,7.4380009C24.989653,7.4380013 25.33062,7.645002 25.503623,7.9750041 25.675616,8.3049979 25.650622,8.704 25.437644,9.0099999L23.948031,11.148324 24.074732,11.166531C25.594685,11.346287 27.085927,10.446904 27.586434,8.9480437 27.861437,8.1240517 27.798436,7.2410603 27.408431,6.4630675 27.015425,5.6790752 26.337414,5.0950809 25.500403,4.8190835 25.176211,4.7120221 24.847342,4.657835 24.523184,4.6517372z M0.99997449,0L5.947848,0C6.2868396,0,6.6018314,0.17200041,6.7868271,0.45600033L11.314863,7.4380009 19.883857,7.4380009 19.805872,7.3876087C19.460253,7.138948 19.299934,6.6848156 19.441311,6.2590696 20.186385,4.0206535 22.305926,2.6113863 24.560345,2.6518488 25.080595,2.6611862 25.608029,2.7477283 26.127411,2.9191017 27.473431,3.3640976 28.562449,4.3040884 29.195458,5.5670761 29.826466,6.8230643 29.928469,8.2490506 29.482462,9.5820374 28.74745,11.789017 26.675419,13.189003 24.457386,13.189003 23.906378,13.189003 23.34837,13.103004 22.797362,12.921006L22.730996,12.895365 16.05701,22.475801 16.05701,30.438003 21.057009,30.438003C21.610011,30.438003 22.057009,30.886003 22.057009,31.438003 22.057009,31.990003 21.610011,32.438003 21.057009,32.438003L15.05701,32.438003 10.05701,32.438003C9.5040102,32.438003 9.0570102,31.990003 9.0570102,31.438003 9.0570102,30.886003 9.5040102,30.438003 10.05701,30.438003L14.05701,30.438003 14.05701,22.744804 4.4890117,9.0099999C4.2760032,8.704 4.2500026,8.3049979 4.4219967,7.9750041 4.5949977,7.645002 4.9370021,7.4380013 5.3090048,7.4380009L8.9314685,7.4380009 5.4048622,2.0000005 0.99997449,2.0000005C0.44698858,2.0000005 0,1.5530005 0,1.0000005 0,0.44800043 0.44698858,0 0.99997449,0z"
+                              Stretch="Uniform" 
+                              Fill="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}" 
+                              Width="68" Height="68" 
+                              Margin="0,0,0,0" 
+                              RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ListView Grid.Row="1" ItemsSource="{Binding Agenda}" SelectionChanged="ListViewSelectionChanged">
+                        <Interactivity:Interaction.Behaviors>
+                            <Core:DataTriggerBehavior Binding="{Binding Agenda.Count}" 
+                                                      Value="0" 
+                                                      ComparisonCondition="Equal">
+                                <Core:ChangePropertyAction 
+                                    TargetObject="{Binding ElementName=agendaBackground}"
+                                    PropertyName="Opacity">
+                                    <Core:ChangePropertyAction.Value>
+                                        <x:Double>0.5</x:Double>
+                                    </Core:ChangePropertyAction.Value>
+                                </Core:ChangePropertyAction>
+                            </Core:DataTriggerBehavior>
+                            <Core:DataTriggerBehavior Binding="{Binding Agenda.Count}" 
+                                                      Value="0" 
+                                                      ComparisonCondition="NotEqual">
+                                <Core:ChangePropertyAction 
+                                    TargetObject="{Binding ElementName=agendaBackground}"
+                                    PropertyName="Opacity">
+                                    <Core:ChangePropertyAction.Value>
+                                        <x:Double>0</x:Double>
+                                    </Core:ChangePropertyAction.Value>
+                                </Core:ChangePropertyAction>
+                            </Core:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <ListView.Transitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition/>
+                            </TransitionCollection>
+                        </ListView.Transitions>
+                        <ListView.Resources>
+                            <SolidColorBrush x:Key="itemBrush" Color="{ThemeResource SystemListMediumColor}"/>
+                        </ListView.Resources>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,8,0,8" Padding="4,4,4,4" >
+                                    <Grid.Transitions>
+                                        <TransitionCollection>
+                                            <EntranceThemeTransition/>
+                                        </TransitionCollection>
+                                    </Grid.Transitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="5"/>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Background="{ThemeResource SystemControlBackgroundBaseHighBrush}" 
+                                          Width="1" VerticalAlignment="Stretch"
+                                          Grid.Row="2" Grid.RowSpan="3"
+                                          Margin="0,4,0,4"/>
+
+                                    <!--<Border CornerRadius="90" Width="32" Height="32"
+                                                Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+                                            Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center">
+                                        <TextBlock Text="1:00" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                   FontSize="8"/>
+                                    </Border>-->
+
+                                    <Border Grid.Row="2" CornerRadius="90" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+                                            Width="48" Height="48"
+                                            VerticalAlignment="Top">
+                                        <TextBlock Text="{Binding LichHoc.Tiet,Converter={StaticResource beginTimeConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                                    </Border>
+                                    <Border Grid.Row="4" CornerRadius="90" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+                                            Width="36" Height="36"
+                                            VerticalAlignment="Bottom">
+                                        <TextBlock Text="{Binding LichHoc.Tiet,Converter={StaticResource endTimeConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10"/>
+                                    </Border>
+                                    <TextBlock Grid.ColumnSpan="2" FontSize="20" TextWrapping="WrapWholeWords">
+                                        <Run Text="{Binding MonHoc.TenMH}"/>
+                                        <Run Text="("/>
+                                        <Run Text="{Binding LichHoc.Phong}"/>
+                                        <Run Text=")"/>
+                                    </TextBlock>
+                                    <Grid Grid.Row="1" Grid.ColumnSpan="2" Height="1" VerticalAlignment="Center" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"/>
+                                    <StackPanel Grid.Row="2" Grid.RowSpan="3" Grid.Column="1"
+                                                Padding="4,4,4,4">
+                                        <TextBlock TextWrapping="WrapWholeWords">
+                                            <Run Text="Mã Môn Học: "/>
+                                            <Run Text="{Binding MonHoc.MaMH}"/>
+                                        </TextBlock>
+                                        <TextBlock TextWrapping="WrapWholeWords">
+                                            <Run Text="Nhóm: "/>
+                                            <Run Text="{Binding MonHoc.Nhom}"/>
+                                        </TextBlock>
+                                        <TextBlock TextWrapping="WrapWholeWords">
+                                            <Run Text="Tổ: "/>
+                                            <Run Text="{Binding MonHoc.To}"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="Tiết: "/>
+                                            <Run Text="{Binding LichHoc.Tiet}"/>
+                                        </TextBlock>
+                                        <TextBlock TextWrapping="WrapWholeWords">
+                                            <Run Text="Thứ: "/>
+                                            <Run Text="{Binding LichHoc.Thu}"/>
+                                        </TextBlock>
+                                        <TextBlock TextWrapping="WrapWholeWords">
+                                            <Run Text="Tuần: "/>
+                                            <Run Text="{Binding LichHoc.Tuan}"/>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
 
             </PivotItem>
             <PivotItem Header="Tổng hợp">
@@ -150,6 +365,13 @@
 
             </PivotItem>
         </Pivot>
-
+        <ProgressRing 
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.Below="pageHeader"
+            Height="36"
+            Width="36"
+            IsActive="{Binding Quest,Converter={StaticResource notEqualZero},UpdateSourceTrigger=PropertyChanged}"/>
     </RelativePanel>
 </Page>
