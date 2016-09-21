@@ -29,6 +29,15 @@ namespace TDTUniversal.ViewModels
                 UpdateAgenda();
             }
         }
+
+        public DelegateCommand<int> ChangeDateCommand => new DelegateCommand<int>((i) =>
+        {
+            if (i != 0)
+                SelectedDate = SelectedDate.AddDays(i);
+            else
+                SelectedDate = DateTime.Now;
+        });
+
         public Task UpdateAgenda()
         {
             try
@@ -43,17 +52,17 @@ namespace TDTUniversal.ViewModels
                         foreach (var mh in listMH)
                         {
                             var listLH = (from lh in db.LichHoc
-                                         where lh.HocKyId == hk.HocKyId
-                                           && lh.TenMH == mh.TenMH
-                                           && IsWorkOnDate(lh, hk.NgayBatDau, SelectedDate.Date)
-                                         select lh).ToArray();
+                                          where lh.HocKyId == hk.HocKyId
+                                            && lh.TenMH == mh.TenMH
+                                            && IsWorkOnDate(lh, hk.NgayBatDau, SelectedDate.Date)
+                                          select lh).ToArray();
                             mhlh.AddRange(from lh in listLH select new MonHocLichHoc(mh, lh));
                         }
                     }
                 }
-                Agenda = new ObservableCollection<MonHocLichHoc>(mhlh);
+                Agenda = new ObservableCollection<MonHocLichHoc>(mhlh.OrderBy(i => i.LichHoc));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { throw ex; }
             return Task.CompletedTask;
         }
