@@ -38,15 +38,26 @@ namespace TDTUniversal.ViewModels
         }
         public async Task LoadData()
         {
-            await Task.Yield();
-            await Task.WhenAll(Task.Run(() =>
+            try
             {
-                using (TDTContext db = new TDTContext())
+                await Task.Yield();
+                Quest++;
+                await Task.WhenAll(Task.Run(() =>
                 {
-                    var ls = db.HocKy.ToArray();
-                    HocKyList = new ObservableCollection<HocKy>(ls);
-                }
-            }), UpdateAgenda());
+                    using (TDTContext db = new TDTContext())
+                    {
+                        var ls = db.HocKy.ToArray();
+                        HocKyList = new ObservableCollection<HocKy>(ls);
+                    }
+                }), UpdateAgenda());
+            }
+            catch (Exception ex)
+            { throw ex; }
+            finally
+            {
+                Quest--;
+            }
+
         }
         public async Task UpdateData()
         {
@@ -63,6 +74,7 @@ namespace TDTUniversal.ViewModels
                         quest.Add(UpdateMonHocLichHoc(HocKyList[i]));
                     }
                     await Task.WhenAll(quest);
+                    await UpdateAgenda();
                 }
             }
             catch (Exception ex)
