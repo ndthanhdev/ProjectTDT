@@ -14,6 +14,8 @@ namespace TDTUniversal.DataContext
         public DbSet<HocKy> HocKy { get; set; }
         public DbSet<MonHoc> MonHoc { get; set; }
         public DbSet<LichHoc> LichHoc { get; set; }
+        public DbSet<ThongBao> ThongBao { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Filename=tdtuniversal.sqlite");

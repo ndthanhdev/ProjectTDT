@@ -43,6 +43,7 @@
         </t10converters:ValueWhenConverter>
         <myconverters:TietToBeginTime x:Key="beginTimeConverter"/>
         <myconverters:TietToEndTime x:Key="endTimeConverter"/>
+
         <Style TargetType="Pivot"
                x:Key="PivotDisableSwipe">
             <Setter Property="Margin"
@@ -487,6 +488,7 @@
             RelativePanel.AlignRightWithPanel="True"
             RelativePanel.Below="pageHeader"
             Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+            Style="{StaticResource PivotDisableSwipe}"
             >
 
             <PivotItem Header="Theo ngày">
@@ -774,7 +776,6 @@
             RelativePanel.Below="pageHeader"
             Height="36"
             Width="36"
-            Style="{StaticResource PivotDisableSwipe}"
             IsActive="{Binding Quest,Converter={StaticResource notEqualZero},UpdateSourceTrigger=PropertyChanged}"/>
     </RelativePanel>
 </Page>

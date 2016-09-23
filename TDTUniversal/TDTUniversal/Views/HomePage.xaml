@@ -6,6 +6,7 @@
     xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:controls="using:Template10.Controls"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:local="using:TDTUniversal.Views"
     xmlns:vm="using:TDTUniversal.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -66,13 +67,17 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <SymbolIcon Symbol="OtherUser"
+                         Height="90"
+                Width="90"/>
             <Ellipse         
-                Height="80"
-                Width="80">
+                Height="90"
+                Width="90">
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="{x:Bind ViewModel.Avatar}" />
+                    <ImageBrush ImageSource="{x:Bind ViewModel.Avatar}" Stretch="UniformToFill" />
                 </Ellipse.Fill>
             </Ellipse>
+            
             <StackPanel 
                 Grid.Column="1"
                 Padding="16,4,4,4">
