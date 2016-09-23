@@ -6,6 +6,8 @@
     xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:controls="using:Template10.Controls"
+    xmlns:mycontrols="using:TDTUniversal.Controls"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:vm="using:TDTUniversal.ViewModels"
     xmlns:local="using:TDTUniversal.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,8 +18,100 @@
         <vm:NotificationPageViewModel x:Name="ViewModel"/>
     </Page.DataContext>
     <RelativePanel  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+                        <Setter Target="stateTextBox.Text" Value="Narrow Visual State" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+                        <Setter Target="stateTextBox.Text" Value="Normal Visual State" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+                        <Setter Target="stateTextBox.Text" Value="Wide Visual State" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Thông báo"/>
+
+        <mycontrols:PullToRefreshListViewEx           
+            x:Name="pullListView"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.Below="pageHeader"            
+            ItemsSource="{Binding ThongBaos}"
+            LoadMoreCommand="{x:Bind ViewModel.LoadMoreCommand}"
+            >
+            <mycontrols:PullToRefreshListViewEx.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </mycontrols:PullToRefreshListViewEx.ItemContainerStyle>
+            <mycontrols:PullToRefreshListViewEx.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        Height="80">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"/>
+                            <ColumnDefinition Width="8"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <Grid                       
+                            Width="4"
+                            Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"/>
+                        <toolkit:SlidableListItem 
+                            VerticalAlignment="Stretch"
+                            Grid.Column="2"
+                            LeftIcon="Read"
+                            LeftLabel="Đã đọc"
+                            LeftBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                            RightIcon="Read"
+                            RightLabel="Đã đọc"
+                            RightBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                            MouseSlidingEnabled="True">
+                            <toolkit:SlidableListItem.Content>
+                                <TextBlock 
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Title}" 
+                                    TextWrapping="WrapWholeWords"/>
+                            </toolkit:SlidableListItem.Content>
+                        </toolkit:SlidableListItem>
+                        <Border  Grid.Row="1" Grid.ColumnSpan="3" 
+                                 HorizontalAlignment="Stretch" 
+                                 VerticalAlignment="Stretch"
+                                 Background="Black"/>
+                    </Grid>
+                </DataTemplate>
+            </mycontrols:PullToRefreshListViewEx.ItemTemplate>
+        </mycontrols:PullToRefreshListViewEx>
     </RelativePanel>
 </Page>
