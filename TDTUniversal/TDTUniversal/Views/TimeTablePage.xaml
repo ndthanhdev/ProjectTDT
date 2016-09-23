@@ -638,17 +638,16 @@
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
 
-                                    <Grid Background="{ThemeResource SystemControlBackgroundBaseHighBrush}" 
+                                    <Border Background="{ThemeResource SystemControlBackgroundBaseHighBrush}" 
                                           Width="1" VerticalAlignment="Stretch"
-                                          Grid.Row="2" Grid.RowSpan="3"
-                                          Margin="0,4,0,4"/>
+                                          Grid.Row="3"/>
 
-                                    <Border Grid.Row="2" CornerRadius="90" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+                                    <Border Grid.Row="2" CornerRadius="90" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
                                             Width="48" Height="48"
                                             VerticalAlignment="Top">
                                         <TextBlock Text="{Binding LichHoc.Tiet,Converter={StaticResource beginTimeConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
                                     </Border>
-                                    <Border Grid.Row="4" CornerRadius="90" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+                                    <Border Grid.Row="4" CornerRadius="90" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
                                             Width="36" Height="36"
                                             VerticalAlignment="Bottom">
                                         <TextBlock Text="{Binding LichHoc.Tiet,Converter={StaticResource endTimeConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10"/>

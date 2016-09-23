@@ -117,6 +117,7 @@
     <Compile Include="API\Requests\DSHocKyRequest.cs" />
     <Compile Include="API\Requests\DSThongBaoRequest.cs" />
     <Compile Include="API\Requests\HocKyDataRequest.cs" />
+    <Compile Include="API\Requests\ThongBaoContentRequest.cs" />
     <Compile Include="API\Respond\Avatar.cs" />
     <Compile Include="API\Respond\DSThongBao.cs" />
     <Compile Include="API\Respond\HocKyData.cs" />

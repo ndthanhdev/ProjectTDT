@@ -63,6 +63,8 @@ namespace TDTUniversal.ViewModels
         {
             try
             {
+                await Task.Yield();
+                Quest++;
                 using (TDTContext db = new TDTContext())
                 {
                     await Task.Yield();
@@ -79,6 +81,7 @@ namespace TDTUniversal.ViewModels
             }
             catch (Exception ex)
             { throw ex; }
+            finally { Quest--; }
         }
 
         public async Task UpdateHocKy()

@@ -7,16 +7,21 @@
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:controls="using:Template10.Controls"
     xmlns:mycontrols="using:TDTUniversal.Controls"
-    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:toolkitcontrols="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:toolkitconverters="using:Microsoft.Toolkit.Uwp.UI.Converters"
     xmlns:vm="using:TDTUniversal.ViewModels"
     xmlns:local="using:TDTUniversal.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Name="rootpage">
 
     <Page.DataContext>
         <vm:NotificationPageViewModel x:Name="ViewModel"/>
     </Page.DataContext>
+    <Page.Resources>
+        <toolkitconverters:BoolToVisibilityConverter x:Key="Bool2Visi"/>
+    </Page.Resources>
     <RelativePanel  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <VisualStateManager.VisualStateGroups>
@@ -63,8 +68,10 @@
             RelativePanel.AlignRightWithPanel="True"
             RelativePanel.Below="pageHeader"            
             ItemsSource="{Binding ThongBaos}"
-            LoadMoreCommand="{x:Bind ViewModel.LoadMoreCommand}"
-            >
+            LoadMoreCommand="{x:Bind ViewModel.LoadMoreCommand}"     >
+            <mycontrols:PullToRefreshListViewEx.RefreshIndicatorContent>
+                <SymbolIcon Symbol="Sync"/>
+            </mycontrols:PullToRefreshListViewEx.RefreshIndicatorContent>
             <mycontrols:PullToRefreshListViewEx.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -87,24 +94,27 @@
                             Width="4"
                             Background="{ThemeResource SystemControlBackgroundAccentBrush}"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Stretch"/>
-                        <toolkit:SlidableListItem 
+                            VerticalAlignment="Stretch"
+                            Visibility="{Binding IsNew,Converter={StaticResource Bool2Visi}}"/>
+                        <toolkitcontrols:SlidableListItem
                             VerticalAlignment="Stretch"
                             Grid.Column="2"
                             LeftIcon="Read"
                             LeftLabel="Đã đọc"
                             LeftBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                            LeftCommand="{Binding ElementName=rootpage,Path=DataContext.MakeAsRead}"
+                            
                             RightIcon="Read"
                             RightLabel="Đã đọc"
                             RightBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
                             MouseSlidingEnabled="True">
-                            <toolkit:SlidableListItem.Content>
+                            <toolkitcontrols:SlidableListItem.Content>
                                 <TextBlock 
                                     VerticalAlignment="Center"
                                     Text="{Binding Title}" 
                                     TextWrapping="WrapWholeWords"/>
-                            </toolkit:SlidableListItem.Content>
-                        </toolkit:SlidableListItem>
+                            </toolkitcontrols:SlidableListItem.Content>
+                        </toolkitcontrols:SlidableListItem>
                         <Border  Grid.Row="1" Grid.ColumnSpan="3" 
                                  HorizontalAlignment="Stretch" 
                                  VerticalAlignment="Stretch"
@@ -113,5 +123,13 @@
                 </DataTemplate>
             </mycontrols:PullToRefreshListViewEx.ItemTemplate>
         </mycontrols:PullToRefreshListViewEx>
+        <ProgressRing 
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.Below="pageHeader"
+            Height="36"
+            Width="36"
+            IsActive="{Binding IsRunning,UpdateSourceTrigger=PropertyChanged}"/>
     </RelativePanel>
 </Page>
