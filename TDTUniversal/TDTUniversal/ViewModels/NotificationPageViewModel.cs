@@ -79,7 +79,7 @@ namespace TDTUniversal.ViewModels
                 NumOfQuests++;
                 using (TDTContext db = new TDTContext())
                 {
-                    ThongBaos = new ObservableCollection<ThongBao>(from tb in db.ThongBao select tb);
+                    ThongBaos = new ObservableCollection<ThongBao>((from tb in db.ThongBao select tb).OrderByDescending(tb=>tb.EntryId));
                 }
             }
             catch { }
