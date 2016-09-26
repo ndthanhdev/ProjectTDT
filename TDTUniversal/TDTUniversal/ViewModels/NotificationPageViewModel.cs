@@ -79,7 +79,7 @@ namespace TDTUniversal.ViewModels
                 NumOfQuests++;
                 using (TDTContext db = new TDTContext())
                 {
-                    ThongBaos = new ObservableCollection<ThongBao>((from tb in db.ThongBao select tb).OrderByDescending(tb=>tb.EntryId));
+                    ThongBaos = new ObservableCollection<ThongBao>((from tb in db.ThongBao select tb).OrderByDescending(tb => tb.EntryId));
                 }
             }
             catch { }
@@ -104,7 +104,10 @@ namespace TDTUniversal.ViewModels
                 var package = await ApiClient.GetAsync<DSThongBaoRequest, DSThongBao>(new DSThongBaoRequest(LocalDataService.Instance.StudentID, _currentPage),
                     TokenService.GetTokenProvider());
                 if (!package.Status)
+                {
+                    _currentPage--;
                     return;
+                }
                 _threshold = package.Respond.Numpage;
                 using (TDTContext db = new TDTContext())
                 {
