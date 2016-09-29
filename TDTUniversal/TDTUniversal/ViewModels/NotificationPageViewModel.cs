@@ -53,7 +53,7 @@ namespace TDTUniversal.ViewModels
                 if (value >= 0)
                 {
                     _numOfQuests = value;
-                    RaisePropertyChanged(nameof(IsUpdating));
+                    RaisePropertyChanged(nameof(IsRunning));
                 }
             }
         }
@@ -63,13 +63,33 @@ namespace TDTUniversal.ViewModels
             get { return IsUpdating || NumOfQuests > 0; }
         }
 
+        private bool _isOpen;
+
+        public bool IsOpen
+        {
+            get { return _isOpen; }
+            set { Set(ref _isOpen, value); }
+        }
+
+        private Uri _viewSource;
+
+        public Uri ViewSource
+        {
+            get { return _viewSource ?? (_viewSource = new Uri("http://api.trautre.cf")); }
+            set { Set(ref _viewSource, value); }
+        }
+
+
 
         public ICommand LoadMoreCommand => new DelegateCommand(async () =>
          {
              await GetNotifications();
          }, () => !IsUpdating);
 
-        public ICommand MakeAsRead => new DelegateCommand<ThongBao>(async (tb) => await GetNotificationsContent(tb));
+        public ICommand MakeAsReadCommand => new DelegateCommand<ThongBao>(async (tb) => await ReadThongBao(tb, false));
+        public ICommand ReadCommand => new DelegateCommand<ThongBao>(async (tb) => await ReadThongBao(tb, true));
+
+        public ICommand HidePopup => new DelegateCommand(() => IsOpen = false);
 
         public async Task LoadData()
         {
@@ -154,6 +174,36 @@ namespace TDTUniversal.ViewModels
                 NumOfQuests--;
             }
             return string.Empty;
+        }
+
+        public async Task ReadThongBao(ThongBao thongBao, bool isRead)
+        {
+            try
+            {
+                if (IsOpen = isRead)
+                {
+                    ViewSource = new Uri(await RequestBuilder.BuildUrl
+                        (new ThongBaoContentRequest(LocalDataService.Instance.StudentID, thongBao.EntryId), TokenService.GetTokenProvider()));
+                }
+                else
+                {
+                    try
+                    {
+                        NumOfQuests++;
+                        await Task.Yield();
+                        await ApiClient.GetAsync<ThongBaoContentRequest, string>(new ThongBaoContentRequest(LocalDataService.Instance.StudentID, thongBao.EntryId), TokenService.GetTokenProvider());
+                    }
+                    catch { }
+                    finally
+                    {
+                        NumOfQuests--;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

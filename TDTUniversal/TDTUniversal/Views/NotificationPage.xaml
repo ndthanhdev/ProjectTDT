@@ -32,7 +32,6 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!--  TODO: change properties for narrow view  -->
-                        <Setter Target="stateTextBox.Text" Value="Narrow Visual State" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateNormal">
@@ -41,7 +40,6 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!--  TODO: change properties for normal view  -->
-                        <Setter Target="stateTextBox.Text" Value="Normal Visual State" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateWide">
@@ -50,86 +48,150 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!--  TODO: change properties for wide view  -->
-                        <Setter Target="stateTextBox.Text" Value="Wide Visual State" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
 
+
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Thông báo"/>
-
-        <mycontrols:PullToRefreshListViewEx           
-            x:Name="pullListView"
+        <controls:ModalDialog 
+            x:Name="modalDialog"
+            IsModal="{Binding IsOpen}"
             RelativePanel.AlignBottomWithPanel="True"
             RelativePanel.AlignLeftWithPanel="True"
             RelativePanel.AlignRightWithPanel="True"
-            RelativePanel.Below="pageHeader"            
-            ItemsSource="{Binding ThongBaos}"
-            LoadMoreCommand="{x:Bind ViewModel.LoadMoreCommand}"     >
-            <mycontrols:PullToRefreshListViewEx.RefreshIndicatorContent>
-                <SymbolIcon Symbol="Sync"/>
-            </mycontrols:PullToRefreshListViewEx.RefreshIndicatorContent>
-            <mycontrols:PullToRefreshListViewEx.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                </Style>
-            </mycontrols:PullToRefreshListViewEx.ItemContainerStyle>
-            <mycontrols:PullToRefreshListViewEx.ItemTemplate>
-                <DataTemplate>
-                    <Grid
+            RelativePanel.Below="pageHeader"    >
+            <controls:ModalDialog.ModalContent>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="Red">
+                        <Button Margin="4" HorizontalAlignment="Right"
+                                Command="{Binding HidePopup}">
+                            <SymbolIcon Symbol="Clear"/>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Row="1" Background="Yellow">
+                        <WebView Source="{Binding ViewSource}" 
+                                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Interactivity:Interaction.Behaviors>
+                                <Behaviors:EventTriggerBehaviorBase EventName="Loading">
+                                    <Core:ChangePropertyAction 
+                                        TargetObject="{Binding ElementName=webProgress}"
+                                        PropertyName="IsActive">
+                                        <Core:ChangePropertyAction.Value>
+                                            <x:Boolean>True</x:Boolean>
+                                        </Core:ChangePropertyAction.Value>
+                                    </Core:ChangePropertyAction>
+                                </Behaviors:EventTriggerBehaviorBase>
+                                <Behaviors:EventTriggerBehaviorBase EventName="Loaded">
+                                    <Core:ChangePropertyAction 
+                                        TargetObject="{Binding ElementName=webProgress}"
+                                        PropertyName="IsActive">
+                                        <Core:ChangePropertyAction.Value>
+                                            <x:Boolean>False</x:Boolean>
+                                        </Core:ChangePropertyAction.Value>
+                                    </Core:ChangePropertyAction>
+                                </Behaviors:EventTriggerBehaviorBase>
+                            </Interactivity:Interaction.Behaviors>
+                        </WebView>
+                        <ProgressRing x:Name="webProgress" Height="32" Width="32"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </controls:ModalDialog.ModalContent>
+            <RelativePanel
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+                <mycontrols:PullToRefreshListViewEx           
+                    x:Name="pullListView"
+                    RelativePanel.AlignTopWithPanel="True"
+                    RelativePanel.AlignBottomWithPanel="True"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    ItemsSource="{Binding ThongBaos}"
+                    LoadMoreCommand="{x:Bind ViewModel.LoadMoreCommand}">
+                    <Interactivity:Interaction.Behaviors>
+                        <Behaviors:EventTriggerBehaviorBase EventName="SelectionChanged">
+                            <Core:InvokeCommandAction 
+                                Command="{x:Bind ViewModel.ReadCommand}" 
+                                CommandParameter="{Binding ElementName=pullListView, Path=SelectedItem}"/>
+                            <Core:ChangePropertyAction TargetObject="{Binding ElementName=pullListView}" 
+                                                       PropertyName="SelectedItem" Value="{x:Null}"/>
+                        </Behaviors:EventTriggerBehaviorBase>
+                    </Interactivity:Interaction.Behaviors>
+                    <mycontrols:PullToRefreshListViewEx.RefreshIndicatorContent>
+                        <SymbolIcon Symbol="Sync"/>
+                    </mycontrols:PullToRefreshListViewEx.RefreshIndicatorContent>
+                    <mycontrols:PullToRefreshListViewEx.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </mycontrols:PullToRefreshListViewEx.ItemContainerStyle>
+                    <mycontrols:PullToRefreshListViewEx.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
                         Height="80">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4"/>
-                            <ColumnDefinition Width="8"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="1"/>
-                        </Grid.RowDefinitions>
-                        <Grid                       
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+                                <Grid                       
                             Width="4"
                             Background="{ThemeResource SystemControlBackgroundAccentBrush}"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
                             Visibility="{Binding IsNew,Converter={StaticResource Bool2Visi}}"/>
-                        <mycontrols:SlidableListItem
+                                <mycontrols:SlidableListItem
                             VerticalAlignment="Stretch"
                             Grid.Column="2"
                             LeftIcon="Read"
                             LeftLabel="Đã đọc"
                             LeftBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
-                            LeftCommand="{Binding ElementName=rootpage,Path=DataContext.MakeAsRead}"
-                            
+                            LeftCommand="{Binding ElementName=rootpage,Path=DataContext.MakeAsReadCommand}"
+                            LeftCommandParameter="{Binding}"
                             RightIcon="Read"
                             RightLabel="Đã đọc"
                             RightBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                            RightCommand="{Binding ElementName=rootpage,Path=DataContext.MakeAsReadCommand}"
+                            RightCommandParameter="{Binding}"
                             MouseSlidingEnabled="True">
-                            <mycontrols:SlidableListItem.Content>
-                                <TextBlock 
-                                    VerticalAlignment="Center"
-                                    Text="{Binding Title}" 
-                                    TextWrapping="WrapWholeWords"/>
-                            </mycontrols:SlidableListItem.Content>
-                        </mycontrols:SlidableListItem>
-                        <Border  Grid.Row="1" Grid.ColumnSpan="3" 
+                                    <mycontrols:SlidableListItem.Content>
+                                        <TextBlock 
+                                                VerticalAlignment="Center"
+                                                Text="{Binding Title}" 
+                                                TextWrapping="WrapWholeWords"/>
+                                    </mycontrols:SlidableListItem.Content>
+                                </mycontrols:SlidableListItem>
+                                <Border  Grid.Row="1" Grid.ColumnSpan="3" 
                                  HorizontalAlignment="Stretch" 
                                  VerticalAlignment="Stretch"
                                  Background="Black"/>
-                    </Grid>
-                </DataTemplate>
-            </mycontrols:PullToRefreshListViewEx.ItemTemplate>
-        </mycontrols:PullToRefreshListViewEx>
-        <ProgressRing 
+                            </Grid>
+                        </DataTemplate>
+                    </mycontrols:PullToRefreshListViewEx.ItemTemplate>
+                </mycontrols:PullToRefreshListViewEx>
+                <ProgressRing 
             RelativePanel.AlignBottomWithPanel="True"
             RelativePanel.AlignLeftWithPanel="True"
             RelativePanel.AlignRightWithPanel="True"
-            RelativePanel.Below="pageHeader"
+            RelativePanel.AlignTopWithPanel="True"
             Height="36"
             Width="36"
             IsActive="{Binding IsRunning,UpdateSourceTrigger=PropertyChanged}"/>
+            </RelativePanel>
+        </controls:ModalDialog>
     </RelativePanel>
 </Page>
