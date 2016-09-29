@@ -67,7 +67,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <SymbolIcon Symbol="OtherUser"
+            <SymbolIcon Symbol="Contact"
                          Height="90"
                 Width="90"/>
             <Ellipse         

@@ -180,6 +180,7 @@ namespace TDTUniversal.ViewModels
         {
             try
             {
+                thongBao.IsNew = false;
                 if (IsOpen = isRead)
                 {
                     ViewSource = new Uri(await RequestBuilder.BuildUrl
@@ -200,10 +201,7 @@ namespace TDTUniversal.ViewModels
                     }
                 }
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch { }
         }
     }
 }
