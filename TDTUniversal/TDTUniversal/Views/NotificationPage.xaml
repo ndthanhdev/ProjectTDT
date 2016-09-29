@@ -96,7 +96,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
                             Visibility="{Binding IsNew,Converter={StaticResource Bool2Visi}}"/>
-                        <toolkitcontrols:SlidableListItem
+                        <mycontrols:SlidableListItem
                             VerticalAlignment="Stretch"
                             Grid.Column="2"
                             LeftIcon="Read"
@@ -108,13 +108,13 @@
                             RightLabel="Đã đọc"
                             RightBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
                             MouseSlidingEnabled="True">
-                            <toolkitcontrols:SlidableListItem.Content>
+                            <mycontrols:SlidableListItem.Content>
                                 <TextBlock 
                                     VerticalAlignment="Center"
                                     Text="{Binding Title}" 
                                     TextWrapping="WrapWholeWords"/>
-                            </toolkitcontrols:SlidableListItem.Content>
-                        </toolkitcontrols:SlidableListItem>
+                            </mycontrols:SlidableListItem.Content>
+                        </mycontrols:SlidableListItem>
                         <Border  Grid.Row="1" Grid.ColumnSpan="3" 
                                  HorizontalAlignment="Stretch" 
                                  VerticalAlignment="Stretch"

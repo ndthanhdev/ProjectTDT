@@ -129,6 +129,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\PullToRefreshListViewEx.cs" />
+    <Compile Include="Controls\SlidableListItem.cs" />
     <Compile Include="Converters\TietToBeginTime.cs" />
     <Compile Include="Converters\TietToEndTime.cs" />
     <Compile Include="DataContext\TDTContext.cs" />

@@ -33,7 +33,6 @@ namespace TDTUniversal.ViewModels
         {
             await base.OnNavigatedToAsync(parameter, mode, state);
             await LoadData();
-            await Task.Delay(15000);
             await UpdateData();
         }
         public async Task LoadData()
