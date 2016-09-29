@@ -75,11 +75,10 @@ namespace TDTUniversal.ViewModels
 
         public Uri ViewSource
         {
-            get { return _viewSource ?? (_viewSource = new Uri("http://api.trautre.cf")); }
+            get { return _viewSource ?? (_viewSource = new Uri("http://app.trautre.cf")); }
             set { Set(ref _viewSource, value); }
         }
-
-
+        
 
         public ICommand LoadMoreCommand => new DelegateCommand(async () =>
          {
