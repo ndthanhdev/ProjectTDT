@@ -78,7 +78,13 @@ namespace TDTUniversal.ViewModels
             get { return _viewSource ?? (_viewSource = new Uri("http://app.trautre.cf")); }
             set { Set(ref _viewSource, value); }
         }
-        
+
+
+        public ICommand RefreshCommand => new DelegateCommand(async () =>
+        {
+            _currentPage = 0;
+            await GetNotifications();
+        });
 
         public ICommand LoadMoreCommand => new DelegateCommand(async () =>
          {

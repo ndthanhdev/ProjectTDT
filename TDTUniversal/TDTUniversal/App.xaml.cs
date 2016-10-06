@@ -18,6 +18,7 @@ using TDTUniversal.Services;
 using TDTUniversal.DataContext;
 using Microsoft.Data.Entity;
 using System.Collections.Generic;
+using Microsoft.Toolkit.Uwp.UI;
 
 namespace TDTUniversal
 {
@@ -77,10 +78,15 @@ namespace TDTUniversal
             //await Task.Delay(500);
             if (LocalDataService.Instance.IsLogged)
             {
-                using (var database = new TDTContext())
+                var prepareDBTask = Task.Run(async () =>
                 {
-                    await database.Database.EnsureCreatedAsync();
-                }
+                    using (var database = new TDTContext())
+                    {
+                        await database.Database.EnsureCreatedAsync();
+                    }
+                });
+                //Todo initialize cache
+                await Task.WhenAll(prepareDBTask);
                 NavigationService.Navigate(typeof(Views.HomePage));
             }
             else

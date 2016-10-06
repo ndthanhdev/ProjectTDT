@@ -34,12 +34,12 @@ namespace TDTUniversal.ViewModels
                 new PageItem() {PageType=typeof(NotificationPage), Name="Notification", Glyph="M19.054906,19.741768L14.048039,20.529358 14.063186,20.659084C14.249083,21.983285 15.299836,23.00002 16.56496,23.00002 17.960989,23.00002 19.095971,21.762046 19.095971,20.23904 19.095971,20.07928 19.083878,19.922199 19.059796,19.768372z M1.8289995,16.606021L4.4699984,22.571033 2.6409988,23.380034 0,17.414022z M21.205005,4.4070072L5.1810083,16.694026 6.4660082,19.69803 26.353004,16.569026z M22.039005,1.2470016L29.193004,18.147028 21.030803,19.430956 21.034698,19.451968C21.075444,19.709723 21.095975,19.972416 21.095975,20.23904 21.095975,22.864033 19.062982,25.000015 16.56496,25.000015 14.301156,25.000015 12.419249,23.245757 12.086288,20.963068L12.071392,20.840287 5.2390084,21.915033 2.7310085,16.051025z M24.856001,0L32.001,16.897998 30.159001,17.676998 23.014001,0.78000069z" }
             };
         }
-        public DelegateCommand<PageItem> NavigateCommand => new DelegateCommand<PageItem>((pi) =>
+        public DelegateCommand<PageItem> NavigateCommand => new DelegateCommand<PageItem>(async (pi) =>
         {
             try
             {
                 Busy.SetBusy(true);
-                NavigationService.Navigate(pi.PageType);
+                await NavigationService.NavigateAsync(pi.PageType);
             }
             catch { }
             finally

@@ -81,7 +81,7 @@
                         <WebView Source="{Binding ViewSource}" 
                                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <Interactivity:Interaction.Behaviors>
-                                <Behaviors:EventTriggerBehaviorBase EventName="Loading">
+                                <Behaviors:EventTriggerBehaviorBase EventName="NavigationStarting">
                                     <Core:ChangePropertyAction 
                                         TargetObject="{Binding ElementName=webProgress}"
                                         PropertyName="IsActive">
@@ -90,7 +90,7 @@
                                         </Core:ChangePropertyAction.Value>
                                     </Core:ChangePropertyAction>
                                 </Behaviors:EventTriggerBehaviorBase>
-                                <Behaviors:EventTriggerBehaviorBase EventName="Loaded">
+                                <Behaviors:EventTriggerBehaviorBase EventName="NavigationCompleted">
                                     <Core:ChangePropertyAction 
                                         TargetObject="{Binding ElementName=webProgress}"
                                         PropertyName="IsActive">
@@ -103,7 +103,8 @@
                         </WebView>
                         <ProgressRing x:Name="webProgress" Height="32" Width="32"
                                       HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"/>
+                                      VerticalAlignment="Center"
+                                      IsActive="True"/>
                     </Grid>
                 </Grid>
             </controls:ModalDialog.ModalContent>
@@ -117,7 +118,8 @@
                     RelativePanel.AlignLeftWithPanel="True"
                     RelativePanel.AlignRightWithPanel="True"
                     ItemsSource="{Binding ThongBaos}"
-                    LoadMoreCommand="{x:Bind ViewModel.LoadMoreCommand}">
+                    LoadMoreCommand="{x:Bind ViewModel.LoadMoreCommand}"
+                    RefreshCommand="{x:Bind ViewModel.RefreshCommand}">
                     <Interactivity:Interaction.Behaviors>
                         <Behaviors:EventTriggerBehaviorBase EventName="SelectionChanged">
                             <Core:InvokeCommandAction 
@@ -154,7 +156,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
                             Visibility="{Binding IsNew,Converter={StaticResource Bool2Visi}}"/>
-                                <mycontrols:SlidableListItem
+                                <toolkitcontrols:SlidableListItem
                             VerticalAlignment="Stretch"
                             Grid.Column="2"
                             LeftIcon="Read"
@@ -168,13 +170,13 @@
                             RightCommand="{Binding ElementName=rootpage,Path=DataContext.MakeAsReadCommand}"
                             RightCommandParameter="{Binding}"
                             MouseSlidingEnabled="True">
-                                    <mycontrols:SlidableListItem.Content>
+                                    <toolkitcontrols:SlidableListItem.Content>
                                         <TextBlock 
                                                 VerticalAlignment="Center"
                                                 Text="{Binding Title}" 
                                                 TextWrapping="WrapWholeWords"/>
-                                    </mycontrols:SlidableListItem.Content>
-                                </mycontrols:SlidableListItem>
+                                    </toolkitcontrols:SlidableListItem.Content>
+                                </toolkitcontrols:SlidableListItem>
                                 <Border  Grid.Row="1" Grid.ColumnSpan="3" 
                                  HorizontalAlignment="Stretch" 
                                  VerticalAlignment="Stretch"

@@ -24,7 +24,7 @@ namespace TDTUniversal.Views
     {
         public NotificationPage()
         {
-            this.InitializeComponent();
+            this.InitializeComponent();            
         }
     }
 }

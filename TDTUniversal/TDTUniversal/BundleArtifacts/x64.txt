@@ -1,2 +1,2 @@
-MainPackage=C:\Users\thanh\Documents\Workplace\ProjectTDT\TDTUniversal\TDTUniversal\bin\x64\Release\TDTUniversal_1.0.24.0_x64.appx
-SymbolPackage=C:\Users\thanh\Documents\Workplace\ProjectTDT\TDTUniversal\TDTUniversal\AppPackages\TDTUniversal_1.0.24.0_Test\TDTUniversal_1.0.24.0_x64.appxsym
+MainPackage=C:\Users\thanh\Documents\Workplace\ProjectTDT\TDTUniversal\TDTUniversal\bin\x64\Debug\TDTUniversal_1.0.27.0_x64_Debug.appx
+SymbolPackage=C:\Users\thanh\Documents\Workplace\ProjectTDT\TDTUniversal\TDTUniversal\AppPackages\TDTUniversal_1.0.27.0_Debug_Test\TDTUniversal_1.0.27.0_x64_Debug.appxsym

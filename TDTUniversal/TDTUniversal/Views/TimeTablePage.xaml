@@ -488,8 +488,7 @@
             RelativePanel.AlignRightWithPanel="True"
             RelativePanel.Below="pageHeader"
             Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
-            Style="{StaticResource PivotDisableSwipe}"
-            >
+            Style="{StaticResource PivotDisableSwipe}">
 
             <PivotItem Header="Theo ngày">
                 <Grid Margin="0,8,0,0">
