@@ -1,4 +1,4 @@
-<Page x:Class="TDTUniversal.Views.Shell"
+﻿<Page x:Class="TDTUniversal.Views.Shell"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:Controls="using:Template10.Controls"
@@ -14,7 +14,7 @@
     <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
 
         <Controls:HamburgerMenu.PrimaryButtons>
-            <!--  mainpage button  -->
+            <!--  home button  -->
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:HomePage" 
                                           AutomationProperties.Name="Jerry"
                                           >
@@ -22,9 +22,55 @@
                     <SymbolIcon Width="48" Height="48"
                                 Symbol="Home" />
                     <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
-                               Text="Home" />
+                               Text="Trang chủ" />
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
+            <!--  Notifications button  -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:NotificationPage" 
+                                          AutomationProperties.Name="Jerry"
+                                          >
+                <StackPanel Orientation="Horizontal">
+                    <Grid Width="48" Height="48">
+                        <Grid Visibility="Collapsed" />
+                        <Path Data="M19.054906,19.741768L14.048039,20.529358 14.063186,20.659084C14.249083,21.983285 15.299836,23.00002 16.56496,23.00002 17.960989,23.00002 19.095971,21.762046 19.095971,20.23904 19.095971,20.07928 19.083878,19.922199 19.059796,19.768372z M1.8289995,16.606021L4.4699984,22.571033 2.6409988,23.380034 0,17.414022z M21.205005,4.4070072L5.1810083,16.694026 6.4660082,19.69803 26.353004,16.569026z M22.039005,1.2470016L29.193004,18.147028 21.030803,19.430956 21.034698,19.451968C21.075444,19.709723 21.095975,19.972416 21.095975,20.23904 21.095975,22.864033 19.062982,25.000015 16.56496,25.000015 14.301156,25.000015 12.419249,23.245757 12.086288,20.963068L12.071392,20.840287 5.2390084,21.915033 2.7310085,16.051025z M24.856001,0L32.001,16.897998 30.159001,17.676998 23.014001,0.78000069z"                           
+                          Stretch="Uniform" Fill="White" Width="26" Height="26" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
+                               Text="Thông báo" />
+                </StackPanel>
+            </Controls:HamburgerButtonInfo>
+            <!--  TimeTable button  -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:TimeTablePage" 
+                                          AutomationProperties.Name="Jerry">
+                <StackPanel Orientation="Horizontal">
+                    <Grid Width="48" Height="48">
+                        <Grid Visibility="Collapsed" />
+                        <Path Data="M14,24.999998L17,24.999998C17.552,24.999998 18,25.447998 18,25.999998 18,26.551998 17.552,26.999998 17,26.999998L14,26.999998C13.448,26.999998 13,26.551998 13,25.999998 13,25.447998 13.448,24.999998 14,24.999998z M6,24.999998L9,24.999998C9.552,24.999998 10,25.447998 10,25.999998 10,26.551998 9.552,26.999998 9,26.999998L6,26.999998C5.448,26.999998 5,26.551998 5,25.999998 5,25.447998 5.448,24.999998 6,24.999998z M22,19.999998L25,19.999998C25.552,19.999998 26,20.447998 26,20.999998 26,21.551998 25.552,21.999998 25,21.999998L22,21.999998C21.448,21.999998 21,21.551998 21,20.999998 21,20.447998 21.448,19.999998 22,19.999998z M14,19.999998L17,19.999998C17.552,19.999998 18,20.447998 18,20.999998 18,21.551998 17.552,21.999998 17,21.999998L14,21.999998C13.448,21.999998 13,21.551998 13,20.999998 13,20.447998 13.448,19.999998 14,19.999998z M6,19.999998L9,19.999998C9.552,19.999998 10,20.447998 10,20.999998 10,21.551998 9.552,21.999998 9,21.999998L6,21.999998C5.448,21.999998 5,21.551998 5,20.999998 5,20.447998 5.448,19.999998 6,19.999998z M22,14.999998L25,14.999998C25.552,14.999998 26,15.447998 26,15.999998 26,16.551998 25.552,16.999998 25,16.999998L22,16.999998C21.448,16.999998 21,16.551998 21,15.999998 21,15.447998 21.448,14.999998 22,14.999998z M14,14.999998L17,14.999998C17.552,14.999998 18,15.447998 18,15.999998 18,16.551998 17.552,16.999998 17,16.999998L14,16.999998C13.448,16.999998 13,16.551998 13,15.999998 13,15.447998 13.448,14.999998 14,14.999998z M6,14.999998L9,14.999998C9.552,14.999998 10,15.447998 10,15.999998 10,16.551998 9.552,16.999998 9,16.999998L6,16.999998C5.448,16.999998 5,16.551998 5,15.999998 5,15.447998 5.448,14.999998 6,14.999998z M1.9999999,11.999998L1.9999999,29.999998 29,29.999998 29,11.999998z M1.9999999,4.9999981L1.9999999,9.9999985 29,9.9999985 29,4.9999981 24.956999,4.9999981 24.956999,6.9309998C24.956999,7.483 24.508999,7.931 23.956999,7.9309998 23.404999,7.931 22.956999,7.483 22.956999,6.9309998L22.956999,4.9999981 7.9569993,4.9999981 7.9569993,6.9309998C7.9569993,7.483 7.5089993,7.931 6.9569993,7.9309998 6.4049993,7.931 5.9569993,7.483 5.9569993,6.9309998L5.9569993,4.9999981z M6.9569993,0C7.5089993,0,7.9569993,0.44799995,7.9569993,1L7.9569993,2.9999981 22.956999,2.9999981 22.956999,1C22.956999,0.44799995 23.404999,0 23.956999,0 24.508999,0 24.956999,0.44799995 24.956999,1L24.956999,2.9999981 31,2.9999981 31,31.999998 0,31.999998 0,2.9999981 5.9569993,2.9999981 5.9569993,1C5.9569993,0.44799995,6.4049993,0,6.9569993,0z"                           
+                          Stretch="Uniform" Fill="White" Width="26" Height="26" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
+                               Text="Thời khóa biểu" />
+                </StackPanel>
+            </Controls:HamburgerButtonInfo>
+
         </Controls:HamburgerMenu.PrimaryButtons>
 
         <Controls:HamburgerMenu.SecondaryButtons>

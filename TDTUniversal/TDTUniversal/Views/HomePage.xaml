@@ -15,7 +15,11 @@
     <Page.DataContext>
         <vm:HomePageViewModel x:Name="ViewModel"/>
     </Page.DataContext>
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <RelativePanel
+                   >
+        <RelativePanel.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/HomeBackground.jpg"/>
+        </RelativePanel.Background>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
                 <VisualState x:Name="VisualStateNarrow">
@@ -61,31 +65,42 @@
               RelativePanel.AlignLeftWithPanel="True"
               RelativePanel.AlignRightWithPanel="True"
               RelativePanel.Below="pageHeader"
-              Padding="32,16,4,8"
-              Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+              Padding="32,16,4,8">
+            <Grid.Background>
+                <SolidColorBrush Opacity="0.4" Color="{ThemeResource SystemBaseLowColor}"/>
+            </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <SymbolIcon Symbol="Contact"
                          Height="90"
-                Width="90"/>
+                        Width="90"/>
             <Ellipse         
                 Height="90"
-                Width="90">
+                Width="90"
+                Opacity="1"
+                Stretch="UniformToFill"
+                Stroke="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"
+                StrokeThickness="1">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="{x:Bind ViewModel.Avatar}" Stretch="UniformToFill" />
                 </Ellipse.Fill>
+                
             </Ellipse>
-            
+
             <StackPanel 
                 Grid.Column="1"
                 Padding="16,4,4,4">
-                <TextBlock Text="{x:Bind ViewModel.Name}" FontSize="18" TextWrapping="WrapWholeWords"/>
-                <TextBlock Text="{x:Bind ViewModel.MSSV}"/>
+                <TextBlock Text="{x:Bind ViewModel.Name}" 
+                           FontSize="18" TextWrapping="WrapWholeWords"
+                           Foreground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"/>
+                <TextBlock Text="{x:Bind ViewModel.MSSV}"
+                           Foreground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"/>
                 <Button   
                     HorizontalAlignment="Right"
                     Margin="0,8,0,0"
+                    Foreground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                     Content="Đăng xuất"
                     Command="{x:Bind ViewModel.LogoutCommand}"/>
             </StackPanel>
@@ -112,24 +127,28 @@
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid Width="76" Height="76" CornerRadius="8" 
-                          BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
-                          Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                          BorderThickness="1"                          
                           Padding="4,4,4,0"
                           Margin="16">
+                        <Grid.Background>
+                            <SolidColorBrush Opacity="0.8"
+                                             Color="{ThemeResource SystemBaseLowColor}"/>
+                        </Grid.Background>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Path Fill="{ThemeResource SystemControlBackgroundBaseHighBrush}"
-                                  Data="{Binding Glyph}"
-                                  Stretch="Uniform"
-                                  Grid.Row="0"/>
+                        <Path 
+                            Fill="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+                            Data="{Binding Glyph}"
+                            Stretch="Uniform"
+                            Grid.Row="0"/>
                         <TextBlock Text="{Binding Name}" 
                                    HorizontalAlignment="Center"
                                    Grid.Row="1"
                                    FontSize="10"
-                                   TextWrapping="Wrap"/>
+                                   TextWrapping="Wrap"
+                                   Foreground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"/>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
