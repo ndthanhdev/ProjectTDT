@@ -33,14 +33,14 @@ namespace TDTUniversal
         {
             InitializeComponent();
 
-            Task.Run(async () =>
-            {
-                LocalDataService.Instance.StudentID = "51403318";
-                LocalDataService.Instance.Password = "51403318TDT";
-                var sv = await TokenService.GetTokenProvider().GetTokenAsync();
-                var r = await ApiClient.GetAsync<DSThongBaoRequest, DSThongBao>(new DSThongBaoRequest("51403318"), TokenService.GetTokenProvider());
-                await Task.Yield();
-            });
+            //Task.Run(async () =>
+            //{
+            //    LocalDataService.Instance.StudentID = "51403318";
+            //    LocalDataService.Instance.Password = "51403318TDT";
+            //    var sv = await TokenService.GetTokenProvider().GetTokenAsync();
+            //    var r = await ApiClient.GetAsync<DSThongBaoRequest, DSThongBao>(new DSThongBaoRequest("51403318"), TokenService.GetTokenProvider());
+            //    await Task.Yield();
+            //});
 
             SplashFactory = (e) => new Views.Splash(e);
 

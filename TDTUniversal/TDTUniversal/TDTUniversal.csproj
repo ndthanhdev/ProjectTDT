@@ -96,6 +96,7 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="App.config" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+    <None Include="project.json" />
     <None Include="Service References\TDTServices\AuthService.wsdl" />
     <None Include="Service References\TDTServices\TDTUniversal.TDTServices.SinhVien.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -103,7 +104,6 @@
     <None Include="Service References\TDTServices\TDTUniversal.TDTServices.UserStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="project.json" />
     <None Include="TDTUniversal_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -280,7 +280,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\TDTServices\" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

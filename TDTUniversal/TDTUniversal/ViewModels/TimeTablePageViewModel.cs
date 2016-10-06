@@ -69,12 +69,12 @@ namespace TDTUniversal.ViewModels
                     await Task.Yield();
                     await UpdateHocKy();
                     HocKyList = new ObservableCollection<HocKy>(db.HocKy.ToArray());
-                    List<Task> quest = new List<Task>();
+                    //List<Task> quest = new List<Task>();
                     for (int i = 0; i < Math.Min(4, HocKyList.Count); i++)
                     {
-                        quest.Add(UpdateMonHocLichHoc(HocKyList[i]));
+                        await UpdateMonHocLichHoc(HocKyList[i]);
                     }
-                    await Task.WhenAll(quest);
+                    //await Task.WhenAll(quest);
                     await UpdateAgenda();
                 }
             }

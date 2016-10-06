@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6d12deb8-5cd7-4544-b0ff-1c1a2e6d8538" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="caca40f2-a548-4882-8390-a4a3f09c5d9d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -21,11 +21,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://sso.tdt.edu.vn/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://sso.tdt.edu.vn" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AuthService.wsdl" MetadataType="Wsdl" ID="ae68a309-c9be-4efc-af76-316a967dc49e" SourceId="1" SourceUrl="http://sso.tdt.edu.vn/AuthService.asmx?wsdl" />
-    <MetadataFile FileName="AuthService.disco" MetadataType="Disco" ID="ada5714e-46f6-42f5-9f76-7673406f16e1" SourceId="1" SourceUrl="http://sso.tdt.edu.vn/AuthService.asmx?disco" />
+    <MetadataFile FileName="AuthService.wsdl" MetadataType="Wsdl" ID="5477c537-5b50-4abd-9ab6-e64b97ff0fb5" SourceId="1" SourceUrl="http://sso.tdt.edu.vn/AuthService.asmx?wsdl" />
+    <MetadataFile FileName="AuthService.disco" MetadataType="Disco" ID="3f6f4b75-9c78-44ab-8284-533770178f03" SourceId="1" SourceUrl="http://sso.tdt.edu.vn/AuthService.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

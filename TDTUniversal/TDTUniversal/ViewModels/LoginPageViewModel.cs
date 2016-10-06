@@ -30,26 +30,28 @@ namespace TDTUniversal.ViewModels
         public string StudentPassword { get { return _studentPassword; } set { Set(ref _studentPassword, value); } }
 
         public ICommand LoginCommand => new DelegateCommand(async () => await Login(), () => !IsLogging);
-        
+
         private async Task Login()
         {
             try
             {
                 IsLogging = true;
+                var tokenProvider = new TokenProvider(StudentID, StudentPassword);
                 var avatar = await ApiClient.GetAsync<AvatarRequest, Avatar>(new AvatarRequest(StudentID, StudentPassword),
-                    TokenService.GetTokenProvider());
+                    new TokenProvider(StudentID, StudentPassword));
                 if (avatar.Status)
                 {
                     //login true
+
                     LocalDataService.Instance.StudentID = StudentID;
                     LocalDataService.Instance.Password = StudentPassword;
-                    LocalDataService.Instance.IsLogged = true;
                     LocalDataService.Instance.Avatar = avatar.Respond.src;
                     LocalDataService.Instance.Name = avatar.Respond.Name;
                     using (var database = new TDTContext())
                     {
                         await database.Database.EnsureCreatedAsync();
                     }
+                    LocalDataService.Instance.IsLogged = true;
                     await NavigationService.NavigateAsync(typeof(HomePage));
                 }
                 else
@@ -60,7 +62,7 @@ namespace TDTUniversal.ViewModels
                     await md.ShowAsync();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
             }
             finally
