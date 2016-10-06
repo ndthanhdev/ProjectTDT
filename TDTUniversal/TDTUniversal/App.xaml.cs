@@ -28,6 +28,7 @@ namespace TDTUniversal
     [Bindable]
     sealed partial class App : Template10.Common.BootStrapper
     {
+        public static readonly string CACHE_FOLDER = "all_cache";
         public App()
         {
             InitializeComponent();
@@ -85,8 +86,9 @@ namespace TDTUniversal
                         await database.Database.EnsureCreatedAsync();
                     }
                 });
-                //Todo initialize cache
-                await Task.WhenAll(prepareDBTask);
+                //initialize cache
+                var cacheTask = FileCache.Instance.InitializeAsync(Windows.Storage.ApplicationData.Current.LocalCacheFolder, CACHE_FOLDER);                
+                await Task.WhenAll(prepareDBTask, cacheTask);
                 NavigationService.Navigate(typeof(Views.HomePage));
             }
             else
