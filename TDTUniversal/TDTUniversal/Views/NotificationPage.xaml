@@ -15,17 +15,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Name="rootpage">
+    Name="rootpage"
+    >
 
     <Page.DataContext>
         <vm:NotificationPageViewModel x:Name="ViewModel"/>
     </Page.DataContext>
     <Page.Resources>
         <toolkitconverters:BoolToVisibilityConverter x:Key="Bool2Visi"/>
-        <myconvertters:ThongBaoToGrouped x:Key="tb2gtb"/>
+        <toolkitconverters:StringFormatConverter x:Key="DateTime2Date"/>
         <CollectionViewSource x:Name="cvs" x:Key="cvs" Source="{Binding ThongBaos}" IsSourceGrouped="True"/>
     </Page.Resources>
-    <RelativePanel  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <RelativePanel  Background="{ThemeResource SystemControlBackgroundListLowBrush}">
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
@@ -122,16 +123,9 @@
                     RelativePanel.AlignRightWithPanel="True"
                     ItemsSource="{Binding Source={StaticResource cvs}}"
                     LoadMoreCommand="{x:Bind ViewModel.LoadMoreCommand}"
-                    RefreshCommand="{x:Bind ViewModel.RefreshCommand}">                    
-                    <Interactivity:Interaction.Behaviors>
-                        <Behaviors:EventTriggerBehaviorBase EventName="SelectionChanged">
-                            <Core:InvokeCommandAction 
-                                Command="{x:Bind ViewModel.ReadCommand}" 
-                                CommandParameter="{Binding ElementName=pullListView, Path=SelectedItem}"/>
-                            <Core:ChangePropertyAction TargetObject="{Binding ElementName=pullListView}" 
-                                                       PropertyName="SelectedItem" Value="{x:Null}"/>
-                        </Behaviors:EventTriggerBehaviorBase>
-                    </Interactivity:Interaction.Behaviors>
+                    RefreshCommand="{x:Bind ViewModel.RefreshCommand}"
+                    SelectionMode="None"
+                    >
                     <mycontrols:PullToRefreshListViewEx.RefreshIndicatorContent>
                         <SymbolIcon Symbol="Sync"/>
                     </mycontrols:PullToRefreshListViewEx.RefreshIndicatorContent>
@@ -139,10 +133,21 @@
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Key}" 
-                                       Style="{ThemeResource TitleTextBlockStyle}"/>
+                                    <StackPanel Orientation="Horizontal"
+                                                Background="{ThemeResource SystemControlBackgroundListLowBrush}">
+                                        <TextBlock     
+                                        Text="{Binding Key,
+                                        Converter={StaticResource DateTime2Date},
+                                        ConverterParameter=\{0:dd/MM/yyyy\}}"/>
+                                    </StackPanel>
                                 </DataTemplate>
-                            </GroupStyle.HeaderTemplate>                        
+                            </GroupStyle.HeaderTemplate>
+                            <GroupStyle.HeaderContainerStyle>
+                                <Style TargetType="ListViewHeaderItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </GroupStyle.HeaderContainerStyle>
                         </GroupStyle>
                     </mycontrols:PullToRefreshListViewEx.GroupStyle>
                     <mycontrols:PullToRefreshListViewEx.ItemContainerStyle>
@@ -152,8 +157,14 @@
                     </mycontrols:PullToRefreshListViewEx.ItemContainerStyle>
                     <mycontrols:PullToRefreshListViewEx.ItemTemplate>
                         <DataTemplate>
-                            <Grid
-                        Height="80">
+                            <Grid Height="80">
+                                <Interactivity:Interaction.Behaviors>
+                                    <Behaviors:EventTriggerBehaviorBase EventName="Tapped">
+                                        <Core:InvokeCommandAction 
+                                            Command="{Binding ElementName=rootpage,Path=DataContext.ReadCommand}" 
+                                            CommandParameter="{Binding}"/>
+                                    </Behaviors:EventTriggerBehaviorBase>
+                                </Interactivity:Interaction.Behaviors>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="4"/>
                                     <ColumnDefinition Width="8"/>

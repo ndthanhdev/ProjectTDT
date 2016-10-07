@@ -94,7 +94,8 @@ namespace TDTUniversal.ViewModels
          }, () => !IsUpdating);
 
         public ICommand MakeAsReadCommand => new DelegateCommand<ThongBao>(async (tb) => await ReadThongBao(tb, false));
-        public ICommand ReadCommand => new DelegateCommand<ThongBao>(async (tb) => await ReadThongBao(tb, true));
+        public ICommand ReadCommand => new DelegateCommand<ThongBao>
+            (async (tb) => await ReadThongBao(tb, true));
 
         public ICommand HidePopup => new DelegateCommand(() => IsOpen = false);
 
