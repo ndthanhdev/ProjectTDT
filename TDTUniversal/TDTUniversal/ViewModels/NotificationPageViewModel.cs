@@ -19,12 +19,14 @@ namespace TDTUniversal.ViewModels
     {
         private int _currentPage = 0;
         private int _threshold = 1;
-        ObservableCollection<ThongBao> _thongBaos;
-        public ObservableCollection<ThongBao> ThongBaos
+        ObservableCollection<GroupedThongBao> _thongBaos;
+        public ObservableCollection<GroupedThongBao> ThongBaos
         {
-            get { return _thongBaos ?? (_thongBaos = new ObservableCollection<ThongBao>()); }
+            get { return _thongBaos ?? (_thongBaos = new ObservableCollection<GroupedThongBao>()); }
             set { Set(ref _thongBaos, value); }
         }
+
+
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             await base.OnNavigatedToAsync(parameter, mode, state);
@@ -104,7 +106,7 @@ namespace TDTUniversal.ViewModels
                 NumOfQuests++;
                 using (TDTContext db = new TDTContext())
                 {
-                    ThongBaos = new ObservableCollection<ThongBao>((from tb in db.ThongBao select tb).OrderByDescending(tb => tb.EntryId));
+                    ThongBaos = Group((from tb in db.ThongBao select tb).OrderByDescending(tb => tb.EntryId));
                 }
             }
             catch { }
@@ -141,16 +143,36 @@ namespace TDTUniversal.ViewModels
                         db.ThongBao.RemoveRange(from tb in db.ThongBao select tb);
                         ThongBaos.Clear();
                     }
-                    var newtblist = from tbr in package.Respond.Thongbao select new ThongBao(tbr);
-                    foreach (ThongBao tb in newtblist)
+                    var newtbs = from tbr in package.Respond.Thongbao select new ThongBao(tbr);
+                    var newgtb = Group(newtbs);
+                    if (ThongBaos.Count == 0)
                     {
-                        ThongBaos.Add(tb);
+                        foreach (var gtb in newgtb)
+                            ThongBaos.Add(gtb);
                     }
-                    db.AddRange(newtblist);
+                    else if (newgtb.Count > 0 && ThongBaos.Last()?.Key == newgtb.First().Key)
+                    {
+                        foreach (var tb in newgtb.First())
+                        {
+                            ThongBaos.Last().Add(tb);
+                        }
+                        newgtb.RemoveAt(0);
+                        foreach (var gtb in newgtb)
+                            ThongBaos.Add(gtb);
+                    }
+                    else
+                    {
+                        foreach (var gtb in newgtb)
+                        {
+                            ThongBaos.Add(gtb);
+                        }
+                    }
+                    db.ThongBao.AddRange(newtbs);
                     await db.SaveChangesAsync();
                 }
             }
-            catch { }
+            catch (Exception ex)
+            { }
             finally
             {
                 IsUpdating = false;
@@ -208,5 +230,29 @@ namespace TDTUniversal.ViewModels
             }
             catch { }
         }
+        public static ObservableCollection<GroupedThongBao> Group(IEnumerable<ThongBao> thongBaos)
+        {
+            ObservableCollection<GroupedThongBao> groups = new ObservableCollection<GroupedThongBao>();
+            var query = from item in thongBaos
+                        group item by item.PublishDate into g
+                        orderby g.Key descending
+                        select new { GroupName = g.Key, Items = g };
+            foreach (var g in query)
+            {
+                GroupedThongBao info = new GroupedThongBao();
+                info.Key = g.GroupName;
+                foreach (var item in g.Items)
+                {
+                    info.Add(item);
+                }
+                groups.Add(info);
+            }
+            return groups;
+
+        }
+    }
+    public class GroupedThongBao : ObservableCollection<ThongBao>
+    {
+        public DateTime Key { get; set; }
     }
 }

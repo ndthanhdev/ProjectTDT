@@ -6,9 +6,10 @@
     xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:controls="using:Template10.Controls"
-    xmlns:mycontrols="using:TDTUniversal.Controls"
     xmlns:toolkitcontrols="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:toolkitconverters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+    xmlns:mycontrols="using:TDTUniversal.Controls"
+    xmlns:myconvertters="using:TDTUniversal.Converters"
     xmlns:vm="using:TDTUniversal.ViewModels"
     xmlns:local="using:TDTUniversal.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -21,6 +22,8 @@
     </Page.DataContext>
     <Page.Resources>
         <toolkitconverters:BoolToVisibilityConverter x:Key="Bool2Visi"/>
+        <myconvertters:ThongBaoToGrouped x:Key="tb2gtb"/>
+        <CollectionViewSource x:Name="cvs" x:Key="cvs" Source="{Binding ThongBaos}" IsSourceGrouped="True"/>
     </Page.Resources>
     <RelativePanel  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -117,9 +120,9 @@
                     RelativePanel.AlignBottomWithPanel="True"
                     RelativePanel.AlignLeftWithPanel="True"
                     RelativePanel.AlignRightWithPanel="True"
-                    ItemsSource="{Binding ThongBaos}"
+                    ItemsSource="{Binding Source={StaticResource cvs}}"
                     LoadMoreCommand="{x:Bind ViewModel.LoadMoreCommand}"
-                    RefreshCommand="{x:Bind ViewModel.RefreshCommand}">
+                    RefreshCommand="{x:Bind ViewModel.RefreshCommand}">                    
                     <Interactivity:Interaction.Behaviors>
                         <Behaviors:EventTriggerBehaviorBase EventName="SelectionChanged">
                             <Core:InvokeCommandAction 
@@ -132,6 +135,16 @@
                     <mycontrols:PullToRefreshListViewEx.RefreshIndicatorContent>
                         <SymbolIcon Symbol="Sync"/>
                     </mycontrols:PullToRefreshListViewEx.RefreshIndicatorContent>
+                    <mycontrols:PullToRefreshListViewEx.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Key}" 
+                                       Style="{ThemeResource TitleTextBlockStyle}"/>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>                        
+                        </GroupStyle>
+                    </mycontrols:PullToRefreshListViewEx.GroupStyle>
                     <mycontrols:PullToRefreshListViewEx.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

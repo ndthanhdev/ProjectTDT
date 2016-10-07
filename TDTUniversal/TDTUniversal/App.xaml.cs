@@ -83,7 +83,7 @@ namespace TDTUniversal
                 {
                     using (var database = new TDTContext())
                     {
-                        await database.Database.EnsureCreatedAsync();
+                        await database.Database.MigrateAsync();
                     }
                 });
                 //initialize cache

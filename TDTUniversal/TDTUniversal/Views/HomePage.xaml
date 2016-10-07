@@ -52,6 +52,9 @@
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Trang chủ">
+            <controls:PageHeader.Background>
+                <SolidColorBrush Color="{ThemeResource SystemBaseLowColor}"/>
+            </controls:PageHeader.Background>
 
             <!--  secondary commands  -->
             <controls:PageHeader.SecondaryCommands>
@@ -67,7 +70,7 @@
               RelativePanel.Below="pageHeader"
               Padding="32,16,4,8">
             <Grid.Background>
-                <SolidColorBrush Opacity="0.4" Color="{ThemeResource SystemBaseLowColor}"/>
+                <SolidColorBrush Color="{ThemeResource SystemBaseLowColor}"/>
             </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
